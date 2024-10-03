@@ -25,13 +25,7 @@ def test_full_pipeline(prepared_data):
         assert len(answer) > 0, "Answer should not be empty"
         # Add more specific assertions based on the content of your test book
 
-def test_different_book_types(mock_client, tmp_path):
-
-    mock_client.embeddings.create.return_value.data = [{"embedding": [0.1] * 1536}]
-    mock_client.chat.completions.create.return_value.choices = [
-        type('obj', (object,), {'message': type('obj', (object,), {'content': "This book is about wizards and magic."})})()
-    ]
-
+def test_different_book_types(tmp_path):
     # Create temporary test books
     book1 = tmp_path / "fiction.txt"
     book1.write_text("This is a fiction book about wizards and magic.")
@@ -52,8 +46,4 @@ def test_different_book_types(mock_client, tmp_path):
         if "fiction" in book.name:
             assert "wizard" in answer.lower() or "magic" in answer.lower(), "Answer should be relevant to the fiction book"
         else:
-            # Изменяем ожидаемый ответ для нехудожественной книги
-            mock_client.chat.completions.create.return_value.choices = [
-                type('obj', (object,), {'message': type('obj', (object,), {'content': "This book is about the history of science."})})()
-            ]
             assert "science" in answer.lower() or "history" in answer.lower(), "Answer should be relevant to the non-fiction book"

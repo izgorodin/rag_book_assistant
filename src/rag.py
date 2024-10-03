@@ -26,28 +26,9 @@ def generate_answer(query: str, context: str) -> str:
     return response.choices[0].message.content
 
 def rag_query(query: str, chunks: List[str], embeddings: List[List[float]]) -> str:
-    query_embedding = client.embeddings.create(input=query, model="text-embedding-3-small").data[0].embedding
-    relevant_chunks = find_most_relevant_chunks(query, query_embedding, chunks, embeddings)
-    context = " ".join(relevant_chunks)
-    
-    prompt = f"""
-    Text: {context}
-
-    Based solely on the information provided in the text above, please answer the following question.
-    If the text doesn't contain enough information to answer the question, say "I don't have enough information to answer that question."
-
-    Question: {query}
-
-    Answer:
-    """
-    
-    response = client.chat.completions.create(
-        model="gpt-4",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant that answers questions based only on the given information."},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=150
-    )
-    
-    return response.choices[0].message.content.strip()
+       query_embedding = client.embeddings.create(input=query, model="text-embedding-3-small").data[0].embedding
+       relevant_chunks = find_most_relevant_chunks(query, query_embedding, chunks, embeddings)
+       context = " ".join(relevant_chunks)
+       full_context = f"Original text: {context}\n\nQuestion: {query}"
+       answer = generate_answer(query, full_context)
+       return answer

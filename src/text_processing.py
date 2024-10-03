@@ -17,12 +17,21 @@ def load_and_preprocess_text(file_path: str) -> str:
 def split_into_chunks(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[str]:
     words = text.split()
     chunks = []
-    for i in range(0, len(words), chunk_size - overlap):
-        chunk = ' '.join(words[i:i + chunk_size])
-        if len(chunk) > chunk_size:
-            chunk_words = chunk.split()
-            while len(' '.join(chunk_words)) > chunk_size:
-                chunk_words.pop()
-            chunk = ' '.join(chunk_words)
+    start = 0
+
+    while start < len(words):
+        end = start + chunk_size
+        if end > len(words):
+            end = len(words)  # Adjust end for the last chunk
+
+        chunk = ' '.join(words[start:end])
         chunks.append(chunk)
+
+        # Move the start index forward by chunk_size - overlap
+        start += chunk_size - overlap
+
+        # Ensure we don't skip past the end of the words list
+        if start >= len(words):
+            break
+
     return chunks

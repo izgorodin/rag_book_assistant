@@ -27,8 +27,15 @@ def test_split_into_chunks(chunk_size, overlap):
             assert chunks[i][-overlap:] == chunks[i+1][:overlap], f"Chunks {i} and {i+1} should overlap correctly"
 
     # Check that the entire original text is contained in the chunks
-    reconstructed_text = "".join(chunks)
-    assert text in reconstructed_text, "All original text should be contained in chunks"
+    reconstructed_text = " ".join(chunks)
+    assert text.strip() in reconstructed_text, "All original text should be contained in chunks"
 
     # Check that there is no significant text duplication
     assert len(reconstructed_text) <= len(text) * 1.5, "There should not be significant text duplication"
+
+def test_split_into_chunks_short_text():
+    text = "Short text."
+    chunks = split_into_chunks(text, chunk_size=10, overlap=2)
+    
+    assert len(chunks) == 1, "Should return one chunk for short text"
+    assert chunks[0] == text, "Chunk should match the original text"
