@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+rag_book_assistant_env/
+.DS_Store
