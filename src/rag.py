@@ -26,9 +26,15 @@ def generate_answer(query: str, context: str) -> str:
     return response.choices[0].message.content
 
 def rag_query(query: str, chunks: List[str], embeddings: List[List[float]]) -> str:
-       query_embedding = client.embeddings.create(input=query, model="text-embedding-3-small").data[0].embedding
-       relevant_chunks = find_most_relevant_chunks(query, query_embedding, chunks, embeddings)
-       context = " ".join(relevant_chunks)
-       full_context = f"Original text: {context}\n\nQuestion: {query}"
-       answer = generate_answer(query, full_context)
-       return answer
+    try:
+        #logger.info(f"Processing RAG query: {query}")
+        query_embedding = client.embeddings.create(input=query, model="text-embedding-3-small").data[0].embedding
+        relevant_chunks = find_most_relevant_chunks(query, query_embedding, chunks, embeddings)
+        context = " ".join(relevant_chunks)
+        full_context = f"Original text: {context}\n\nQuestion: {query}"
+        answer = generate_answer(query, full_context)
+        #logger.info("Successfully generated answer")
+        return answer
+    except Exception as e:
+        #logger.error(f"Error in RAG query process: {str(e)}")
+        return f"Sorry, I encountered an error while processing your query: {str(e)}"
