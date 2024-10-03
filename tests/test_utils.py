@@ -3,6 +3,7 @@ from unittest.mock import Mock, patch
 from openai import OpenAI
 import functools
 
+
 @pytest.fixture
 def mock_openai_client():
     mock_client = Mock(spec=OpenAI)
@@ -34,14 +35,19 @@ def sample_embeddings():
 def run_with_and_without_api(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        # Run with mocked API
-        with patch('openai.OpenAI'):
-            func(*args, **kwargs, use_api=False)
+        # Получаем все фикстуры, которые нужны для теста
+        fixtures = pytest.fixtures(func)
         
-        # Run with real API if OPENAI_API_KEY is set
+        # Запускаем тест с мокированным API
+        with patch('openai.OpenAI'):
+            fixture_values = {name: pytest.fixture()(request=None) for name in fixtures}
+            func(**fixture_values, use_api=False)
+        
+        # Запускаем тест с реальным API, если установлен OPENAI_API_KEY
         import os
         if os.getenv("OPENAI_API_KEY"):
-            func(*args, **kwargs, use_api=True)
+            fixture_values = {name: pytest.fixture()(request=None) for name in fixtures}
+            func(**fixture_values, use_api=True)
         else:
             pytest.skip("Skipping API test because OPENAI_API_KEY is not set")
     

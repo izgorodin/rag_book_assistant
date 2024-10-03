@@ -2,11 +2,10 @@ import pytest
 from src.text_processing import load_and_preprocess_text, split_into_chunks
 from src.embedding import create_embeddings
 from src.rag import rag_query
-from tests.test_utils import patch_openai, run_with_and_without_api
+from tests.conftest import run_with_and_without_api
 
-@pytest.mark.usefixtures("patch_openai")
 @run_with_and_without_api
-def test_different_book_types(tmp_path, use_api):
+def test_different_book_types(tmp_path, patch_openai, use_api):
     # Create temporary test books
     fiction_book = tmp_path / "fiction.txt"
     fiction_book.write_text("This is a fiction book about wizards and magic.")

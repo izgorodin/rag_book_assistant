@@ -1,6 +1,6 @@
 import pytest
 from src.text_processing import load_and_preprocess_text, split_into_chunks
-from tests.test_utils import sample_text
+
 
 def test_load_and_preprocess_text(tmp_path):
     """
