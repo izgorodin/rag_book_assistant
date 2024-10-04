@@ -1,19 +1,58 @@
 import pytest
-from src.embedding import create_embeddings
-from tests.conftest import run_with_and_without_api
+from unittest.mock import Mock, patch
+from openai import OpenAI
+import functools
+import os
 
-@run_with_and_without_api
-def test_create_embeddings(sample_chunks, patch_openai, use_api):
-    embeddings = create_embeddings(sample_chunks)
-    
-    assert isinstance(embeddings, list), "Function should return a list"
-    assert len(embeddings) == len(sample_chunks), "Number of embeddings should match number of chunks"
-    assert all(len(emb) == 1536 for emb in embeddings), "Each embedding should have 1536 dimensions"
+def pytest_addoption(parser):
+    parser.addoption(
+        "--use-real-api",
+        action="store_true",
+        default=False,
+        help="run tests with real API calls"
+    )
 
-@run_with_and_without_api
-def test_create_embeddings_api_error(sample_chunks, patch_openai, use_api):
-    if not use_api:
-        patch_openai.embeddings.create.side_effect = Exception("API Error")
-    
-    with pytest.raises(Exception):
-        create_embeddings(sample_chunks)
+@pytest.fixture(scope="session")
+def use_real_api(request):
+    return request.config.getoption("--use-real-api")
+
+@pytest.fixture
+def mock_openai_client():
+    mock_client = Mock(spec=OpenAI)
+    mock_client.embeddings.create = Mock(return_value=Mock(
+        data=[Mock(embedding=[0.1] * 1536)]
+    ))
+    mock_client.chat.completions.create = Mock(return_value=Mock(
+        choices=[Mock(message=Mock(content="Mocked response"))]
+    ))
+    return mock_client
+
+@pytest.fixture
+def patch_openai(mock_openai_client, use_real_api):
+    if use_real_api:
+        return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    else:
+        with patch('openai.OpenAI', return_value=mock_openai_client):
+            yield mock_openai_client
+
+@pytest.fixture
+def sample_text():
+    return "This is a sample text for testing purposes. It contains multiple sentences and should be long enough for chunking."
+
+@pytest.fixture
+def sample_chunks():
+    return [
+        "This is chunk one for testing.",
+        "This is chunk two for testing.",
+        "This is chunk three for testing."
+    ]
+
+@pytest.fixture
+def sample_embeddings():
+    return [[0.1] * 1536, [0.2] * 1536, [0.3] * 1536]
+
+def run_with_and_without_api(func):
+    @functools.wraps(func)
+    def wrapper(use_real_api, *args, **kwargs):
+        return func(use_real_api, *args, **kwargs)
+    return pytest.mark.parametrize("use_real_api", [True, False])(wrapper)

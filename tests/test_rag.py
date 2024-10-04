@@ -1,6 +1,7 @@
 import pytest
 from src.rag import find_most_relevant_chunks, generate_answer, rag_query
 from tests.conftest import run_with_and_without_api
+
 @pytest.mark.parametrize("top_k", [1, 2, 3])
 def test_find_most_relevant_chunks(sample_chunks, sample_embeddings, top_k):
     query = "Test query"
