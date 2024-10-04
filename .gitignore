@@ -5,3 +5,4 @@ __pycache__/
 venv/
 rag_book_assistant_env/
 .DS_Store
+data/embeddings
