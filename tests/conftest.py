@@ -1,7 +1,6 @@
 import pytest
-from unittest.mock import Mock, patch
+from unittest.mock import Mock
 from openai import OpenAI
-import functools
 import os
 
 def pytest_addoption(parser):
@@ -19,20 +18,16 @@ def use_real_api(request):
 @pytest.fixture
 def mock_openai_client():
     mock_client = Mock()
-    mock_client.embeddings = Mock()
     mock_client.embeddings.create.return_value = Mock(data=[Mock(embedding=[0.1] * 1536)])
-    mock_client.chat = Mock()
-    mock_client.chat.completions = Mock()
     mock_client.chat.completions.create.return_value = Mock(choices=[Mock(message=Mock(content="Mocked response"))])
     return mock_client
 
 @pytest.fixture
-def patch_openai(mock_openai_client, use_real_api):
+def openai_client(use_real_api, mock_openai_client):
     if use_real_api:
         return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     else:
-        with patch('openai.OpenAI', return_value=mock_openai_client):
-            yield mock_openai_client
+        return mock_openai_client
 
 @pytest.fixture
 def sample_text():
@@ -49,10 +44,3 @@ def sample_chunks():
 @pytest.fixture
 def sample_embeddings():
     return [[0.1] * 1536, [0.2] * 1536, [0.3] * 1536]
-
-def run_with_and_without_api(func):
-    @functools.wraps(func)
-    @pytest.mark.parametrize("use_api", [True, False])
-    def wrapper(*args, **kwargs):
-        return func(*args, **kwargs)
-    return wrapper
