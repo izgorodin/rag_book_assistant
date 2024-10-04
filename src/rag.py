@@ -2,23 +2,36 @@ from typing import List
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from openai import OpenAI
-from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS
+from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS, TOP_K_CHUNKS, EMBEDDING_MODEL
 import logging
 
 logger = logging.getLogger(__name__)
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-def find_most_relevant_chunks(query: str, query_embedding: List[float], chunks: List[str], embeddings: List[List[float]], top_k: int = 3) -> List[str]:
-    logger.debug(f"Finding most relevant chunks. Query: {query}")
-    similarities = cosine_similarity([query_embedding], embeddings)[0]
-    logger.debug(f"Calculated similarities. Shape: {similarities.shape}")
-    logger.debug(f"Max similarity: {np.max(similarities)}, Min similarity: {np.min(similarities)}")
-    top_indices = np.argsort(similarities)[-top_k:][::-1]
-    logger.debug(f"Top {top_k} relevant chunk indices: {top_indices}")
+def find_most_relevant_chunks(query: str, query_embedding: List[float], chunks: List[str], embeddings: List[List[float]], top_k: int = TOP_K_CHUNKS) -> List[str]:
+    logger.debug(f"Finding most relevant chunks for query: '{query}'")
+    if not embeddings or not chunks:
+        logger.warning("Embeddings or chunks list is empty.")
+        return []
+
+    # Convert embeddings to numpy array for efficiency
+    embeddings_np = np.array(embeddings)
+    query_embedding_np = np.array(query_embedding).reshape(1, -1)
+
+    # Calculate cosine similarities
+    similarities = cosine_similarity(query_embedding_np, embeddings_np)[0]
+    logger.debug(f"Calculated similarities: {similarities}")
+
+    # Get top_k indices
+    top_indices = similarities.argsort()[-top_k:][::-1]
+    logger.debug(f"Top {top_k} indices: {top_indices}")
+
+    # Retrieve the most relevant chunks
     relevant_chunks = [chunks[i] for i in top_indices]
-    for i, chunk in enumerate(relevant_chunks):
-        logger.debug(f"Relevant chunk {i} (similarity: {similarities[top_indices[i]]:.4f}): {chunk[:100]}...")
+    for idx, chunk in zip(top_indices, relevant_chunks):
+        logger.debug(f"Chunk index {idx} with similarity {similarities[idx]:.4f}: {chunk[:100]}...")
+
     return relevant_chunks
 
 def generate_answer(query: str, context: str) -> str:
@@ -26,10 +39,8 @@ def generate_answer(query: str, context: str) -> str:
         {"role": "system", "content": "You are a helpful assistant. Use the provided context to answer the user's question. If the answer is not in the context, say that you don't know."},
         {"role": "user", "content": f"Context: {context}\n\nQuestion: {query}"}
     ]
-    
-    logger.debug(f"Full context sent to GPT: {context}")
-    logger.debug(f"Generating answer for query: {query}")
-    logger.debug(f"Using GPT model: {GPT_MODEL}")
+
+    logger.debug(f"Generating answer with context length: {len(context)} characters")
     
     try:
         response = client.chat.completions.create(
@@ -37,7 +48,7 @@ def generate_answer(query: str, context: str) -> str:
             messages=messages,
             max_tokens=MAX_TOKENS
         )
-        answer = response.choices[0].message.content
+        answer = response.choices[0].message.content.strip()
         logger.debug(f"Generated answer: {answer}")
         return answer
     except Exception as e:

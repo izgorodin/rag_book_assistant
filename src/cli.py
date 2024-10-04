@@ -3,7 +3,7 @@ import argparse
 import os
 from tqdm import tqdm
 from src.text_processing import load_and_preprocess_text, split_into_chunks
-from src.embedding import create_embeddings
+from src.embedding import get_or_create_chunks_and_embeddings
 from src.rag import rag_query
 
 def setup_logging():
@@ -18,7 +18,8 @@ def setup_logging():
 
 def run_cli():
     setup_logging()
-    logging.info("Starting the RAG system")
+    logger = logging.getLogger(__name__)
+    logger.info("Starting the RAG system")
 
     try:
         # Load and preprocess the book
@@ -26,21 +27,19 @@ def run_cli():
         if not os.path.exists(book_path):
             raise FileNotFoundError(f"The file {book_path} does not exist.")
         
-        logging.info(f"Loading book from: {book_path}")
+        logger.info(f"Loading book from: {book_path}")
         text = load_and_preprocess_text(book_path)
-        logging.info("Book loaded and preprocessed")
+        logger.info("Book loaded and preprocessed")
         
         # Split into chunks and create embeddings
-        logging.info("Splitting text into chunks")
+        logger.info("Splitting text into chunks")
         chunks = split_into_chunks(text)
-        logging.info(f"Text split into {len(chunks)} chunks")
+        logger.info(f"Text split into {len(chunks)} chunks")
         
-        logging.info("Creating embeddings")
-        embeddings = []
-        for chunk in tqdm(chunks, desc="Creating embeddings"):
-            embedding = create_embeddings([chunk])
-            embeddings.extend(embedding)
-        logging.info("Embeddings created")
+        logger.info("Creating or loading embeddings with chunks")
+        embeddings_file = os.path.join("data", "embeddings", f"{os.path.splitext(os.path.basename(book_path))[0]}_chunks_embeddings.pkl")
+        chunks, embeddings = get_or_create_chunks_and_embeddings(chunks, embeddings_file)
+        logger.info("Embeddings created or loaded")
         
         print("Book successfully loaded and processed. You can ask questions!")
         
@@ -50,16 +49,16 @@ def run_cli():
             if query.lower() == 'exit':
                 break
             
-            logging.info(f"Received query: {query}")
+            logger.info(f"Received query: {query}")
             answer = rag_query(query, chunks, embeddings)
-            logging.info(f"Generated answer: {answer}")
+            logger.info(f"Generated answer: {answer}")
             print(f"\nAnswer: {answer}")
 
     except Exception as e:
-        logging.error(f"An error occurred: {str(e)}")
+        logger.error(f"An error occurred: {str(e)}")
         print(f"An error occurred: {str(e)}")
 
-    logging.info("Exiting the RAG system")
+    logger.info("Exiting the RAG system")
 
 def main():
     parser = argparse.ArgumentParser(description="RAG Book Assistant")

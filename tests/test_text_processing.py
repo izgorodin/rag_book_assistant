@@ -8,7 +8,7 @@ def test_load_and_preprocess_text(tmp_path):
     processed_text = load_and_preprocess_text(str(test_file))
     
     assert isinstance(processed_text, str), "Function should return a string"
-    assert "This is a test text with some special characters" in processed_text, "Processed text should contain the original content without special characters"
+    assert "This is a test text with some special characters." in processed_text, "Processed text should contain the original content without special characters"
     assert "@#$%^&*()" not in processed_text, "Processed text should not contain special characters"
 
 @pytest.mark.parametrize("chunk_size, overlap", [

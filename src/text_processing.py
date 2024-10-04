@@ -1,6 +1,9 @@
 import re
 from typing import List
 from src.config import CHUNK_SIZE, OVERLAP
+import logging
+
+logger = logging.getLogger(__name__)
 
 def load_and_preprocess_text(file_path: str) -> str:
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -34,4 +37,5 @@ def split_into_chunks(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = OV
         if start >= len(words):
             break
 
+    logger.debug(f"Text split into {len(chunks)} chunks with chunk size {chunk_size} and overlap {overlap}.")
     return chunks

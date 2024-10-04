@@ -29,10 +29,14 @@ def test_create_embeddings_api_error():
             create_embeddings(chunks)
         assert "Error creating embedding" in str(exc_info.value)
 
-@pytest.mark.parametrize("chunk", ["", "Short", "A" * 1000])
-def test_create_embeddings_various_lengths(chunk):
-    mock_embedding = [0.1] * 1536
+@pytest.mark.parametrize("chunk,expected_length", [
+    ("", 0),
+    ("Short text", 1536),
+    ("A" * 1000, 1536)
+])
+def test_create_embeddings_various_lengths(chunk, expected_length):
+    mock_embedding = [0.1] * expected_length
     with patch('src.embedding.client.embeddings.create', return_value=Mock(data=[Mock(embedding=mock_embedding)])):
         embeddings = create_embeddings([chunk])
         assert len(embeddings) == 1, "Should create one embedding regardless of chunk length"
-        assert len(embeddings[0]) == 1536, "Embedding should always have 1536 dimensions"
+        assert len(embeddings[0]) == expected_length, f"Embedding should always have {expected_length} dimensions"
