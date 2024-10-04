@@ -39,7 +39,7 @@ def rag_query(query: str, chunks: List[str], embeddings: List[List[float]]) -> s
         context = " ".join(relevant_chunks)
         full_context = f"Original text: {context}\n\nQuestion: {query}"
         answer = generate_answer(query, full_context)
-        logger.info("Successfully generated answer")
+        logger.info(f"Successfully generated answer for RAG query: {query}")
         return answer
     except Exception as e:
         logger.error(f"Error in RAG query process: {str(e)}")

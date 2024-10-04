@@ -1,4 +1,5 @@
 import logging
+import argparse
 from src.text_processing import load_and_preprocess_text, split_into_chunks
 from src.embedding import create_embeddings
 from src.rag import rag_query
@@ -13,7 +14,7 @@ def setup_logging():
         ]
     )
 
-def main():
+def run_cli():
     setup_logging()
     logging.info("Starting the RAG system")
 
@@ -46,6 +47,19 @@ def main():
         print(f"\nAnswer: {answer}")
 
     logging.info("Exiting the RAG system")
+
+def main():
+    parser = argparse.ArgumentParser(description="RAG Book Assistant")
+    parser.add_argument("mode", choices=["cli", "api"], help="Mode to run the assistant (cli or api)")
+    args = parser.parse_args()
+
+    if args.mode == "cli":
+        run_cli()
+    elif args.mode == "api":
+        print("API mode not implemented yet.")
+        # TODO: Implement API mode
+    else:
+        print(f"Unknown mode: {args.mode}")
 
 if __name__ == "__main__":
     main()
