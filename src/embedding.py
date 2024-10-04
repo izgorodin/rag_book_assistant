@@ -9,7 +9,7 @@ def create_embeddings(chunks: List[str]) -> List[List[float]]:
     for chunk in chunks:
         try:
             response = client.embeddings.create(
-                input=[chunk],  
+                input=[chunk],
                 model=EMBEDDING_MODEL
             )
             embeddings.append(response.data[0].embedding)

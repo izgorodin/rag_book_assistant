@@ -1,7 +1,12 @@
 import pytest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 from openai import OpenAI
 import os
+import time
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 def pytest_addoption(parser):
     parser.addoption(
@@ -19,7 +24,7 @@ def use_real_api(request):
 def mock_openai_client():
     mock_client = Mock()
     mock_client.embeddings.create.return_value = Mock(data=[Mock(embedding=[0.1] * 1536)])
-    mock_client.chat.completions.create.return_value = Mock(choices=[Mock(message=Mock(content="Mocked response"))])
+    mock_client.chat.completions.create.return_value = Mock(choices=[Mock(message=Mock(content="Mocked response about fiction with wizards and magic"))])
     return mock_client
 
 @pytest.fixture
@@ -28,6 +33,21 @@ def openai_client(use_real_api, mock_openai_client):
         return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     else:
         return mock_openai_client
+
+@pytest.fixture
+def patch_openai(use_real_api, mock_openai_client):
+    if use_real_api:
+        yield
+    else:
+        with patch('openai.OpenAI', return_value=mock_openai_client):
+            yield mock_openai_client
+
+@pytest.fixture(autouse=True)
+def timer(request):
+    start_time = time.time()
+    yield
+    end_time = time.time()
+    logger.info(f"Test {request.node.name} took {end_time - start_time:.2f} seconds")
 
 @pytest.fixture
 def sample_text():

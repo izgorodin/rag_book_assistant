@@ -8,8 +8,8 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 @pytest.mark.parametrize("use_real_api", [True, False])
-def test_different_book_types(tmp_path, openai_client, use_real_api):
-    logger.debug("Starting test_different_book_types")
+def test_different_book_types(tmp_path, patch_openai, use_real_api):
+    logger.debug(f"Starting test_different_book_types with use_real_api={use_real_api}")
     # Create temporary test books
     fiction_book = tmp_path / "fiction.txt"
     fiction_book.write_text("This is a fiction book about wizards and magic.")

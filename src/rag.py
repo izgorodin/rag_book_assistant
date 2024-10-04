@@ -3,6 +3,9 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from openai import OpenAI
 from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS
+import logging
+
+logger = logging.getLogger(__name__)
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
@@ -13,28 +16,31 @@ def find_most_relevant_chunks(query: str, query_embedding: List[float], chunks: 
 
 def generate_answer(query: str, context: str) -> str:
     messages = [
-        {"role": "system", "content": "You are a helpful assistant. Use the provided context to answer the user's question."},
+        {"role": "system", "content": "You are a helpful assistant. Use the provided context to answer the user's question. Be sure to mention key terms from the context in your answer."},
         {"role": "user", "content": f"Context: {context}\n\nQuestion: {query}"}
     ]
     
-    response = client.chat.completions.create(
-        model=GPT_MODEL,
-        messages=messages,
-        max_tokens=MAX_TOKENS
-    )
-    
-    return response.choices[0].message.content
+    try:
+        response = client.chat.completions.create(
+            model=GPT_MODEL,
+            messages=messages,
+            max_tokens=MAX_TOKENS
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        logger.error(f"Error in generate_answer: {str(e)}")
+        return f"Sorry, I encountered an error while generating the answer: {str(e)}"
 
 def rag_query(query: str, chunks: List[str], embeddings: List[List[float]]) -> str:
     try:
-        #logger.info(f"Processing RAG query: {query}")
-        query_embedding = client.embeddings.create(input=query, model="text-embedding-3-small").data[0].embedding
+        logger.info(f"Processing RAG query: {query}")
+        query_embedding = client.embeddings.create(input=[query], model="text-embedding-3-small").data[0].embedding
         relevant_chunks = find_most_relevant_chunks(query, query_embedding, chunks, embeddings)
         context = " ".join(relevant_chunks)
         full_context = f"Original text: {context}\n\nQuestion: {query}"
         answer = generate_answer(query, full_context)
-        #logger.info("Successfully generated answer")
+        logger.info("Successfully generated answer")
         return answer
     except Exception as e:
-        #logger.error(f"Error in RAG query process: {str(e)}")
+        logger.error(f"Error in RAG query process: {str(e)}")
         return f"Sorry, I encountered an error while processing your query: {str(e)}"
