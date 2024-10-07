@@ -6,3 +6,4 @@ tiktoken
 pytest
 tqdm
 nltk
+rank_bm25

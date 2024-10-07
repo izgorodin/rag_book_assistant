@@ -1,22 +1,13 @@
 import logging
 import argparse
 import os
-from tqdm import tqdm
 from src.text_processing import load_and_preprocess_text, split_into_chunks
 from src.rag import rag_query
 import nltk
-nltk.download('punkt_tab')
-
-def download_nltk_resources():
-    try:
-        nltk.data.find('tokenizers/punkt')
-    except LookupError:
-        print("Downloading necessary NLTK data...")
-        nltk.download('punkt')
 
 def setup_logging():
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         handlers=[
             logging.FileHandler('rag_system.log'),
@@ -25,9 +16,15 @@ def setup_logging():
     )
 
 def initialize_nltk():
-    nltk.download('punkt', quiet=True)
-    nltk.download('stopwords', quiet=True)
-    nltk.download('wordnet', quiet=True)
+    try:
+        nltk.data.find('tokenizers/punkt')
+        nltk.data.find('corpora/stopwords')
+        nltk.data.find('corpora/wordnet')
+    except LookupError:
+        print("Downloading necessary NLTK data...")
+        nltk.download('punkt', quiet=True)
+        nltk.download('stopwords', quiet=True)
+        nltk.download('wordnet', quiet=True)
 
 def run_cli():
     setup_logging()
@@ -36,7 +33,6 @@ def run_cli():
     logger.info("Starting the RAG system")
 
     try:
-        # Load and preprocess the book
         book_path = input("Enter the path to the book file: ")
         if not os.path.exists(book_path):
             raise FileNotFoundError(f"The file {book_path} does not exist.")
@@ -44,17 +40,13 @@ def run_cli():
         logger.info(f"Loading book from: {book_path}")
         text = load_and_preprocess_text(book_path)
         logger.info(f"Book loaded and preprocessed. Total length: {len(text)} characters")
-        logger.debug(f"First 500 characters of the book: {text[:500]}")
         
-        # Split into chunks
         logger.info("Splitting text into chunks")
         chunks = split_into_chunks(text)
         logger.info(f"Text split into {len(chunks)} chunks")
-        logger.debug(f"First chunk: {chunks[0]}")
 
         print("Book successfully loaded and processed. You can ask questions!")
         
-        # Question and answer loop
         while True:
             query = input("\nAsk a question about the book (or 'exit' to finish): ")
             if query.lower() == 'exit':
