@@ -4,6 +4,9 @@ import os
 from src.text_processing import load_and_preprocess_text, split_into_chunks
 from src.rag import rag_query
 import nltk
+nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('maxent_ne_chunker_tab')
+nltk.download('words')
 
 def setup_logging():
     logging.basicConfig(
@@ -42,7 +45,7 @@ def run_cli():
         logger.info(f"Book loaded and preprocessed. Total length: {len(text)} characters")
         
         logger.info("Splitting text into chunks")
-        chunks = split_into_chunks(text)
+        chunks = split_into_chunks(text['text'])
         logger.info(f"Text split into {len(chunks)} chunks")
 
         print("Book successfully loaded and processed. You can ask questions!")
