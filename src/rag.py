@@ -1,46 +1,64 @@
-from typing import List
+import re
+from typing import List, Dict
+from rank_bm25 import BM25Okapi
 import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
 from openai import OpenAI
-from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS, TOP_K_CHUNKS, EMBEDDING_MODEL
+from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS
 import logging
 
 logger = logging.getLogger(__name__)
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-def find_most_relevant_chunks(query: str, query_embedding: List[float], chunks: List[str], embeddings: List[List[float]], top_k: int = TOP_K_CHUNKS) -> List[str]:
-    logger.debug(f"Finding most relevant chunks for query: '{query}'")
-    if not embeddings or not chunks:
-        logger.warning("Embeddings or chunks list is empty.")
-        return []
+def preprocess_text(text: str) -> str:
+    text = text.lower()
+    text = re.sub(r'[^\w\s]', '', text)
+    tokens = word_tokenize(text)
+    stop_words = set(stopwords.words('english'))
+    tokens = [token for token in tokens if token not in stop_words]
+    lemmatizer = WordNetLemmatizer()
+    tokens = [lemmatizer.lemmatize(token) for token in tokens]
+    return ' '.join(tokens)
 
-    # Convert embeddings to numpy array for efficiency
-    embeddings_np = np.array(embeddings)
-    query_embedding_np = np.array(query_embedding).reshape(1, -1)
-
-    # Calculate cosine similarities
-    similarities = cosine_similarity(query_embedding_np, embeddings_np)[0]
-    logger.debug(f"Calculated similarities: {similarities}")
-
-    # Get top_k indices
-    top_indices = similarities.argsort()[-top_k:][::-1]
-    logger.debug(f"Top {top_k} indices: {top_indices}")
-
-    # Retrieve the most relevant chunks
-    relevant_chunks = [chunks[i] for i in top_indices]
-    for idx, chunk in zip(top_indices, relevant_chunks):
-        logger.debug(f"Chunk index {idx} with similarity {similarities[idx]:.4f}: {chunk[:100]}...")
-
+def find_relevant_chunks(query: str, chunks: List[Dict[str, any]], top_k: int = 20) -> List[Dict[str, any]]:
+    logger.info(f"Finding relevant chunks for query: {query}")
+    
+    preprocessed_query = preprocess_text(query)
+    preprocessed_chunks = [preprocess_text(chunk['text']) for chunk in chunks]
+    
+    bm25 = BM25Okapi([chunk.split() for chunk in preprocessed_chunks])
+    scores = bm25.get_scores(preprocessed_query.split())
+    
+    # Boost scores based on matched entities and key phrases
+    query_entities = set(word_tokenize(query.lower()))
+    for i, chunk in enumerate(chunks):
+        chunk_entities = set(word.lower() for entity_list in chunk['entities'].values() for entity in entity_list for word in word_tokenize(entity))
+        chunk_phrases = set(word.lower() for phrase in chunk['key_phrases'] for word in word_tokenize(phrase))
+        
+        entity_match = len(query_entities.intersection(chunk_entities))
+        phrase_match = len(query_entities.intersection(chunk_phrases))
+        
+        scores[i] += 0.1 * entity_match + 0.05 * phrase_match
+        
+        if chunk['dates']:
+            scores[i] += 0.1
+    
+    top_indices = np.argsort(scores)[-top_k:][::-1]
+    relevant_chunks = [{'chunk': chunks[i], 'score': scores[i]} for i in top_indices]
+    
+    logger.info(f"Found {len(relevant_chunks)} relevant chunks")
     return relevant_chunks
 
-def generate_answer(query: str, context: str) -> str:
+def generate_answer(query: str, context: str, entities: Dict[str, List[str]], key_phrases: List[str]) -> str:
     messages = [
-        {"role": "system", "content": "You are a helpful assistant. Use the provided context to answer the user's question. If the answer is not in the context, say that you don't know."},
-        {"role": "user", "content": f"Context: {context}\n\nQuestion: {query}"}
+        {"role": "system", "content": "You are a helpful assistant specialized in extracting precise information from legal and historical texts. Focus on providing accurate dates, events, and named entities. If the exact information is not available, explain what is known and what is missing."},
+        {"role": "user", "content": f"Context: {context}\n\nRelevant entities: {entities}\n\nKey phrases: {key_phrases}\n\nQuestion: {query}\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing. Try to incorporate relevant named entities and key phrases in your answer."}
     ]
-
-    logger.debug(f"Generating answer with context length: {len(context)} characters")
+    
+    logger.info(f"Generating answer for query: {query}")
     
     try:
         response = client.chat.completions.create(
@@ -48,33 +66,34 @@ def generate_answer(query: str, context: str) -> str:
             messages=messages,
             max_tokens=MAX_TOKENS
         )
-        answer = response.choices[0].message.content.strip()
-        logger.debug(f"Generated answer: {answer}")
-        return answer
+        return response.choices[0].message.content
     except Exception as e:
         logger.error(f"Error in generate_answer: {str(e)}")
         return f"Sorry, I encountered an error while generating the answer: {str(e)}"
 
-def rag_query(query: str, chunks: List[str], embeddings: List[List[float]]) -> str:
+def rag_query(query: str, chunks: List[Dict[str, any]]) -> str:
     try:
         logger.info(f"Processing RAG query: {query}")
-        logger.debug(f"Total chunks: {len(chunks)}, Total embeddings: {len(embeddings)}")
-        logger.debug(f"First chunk: {chunks[0][:100]}...")
-        logger.debug(f"First embedding shape: {len(embeddings[0])}")
         
-        query_embedding = client.embeddings.create(input=[query], model="text-embedding-3-small").data[0].embedding
-        logger.debug(f"Query embedding created. Shape: {len(query_embedding)}")
+        relevant_chunks = find_relevant_chunks(query, chunks)
+        context = "\n\n".join(f"Chunk {i+1} (score: {chunk['score']:.2f}): {chunk['chunk']['text']}" for i, chunk in enumerate(relevant_chunks))
         
-        relevant_chunks = find_most_relevant_chunks(query, query_embedding, chunks, embeddings)
-        logger.debug(f"Found {len(relevant_chunks)} relevant chunks")
+        all_entities = {}
+        all_key_phrases = set()
+        for chunk in relevant_chunks:
+            for entity_type, entities in chunk['chunk']['entities'].items():
+                if entity_type not in all_entities:
+                    all_entities[entity_type] = set()
+                all_entities[entity_type].update(entities)
+            all_key_phrases.update(chunk['chunk']['key_phrases'])
         
-        context = " ".join(relevant_chunks)
-        full_context = f"Original text: {context}\n\nQuestion: {query}"
-        logger.debug(f"Full context: {full_context[:500]}...")
+        all_entities = {k: list(v) for k, v in all_entities.items()}
+        all_key_phrases = list(all_key_phrases)
         
-        answer = generate_answer(query, full_context)
-        logger.info("Successfully generated answer")
-        logger.debug(f"Final generated answer: {answer}")
+        full_context = f"Original text chunks:\n\n{context}\n\nQuestion: {query}"
+        
+        answer = generate_answer(query, full_context, all_entities, all_key_phrases)
+        logger.info("Answer generated successfully")
         return answer
     except Exception as e:
         logger.error(f"Error in RAG query process: {str(e)}")
