@@ -7,6 +7,7 @@ import nltk
 nltk.download('averaged_perceptron_tagger_eng')
 nltk.download('maxent_ne_chunker_tab')
 nltk.download('words')
+from src.embedding import get_or_create_chunks_and_embeddings
 
 def setup_logging():
     logging.basicConfig(
@@ -47,7 +48,9 @@ def run_cli():
         logger.info("Splitting text into chunks")
         chunks = split_into_chunks(text['text'])
         logger.info(f"Text split into {len(chunks)} chunks")
-
+        
+        chunks, embeddings = get_or_create_chunks_and_embeddings(chunks, 'embeddings_cache.pkl')
+        
         print("Book successfully loaded and processed. You can ask questions!")
         
         while True:
@@ -56,7 +59,7 @@ def run_cli():
                 break
             
             logger.info(f"Received query: {query}")
-            answer = rag_query(query, chunks)
+            answer = rag_query(query, chunks, embeddings)
             logger.info(f"Generated answer: {answer}")
             print(f"\nAnswer: {answer}")
 

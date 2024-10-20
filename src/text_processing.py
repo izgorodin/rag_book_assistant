@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Any
 from src.config import CHUNK_SIZE, OVERLAP
 import logging
 import nltk
@@ -75,29 +75,10 @@ def load_and_preprocess_text(file_path: str) -> Dict[str, any]:
         'key_phrases': key_phrases
     }
 
-def split_into_chunks(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[Dict[str, any]]:
-    words = text.split()
+def split_into_chunks(text: Dict[str, Any], chunk_size: int = 1000, overlap: int = 100) -> List[str]:
+    words = text['text'].split()
     chunks = []
-    start = 0
-
-    while start < len(words):
-        end = start + chunk_size
-        if end > len(words):
-            end = len(words)
-
-        chunk_text = ' '.join(words[start:end])
-        chunk_data = {
-            'text': chunk_text,
-            'dates': extract_dates(chunk_text),
-            'entities': extract_named_entities(chunk_text),
-            'key_phrases': extract_key_phrases(chunk_text, num_phrases=3)
-        }
-        chunks.append(chunk_data)
-
-        start += chunk_size - overlap
-
-        if start >= len(words):
-            break
-
-    logger.info(f"Text split into {len(chunks)} chunks with chunk size {chunk_size} and overlap {overlap}.")
+    for i in range(0, len(words), chunk_size - overlap):
+        chunk = ' '.join(words[i:i + chunk_size])
+        chunks.append(chunk)
     return chunks

@@ -1,13 +1,12 @@
 import pytest
-from src.rag import find_most_relevant_chunks, generate_answer, rag_query
-from tests.conftest import sample_chunks, sample_embeddings
+from src.rag import find_relevant_chunks, generate_answer, rag_query
 
 @pytest.mark.parametrize("top_k", [1, 2, 3])
 def test_find_most_relevant_chunks(sample_chunks, sample_embeddings, top_k):
     query = "Test query"
     query_embedding = [0.15] * 1536
     
-    relevant_chunks = find_most_relevant_chunks(query, query_embedding, sample_chunks, sample_embeddings, top_k)
+    relevant_chunks = find_relevant_chunks(query, query_embedding, sample_chunks, sample_embeddings, top_k)
     
     assert isinstance(relevant_chunks, list), "Function should return a list"
     assert len(relevant_chunks) == top_k, f"Function should return {top_k} most relevant chunks"

@@ -31,14 +31,11 @@ def run_cli():
         text = load_and_preprocess_text(book_path)
         logger.info("Book loaded and preprocessed")
         
-        # Split into chunks and create embeddings
-        logger.info("Splitting text into chunks")
-        chunks = split_into_chunks(text)
-        logger.info(f"Text split into {len(chunks)} chunks")
-        
-        logger.info("Creating or loading embeddings with chunks")
+        # Create or load embeddings
+        logger.info("Creating or loading embeddings")
         embeddings_file = os.path.join("data", "embeddings", f"{os.path.splitext(os.path.basename(book_path))[0]}_chunks_embeddings.pkl")
-        chunks, embeddings = get_or_create_chunks_and_embeddings(chunks, embeddings_file)
+        chunks, embeddings = get_or_create_chunks_and_embeddings(text, embeddings_file)
+        logger.info(f"Text split into {len(chunks)} chunks")
         logger.info("Embeddings created or loaded")
         
         print("Book successfully loaded and processed. You can ask questions!")

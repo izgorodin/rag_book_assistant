@@ -8,6 +8,7 @@ from nltk.stem import WordNetLemmatizer
 from openai import OpenAI
 from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS
 import logging
+from src.hybrid_search import HybridSearch
 
 logger = logging.getLogger(__name__)
 
@@ -52,10 +53,10 @@ def find_relevant_chunks(query: str, chunks: List[Dict[str, any]], top_k: int = 
     logger.info(f"Found {len(relevant_chunks)} relevant chunks")
     return relevant_chunks
 
-def generate_answer(query: str, context: str, entities: Dict[str, List[str]], key_phrases: List[str]) -> str:
+def generate_answer(query: str, context: str) -> str:
     messages = [
-        {"role": "system", "content": "You are a helpful assistant specialized in extracting precise information from legal and historical texts. Focus on providing accurate dates, events, and named entities. If the exact information is not available, explain what is known and what is missing."},
-        {"role": "user", "content": f"Context: {context}\n\nRelevant entities: {entities}\n\nKey phrases: {key_phrases}\n\nQuestion: {query}\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing. Try to incorporate relevant named entities and key phrases in your answer."}
+        {"role": "system", "content": "You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing."},
+        {"role": "user", "content": f"Context: {context}\n\nQuestion: {query}\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing."}
     ]
     
     logger.info(f"Generating answer for query: {query}")
@@ -71,30 +72,22 @@ def generate_answer(query: str, context: str, entities: Dict[str, List[str]], ke
         logger.error(f"Error in generate_answer: {str(e)}")
         return f"Sorry, I encountered an error while generating the answer: {str(e)}"
 
-def rag_query(query: str, chunks: List[Dict[str, any]]) -> str:
+def rag_query(query: str, chunks: List[str], embeddings: List[List[float]]) -> str:
     try:
         logger.info(f"Processing RAG query: {query}")
         
-        relevant_chunks = find_relevant_chunks(query, chunks)
-        context = "\n\n".join(f"Chunk {i+1} (score: {chunk['score']:.2f}): {chunk['chunk']['text']}" for i, chunk in enumerate(relevant_chunks))
+        hybrid_search = HybridSearch(chunks, embeddings)
+        relevant_chunks = hybrid_search.search(query, top_k=5)
         
-        all_entities = {}
-        all_key_phrases = set()
-        for chunk in relevant_chunks:
-            for entity_type, entities in chunk['chunk']['entities'].items():
-                if entity_type not in all_entities:
-                    all_entities[entity_type] = set()
-                all_entities[entity_type].update(entities)
-            all_key_phrases.update(chunk['chunk']['key_phrases'])
-        
-        all_entities = {k: list(v) for k, v in all_entities.items()}
-        all_key_phrases = list(all_key_phrases)
+        context = "\n\n".join(f"Chunk {i+1} (score: {chunk['score']:.2f}): {chunk['chunk']}" for i, chunk in enumerate(relevant_chunks))
         
         full_context = f"Original text chunks:\n\n{context}\n\nQuestion: {query}"
         
-        answer = generate_answer(query, full_context, all_entities, all_key_phrases)
+        answer = generate_answer(query, full_context)
         logger.info("Answer generated successfully")
         return answer
     except Exception as e:
         logger.error(f"Error in RAG query process: {str(e)}")
+        if "OpenAI API" in str(e):
+            return "I'm sorry, but the service is currently unavailable. Please try again later."
         return f"Sorry, I encountered an error while processing your query: {str(e)}"
