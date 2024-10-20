@@ -16,6 +16,10 @@ def pytest_addoption(parser):
         help="run tests with real API calls"
     )
 
+@pytest.fixture(params=[True, False])
+def use_openai(request):
+    return request.param
+
 @pytest.fixture(scope="session")
 def use_real_api(request):
     return request.config.getoption("--use-real-api")

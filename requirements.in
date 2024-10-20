@@ -8,3 +8,4 @@ tqdm
 nltk
 rank_bm25
 pinecone
+pytest-mock

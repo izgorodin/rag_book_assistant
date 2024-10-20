@@ -7,17 +7,22 @@ def test_load_and_preprocess_text(tmp_path):
     
     processed_text = load_and_preprocess_text(str(test_file))
     
-    assert isinstance(processed_text, str), "Function should return a string"
-    assert "This is a test text with some special characters." in processed_text, "Processed text should contain the original content without special characters"
-    assert "@#$%^&*()" not in processed_text, "Processed text should not contain special characters"
+    assert isinstance(processed_text, dict), "Function should return a dictionary"
+    assert 'text' in processed_text, "Processed text should contain 'text' key"
+    assert "This is a test text with some special characters" in processed_text['text'], "Processed text should contain the original content without special characters"
+    assert "@#$%^&*()" not in processed_text['text'], "Processed text should not contain special characters"
+    assert 'dates' in processed_text, "Processed text should contain 'dates' key"
+    assert 'entities' in processed_text, "Processed text should contain 'entities' key"
+    assert 'key_phrases' in processed_text, "Processed text should contain 'key_phrases' key"
 
 @pytest.mark.parametrize("chunk_size, overlap", [
     (100, 20),
     (200, 50),
     (500, 100)
 ])
-def test_split_into_chunks(sample_text, chunk_size, overlap):
-    chunks = split_into_chunks(sample_text, chunk_size, overlap)
+def test_split_into_chunks(chunk_size, overlap):
+    text = {'text': ' '.join(['word'] * 1000)}  # Create a sample text
+    chunks = split_into_chunks(text, chunk_size, overlap)
 
     assert isinstance(chunks, list), "Function should return a list"
     assert all(isinstance(chunk, str) for chunk in chunks), "All chunks should be strings"
@@ -34,8 +39,8 @@ def test_split_into_chunks(sample_text, chunk_size, overlap):
             assert chunks[i].split()[-overlap:] == chunks[i+1].split()[:overlap], f"Chunks {i} and {i+1} should overlap correctly"
 
 def test_split_into_chunks_short_text():
-    short_text = "Short text."
+    short_text = {'text': "Short text."}
     chunks = split_into_chunks(short_text, chunk_size=10, overlap=2)
     
     assert len(chunks) == 1, "Should return one chunk for short text"
-    assert chunks[0] == short_text, "Chunk should match the original text"
+    assert chunks[0] == short_text['text'], "Chunk should match the original text"

@@ -22,12 +22,11 @@ def test_create_embeddings_structure():
         assert isinstance(embeddings[0], list), "Each embedding should be a list"
         assert len(embeddings[0]) == 1536, "Each embedding should have 1536 dimensions"
 
-def test_create_embeddings_api_error():
-    chunks = ["Test chunk"]
-    with patch('src.embedding.client.embeddings.create', side_effect=Exception("API Error")):
-        with pytest.raises(Exception) as exc_info:
-            create_embeddings(chunks)
-        assert "Error creating embedding" in str(exc_info.value)
+def test_create_embeddings_api_error(mocker):
+    mocker.patch('src.embedding.client.embeddings.create', side_effect=Exception("API Error"))
+    with pytest.raises(Exception) as exc_info:
+        create_embeddings(["Test text"])
+    assert "API Error" in str(exc_info.value)
 
 @pytest.mark.parametrize("chunk,expected_length", [
     ("", 0),
