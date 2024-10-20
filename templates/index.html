@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Book QA System</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .input-group {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .input-group input[type="file"],
+        .input-group input[type="text"] {
+            flex-grow: 1;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 4px;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        #uploadStatus, #answerStatus {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        #questionForm {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>RAG Book QA System</h1>
+    
+    <div id="uploadSection">
+        <h2>Upload a Book</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class="input-group">
+                <input type="file" name="file" accept=".txt,.pdf" id="fileInput">
+                <input type="submit" value="Upload" id="uploadButton">
+            </div>
+        </form>
+        <div id="uploadStatus"></div>
+    </div>
+
+    <div id="questionSection">
+        <h2>Ask a Question</h2>
+        <form id="questionForm">
+            <div class="input-group">
+                <input type="text" id="questionInput" name="question" placeholder="Enter your question">
+                <input type="submit" value="Ask">
+            </div>
+        </form>
+        <div id="answerStatus"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let uploadInProgress = false;
+
+            function checkBookLoaded() {
+                $.get('/check_book_loaded', function(data) {
+                    if (data.book_loaded) {
+                        $('#questionForm').show();
+                    } else {
+                        $('#questionForm').hide();
+                    }
+                });
+            }
+
+            checkBookLoaded();
+
+            $('#uploadForm').submit(function(e) {
+                e.preventDefault();
+                if (uploadInProgress) return;
+
+                var formData = new FormData(this);
+                uploadInProgress = true;
+                $('#uploadStatus').text('Uploading file...');
+
+                $.ajax({
+                    url: '/',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        $('#uploadStatus').text(data.message);
+                        checkBookLoaded();
+                    },
+                    error: function(data) {
+                        $('#uploadStatus').text('Error: ' + data.responseJSON.message);
+                    },
+                    complete: function() {
+                        uploadInProgress = false;
+                    }
+                });
+            });
+
+            $('#questionForm').submit(function(e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                $('#answerStatus').text('Processing question...');
+
+                $.ajax({
+                    url: '/',
+                    type: 'POST',
+                    data: formData,
+                    success: function(data) {
+                        $('#answerStatus').html('<strong>Answer:</strong> ' + data.answer);
+                    },
+                    error: function(data) {
+                        $('#answerStatus').text('Error: ' + data.responseJSON.message);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

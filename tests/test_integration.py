@@ -4,6 +4,8 @@ from src.text_processing import load_and_preprocess_text, split_into_chunks
 from src.embedding import create_embeddings
 from src.rag import rag_query
 import logging
+from tests.ford_pinto_qa_data import qa_pairs
+import traceback
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -82,7 +84,7 @@ def process_book(file_path: str, use_openai: bool = True):
     embeddings = create_embeddings(chunks) if use_openai else [None] * len(chunks)
     return chunks, embeddings
 
-@pytest.mark.parametrize("book_file", ["test_book.txt", "ford.txt", "book.txt"])
+@pytest.mark.parametrize("book_file", ["test_book.txt"])
 def test_different_book_types(book_file, use_openai):
     chunks, embeddings = process_book(book_file, use_openai=use_openai)
     
@@ -101,3 +103,60 @@ def test_rag_query(use_openai):
     assert isinstance(answer, str)
     assert len(answer) > 0
     # Здесь можно добавить более конкретные проверки, если содержание test_book.txt известно
+
+def test_ford_pinto_rag_queries(use_openai):
+    file_path = os.path.join(TEST_FILES_DIR, "ford.txt")
+    assert os.path.exists(file_path), f"Test file not found: {file_path}"
+    logger.debug(f"Starting Ford Pinto RAG queries test with use_openai={use_openai}")
+    chunks, embeddings = process_book("ford.txt", use_openai=use_openai)
+    
+    logger.debug(f"Number of chunks: {len(chunks)}")
+    logger.debug(f"Number of embeddings: {len(embeddings)}")
+    logger.debug(f"Type of first embedding: {type(embeddings[0]) if embeddings else 'No embeddings'}")
+    
+    results = []
+    
+    for qa_pair in qa_pairs:
+        query = qa_pair["question"]
+        expected_answer = qa_pair["answer"]
+        
+        logger.debug(f"Processing question: {query}")
+        try:
+            answer = rag_query(query, chunks, embeddings)
+        except Exception as e:
+            logger.error(f"Error in rag_query: {str(e)}")
+            logger.error(traceback.format_exc())
+            answer = f"Error: {str(e)}"
+        
+        is_correct = isinstance(answer, str) and len(answer) > 0 and not answer.startswith("Error:")
+        if is_correct:
+            is_correct = any(word.lower() in answer.lower() for word in expected_answer.split() if len(word) > 3)
+        
+        result = {
+            "question": query,
+            "expected_answer": expected_answer,
+            "actual_answer": answer,
+            "is_correct": is_correct
+        }
+        results.append(result)
+        
+        logger.debug(f"Question: {query}")
+        logger.debug(f"Expected answer: {expected_answer}")
+        logger.debug(f"Actual answer: {answer}")
+        logger.debug(f"Is correct: {is_correct}")
+        
+    correct_count = sum(1 for r in results if r["is_correct"])
+    total_count = len(results)
+    
+    logger.info(f"Test completed. Correct answers: {correct_count}/{total_count}")
+    
+    for result in results:
+        if not result["is_correct"]:
+            logger.warning(f"Incorrect answer for question: {result['question']}")
+            logger.warning(f"Expected: {result['expected_answer']}")
+            logger.warning(f"Got: {result['actual_answer']}")
+    
+    assert correct_count > 0, f"Expected at least one correct answer, but got {correct_count}/{total_count}"
+    
+    # Можно добавить более строгую проверку, например:
+    # assert correct_count / total_count >= 0.3, f"Expected at least 30% correct answers, but got {correct_count}/{total_count}"

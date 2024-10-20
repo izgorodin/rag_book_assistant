@@ -6,26 +6,25 @@ from src.config import OPENAI_API_KEY, EMBEDDING_MODEL
 import logging
 import numpy as np
 from src.text_processing import split_into_chunks
+from src.cache import get_cache_key, save_to_cache, load_from_cache
 
 logger = logging.getLogger(__name__)
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 def create_embeddings(chunks: List[str]) -> List[List[float]]:
-    logger.info(f"Creating embeddings for {len(chunks)} chunks.")
-    embeddings = []
+    all_embeddings = []
     for chunk in chunks:
-        try:
-            response = client.embeddings.create(
-                input=[chunk],
-                model=EMBEDDING_MODEL
-            )
-            embeddings.append(response.data[0].embedding)
-        except Exception as e:
-            logger.error(f"Error creating embedding: {str(e)}")
-            raise
-    logger.info("Embeddings creation completed.")
-    return embeddings
+        cache_key = get_cache_key(chunk)
+        cached_embedding = load_from_cache(cache_key)
+        if cached_embedding:
+            all_embeddings.append(cached_embedding)
+        else:
+            response = client.embeddings.create(input=chunk, model="text-embedding-ada-002")
+            embedding = response.data[0].embedding
+            save_to_cache(cache_key, embedding)
+            all_embeddings.append(embedding)
+    return all_embeddings
 
 def save_chunks_and_embeddings(chunks: List[str], embeddings: List[List[float]], file_path: str):
     logger.info(f"Saving {len(chunks)} chunks and their embeddings to {file_path}.")
