@@ -9,7 +9,10 @@ nltk
 rank_bm25
 pinecone
 pytest-mock
-spacy 
-en-core-web-sm
+spacy # пакет используем для анализа текста
+# en-core-web-md пакет для spacy используем для анализа текста
 flask
 colorlog
+PyPDF2
+python-docx
+odf

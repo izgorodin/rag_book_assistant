@@ -1,0 +1,206 @@
+September 202 4
+1
+🆕
+S e p t e m b e r  2 0 2 4
+In September 202 4, our primary objectiv e was to establish the f oundation of the  
+project. W e successfull y designed the ar chitecture with a str ong focus on the k ey 
+feature—a decision-making engine—and ensur ed the sc alability of the entir e 
+system. Once the main p art of the ar chitectural plan was finaliz ed, we proceeded  
+to work on both the client and ser ver applic ations, la ying the gr oundwork for 
+further development.
+P r o j e c t  D e s i g n  R e p o r t
+A r c h i t e c t u r e
+1 .  S y s t e m  A r c h i t e c t u r e  D e s i g n
+K e y achie v ement s:
+An architectural plan of the syst em was de veloped with sep aration int o 
+client and ser ver parts.
+A multi-layered architecture was intr oduced, ensur ing the isolation of dat a 
+logic, user int erface, and business logic. This simplified modular t esting 
+and impr oved code maint ainability.
+September 202 4
+2Various data layers were designed and implement ed to work with loc al and 
+remote repositories DAO, ensur ing reliable int eraction with Fir ebase and 
+Firestore.
+An approach to data serialization and deser ialization was de veloped, 
+including handling user dat a and pr oject dat a with suppor t for various 
+formats.
+2 .  D a t a  a n d  M o d e l  D e s i g n
+K e y achie v ement s:
+The main dat a models f or the syst em were developed and implement ed, 
+including models f or projects, users, messages, and chat s.
+Structur es of tables and classes w ere designed and implement ed to work 
+with local and remote data (e.g., chat t ables, document s, messages, and  
+projects).
+Data converters were implement ed to ensure compatibility between 
+different system layers, as w ell as bet ween the client and ser ver parts.
+3 .  B u s i n e s s  L o g i c  D e s i g n
+K e y achie v ement s:
+Business logic was designed and implement ed for managing pr ojects, 
+including functionalit y for creating, editing, and displa ying projects on both  
+the client and ser ver sides.
+BLoC Business Logic Component) blocks w ere developed t o manage the  
+state of projects and chat s, allowing the isolation of dat a processing logic  
+and events.
+CRUD operations w ere implement ed to manage user , project, and message  
+data. These operations pr ovided the abilit y to perform all necessar y actions  
+on both the client and ser ver sides.
+Real-time e vent processing logic was de veloped, such as updating the  
+message list and pr oject status using r emote events.
+4 .  I n t e g r a t i o n  w i t h  E x t e r n a l  S e r v i c e s
+September 202 4
+3K e y achie v ement s:
+A system for integrating with Fir ebase was de veloped dur ing the design  
+phase, including w orking with Fir ebase Authentic ation, Fir ebase 
+Messaging, and Fir estore. This ensur ed reliable user authentic ation, real-
+time dat a exchange, and notific ation deliv ery.
+Methods f or working with Fir ebase storage w ere designed t o upload and 
+store images and other dat a, enabling the functionalit y of sending and  
+receiving mul timedia dat a.
+A mechanism f or working with Fir ebase Functions was de veloped and  
+integrated, allowing the pr ocessing of ser ver events and transmit ting them  
+to the client in r eal-time.
+5 .  U s e r  I n t e r f a c e  ( U I / U X )  D e s i g n
+K e y achie v ement s:
+Basic layouts and designs f or key screens were created, including pr oject 
+screens, authentic ation, set tings, and chat s.
+A component -based appr oach was used in the int erface design, ensur ing a 
+modular and e asily expandable structur e for the user int erface.
+Adaptive design element s were implement ed to suppor t different screen 
+resolutions, including set ting breakpoints based on windo w size.
+Key UX principles w ere consider ed, ensur ing ease of use when int eracting  
+with the pr oject, chat, and account set tings.
+6 .  S e c u r i t y  S y s t e m s  D e s i g n
+K e y achie v ement s:
+During the design phase, special at tention was giv en to user and pr oject 
+data security.
+Authentic ation mechanisms w ere designed and implement ed via Fir ebase 
+Authentic ation, including O Auth suppor t for Google login.
+Secure methods of w orking with dat a were developed, including the  
+protection of messages and pr ojects, ensur ing their confidentialit y and 
+September 202 4
+4integrity.
+7 .  N o t i f i c a t i o n  S y s t e m  D e s i g n
+K e y achie v ement s:
+A solution f or sending and r eceiving notific ations via Fir ebase Cloud  
+Messaging FCM was designed and implement ed, enabling push  
+notifications for new messages and pr oject events.
+Local and remote notific ation providers w ere implement ed, allowing users  
+to receive timely notific ations on both w eb and mobile plat forms.
+8 .  T e s t i n g  a n d  D e b u g g i n g  P r o c e s s e s  D e s i g n
+K e y achie v ement s:
+The main t esting pr ocesses w ere defined dur ing the design phase,  
+including unit t ests to verify key element s of business logic and dat a 
+serialization.
+A system of int egrated tests at the user int erface and ser ver levels was 
+designed, r educing debugging time and minimizing the chance of er rors in 
+the release version of the applic ation.
+9 .  U s e r  R e q u e s t  P r o c e s s i n g  M o d u l e  D e s i g n
+K e y achie v ement s:
+Designed t he ar chit ectur e f or t he user r equest pr ocessing module , 
+ensuring seamless int egration with the e xisting syst em architecture.
+De v eloped t he Decision Making Module DMM  to intelligently route user 
+requests to appropriate AI services based on cont ent analysis.
+Planned t he int egr ation wit h e x t er nal AI ser vices such as OpenAI and  
+Anthropic APIs, outlining communic ation protocols, authentic ation 
+methods, and dat a handling mechanisms.
+Document ed t he module ' s ar chit ectur e,  int er f aces,  and e xpect ed  
+beha viors, providing cle ar guidelines f or implement ation and futur e 
+maintenance.
+September 202 4
+5D e v e l o p m e n t
+1 .  U s e r  I n t e r f a c e  ( U I / U X )  D e v e l o p m e n t
+K e y achie v ement s:
+Key element s of the user int erface for managing pr ojects, authentic ation, 
+and chat int eractions w ere implement ed.
+Screens for settings, pr ofiles, and na vigation p anels were added. In  
+particular, tabs were created for theme selection, account management,  
+and localization.
+Widgets for displa ying messages, notific ations, and cookie war nings were 
+implement ed.
+Authentic ation dialog windo ws were created.
+Animations w ere added t o menu element s and widget s to enhance  
+interaction with the int erface.
+A navigation structur e was cr eated, with but tons and other int erface 
+component s such as “pr oject listˮ and “ side panelˮ added.
+2 .  A u t h e n t i c a t i o n  a n d  A u t h o r i z a t i o n  F u n c t i o n a l i t y
+K e y achie v ement s:
+Authentic ation functionalit y through Google, email, and anon ymous 
+account s was added.
+A pop-up int erface for authentic ation was implement ed, including UI  
+solutions f or displa ying errors and notific ations.
+Features for displa ying and selecting account s with loc alization suppor t 
+were added.
+3 .  W o r k i n g  w i t h  P r o j e c t s
+K e y achie v ement s:
+Functionalit y for creating and managing pr ojects was implement ed. 
+Screens were added f or viewing the pr oject list and subscr ibing to project 
+data.
+September 202 4
+6Business logic f or creating, editing, and displa ying projects was added.
+CRUD methods f or working with pr ojects on both the ser ver and client  
+sides were implement ed.
+Data models f or projects and their connection t o the user pr ofile were 
+introduced, along with e xtended suppor t for local and remote project dat a.
+4 .  C h a t  F u n c t i o n a l i t y
+K e y achie v ement s:
+Real-time message sending and r eceiving functionalit y with the ser ver was 
+added.
+Chat logic was added, including e vent handling and subscr ibing to the dat a 
+stream.
+Data layers for managing messages w ere added, with impr oved duplic ate 
+checking and loc al data suppor t.
+A function f or interacting with messages dur ing events was implement ed.
+5 .  S e r v e r  L o g i c  a n d  I n t e g r a t i o n s
+K e y achie v ement s:
+Firebase functions w ere implement ed, including emulat ors and functions  
+for working with st orage, the dat abase, and ser ver events.
+Integration with Fir ebase was set up t o handle r emote notific ations, as w ell 
+as work with messages on the ser ver.
+Processing of r emote events, their br oadcasting to the client, and the  
+implement ation of subscr iptions to server data streams were added.
+Tests for data serialization w ere added, and w ork with user and pr oject 
+data classes was impr oved.
+6 .  U s e r  R e q u e s t  P r o c e s s i n g  M o d u l e  D e v e l o p m e n t
+K e y achie v ement s:
+Implement ed t he user r equest pr ocessing module , including API  
+endpoint s to handle incoming user r equests.
+September 202 4
+7Int egr at ed wit h OpenAI and Ant hr opic APIs , enabling the syst em to 
+process user input s using e xternal AI ser vices.
+De v eloped t he Decision Making Module DMM  that anal yzes incoming  
+prompts and routes them t o the appr opriate AI service based on cont ent 
+keywords.
+Set up compr ehensiv e logging  throughout the module t o facilitate 
+debugging and monit oring, including er ror handling and per formance 
+metrics.
+Cr e at ed unit and int egr ation t est s to ensure the reliability and cor rectness 
+of the module 's functionalit y, covering various scenar ios and edge c ases.
+Handled e x ceptions and er r ors gr acefull y, ensuring the syst em manages  
+failures in external service calls without crashing.
+Document ed t he de v elopment pr ocess, providing cle ar instructions and  
+guidelines f or future developers and st akeholders.
+7 .  T e s t i n g  a n d  R e f a c t o r i n g
+K e y achie v ement s:
+Refactoring of key element s of business logic r elated to chat, pr ojects, and 
+user dat a was conduct ed.
+Tests for verifying dat a serialization and t ype con version in the pr oject 
+were improved.
+Dependencies and pr oject set tings for Android and other plat forms were 
+updated.
+R ef act or ed t he user r equest pr ocessing module , improving code  
+readability and maint ainability.
+Enhanced t est co v er age for the ne w module, ensur ing robust functionalit y 
+and identifying pot ential issues e arly in the de velopment c ycle.
+C o n c l u s i o n
+The syst em design includes de veloping a mul ti-layered architecture, implementing  
+reliable business logic, int egrating with e xternal services Fir ebase, OpenAI,  
+September 202 4
+8Anthropic), creating an adaptiv e and user -friendly interface, and designing dat a 
+security systems. These st eps laid a str ong foundation f or the futur e development  
+and scalability of the pr oject.
+During Sept ember 202 4, the main f ocus was on cr eating the user int erface, 
+building the dat a layer, and int egrating with ser ver component s and Fir ebase. 
+Additionall y, signific ant progress was made in de veloping the user r equest 
+processing module, int egrating ad vanced AI c apabilities int o the syst em. New 
+features were implement ed, and k ey modules of the applic ation were refactored 
+and tested.

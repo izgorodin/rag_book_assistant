@@ -10,6 +10,15 @@ anyio==4.6.0
     # via
     #   httpx
     #   openai
+blinker==1.8.2
+    # via flask
+blis==0.7.11
+    # via thinc
+catalogue==2.0.10
+    # via
+    #   spacy
+    #   srsly
+    #   thinc
 certifi==2024.8.30
     # via
     #   httpcore
@@ -19,9 +28,27 @@ certifi==2024.8.30
 charset-normalizer==3.3.2
     # via requests
 click==8.1.7
-    # via nltk
+    # via
+    #   flask
+    #   nltk
+    #   typer
+cloudpathlib==0.20.0
+    # via weasel
+colorlog==6.8.2
+    # via -r requirements.in
+confection==0.1.5
+    # via
+    #   thinc
+    #   weasel
+cymem==2.0.8
+    # via
+    #   preshed
+    #   spacy
+    #   thinc
 distro==1.9.0
     # via openai
+flask==3.0.3
+    # via -r requirements.in
 h11==0.14.0
     # via httpcore
 httpcore==1.0.6
@@ -35,24 +62,60 @@ idna==3.10
     #   requests
 iniconfig==2.0.0
     # via pytest
+itsdangerous==2.2.0
+    # via flask
+jinja2==3.1.4
+    # via
+    #   flask
+    #   spacy
 jiter==0.5.0
     # via openai
 joblib==1.4.2
     # via
     #   nltk
     #   scikit-learn
+langcodes==3.4.1
+    # via spacy
+language-data==1.2.0
+    # via langcodes
+lxml==5.3.0
+    # via python-docx
+marisa-trie==1.2.1
+    # via language-data
+markdown-it-py==3.0.0
+    # via rich
+markupsafe==3.0.2
+    # via
+    #   jinja2
+    #   werkzeug
+mdurl==0.1.2
+    # via markdown-it-py
+murmurhash==1.0.10
+    # via
+    #   preshed
+    #   spacy
+    #   thinc
 nltk==3.9.1
     # via -r requirements.in
 numpy==2.1.1
     # via
     #   -r requirements.in
+    #   blis
     #   rank-bm25
     #   scikit-learn
     #   scipy
+    #   spacy
+    #   thinc
+odf==0.0.1
+    # via -r requirements.in
 openai==1.51.0
     # via -r requirements.in
 packaging==24.1
-    # via pytest
+    # via
+    #   pytest
+    #   spacy
+    #   thinc
+    #   weasel
 pinecone==5.3.1
     # via -r requirements.in
 pinecone-plugin-inference==1.1.0
@@ -63,14 +126,33 @@ pinecone-plugin-interface==0.0.7
     #   pinecone-plugin-inference
 pluggy==1.5.0
     # via pytest
+preshed==3.0.9
+    # via
+    #   spacy
+    #   thinc
 pydantic==2.9.2
-    # via openai
+    # via
+    #   confection
+    #   openai
+    #   spacy
+    #   thinc
+    #   weasel
 pydantic-core==2.23.4
     # via pydantic
+pygments==2.18.0
+    # via rich
+pypdf2==3.0.1
+    # via -r requirements.in
 pytest==8.3.3
+    # via
+    #   -r requirements.in
+    #   pytest-mock
+pytest-mock==3.14.0
     # via -r requirements.in
 python-dateutil==2.9.0.post0
     # via pinecone
+python-docx==1.1.2
+    # via -r requirements.in
 python-dotenv==1.0.1
     # via -r requirements.in
 rank-bm25==0.2.2
@@ -80,18 +162,41 @@ regex==2024.9.11
     #   nltk
     #   tiktoken
 requests==2.32.3
-    # via tiktoken
+    # via
+    #   spacy
+    #   tiktoken
+    #   weasel
+rich==13.9.2
+    # via typer
 scikit-learn==1.5.2
     # via -r requirements.in
 scipy==1.14.1
     # via scikit-learn
+shellingham==1.5.4
+    # via typer
 six==1.16.0
     # via python-dateutil
+smart-open==7.0.5
+    # via weasel
 sniffio==1.3.1
     # via
     #   anyio
     #   httpx
     #   openai
+spacy==3.7.5
+    # via -r requirements.in
+spacy-legacy==3.0.12
+    # via spacy
+spacy-loggers==1.0.5
+    # via spacy
+srsly==2.4.8
+    # via
+    #   confection
+    #   spacy
+    #   thinc
+    #   weasel
+thinc==8.2.4
+    # via spacy
 threadpoolctl==3.5.0
     # via scikit-learn
 tiktoken==0.7.0
@@ -102,13 +207,35 @@ tqdm==4.66.5
     #   nltk
     #   openai
     #   pinecone
+    #   spacy
+typer==0.12.5
+    # via
+    #   odf
+    #   spacy
+    #   weasel
 typing-extensions==4.12.2
     # via
     #   openai
     #   pinecone
     #   pydantic
     #   pydantic-core
+    #   python-docx
+    #   typer
 urllib3==2.2.3
     # via
     #   pinecone
     #   requests
+wasabi==1.1.3
+    # via
+    #   spacy
+    #   thinc
+    #   weasel
+weasel==0.4.1
+    # via spacy
+werkzeug==3.0.4
+    # via flask
+wrapt==1.16.0
+    # via smart-open
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools
