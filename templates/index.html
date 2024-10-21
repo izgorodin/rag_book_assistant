@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAG Book QA System</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,6 +54,35 @@
         }
         #questionForm {
             margin-top: 30px;
+        }
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 10px;
+            font-size: 12px;
+            position: relative;
+            line-height: 1.2;
+        }
+        .copy-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #3498db;
+            transition: color 0.3s;
+        }
+        .copy-icon:hover {
+            color: #2980b9;
+        }
+        .copy-icon.copied {
+            color: #27ae60;
+        }
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -125,17 +157,32 @@
             $('#questionForm').submit(function(e) {
                 e.preventDefault();
                 var formData = $(this).serialize();
-                $('#answerStatus').text('Processing question...');
+                $('#answerStatus').html('<p>Processing question...</p>');
 
                 $.ajax({
                     url: '/',
                     type: 'POST',
                     data: formData,
                     success: function(data) {
-                        $('#answerStatus').html('<strong>Answer:</strong> ' + data.answer);
+                        var markdownAnswer = '**Answer:**\n\n' + data.answer;
+                        var htmlAnswer = marked.parse(markdownAnswer);
+                        $('#answerStatus').html('<div class="markdown-body">' + htmlAnswer + '<i class="fas fa-copy copy-icon" title="Copy to clipboard"></i></div>');
+                        
+                        // Add click event for copy icon
+                        $('.copy-icon').click(function() {
+                            var textToCopy = data.answer;
+                            navigator.clipboard.writeText(textToCopy).then(function() {
+                                $(this).addClass('copied');
+                                setTimeout(() => {
+                                    $(this).removeClass('copied');
+                                }, 1500);
+                            }.bind(this), function(err) {
+                                console.error('Could not copy text: ', err);
+                            });
+                        });
                     },
                     error: function(data) {
-                        $('#answerStatus').text('Error: ' + data.responseJSON.message);
+                        $('#answerStatus').html('<p>Error: ' + data.responseJSON.message + '</p>');
                     }
                 });
             });

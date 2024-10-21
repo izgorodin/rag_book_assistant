@@ -8,7 +8,7 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 EMBEDDING_MODEL = "text-embedding-3-small"
 GPT_MODEL = "gpt-4o-mini"  # Ensure this matches the desired model
-MAX_TOKENS = 10000
-CHUNK_SIZE = 500
-OVERLAP = 200
-TOP_K_CHUNKS = 5  # Added for clarity
+MAX_TOKENS = 15000
+CHUNK_SIZE = 300
+OVERLAP = 150
+TOP_K_CHUNKS = 15  # Added for clarity
