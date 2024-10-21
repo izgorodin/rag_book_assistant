@@ -43,7 +43,11 @@ def load_chunks_and_embeddings(file_path: str) -> Tuple[List[str], List[List[flo
 def get_or_create_chunks_and_embeddings(text: Union[Dict[str, Any], List[str], str], cache_file: str) -> Tuple[List[str], List[List[float]]]:
     if os.path.exists(cache_file):
         with open(cache_file, 'rb') as f:
-            return pickle.load(f)
+            chunks, embeddings = pickle.load(f)
+        if not all(isinstance(emb, list) and all(isinstance(x, float) for x in emb) for emb in embeddings):
+            logger.warning("Cached embeddings are not in the correct format. Recreating embeddings.")
+        else:
+            return chunks, embeddings
     
     chunks = split_into_chunks(text)
     embeddings = create_embeddings(chunks)
@@ -54,6 +58,8 @@ def get_or_create_chunks_and_embeddings(text: Union[Dict[str, Any], List[str], s
     return chunks, embeddings
 
 def cosine_similarity(a: List[float], b: List[float]) -> float:
+    a = np.array(a, dtype=np.float64)
+    b = np.array(b, dtype=np.float64)
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
 def get_or_create_query_embedding(query: str, cache_file: str) -> List[float]:
