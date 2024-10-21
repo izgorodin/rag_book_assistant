@@ -36,8 +36,13 @@ def semantic_similarity(text1: str, text2: str) -> float:
     return doc1.similarity(doc2)
 
 def initialize_system(book_path):
-    text = load_and_preprocess_text(book_path)
-    chunks = split_into_chunks(text)
+    with open(book_path, 'r', encoding='utf-8') as file:
+        text = file.read()
+    
+    # Создаем словарь с ключом 'text'
+    text_dict = {'text': text}
+    
+    chunks = split_into_chunks(text_dict)
     chunks, embeddings = get_or_create_chunks_and_embeddings(chunks, 'embeddings_cache.pkl')
     return chunks, embeddings
 
@@ -54,7 +59,7 @@ def test_qa_system(qa_pair, system_setup):
     chunks, embeddings = system_setup
     question = qa_pair["question"]
     correct_answer = qa_pair["answer"]
-    context = qa_pair["context"]
+    context = qa_pair.get("context", "")  # Используем .get() с значением по умолчанию
     
     system_answer = get_answer_from_system(question, chunks, embeddings)
     is_correct = check_answer(system_answer, correct_answer, context)

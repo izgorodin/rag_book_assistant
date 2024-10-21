@@ -1,4 +1,4 @@
-from typing import List, Tuple, Dict, Any
+from typing import List, Tuple, Dict, Any, Union
 import os
 import pickle
 from openai import OpenAI
@@ -40,19 +40,17 @@ def load_chunks_and_embeddings(file_path: str) -> Tuple[List[str], List[List[flo
     logger.info(f"Loaded {len(data['chunks'])} chunks and embeddings.")
     return data['chunks'], data['embeddings']
 
-def get_or_create_chunks_and_embeddings(text: Dict[str, Any], file_path: str) -> Tuple[List[str], List[List[float]]]:
+def get_or_create_chunks_and_embeddings(text: Union[Dict[str, Any], List[str], str], cache_file: str) -> Tuple[List[str], List[List[float]]]:
+    if os.path.exists(cache_file):
+        with open(cache_file, 'rb') as f:
+            return pickle.load(f)
+    
     chunks = split_into_chunks(text)
-    if os.path.exists(file_path):
-        logger.info("Loading existing chunks and embeddings.")
-        loaded_chunks, embeddings = load_chunks_and_embeddings(file_path)
-        if loaded_chunks != chunks:
-            logger.warning("Chunks have changed. Recreating embeddings.")
-            embeddings = create_embeddings(chunks)
-            save_chunks_and_embeddings(chunks, embeddings, file_path)
-    else:
-        logger.info("Creating new chunks and embeddings.")
-        embeddings = create_embeddings(chunks)
-        save_chunks_and_embeddings(chunks, embeddings, file_path)
+    embeddings = create_embeddings(chunks)
+    
+    with open(cache_file, 'wb') as f:
+        pickle.dump((chunks, embeddings), f)
+    
     return chunks, embeddings
 
 def cosine_similarity(a: List[float], b: List[float]) -> float:

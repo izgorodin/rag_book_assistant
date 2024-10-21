@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Union
 from src.config import CHUNK_SIZE, OVERLAP
 import logging
 import nltk
@@ -75,8 +75,16 @@ def load_and_preprocess_text(file_path: str) -> Dict[str, any]:
         'key_phrases': key_phrases
     }
 
-def split_into_chunks(text: Dict[str, Any], chunk_size: int = 1000, overlap: int = 100) -> List[str]:
-    words = text['text'].split()
+def split_into_chunks(text: Union[Dict[str, Any], List[str], str], chunk_size: int = 1000, overlap: int = 100) -> List[str]:
+    if isinstance(text, dict) and 'text' in text:
+        words = text['text'].split()
+    elif isinstance(text, str):
+        words = text.split()
+    elif isinstance(text, list):
+        words = ' '.join(text).split()
+    else:
+        raise ValueError("Input must be either a dictionary with 'text' key, a string, or a list of strings")
+    
     chunks = []
     for i in range(0, len(words), chunk_size - overlap):
         chunk = ' '.join(words[i:i + chunk_size])
