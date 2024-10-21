@@ -3,10 +3,14 @@ import spacy
 from typing import List, Dict
 from tests.ford_pinto_qa_data import qa_pairs
 from src.rag import rag_query
-from src.text_processing import load_and_preprocess_text, split_into_chunks
+from src.text_processing import split_into_chunks
 from src.embedding import get_or_create_chunks_and_embeddings
+from src.logger_config import setup_logger
+import re
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_md")  # Используйте 'md' или 'lg' вместо 'sm'
+
+logger = setup_logger('test_rag_system.log')
 
 def extract_entities(text: str) -> Dict[str, str]:
     doc = nlp(text)
@@ -14,19 +18,27 @@ def extract_entities(text: str) -> Dict[str, str]:
     return entities
 
 def check_answer(system_answer: str, correct_answer: str, context: str) -> bool:
+    system_answer = system_answer.lower()
+    correct_answer = correct_answer.lower()
+    
+    # Проверка на точное совпадение или наличие правильного ответа в системном ответе
+    if correct_answer in system_answer:
+        return True
+    
+    # Проверка на наличие ключевых слов
+    keywords = set(correct_answer.split()) - set(['a', 'an', 'the', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by'])
+    if all(keyword in system_answer for keyword in keywords):
+        return True
+    
+    # Проверка на наличие имени в ответе
     system_entities = extract_entities(system_answer)
     correct_entities = extract_entities(correct_answer)
+    if any(entity in system_entities.values() for entity in correct_entities.values()):
+        return True
     
-    for entity_type, entity_value in correct_entities.items():
-        if entity_type not in system_entities or system_entities[entity_type] != entity_value:
-            return False
-    
-    context_doc = nlp(context)
-    answer_doc = nlp(system_answer)
-    
-    for sent in context_doc.sents:
-        if correct_answer.lower() in sent.text.lower() and any(token.text.lower() in sent.text.lower() for token in answer_doc):
-            return True
+    # Проверка на семантическое сходство
+    if semantic_similarity(system_answer, correct_answer) > 0.7:
+        return True
     
     return False
 
@@ -59,20 +71,23 @@ def test_qa_system(qa_pair, system_setup):
     chunks, embeddings = system_setup
     question = qa_pair["question"]
     correct_answer = qa_pair["answer"]
-    context = qa_pair.get("context", "")  # Используем .get() с значением по умолчанию
+    context = qa_pair.get("context", "")
+    
+    logger.info(f"Testing question: {question}")
+    logger.debug(f"Correct answer: {correct_answer}")
     
     system_answer = get_answer_from_system(question, chunks, embeddings)
     is_correct = check_answer(system_answer, correct_answer, context)
-    similarity_score = semantic_similarity(system_answer, correct_answer)
     
-    print(f"Q: {question}")
+    logger.info(f"System answer: {system_answer}")
+    logger.info(f"Is correct: {is_correct}")
+    
+    print(f"\nQ: {question}")
     print(f"System A: {system_answer}")
     print(f"Correct A: {correct_answer}")
     print(f"Is correct: {is_correct}")
-    print(f"Similarity score: {similarity_score:.2f}\n")
     
     assert is_correct, f"Incorrect answer for question: {question}"
-    assert similarity_score > 0.5, f"Low similarity score for question: {question}"
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

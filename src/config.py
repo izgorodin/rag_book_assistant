@@ -11,4 +11,4 @@ GPT_MODEL = "gpt-4o-mini"  # Ensure this matches the desired model
 MAX_TOKENS = 10000
 CHUNK_SIZE = 500
 OVERLAP = 200
-TOP_K_CHUNKS = 10  # Added for clarity
+TOP_K_CHUNKS = 5  # Added for clarity

@@ -1,3 +1,5 @@
+import json
+
 qa_pairs = [
     {
         "question": "What was the model year of the Ford Pinto involved in the accident?",
@@ -73,5 +75,5 @@ qa_pairs = [
         "question": "How did Ford's internal memo about the cost-benefit analysis of safety improvements come to light during the trial?",
         "answer": "Through the testimony of Harley Copp",
         "context": "Harley Copp's testimony revealed the existence of Ford's internal cost-benefit analysis memo, which compared the cost of improvements to the potential costs of lawsuits from deaths and injuries."
-    }
+    },
 ]

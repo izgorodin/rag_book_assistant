@@ -12,3 +12,4 @@ pytest-mock
 spacy 
 en-core-web-sm
 flask
+colorlog
