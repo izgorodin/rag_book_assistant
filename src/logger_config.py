@@ -44,15 +44,24 @@ def setup_logger(log_file='rag_system.log'):
     return logger
 
 def setup_results_logger():
+    # Создаем директорию для логов, если её нет
+    log_dir = 'logs'
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
+    
+    log_file_path = os.path.join(log_dir, 'rag_results.log')
+    
     logger = logging.getLogger('rag_results')
     logger.setLevel(logging.INFO)
     
-    file_handler = logging.FileHandler('logs/rag_results.log')
-    file_handler.setLevel(logging.INFO)
-    
-    formatter = logging.Formatter('%(message)s')
-    file_handler.setFormatter(formatter)
-    
-    logger.addHandler(file_handler)
+    # Проверяем, нет ли уже обработчиков у логгера
+    if not logger.handlers:
+        file_handler = logging.FileHandler(log_file_path)
+        file_handler.setLevel(logging.INFO)
+        
+        formatter = logging.Formatter('%(message)s')
+        file_handler.setFormatter(formatter)
+        
+        logger.addHandler(file_handler)
     
     return logger

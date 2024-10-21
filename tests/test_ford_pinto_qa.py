@@ -5,12 +5,13 @@ from tests.ford_pinto_qa_data import qa_pairs
 from src.rag import rag_query
 from src.text_processing import split_into_chunks
 from src.embedding import get_or_create_chunks_and_embeddings
-from src.logger_config import setup_logger
+from src.logger_config import setup_logger, setup_results_logger
 import re
 
 nlp = spacy.load("en_core_web_md")  # Используйте 'md' или 'lg' вместо 'sm'
 
 logger = setup_logger('test_rag_system.log')
+results_logger = setup_results_logger()
 
 def extract_entities(text: str) -> Dict[str, str]:
     doc = nlp(text)
@@ -73,19 +74,14 @@ def test_qa_system(qa_pair, system_setup):
     correct_answer = qa_pair["answer"]
     context = qa_pair.get("context", "")
     
-    logger.info(f"Testing question: {question}")
-    logger.debug(f"Correct answer: {correct_answer}")
-    
     system_answer = get_answer_from_system(question, chunks, embeddings)
     is_correct = check_answer(system_answer, correct_answer, context)
     
-    logger.info(f"System answer: {system_answer}")
-    logger.info(f"Is correct: {is_correct}")
-    
-    print(f"\nQ: {question}")
-    print(f"System A: {system_answer}")
-    print(f"Correct A: {correct_answer}")
-    print(f"Is correct: {is_correct}")
+    results_logger.info(f"\nQ: {question}")
+    results_logger.info(f"Expected A: {correct_answer}")
+    results_logger.info(f"System A: {system_answer}")
+    results_logger.info(f"Is correct: {is_correct}")
+    results_logger.info("-" * 50)
     
     assert is_correct, f"Incorrect answer for question: {question}"
 

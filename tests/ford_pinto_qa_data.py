@@ -1,5 +1,3 @@
-import json
-
 qa_pairs = [
     {
         "question": "What was the model year of the Ford Pinto involved in the accident?",
