@@ -7,6 +7,7 @@ from PyPDF2 import PdfReader
 from docx import Document
 from odf import text
 from odf.opendocument import load
+from src.file_processor import FileProcessor
 
 app = Flask(__name__)
 
@@ -77,7 +78,8 @@ def home():
                 logger.info(f"File saved: {file_path}")
                 
                 try:
-                    text = extract_text(file_path)
+                    file_processor = FileProcessor()
+                    text = file_processor.process_file(file_path)
                     
                     # Save extracted text to a .txt file
                     txt_filename = os.path.splitext(filename)[0] + '.txt'
