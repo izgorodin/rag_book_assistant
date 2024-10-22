@@ -81,7 +81,15 @@ def run_cli():
 def main():
     parser = argparse.ArgumentParser(description="RAG Book Assistant")
     parser.add_argument("mode", choices=["cli", "api"], help="Mode to run the assistant (cli or api)")
+    parser.add_argument("--update-embeddings", action="store_true", help="Update embeddings if cache exists")
     args = parser.parse_args()
+
+    if args.update_embeddings:
+        from src.config import USE_CACHING
+        import src.config
+        src.config.UPDATE_EMBEDDINGS = True
+    else:
+        src.config.UPDATE_EMBEDDINGS = False
 
     if args.mode == "cli":
         run_cli()
