@@ -16,3 +16,4 @@ colorlog
 PyPDF2
 python-docx
 odf
+textblob
