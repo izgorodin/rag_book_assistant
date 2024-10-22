@@ -8,12 +8,16 @@ from docx import Document
 from odf import text
 from odf.opendocument import load
 from src.file_processor import FileProcessor
+from src.cache_manager import manage_cache
 
 app = Flask(__name__)
 
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Управление кэшем при запуске приложения
+manage_cache()
 
 # Создаем директорию uploads, если она не существует
 UPLOAD_FOLDER = 'uploads'
@@ -51,11 +55,6 @@ def extract_text(file_path):
     elif extension == '.docx':
         doc = Document(file_path)
         return '\n'.join([paragraph.text for paragraph in doc.paragraphs])
-
-    elif extension == '.odt':
-        textdoc = load(file_path)
-        allparas = textdoc.getElementsByType(text.P)
-        return '\n'.join([str(p) for p in allparas])
 
     elif extension == '.txt':
         with open(file_path, 'r', encoding='utf-8') as file:

@@ -9,3 +9,4 @@ data/embeddings
 cache/
 logs/
 *.log
+rag_venv/

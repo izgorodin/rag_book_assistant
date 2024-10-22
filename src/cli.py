@@ -1,9 +1,10 @@
 import logging
 import argparse
 import os
+import pickle
 from tqdm import tqdm
 from src.text_processing import load_and_preprocess_text, split_into_chunks
-from src.embedding import get_or_create_chunks_and_embeddings
+from src.embedding import get_or_create_chunks_and_embeddings, create_embeddings
 from src.rag import rag_query
 
 def setup_logging():
@@ -23,8 +24,22 @@ def load_and_process_book(book_path):
     logger.info("Book loaded and preprocessed")
     
     logger.info("Creating or loading embeddings")
-    embeddings_file = os.path.join("data", "embeddings", f"{os.path.splitext(os.path.basename(book_path))[0]}_chunks_embeddings.pkl")
-    chunks, embeddings = get_or_create_chunks_and_embeddings(text, embeddings_file)
+    embeddings_dir = os.path.join("data", "embeddings")
+    os.makedirs(embeddings_dir, exist_ok=True)
+    embeddings_file = os.path.join(embeddings_dir, f"{os.path.splitext(os.path.basename(book_path))[0]}_chunks_embeddings.pkl")
+    
+    if os.path.exists(embeddings_file):
+        logger.info(f"Loading existing embeddings from {embeddings_file}")
+        with open(embeddings_file, 'rb') as f:
+            chunks, embeddings = pickle.load(f)
+    else:
+        logger.info("Creating new embeddings")
+        chunks = split_into_chunks(text)
+        embeddings = create_embeddings(chunks)
+        logger.info(f"Saving embeddings to {embeddings_file}")
+        with open(embeddings_file, 'wb') as f:
+            pickle.dump((chunks, embeddings), f)
+    
     logger.info(f"Text split into {len(chunks)} chunks")
     logger.info("Embeddings created or loaded")
     

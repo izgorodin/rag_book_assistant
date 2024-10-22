@@ -16,3 +16,5 @@ colorlog
 PyPDF2
 python-docx
 odf
+opendocument
+odfpy
