@@ -16,6 +16,11 @@ def pytest_addoption(parser):
         help="run tests with real API calls"
     )
 
+def pytest_configure(config):
+    config.addinivalue_line(
+        "markers", "performance: mark test as a performance test"
+    ) 
+
 @pytest.fixture(params=[True, False])
 def use_openai(request):
     return request.param

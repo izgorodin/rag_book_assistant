@@ -114,12 +114,34 @@ def test_rag_query(use_openai):
 
 def test_pinecone_integration():
     mock_pinecone = MockPinecone(api_key="fake_key")
+    mock_pinecone.set_error_probability(0.5)  # Увеличиваем вероятность ошибок для тестирования обработки ошибок
+    
     pinecone_manager = PineconeManager(pinecone_client=mock_pinecone)
+    
+    # Test index creation with potential errors
+    retries = 3
+    while retries > 0:
+        try:
+            assert pinecone_manager.is_available()
+            break
+        except Exception:
+            retries -= 1
+    assert retries > 0, "Failed to create index after multiple attempts"
+    
+    # Test creating index that already exists
+    another_manager = PineconeManager(pinecone_client=mock_pinecone)
+    assert another_manager.is_available()
+    
     chunks = ["Test chunk 1", "Test chunk 2"]
     embeddings = pinecone_manager.get_or_create_embeddings(chunks, lambda x: [[0.1] * 1536 for _ in x])
     assert len(embeddings) == 2
-    assert len(embeddings) == 2
     assert all(len(emb) == 1536 for emb in embeddings)
+    
     results = pinecone_manager.search_similar([0.1] * 1536, top_k=1)
     assert len(results) == 1
     assert "chunk" in results[0] and "score" in results[0]
+
+    # Test error handling
+    mock_pinecone.set_error_probability(1.0)  # Гарантируем ошибку
+    with pytest.raises(Exception, match="Simulated Pinecone error"):
+        pinecone_manager.search_similar([0.1] * 1536, top_k=1)

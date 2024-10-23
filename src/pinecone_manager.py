@@ -55,14 +55,21 @@ class PineconeManager(BasePineconeManager):
 
     def _initialize_index(self) -> None:
         try:
-            if self.index_name not in self.pc.list_indexes():
+            indexes = self.pc.list_indexes()
+            if self.index_name not in indexes:
                 logger.info(f"Creating new Pinecone index: {self.index_name}")
-                self.pc.create_index(
-                    name=self.index_name,
-                    dimension=EMBEDDING_DIMENSION,
-                    metric=PINECONE_METRIC,
-                    spec=ServerlessSpec(cloud=PINECONE_CLOUD, region=PINECONE_REGION)
-                )
+                try:
+                    self.pc.create_index(
+                        name=self.index_name,
+                        dimension=EMBEDDING_DIMENSION,
+                        metric=PINECONE_METRIC,
+                        spec=ServerlessSpec(cloud=PINECONE_CLOUD, region=PINECONE_REGION)
+                    )
+                except Exception as e:
+                    if "ALREADY_EXISTS" in str(e):
+                        logger.info(f"Index {self.index_name} already exists. Using existing index.")
+                    else:
+                        raise
             self.index = self.pc.Index(self.index_name)
             logger.info(f"Successfully initialized Pinecone index: {self.index_name}")
         except Exception as e:

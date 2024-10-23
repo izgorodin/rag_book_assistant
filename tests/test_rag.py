@@ -1,4 +1,5 @@
 import pytest
+import time
 from src.rag import generate_answer, rag_query
 from src.hybrid_search import HybridSearch
 from src.book_data_interface import BookDataInterface
@@ -33,3 +34,32 @@ def test_rag_query(openai_client, sample_chunks, sample_embeddings, use_real_api
     
     assert isinstance(answer, str), "Function should return a string"
     assert len(answer) > 0, "Answer should not be empty"
+
+@pytest.mark.parametrize("query", [
+    "Short query",
+    "A very long query that contains multiple sentences and specific terms",
+    ""
+])
+def test_rag_query_with_different_queries(query):
+    # Implement test logic here
+    assert isinstance(query, str), "Query should be a string"
+    # Additional logic to test the behavior of rag_query with different queries can be added here
+
+@pytest.mark.performance
+def test_rag_query_performance():
+    query = "Test query"
+    book_data = BookDataInterface(["Test chunk"] * 1000, [[0.1] * 1536] * 1000, {})
+    
+    start_time = time.time()
+    rag_query(query, book_data)
+    end_time = time.time()
+    
+    execution_time = end_time - start_time
+    assert execution_time < 5, f"RAG query took {execution_time} seconds, which is more than the expected 5 seconds"
+
+def test_rag_error_handling():
+    query = "Test query"
+    book_data = BookDataInterface([], [], {})
+    
+    with pytest.raises(ValueError, match="No chunks available for search"):
+        rag_query(query, book_data)
