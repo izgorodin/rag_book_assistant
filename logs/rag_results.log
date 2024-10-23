@@ -514,3 +514,93 @@ Expected A: Through the testimony of Harley Copp
 System A: The internal memo regarding Ford's cost-benefit analysis of safety improvements was referenced during the trial through the testimony of Mr. Copp, a former Ford engineering executive. He testified that Ford had engaged in cost-benefit analyses and mentioned documentation supporting these analyses. Ford contested this reference, arguing that specific documentation, referred to as the "Grush-Saunby Report," was excluded from evidence. However, other documentation was presented to illustrate that cost considerations led Ford to delay safety improvements despite being aware of the need for such enhancements. The specific details of how this internal memo was disclosed or presented during the trial are not provided in the context, but it is clear that Mr. Copp's testimony played a significant role in bringing this information to light. Further specifics about the memo's content or the circumstances of its introduction are not available.
 Is correct: True
 --------------------------------------------------
+
+Q: What was the model year of the Ford Pinto involved in the accident?
+Expected A: 1972
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: Who was the executive vice president of Ford who conceived the Pinto project?
+Expected A: Lee Iacocca
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: What was the weight target for the Pinto set by Ford?
+Expected A: 2,000 pounds
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: On what date did the accident involving Lily Gray and Richard Grimshaw occur?
+Expected A: May 28, 1972
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: What was the speed of the Ford Galaxie at the moment of impact with the Pinto?
+Expected A: 28 to 37 miles per hour
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: What factors influenced the placement of the fuel tank in the Ford Pinto?
+Expected A: Styling decisions that preceded engineering design
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: How did Ford's crash tests reveal the Pinto's fuel system vulnerabilities?
+Expected A: Tests showed fuel tank punctures and fuel leakage at low speeds
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: What was the estimated cost to fix the Pinto's fuel tank design, and how did Ford justify not implementing it?
+Expected A: $6.40 per vehicle, justified by cost-benefit analysis
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: True
+--------------------------------------------------
+
+Q: How did the court define 'malice' in the context of the Ford Pinto case?
+Expected A: Conscious disregard for the safety of others
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: True
+--------------------------------------------------
+
+Q: What was the initial punitive damage award for Grimshaw, and how was it later modified?
+Expected A: $125 million, reduced to $3.5 million
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: How did Ford's 'rush' development of the Pinto affect its safety design?
+Expected A: Styling preceded engineering, dictating design choices
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: What evidence suggested that Ford was aware of the Pinto's safety issues before its release?
+Expected A: Crash test results and engineer testimonies
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: How did the Pinto case impact the legal understanding of corporate responsibility and product liability?
+Expected A: Established precedent for punitive damages in product liability cases
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------
+
+Q: What was the significance of the 'crush space' in the Pinto's design, and how did it compare to other vehicles?
+Expected A: 9-10 inches, less than other American cars
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: True
+--------------------------------------------------
+
+Q: How did Ford's internal memo about the cost-benefit analysis of safety improvements come to light during the trial?
+Expected A: Through the testimony of Harley Copp
+System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Is correct: False
+--------------------------------------------------

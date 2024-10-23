@@ -66,14 +66,15 @@ def get_cache_key(text: str) -> str:
 
 def save_to_cache(key: str, data: any):
     """
-    Save data to the cache using the given key.
-    
+    Save data to the cache using a hashed key.
+
     Args:
         key (str): The cache key.
         data (any): The data to be cached.
     """
     os.makedirs(CACHE_DIR, exist_ok=True)
-    file_path = os.path.join(CACHE_DIR, f"{key}.pkl")
+    hashed_key = hashlib.md5(key.encode()).hexdigest()
+    file_path = os.path.join(CACHE_DIR, f"{hashed_key}.pkl")
     with open(file_path, 'wb') as f:
         pickle.dump(data, f)
 

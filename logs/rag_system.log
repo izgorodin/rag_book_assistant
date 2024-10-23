@@ -122,3 +122,1037 @@ ValueError: The argument order for `query()` has changed; please use keyword arg
 2024-10-23 22:03:39,240 - tests.conftest - INFO - Test test_rag_query_with_different_queries[] took 0.00 seconds
 2024-10-23 22:03:39,241 - tests.conftest - INFO - Test test_rag_query_performance took 0.00 seconds
 2024-10-23 22:03:39,242 - tests.conftest - INFO - Test test_rag_error_handling took 0.00 seconds
+2024-10-23 22:06:12,990 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 22:06:12,992 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 22:06:14,684 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 22:06:14,700 - src.text_processing - INFO - Created 1389 chunks
+2024-10-23 22:06:35,464 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"code":11,"message":"Error, message length too large: found 12166084 bytes, the limit is: 4194304 bytes","details":[]}'
+2024-10-23 22:06:36,399 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":2}'
+2024-10-23 22:06:36,403 - tests.conftest - INFO - Test test_create_embeddings_length[chunks0-2] took 0.27 seconds
+2024-10-23 22:06:36,631 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:36,633 - tests.conftest - INFO - Test test_create_embeddings_length[chunks1-1] took 0.23 seconds
+2024-10-23 22:06:36,636 - src.pinecone_manager - WARNING - No chunks or embeddings to upsert.
+2024-10-23 22:06:36,637 - tests.conftest - INFO - Test test_create_embeddings_length[chunks2-0] took 0.00 seconds
+2024-10-23 22:06:36,905 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:36,906 - tests.conftest - INFO - Test test_create_embeddings_structure took 0.27 seconds
+2024-10-23 22:06:36,908 - tests.conftest - INFO - Test test_create_embeddings_api_error took 0.00 seconds
+2024-10-23 22:06:37,056 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"code":3,"message":"Vector dimension 0 does not match the dimension of the index 1536","details":[]}'
+2024-10-23 22:06:37,114 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[-0] took 0.21 seconds
+2024-10-23 22:06:37,314 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:37,316 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[Short text-1536] took 0.20 seconds
+2024-10-23 22:06:37,690 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:37,690 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-1536] took 0.37 seconds
+2024-10-23 22:06:37,910 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":2}'
+2024-10-23 22:06:37,913 - tests.conftest - INFO - Test test_create_embeddings_with_cache took 0.22 seconds
+2024-10-23 22:06:37,914 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.pdf with extension: .pdf
+2024-10-23 22:06:37,914 - src.file_processor - INFO - Using processor for extension: .pdf
+2024-10-23 22:06:37,915 - tests.conftest - INFO - Test test_process_pdf took 0.00 seconds
+2024-10-23 22:06:37,916 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.docx with extension: .docx
+2024-10-23 22:06:37,916 - src.file_processor - INFO - Using processor for extension: .docx
+2024-10-23 22:06:37,932 - tests.conftest - INFO - Test test_process_docx took 0.02 seconds
+2024-10-23 22:06:37,932 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.odt with extension: .odt
+2024-10-23 22:06:37,933 - src.file_processor - INFO - Using processor for extension: .odt
+2024-10-23 22:06:37,935 - tests.conftest - INFO - Test test_process_odt took 0.00 seconds
+2024-10-23 22:06:37,935 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.txt with extension: .txt
+2024-10-23 22:06:37,935 - src.file_processor - INFO - Using processor for extension: .txt
+2024-10-23 22:06:37,936 - tests.conftest - INFO - Test test_process_txt took 0.00 seconds
+2024-10-23 22:06:37,938 - src.file_processor - INFO - Processing file: /private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-5/test_unsupported_file_format0/test.unsupported with extension: .unsupported
+2024-10-23 22:06:37,940 - src.file_processor - ERROR - Unsupported file format: .unsupported
+2024-10-23 22:06:37,941 - tests.conftest - INFO - Test test_unsupported_file_format took 0.00 seconds
+2024-10-23 22:06:37,942 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 22:06:37,986 - src.text_processing - INFO - Created 199 chunks
+2024-10-23 22:06:38,057 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:06:38,066 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:06:38,066 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:06:38,366 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:06:38,368 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:06:38,635 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:06:38,635 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:06:38,636 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:06:38,698 - root - INFO - Processing RAG query: What was the model year of the Ford Pinto involved in the accident?
+2024-10-23 22:06:38,698 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:06:38,698 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:06:38,699 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:06:39,013 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:06:39,014 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:06:39,357 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:06:39,357 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:06:39,358 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:06:39,360 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495cfc40>, 'json_data': {'input': ['What was the model year of the Ford Pinto involved in the accident?'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:06:39,408 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:06:39,408 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 22:06:39,545 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x129c46cc0>
+2024-10-23 22:06:39,545 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x10d32b4d0> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 22:06:39,582 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x129c468a0>
+2024-10-23 22:06:39,582 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:39,583 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:06:39,583 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:06:39,584 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:06:39,584 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:39,857 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:06:39 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'21'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999984'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_831858e36b8aa6ea454583ddeb277800'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=gHYj8HFfCnPLz9KTJ4o6oqiuABFaRJmpRfubFKIdkLM-1729717599-1.0.1.1-9e0QYKSPftzFZLV6DnrUYISyFThdn3tTtRlu3r6eFhAtoTaWqHqHnl3SuEa4iwKbj2.v2D.cOiyw0nAZNMyyFg; path=/; expires=Wed, 23-Oct-24 21:36:39 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=_JIM5swlPT7XDRBhGeI8Dh0tcPBMW5r0v7kQM1uLI5E-1729717599921-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1360898e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:06:39,860 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:06:39,861 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:06:39,881 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:06:39,881 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:06:39,882 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:06:39,882 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Wed, 23 Oct 2024 21:06:39 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-3-small'), ('openai-organization', 'uinside'), ('openai-processing-ms', '21'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '5000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '4999984'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '0s'), ('x-request-id', 'req_831858e36b8aa6ea454583ddeb277800'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=gHYj8HFfCnPLz9KTJ4o6oqiuABFaRJmpRfubFKIdkLM-1729717599-1.0.1.1-9e0QYKSPftzFZLV6DnrUYISyFThdn3tTtRlu3r6eFhAtoTaWqHqHnl3SuEa4iwKbj2.v2D.cOiyw0nAZNMyyFg; path=/; expires=Wed, 23-Oct-24 21:36:39 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=_JIM5swlPT7XDRBhGeI8Dh0tcPBMW5r0v7kQM1uLI5E-1729717599921-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d74b1360898e3bc-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-23 22:06:39,883 - openai._base_client - DEBUG - request_id: req_831858e36b8aa6ea454583ddeb277800
+2024-10-23 22:06:40,096 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:40,097 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:40,146 - rag_results - INFO - 
+Q: What was the model year of the Ford Pinto involved in the accident?
+2024-10-23 22:06:40,147 - rag_results - INFO - Expected A: 1972
+2024-10-23 22:06:40,147 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:40,147 - rag_results - INFO - Is correct: False
+2024-10-23 22:06:40,147 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:06:40,151 - tests.conftest - INFO - Test test_qa_system[qa_pair0] took 1.45 seconds
+2024-10-23 22:06:40,154 - root - INFO - Processing RAG query: Who was the executive vice president of Ford who conceived the Pinto project?
+2024-10-23 22:06:40,154 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:06:40,155 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:06:40,155 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:06:40,593 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:06:40,594 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:06:41,658 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:06:41,659 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:06:41,660 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:06:41,661 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495cdc60>, 'json_data': {'input': ['Who was the executive vice president of Ford who conceived the Pinto project?'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:06:41,662 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:06:41,662 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:41,662 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:06:41,662 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:06:41,663 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:06:41,663 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:42,144 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:06:42 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'23'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999980'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_39582978953d92a54dc7f69b4732e754'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b142ffe5e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:06:42,144 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:06:42,145 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:06:42,280 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:06:42,281 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:06:42,282 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:06:42,282 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:06:42 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '23', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999980', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_39582978953d92a54dc7f69b4732e754', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b142ffe5e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:06:42,283 - openai._base_client - DEBUG - request_id: req_39582978953d92a54dc7f69b4732e754
+2024-10-23 22:06:42,487 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:42,489 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:42,525 - rag_results - INFO - 
+Q: Who was the executive vice president of Ford who conceived the Pinto project?
+2024-10-23 22:06:42,525 - rag_results - INFO - Expected A: Lee Iacocca
+2024-10-23 22:06:42,525 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:42,526 - rag_results - INFO - Is correct: False
+2024-10-23 22:06:42,526 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:06:42,530 - tests.conftest - INFO - Test test_qa_system[qa_pair1] took 2.38 seconds
+2024-10-23 22:06:42,532 - root - INFO - Processing RAG query: What was the weight target for the Pinto set by Ford?
+2024-10-23 22:06:42,532 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:06:42,533 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:06:42,533 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:06:43,355 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:06:43,356 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:06:44,587 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:06:44,588 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:06:44,590 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:06:44,591 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495ce340>, 'json_data': {'input': ['What was the weight target for the Pinto set by Ford?'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:06:44,593 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:06:44,593 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:44,594 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:06:44,594 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:06:44,594 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:06:44,595 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:44,910 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:06:44 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'34'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999986'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_8fd5beb361713710790713ca03bcdee9'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1555b5fe3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:06:44,912 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:06:44,913 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:06:44,932 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:06:44,933 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:06:44,933 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:06:44,934 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:06:44 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '34', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999986', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_8fd5beb361713710790713ca03bcdee9', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1555b5fe3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:06:44,935 - openai._base_client - DEBUG - request_id: req_8fd5beb361713710790713ca03bcdee9
+2024-10-23 22:06:45,143 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:45,145 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:45,180 - rag_results - INFO - 
+Q: What was the weight target for the Pinto set by Ford?
+2024-10-23 22:06:45,181 - rag_results - INFO - Expected A: 2,000 pounds
+2024-10-23 22:06:45,181 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:45,182 - rag_results - INFO - Is correct: False
+2024-10-23 22:06:45,182 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:06:45,186 - tests.conftest - INFO - Test test_qa_system[qa_pair2] took 2.65 seconds
+2024-10-23 22:06:45,188 - root - INFO - Processing RAG query: On what date did the accident involving Lily Gray and Richard Grimshaw occur?
+2024-10-23 22:06:45,189 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:06:45,189 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:06:45,189 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:06:45,503 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:06:45,504 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:06:45,828 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:06:45,828 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:06:45,829 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:06:45,830 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495cd440>, 'json_data': {'input': ['On what date did the accident involving Lily Gray and Richard Grimshaw occur?'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:06:45,831 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:06:45,831 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:45,832 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:06:45,832 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:06:45,832 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:06:45,832 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:46,042 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:06:46 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'32'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999980'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_f90721e48159ce80696878368f6a4463'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b15d18b1e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:06:46,044 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:06:46,045 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:06:46,046 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:06:46,046 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:06:46,046 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:06:46,047 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:06:46 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '32', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999980', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_f90721e48159ce80696878368f6a4463', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b15d18b1e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:06:46,047 - openai._base_client - DEBUG - request_id: req_f90721e48159ce80696878368f6a4463
+2024-10-23 22:06:46,254 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:46,254 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:46,272 - rag_results - INFO - 
+Q: On what date did the accident involving Lily Gray and Richard Grimshaw occur?
+2024-10-23 22:06:46,273 - rag_results - INFO - Expected A: May 28, 1972
+2024-10-23 22:06:46,273 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:46,273 - rag_results - INFO - Is correct: False
+2024-10-23 22:06:46,273 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:06:46,275 - tests.conftest - INFO - Test test_qa_system[qa_pair3] took 1.09 seconds
+2024-10-23 22:06:46,277 - root - INFO - Processing RAG query: What was the speed of the Ford Galaxie at the moment of impact with the Pinto?
+2024-10-23 22:06:46,278 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:06:46,278 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:06:46,278 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:06:46,578 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:06:46,579 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:06:47,145 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:06:47,146 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:06:47,147 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:06:47,148 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495ce2a0>, 'json_data': {'input': ['What was the speed of the Ford Galaxie at the moment of impact with the Pinto?'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:06:47,149 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:06:47,150 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:47,151 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:06:47,151 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:06:47,151 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:06:47,151 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:47,626 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:06:47 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'23'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999980'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_23aacc7db69b737cf36a8e477bacd3ec'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1654f20e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:06:47,627 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:06:47,627 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:06:47,694 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:06:47,694 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:06:47,694 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:06:47,694 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:06:47 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '23', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999980', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_23aacc7db69b737cf36a8e477bacd3ec', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1654f20e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:06:47,694 - openai._base_client - DEBUG - request_id: req_23aacc7db69b737cf36a8e477bacd3ec
+2024-10-23 22:06:47,897 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:47,898 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:47,937 - rag_results - INFO - 
+Q: What was the speed of the Ford Galaxie at the moment of impact with the Pinto?
+2024-10-23 22:06:47,938 - rag_results - INFO - Expected A: 28 to 37 miles per hour
+2024-10-23 22:06:47,938 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:47,938 - rag_results - INFO - Is correct: False
+2024-10-23 22:06:47,939 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:06:47,942 - tests.conftest - INFO - Test test_qa_system[qa_pair4] took 1.66 seconds
+2024-10-23 22:06:47,944 - root - INFO - Processing RAG query: What factors influenced the placement of the fuel tank in the Ford Pinto?
+2024-10-23 22:06:47,945 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:06:47,945 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:06:47,945 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:06:48,256 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:06:48,256 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:06:48,949 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:06:48,949 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:06:48,950 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:06:48,952 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495cf880>, 'json_data': {'input': ['What factors influenced the placement of the fuel tank in the Ford Pinto?'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:06:48,953 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:06:48,953 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:48,954 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:06:48,954 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:06:48,954 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:06:48,955 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:49,297 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:06:49 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'48'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999981'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_07e6051f04172ffab91449c410fbd7c5'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1708e99e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:06:49,297 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:06:49,298 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:06:49,298 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:06:49,298 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:06:49,298 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:06:49,299 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:06:49 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '48', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999981', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_07e6051f04172ffab91449c410fbd7c5', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1708e99e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:06:49,299 - openai._base_client - DEBUG - request_id: req_07e6051f04172ffab91449c410fbd7c5
+2024-10-23 22:06:49,534 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:49,535 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:49,573 - rag_results - INFO - 
+Q: What factors influenced the placement of the fuel tank in the Ford Pinto?
+2024-10-23 22:06:49,574 - rag_results - INFO - Expected A: Styling decisions that preceded engineering design
+2024-10-23 22:06:49,574 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:49,574 - rag_results - INFO - Is correct: False
+2024-10-23 22:06:49,575 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:06:49,578 - tests.conftest - INFO - Test test_qa_system[qa_pair5] took 1.63 seconds
+2024-10-23 22:06:49,581 - root - INFO - Processing RAG query: How did Ford's crash tests reveal the Pinto's fuel system vulnerabilities?
+2024-10-23 22:06:49,581 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:06:49,582 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:06:49,582 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:06:50,222 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:06:50,223 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:06:50,832 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:06:50,832 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:06:50,833 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:06:50,833 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495cc4a0>, 'json_data': {'input': ["How did Ford's crash tests reveal the Pinto's fuel system vulnerabilities?"], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:06:50,834 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:06:50,834 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:50,835 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:06:50,835 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:06:50,835 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:06:50,835 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:51,244 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:06:51 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'39'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999981'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_963aef806c47a7122a3dd1a8f118628e'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b17c5cb3e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:06:51,245 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:06:51,246 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:06:51,247 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:06:51,247 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:06:51,247 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:06:51,247 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:06:51 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '39', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999981', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_963aef806c47a7122a3dd1a8f118628e', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b17c5cb3e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:06:51,248 - openai._base_client - DEBUG - request_id: req_963aef806c47a7122a3dd1a8f118628e
+2024-10-23 22:06:51,448 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:51,448 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:51,470 - rag_results - INFO - 
+Q: How did Ford's crash tests reveal the Pinto's fuel system vulnerabilities?
+2024-10-23 22:06:51,470 - rag_results - INFO - Expected A: Tests showed fuel tank punctures and fuel leakage at low speeds
+2024-10-23 22:06:51,470 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:51,470 - rag_results - INFO - Is correct: False
+2024-10-23 22:06:51,470 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:06:51,473 - tests.conftest - INFO - Test test_qa_system[qa_pair6] took 1.89 seconds
+2024-10-23 22:06:51,474 - root - INFO - Processing RAG query: What was the estimated cost to fix the Pinto's fuel tank design, and how did Ford justify not implementing it?
+2024-10-23 22:06:51,475 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:06:51,475 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:06:51,475 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:06:51,958 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:06:51,958 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:06:55,012 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:06:55,013 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:06:55,015 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:06:55,017 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495cf7e0>, 'json_data': {'input': ["What was the estimated cost to fix the Pinto's fuel tank design, and how did Ford justify not implementing it?"], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:06:55,019 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:06:55,020 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:55,020 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:06:55,021 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:06:55,021 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:06:55,021 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:55,355 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:06:55 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'23'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999973'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_85fb08c83c170a10881e94b73a7c6f12'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1968e45e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:06:55,357 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:06:55,358 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:06:55,378 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:06:55,378 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:06:55,379 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:06:55,379 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:06:55 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '23', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999973', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_85fb08c83c170a10881e94b73a7c6f12', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1968e45e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:06:55,380 - openai._base_client - DEBUG - request_id: req_85fb08c83c170a10881e94b73a7c6f12
+2024-10-23 22:06:55,602 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:06:55,603 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:55,641 - rag_results - INFO - 
+Q: What was the estimated cost to fix the Pinto's fuel tank design, and how did Ford justify not implementing it?
+2024-10-23 22:06:55,642 - rag_results - INFO - Expected A: $6.40 per vehicle, justified by cost-benefit analysis
+2024-10-23 22:06:55,642 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:06:55,642 - rag_results - INFO - Is correct: True
+2024-10-23 22:06:55,642 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:06:55,643 - tests.conftest - INFO - Test test_qa_system[qa_pair7] took 4.17 seconds
+2024-10-23 22:06:55,645 - root - INFO - Processing RAG query: How did the court define 'malice' in the context of the Ford Pinto case?
+2024-10-23 22:06:55,646 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:06:55,646 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:06:55,646 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:06:56,155 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:06:56,157 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:06:59,332 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:06:59,333 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:06:59,335 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:06:59,336 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495ce340>, 'json_data': {'input': ["How did the court define 'malice' in the context of the Ford Pinto case?"], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:06:59,337 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:06:59,338 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:59,338 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:06:59,339 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:06:59,339 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:06:59,339 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:06:59,845 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:06:59 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'137'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999981'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_f48123c81f12be1031508f71d3536f20'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1b17ab8e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:06:59,846 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:06:59,847 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:06:59,848 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:06:59,848 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:06:59,848 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:06:59,848 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:06:59 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '137', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999981', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_f48123c81f12be1031508f71d3536f20', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1b17ab8e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:06:59,849 - openai._base_client - DEBUG - request_id: req_f48123c81f12be1031508f71d3536f20
+2024-10-23 22:07:00,092 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:00,093 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:00,130 - rag_results - INFO - 
+Q: How did the court define 'malice' in the context of the Ford Pinto case?
+2024-10-23 22:07:00,131 - rag_results - INFO - Expected A: Conscious disregard for the safety of others
+2024-10-23 22:07:00,131 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:00,132 - rag_results - INFO - Is correct: True
+2024-10-23 22:07:00,132 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:07:00,132 - tests.conftest - INFO - Test test_qa_system[qa_pair8] took 4.49 seconds
+2024-10-23 22:07:00,135 - root - INFO - Processing RAG query: What was the initial punitive damage award for Grimshaw, and how was it later modified?
+2024-10-23 22:07:00,136 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:07:00,136 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:07:00,136 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:07:00,494 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:07:00,494 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:07:00,876 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:07:00,877 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:07:00,878 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:07:00,879 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495cf9c0>, 'json_data': {'input': ['What was the initial punitive damage award for Grimshaw, and how was it later modified?'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:07:00,880 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:07:00,880 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:00,881 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:00,881 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:00,881 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:00,881 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:01,155 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:01 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'24'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999979'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_882978a1a8a8e28b1106aef22ce7419d'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1bb1f0ee3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:01,155 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:07:01,156 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:01,220 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:01,220 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:01,220 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:01,220 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:07:01 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '24', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999979', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_882978a1a8a8e28b1106aef22ce7419d', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1bb1f0ee3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:07:01,220 - openai._base_client - DEBUG - request_id: req_882978a1a8a8e28b1106aef22ce7419d
+2024-10-23 22:07:01,540 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:01,540 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:01,556 - rag_results - INFO - 
+Q: What was the initial punitive damage award for Grimshaw, and how was it later modified?
+2024-10-23 22:07:01,556 - rag_results - INFO - Expected A: $125 million, reduced to $3.5 million
+2024-10-23 22:07:01,556 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:01,557 - rag_results - INFO - Is correct: False
+2024-10-23 22:07:01,557 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:07:01,559 - tests.conftest - INFO - Test test_qa_system[qa_pair9] took 1.42 seconds
+2024-10-23 22:07:01,560 - root - INFO - Processing RAG query: How did Ford's 'rush' development of the Pinto affect its safety design?
+2024-10-23 22:07:01,560 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:07:01,561 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:07:01,561 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:07:01,969 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:07:01,970 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:07:02,291 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:07:02,291 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:07:02,291 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:07:02,292 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495ced40>, 'json_data': {'input': ["How did Ford's 'rush' development of the Pinto affect its safety design?"], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:07:02,292 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:07:02,292 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:02,293 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:02,293 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:02,293 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:02,293 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:02,710 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:02 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'22'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999981'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_6e76872c5fa7694c4a6eb51c1e7d45ff'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1c3f985e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:02,712 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:07:02,712 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:02,713 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:02,714 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:02,714 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:02,714 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:07:02 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '22', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999981', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_6e76872c5fa7694c4a6eb51c1e7d45ff', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1c3f985e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:07:02,715 - openai._base_client - DEBUG - request_id: req_6e76872c5fa7694c4a6eb51c1e7d45ff
+2024-10-23 22:07:02,931 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:02,932 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:02,965 - rag_results - INFO - 
+Q: How did Ford's 'rush' development of the Pinto affect its safety design?
+2024-10-23 22:07:02,965 - rag_results - INFO - Expected A: Styling preceded engineering, dictating design choices
+2024-10-23 22:07:02,965 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:02,966 - rag_results - INFO - Is correct: False
+2024-10-23 22:07:02,966 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:07:02,969 - tests.conftest - INFO - Test test_qa_system[qa_pair10] took 1.41 seconds
+2024-10-23 22:07:02,972 - root - INFO - Processing RAG query: What evidence suggested that Ford was aware of the Pinto's safety issues before its release?
+2024-10-23 22:07:02,972 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:07:02,973 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:07:02,973 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:07:03,338 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:07:03,338 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:07:03,735 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:07:03,736 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:07:03,738 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:07:03,739 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495cc9a0>, 'json_data': {'input': ["What evidence suggested that Ford was aware of the Pinto's safety issues before its release?"], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:07:03,740 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:07:03,740 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:03,741 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:03,741 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:03,741 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:03,742 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:03,998 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:04 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'28'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999976'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_8499a0205470d0d4883c5eb854e543b9'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1cd0d66e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:03,999 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:07:04,000 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:04,001 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:04,001 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:04,001 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:04,001 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:07:04 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '28', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999976', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_8499a0205470d0d4883c5eb854e543b9', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1cd0d66e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:07:04,002 - openai._base_client - DEBUG - request_id: req_8499a0205470d0d4883c5eb854e543b9
+2024-10-23 22:07:04,209 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:04,210 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:04,249 - rag_results - INFO - 
+Q: What evidence suggested that Ford was aware of the Pinto's safety issues before its release?
+2024-10-23 22:07:04,250 - rag_results - INFO - Expected A: Crash test results and engineer testimonies
+2024-10-23 22:07:04,250 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:04,250 - rag_results - INFO - Is correct: False
+2024-10-23 22:07:04,250 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:07:04,254 - tests.conftest - INFO - Test test_qa_system[qa_pair11] took 1.28 seconds
+2024-10-23 22:07:04,256 - root - INFO - Processing RAG query: How did the Pinto case impact the legal understanding of corporate responsibility and product liability?
+2024-10-23 22:07:04,257 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:07:04,257 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:07:04,257 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:07:04,675 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:07:04,676 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:07:05,169 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:07:05,170 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:07:05,171 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:07:05,173 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1495cc4a0>, 'json_data': {'input': ['How did the Pinto case impact the legal understanding of corporate responsibility and product liability?'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:07:05,174 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:07:05,175 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:05,175 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:05,175 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:05,176 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:05,176 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:05,445 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:05 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'94'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999973'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_8eea3075a7851beda0aea370005502b3'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1d5ff5be3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:05,445 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:07:05,446 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:05,450 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:05,450 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:05,450 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:05,450 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:07:05 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '94', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999973', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_8eea3075a7851beda0aea370005502b3', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1d5ff5be3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:07:05,450 - openai._base_client - DEBUG - request_id: req_8eea3075a7851beda0aea370005502b3
+2024-10-23 22:07:05,636 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:05,636 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:05,673 - rag_results - INFO - 
+Q: How did the Pinto case impact the legal understanding of corporate responsibility and product liability?
+2024-10-23 22:07:05,673 - rag_results - INFO - Expected A: Established precedent for punitive damages in product liability cases
+2024-10-23 22:07:05,673 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:05,673 - rag_results - INFO - Is correct: False
+2024-10-23 22:07:05,674 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:07:05,677 - tests.conftest - INFO - Test test_qa_system[qa_pair12] took 1.42 seconds
+2024-10-23 22:07:05,679 - root - INFO - Processing RAG query: What was the significance of the 'crush space' in the Pinto's design, and how did it compare to other vehicles?
+2024-10-23 22:07:05,680 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:07:05,680 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:07:05,680 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:07:06,045 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:07:06,047 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:07:06,360 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:07:06,360 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:07:06,361 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:07:06,361 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x15d52fba0>, 'json_data': {'input': ["What was the significance of the 'crush space' in the Pinto's design, and how did it compare to other vehicles?"], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:07:06,361 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:07:06,361 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:06,362 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:06,362 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:06,362 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:06,362 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:06,587 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:06 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'27'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999973'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_574f1cf0b7e4dae437d1b7e6c6f8fcf2'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1dd69c6e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:06,587 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:07:06,588 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:06,588 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:06,588 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:06,588 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:06,588 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:07:06 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '27', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999973', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_574f1cf0b7e4dae437d1b7e6c6f8fcf2', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1dd69c6e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:07:06,588 - openai._base_client - DEBUG - request_id: req_574f1cf0b7e4dae437d1b7e6c6f8fcf2
+2024-10-23 22:07:06,830 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:06,831 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:06,858 - rag_results - INFO - 
+Q: What was the significance of the 'crush space' in the Pinto's design, and how did it compare to other vehicles?
+2024-10-23 22:07:06,858 - rag_results - INFO - Expected A: 9-10 inches, less than other American cars
+2024-10-23 22:07:06,858 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:06,859 - rag_results - INFO - Is correct: True
+2024-10-23 22:07:06,859 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:07:06,859 - tests.conftest - INFO - Test test_qa_system[qa_pair13] took 1.18 seconds
+2024-10-23 22:07:06,862 - root - INFO - Processing RAG query: How did Ford's internal memo about the cost-benefit analysis of safety improvements come to light during the trial?
+2024-10-23 22:07:06,862 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:07:06,862 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:07:06,863 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:07:07,227 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:07:07,228 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:07:08,856 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:07:08,856 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:07:08,857 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:07:08,857 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x15d52f740>, 'json_data': {'input': ["How did Ford's internal memo about the cost-benefit analysis of safety improvements come to light during the trial?"], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:07:08,858 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:07:08,858 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:08,859 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:08,859 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:08,859 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:08,859 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:09,084 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:09 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'21'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999972'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_84db86988b0d99ac847af184198eb6fa'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1ecfc29e3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:09,085 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:07:09,086 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:09,087 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:09,087 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:09,088 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:09,088 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:07:09 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '21', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999972', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_84db86988b0d99ac847af184198eb6fa', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1ecfc29e3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:07:09,089 - openai._base_client - DEBUG - request_id: req_84db86988b0d99ac847af184198eb6fa
+2024-10-23 22:07:09,304 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:09,305 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:09,342 - rag_results - INFO - 
+Q: How did Ford's internal memo about the cost-benefit analysis of safety improvements come to light during the trial?
+2024-10-23 22:07:09,343 - rag_results - INFO - Expected A: Through the testimony of Harley Copp
+2024-10-23 22:07:09,343 - rag_results - INFO - System A: Sorry, I encountered an error while processing your query: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:09,343 - rag_results - INFO - Is correct: False
+2024-10-23 22:07:09,344 - rag_results - INFO - --------------------------------------------------
+2024-10-23 22:07:09,347 - tests.conftest - INFO - Test test_qa_system[qa_pair14] took 2.49 seconds
+2024-10-23 22:07:09,354 - tests.conftest - INFO - Test test_search took 0.00 seconds
+2024-10-23 22:07:09,358 - tests.conftest - INFO - Test test_embedding_weight took 0.00 seconds
+2024-10-23 22:07:09,361 - tests.conftest - INFO - Test test_hybrid_search_initialization took 0.00 seconds
+2024-10-23 22:07:10,782 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x14f998a40>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination and and and and and and and and and and machine machine machine machine machine machine machine machine machine machine machine machine machine machine machine automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine learning learning learning learning learning learning learning learning learning learning learning learning learning encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopaedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism encyclopedism'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:07:10,782 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:07:10,783 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:10,783 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:10,783 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:10,783 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:10,783 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:11,121 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:11 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'36'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999561'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'5ms'), (b'x-request-id', b'req_174c50d08139efb3be87edbb48e355f6'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1f90a3de3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:11,122 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:07:11,123 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:11,136 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:11,137 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:11,137 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:11,137 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:07:11 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '36', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999561', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '5ms', 'x-request-id': 'req_174c50d08139efb3be87edbb48e355f6', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1f90a3de3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:07:11,138 - openai._base_client - DEBUG - request_id: req_174c50d08139efb3be87edbb48e355f6
+2024-10-23 22:07:11,364 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:11,367 - tests.conftest - INFO - Test test_hybrid_search_search took 2.01 seconds
+2024-10-23 22:07:11,370 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x14f998a40>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth three-toed_sloth artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:07:11,371 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:07:11,371 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:11,372 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:11,372 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:11,372 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:11,372 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:11,588 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:11 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'21'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999856'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_4862599a58e480de166ad9464ddb24bf'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b1fca80be3bc-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:11,588 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:07:11,588 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:11,588 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:11,589 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:11,589 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:11,589 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:07:11 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '21', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999856', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '1ms', 'x-request-id': 'req_4862599a58e480de166ad9464ddb24bf', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b1fca80be3bc-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:07:11,589 - openai._base_client - DEBUG - request_id: req_4862599a58e480de166ad9464ddb24bf
+2024-10-23 22:07:11,778 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:11,965 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:11,967 - tests.conftest - INFO - Test test_hybrid_search_embedding_weight took 0.60 seconds
+2024-10-23 22:07:11,982 - tests.conftest - INFO - Test test_imports took 0.01 seconds
+2024-10-23 22:07:11,984 - tests.conftest - INFO - Test test_config_import took 0.00 seconds
+2024-10-23 22:07:11,986 - tests.conftest - INFO - Test test_openai_api_key took 0.00 seconds
+2024-10-23 22:07:11,987 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 22:07:12,158 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 22:07:12,158 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 22:07:12,159 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 22:07:12,159 - src.text_processing - INFO - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-23 22:07:12,159 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 22:07:12,345 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:12,347 - tests.conftest - INFO - Test test_different_book_types[True-test_book.txt] took 0.36 seconds
+2024-10-23 22:07:12,349 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 22:07:12,538 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 22:07:12,538 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 22:07:12,538 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 22:07:12,539 - src.text_processing - INFO - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-23 22:07:12,539 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 22:07:12,539 - tests.conftest - INFO - Test test_different_book_types[False-test_book.txt] took 0.19 seconds
+2024-10-23 22:07:12,540 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 22:07:12,692 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 22:07:12,692 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 22:07:12,692 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 22:07:12,692 - src.text_processing - INFO - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-23 22:07:12,693 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 22:07:12,938 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:12,965 - tests.conftest - INFO - Test test_rag_query[True] took 0.43 seconds
+2024-10-23 22:07:12,966 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 22:07:13,133 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 22:07:13,134 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 22:07:13,134 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 22:07:13,134 - src.text_processing - INFO - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-23 22:07:13,134 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 22:07:13,143 - tests.conftest - INFO - Test test_rag_query[False] took 0.18 seconds
+2024-10-23 22:07:13,419 - src.pinecone_manager - ERROR - Error initializing Pinecone: Simulated Pinecone error
+2024-10-23 22:07:13,430 - tests.conftest - INFO - Test test_pinecone_integration took 0.29 seconds
+2024-10-23 22:07:13,642 - src.pinecone_manager - INFO - Creating new Pinecone index: test-index
+2024-10-23 22:07:13,975 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: test-index
+2024-10-23 22:07:13,978 - tests.conftest - INFO - Test test_pinecone_manager_initialization took 0.55 seconds
+2024-10-23 22:07:14,315 - src.pinecone_manager - ERROR - Error initializing Pinecone: Simulated Pinecone error
+2024-10-23 22:07:14,335 - tests.conftest - INFO - Test test_upsert_and_search[chunks0-embeddings0] took 0.36 seconds
+2024-10-23 22:07:14,662 - src.pinecone_manager - INFO - Creating new Pinecone index: test-index
+2024-10-23 22:07:15,421 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: test-index
+2024-10-23 22:07:15,423 - src.pinecone_manager - WARNING - No chunks or embeddings to upsert.
+2024-10-23 22:07:15,425 - tests.conftest - INFO - Test test_upsert_and_search[chunks1-embeddings1] took 1.09 seconds
+2024-10-23 22:07:15,698 - src.pinecone_manager - INFO - Creating new Pinecone index: test-index
+2024-10-23 22:07:16,445 - src.pinecone_manager - ERROR - Error initializing Pinecone: Simulated Pinecone error
+2024-10-23 22:07:16,459 - tests.conftest - INFO - Test test_upsert_and_search[chunks2-embeddings2] took 1.03 seconds
+2024-10-23 22:07:16,851 - src.pinecone_manager - INFO - Creating new Pinecone index: test-index
+2024-10-23 22:07:17,218 - src.pinecone_manager - ERROR - Error initializing Pinecone: Simulated Pinecone error
+2024-10-23 22:07:17,235 - tests.conftest - INFO - Test test_get_or_create_embeddings took 0.77 seconds
+2024-10-23 22:07:17,711 - src.pinecone_manager - INFO - Creating new Pinecone index: test-index
+2024-10-23 22:07:18,212 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: test-index
+2024-10-23 22:07:18,215 - tests.conftest - INFO - Test test_clear_index took 0.98 seconds
+2024-10-23 22:07:18,351 - src.pinecone_manager - INFO - Creating new Pinecone index: test-index
+2024-10-23 22:07:18,778 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: test-index
+2024-10-23 22:07:18,780 - src.pinecone_manager - WARNING - Pinecone index is not available. Skipping clear operation.
+2024-10-23 22:07:18,781 - tests.conftest - INFO - Test test_error_handling took 0.56 seconds
+2024-10-23 22:07:19,206 - src.pinecone_manager - INFO - Creating new Pinecone index: test-index
+2024-10-23 22:07:19,786 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: test-index
+2024-10-23 22:07:19,789 - tests.conftest - INFO - Test test_batch_operation[1] took 1.01 seconds
+2024-10-23 22:07:20,047 - src.pinecone_manager - INFO - Creating new Pinecone index: test-index
+2024-10-23 22:07:20,317 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: test-index
+2024-10-23 22:07:20,318 - tests.conftest - INFO - Test test_batch_operation[10] took 0.53 seconds
+2024-10-23 22:07:20,666 - src.pinecone_manager - INFO - Creating new Pinecone index: test-index
+2024-10-23 22:07:21,203 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: test-index
+2024-10-23 22:07:21,207 - tests.conftest - INFO - Test test_batch_operation[100] took 0.89 seconds
+2024-10-23 22:07:21,213 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x161b00220>, 'json_data': {'input': ['Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test examine examine examine examine examine examine examine examine examine examine examine examine examine examine examine run run run run run run run run run run run run run run run query query query query query query query query query query enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 22:07:21,214 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 22:07:21,214 - httpcore.connection - DEBUG - close.started
+2024-10-23 22:07:21,215 - httpcore.connection - DEBUG - close.complete
+2024-10-23 22:07:21,215 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 22:07:21,249 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x15d6af260>
+2024-10-23 22:07:21,249 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x10d32b4d0> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 22:07:21,286 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x15d6af5f0>
+2024-10-23 22:07:21,287 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:21,287 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:21,287 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:21,287 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:21,287 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:21,569 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:21 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'67'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999844'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_8a98f52571255bffe94c1e673118c305'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b23aa9904893-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:21,569 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 22:07:21,569 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:21,570 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:21,570 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:21,570 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:21,570 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:07:21 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '67', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999844', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '1ms', 'x-request-id': 'req_8a98f52571255bffe94c1e673118c305', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b23aa9904893-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:07:21,570 - openai._base_client - DEBUG - request_id: req_8a98f52571255bffe94c1e673118c305
+2024-10-23 22:07:21,805 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:21,806 - tests.conftest - INFO - Test test_find_most_relevant_chunks[1] took 0.60 seconds
+2024-10-23 22:07:22,030 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:22,032 - tests.conftest - INFO - Test test_find_most_relevant_chunks[2] took 0.23 seconds
+2024-10-23 22:07:22,311 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:22,314 - tests.conftest - INFO - Test test_find_most_relevant_chunks[3] took 0.28 seconds
+2024-10-23 22:07:22,317 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 22:07:22,318 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 22:07:22,336 - root - INFO - Generating answer for query: Test query
+2024-10-23 22:07:22,340 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing.'}, {'role': 'user', 'content': 'Context: Test context\n\nQuestion: Test query\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing.'}], 'model': 'gpt-4o-mini', 'max_tokens': 15000}}
+2024-10-23 22:07:22,340 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-10-23 22:07:22,341 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 22:07:22,379 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x161ba3bc0>
+2024-10-23 22:07:22,379 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x10d40c0d0> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 22:07:22,423 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x161ba3d70>
+2024-10-23 22:07:22,424 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:22,424 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:22,424 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:22,424 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:22,424 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:23,513 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:23 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'888'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'10000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'9991828'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'49ms'), (b'x-request-id', b'req_b673c23c5bc14e901078843e62b5fa0d'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=S0HClNKCTP5wavnZeu56RWURetDb376QTynd700x698-1729717643-1.0.1.1-EZzTmP1uxX8gPvO9vDEpa53JKebQNiTNRF6BoG.rVGka.3AsKc2XbylpW4m40r.eJqhf6FNwmVFYGvSZAJKjyg; path=/; expires=Wed, 23-Oct-24 21:37:23 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=MSPxxkekgmd0BeZCu.t_ry13ZGtu5OtuXfQr0cM4H1A-1729717643581-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b241ca6b94fa-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:23,515 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-23 22:07:23,517 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:23,517 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:23,517 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:23,518 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:23,518 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Wed, 23 Oct 2024 21:07:23 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'uinside'), ('openai-processing-ms', '888'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '10000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '9991828'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '49ms'), ('x-request-id', 'req_b673c23c5bc14e901078843e62b5fa0d'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=S0HClNKCTP5wavnZeu56RWURetDb376QTynd700x698-1729717643-1.0.1.1-EZzTmP1uxX8gPvO9vDEpa53JKebQNiTNRF6BoG.rVGka.3AsKc2XbylpW4m40r.eJqhf6FNwmVFYGvSZAJKjyg; path=/; expires=Wed, 23-Oct-24 21:37:23 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=MSPxxkekgmd0BeZCu.t_ry13ZGtu5OtuXfQr0cM4H1A-1729717643581-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d74b241ca6b94fa-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-23 22:07:23,519 - openai._base_client - DEBUG - request_id: req_b673c23c5bc14e901078843e62b5fa0d
+2024-10-23 22:07:23,525 - tests.conftest - INFO - Test test_generate_answer[True] took 1.21 seconds
+2024-10-23 22:07:23,527 - root - INFO - Generating answer for query: Test query
+2024-10-23 22:07:23,531 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing.'}, {'role': 'user', 'content': 'Context: Test context\n\nQuestion: Test query\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing.'}], 'model': 'gpt-4o-mini', 'max_tokens': 15000}}
+2024-10-23 22:07:23,532 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-10-23 22:07:23,533 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:23,533 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 22:07:23,533 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 22:07:23,533 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 22:07:23,534 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 22:07:24,727 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 21:07:24 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'962'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'10000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'9991828'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'49ms'), (b'x-request-id', b'req_f7a25ce7993a74d5a8f122591edd38c5'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74b248ac7094fa-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 22:07:24,727 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-23 22:07:24,727 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 22:07:24,728 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 22:07:24,728 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 22:07:24,728 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 22:07:24,728 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Wed, 23 Oct 2024 21:07:24 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'uinside', 'openai-processing-ms': '962', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '10000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '9991828', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '49ms', 'x-request-id': 'req_f7a25ce7993a74d5a8f122591edd38c5', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74b248ac7094fa-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 22:07:24,728 - openai._base_client - DEBUG - request_id: req_f7a25ce7993a74d5a8f122591edd38c5
+2024-10-23 22:07:24,729 - tests.conftest - INFO - Test test_generate_answer[False] took 1.20 seconds
+2024-10-23 22:07:24,731 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 22:07:24,731 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 22:07:24,741 - root - INFO - Processing RAG query: Test query
+2024-10-23 22:07:24,742 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:07:24,742 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:07:24,742 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:07:25,047 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:07:25,049 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:07:25,430 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:07:25,431 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:07:25,432 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:07:25,638 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:25,638 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:25,639 - tests.conftest - INFO - Test test_rag_query[True] took 0.91 seconds
+2024-10-23 22:07:25,641 - root - INFO - Processing RAG query: Test query
+2024-10-23 22:07:25,641 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:07:25,642 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:07:25,642 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:07:25,951 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:07:25,953 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:07:26,263 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:07:26,264 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:07:26,266 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:07:26,457 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:26,458 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:26,460 - tests.conftest - INFO - Test test_rag_query[False] took 0.82 seconds
+2024-10-23 22:07:26,466 - tests.conftest - INFO - Test test_rag_query_with_different_queries[Short query] took 0.00 seconds
+2024-10-23 22:07:26,467 - tests.conftest - INFO - Test test_rag_query_with_different_queries[A very long query that contains multiple sentences and specific terms] took 0.00 seconds
+2024-10-23 22:07:26,468 - tests.conftest - INFO - Test test_rag_query_with_different_queries[] took 0.00 seconds
+2024-10-23 22:07:26,469 - root - INFO - Processing RAG query: Test query
+2024-10-23 22:07:26,470 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:07:26,471 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:07:26,471 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:07:26,804 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:07:26,805 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:07:27,111 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:07:27,112 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:07:27,114 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:07:27,312 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:27,313 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:27,315 - tests.conftest - INFO - Test test_rag_query_performance took 0.85 seconds
+2024-10-23 22:07:27,321 - root - INFO - Processing RAG query: Test query
+2024-10-23 22:07:27,322 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 22:07:27,322 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 22:07:27,323 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 22:07:27,631 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-23 22:07:27,631 - src.pinecone_manager - INFO - Creating new Pinecone index: book-embeddings
+2024-10-23 22:07:27,947 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-23 22:07:27,948 - src.pinecone_manager - INFO - Index book-embeddings already exists. Using existing index.
+2024-10-23 22:07:27,949 - src.pinecone_manager - INFO - Successfully initialized Pinecone index: book-embeddings
+2024-10-23 22:07:28,169 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"upsertedCount":1}'
+2024-10-23 22:07:28,171 - root - ERROR - Error in RAG query process: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 112, in rag_query
+    relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 94, in search_similar
+    results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/utils/error_handling.py", line 11, in inner_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/data/index.py", line 406, in query
+    raise ValueError(
+ValueError: The argument order for `query()` has changed; please use keyword arguments instead of positional arguments. Example: index.query(vector=[0.1, 0.2, 0.3], top_k=10, namespace='my_namespace')
+2024-10-23 22:07:28,178 - tests.conftest - INFO - Test test_rag_error_handling took 0.86 seconds
+2024-10-23 22:07:28,183 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 22:07:28,365 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 5 key phrases from the text
+2024-10-23 22:07:28,365 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 22:07:28,365 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 22:07:28,365 - tests.conftest - INFO - Test test_load_and_preprocess_text took 0.18 seconds
+2024-10-23 22:07:28,366 - src.text_processing - INFO - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-23 22:07:28,366 - src.text_processing - INFO - Created 13 chunks
+2024-10-23 22:07:28,366 - tests.conftest - INFO - Test test_split_into_chunks[100-20] took 0.00 seconds
+2024-10-23 22:07:28,367 - src.text_processing - INFO - Splitting text into chunks (size: 200, overlap: 50)
+2024-10-23 22:07:28,367 - src.text_processing - INFO - Created 7 chunks
+2024-10-23 22:07:28,367 - tests.conftest - INFO - Test test_split_into_chunks[200-50] took 0.00 seconds
+2024-10-23 22:07:28,367 - src.text_processing - INFO - Splitting text into chunks (size: 500, overlap: 100)
+2024-10-23 22:07:28,368 - src.text_processing - INFO - Created 3 chunks
+2024-10-23 22:07:28,368 - tests.conftest - INFO - Test test_split_into_chunks[500-100] took 0.00 seconds
+2024-10-23 22:07:28,368 - src.text_processing - INFO - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-23 22:07:28,368 - src.text_processing - INFO - Created 13 chunks
+2024-10-23 22:07:28,369 - tests.conftest - INFO - Test test_split_into_chunks_with_dict_input took 0.00 seconds

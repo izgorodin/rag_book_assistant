@@ -31,16 +31,20 @@ def test_create_embeddings_api_error(mocker):
     assert "API Error" in str(exc_info.value)
 
 @pytest.mark.parametrize("chunk,expected_length", [
-    ("", 0),
+    ("", 1536),
     ("Short text", 1536),
     ("A" * 1000, 1536)
 ])
-def test_create_embeddings_various_lengths(chunk, expected_length):
+def test_create_embeddings_various_lengths(chunk, expected_length, mocker):
     mock_embedding = [0.1] * expected_length
-    with patch('src.embedding.client.embeddings.create', return_value=Mock(data=[Mock(embedding=mock_embedding)])):
-        embeddings = create_embeddings([chunk])
-        assert len(embeddings) == 1, "Should create one embedding regardless of chunk length"
-        assert len(embeddings[0]) == expected_length, f"Embedding should always have {expected_length} dimensions"
+    mocker.patch('src.embedding.client.embeddings.create', return_value=Mock(data=[Mock(embedding=mock_embedding)]))
+    mocker.patch('src.embedding.PineconeManager.upsert_embeddings')
+    mocker.patch('src.embedding.save_to_cache')
+    mocker.patch('src.embedding.load_from_cache', return_value=None)
+
+    embeddings = create_embeddings([chunk])
+    assert len(embeddings) == 1
+    assert len(embeddings[0]) == expected_length
 
 def test_create_embeddings_with_cache(mocker):
     chunks = ["Test chunk 1", "Test chunk 2"]
@@ -54,6 +58,10 @@ def test_create_embeddings_with_cache(mocker):
     mock_create = mocker.patch('src.embedding.client.embeddings.create')
     mock_create.return_value.data = [mocker.Mock(embedding=mock_embedding)]
     
+    # Mock PineconeManager
+    mock_pinecone_manager = mocker.patch('src.embedding.PineconeManager')
+    mock_pinecone_manager.return_value.upsert_embeddings = mocker.Mock()
+    
     embeddings = create_embeddings(chunks)
     
     assert len(embeddings) == 2
@@ -61,4 +69,5 @@ def test_create_embeddings_with_cache(mocker):
     
     # Check if cache was used correctly
     assert mock_create.call_count == 1  # API called only for the first chunk
-    assert mock_save.call_count == 1  # Saved to cache only for the first chunk
+    assert mock_save.call_count == 1  # Cache saved for the first chunk
+    mock_pinecone_manager.return_value.upsert_embeddings.assert_called_once()

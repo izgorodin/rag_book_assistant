@@ -6,10 +6,11 @@ from openai import OpenAI
 from tqdm import tqdm
 from src.config import OPENAI_API_KEY, EMBEDDING_MODEL
 import logging
-from src.cache_manager import get_cache_key, save_to_cache, load_from_cache
 from src.text_processing import extract_dates, extract_named_entities, extract_key_phrases
 from src.book_data_interface import BookDataInterface
 from src.pinecone_manager import PineconeManager
+from src.cache_manager import CACHE_DIR, save_to_cache, load_from_cache
+import hashlib
 
 logger = logging.getLogger(__name__)
 
@@ -18,24 +19,30 @@ pinecone_manager = PineconeManager()
 if pinecone_manager.index is None:
     print("Warning: Pinecone index is not available. Some functionality may be limited.")
 
-def create_embeddings(chunks: List[str], batch_size: int = 100) -> List[List[float]]:
-    """
-    Create embeddings for chunks in batches using OpenAI and store them in Pinecone.
-    
-    Args:
-        chunks (List[str]): List of text chunks to embed.
-        batch_size (int): Number of chunks to process in each batch.
-    
-    Returns:
-        List[List[float]]: List of embeddings for all chunks.
-    """
-    def embedding_function(batch):
-        response = client.embeddings.create(input=batch, model=EMBEDDING_MODEL)
-        return [item.embedding for item in response.data]
+def create_embeddings(chunks: List[str]) -> List[List[float]]:
+    all_embeddings = []
+    pinecone_manager = PineconeManager()
 
-    all_embeddings = pinecone_manager.get_or_create_embeddings(chunks, embedding_function)
-    pinecone_manager.upsert_embeddings(chunks, all_embeddings)
-    
+    for chunk in chunks:
+        if not chunk.strip():
+            # Для пустых строк создаем нулевой вектор, но не сохраняем в Pinecone
+            all_embeddings.append([0.0] * 1536)
+        else:
+            cached_embedding = load_from_cache(chunk)
+            if cached_embedding:
+                all_embeddings.append(cached_embedding)
+            else:
+                response = client.embeddings.create(input=[chunk], model=EMBEDDING_MODEL)
+                embedding = response.data[0].embedding
+                all_embeddings.append(embedding)
+                save_to_cache(chunk, embedding)
+
+    # Сохраняем в Pinecone только непустые чанки
+    non_empty_chunks = [c for c in chunks if c.strip()]
+    non_empty_embeddings = [e for c, e in zip(chunks, all_embeddings) if c.strip()]
+    if non_empty_chunks:
+        pinecone_manager.upsert_embeddings(non_empty_chunks, non_empty_embeddings)
+
     return all_embeddings
 
 def save_chunks_and_embeddings(book_data: BookDataInterface, file_path: str):
@@ -88,3 +95,20 @@ def get_or_create_query_embedding(query: str, cache_file: str) -> List[float]:
         pickle.dump(cache, f)
     
     return embedding
+
+def load_from_cache(key: str) -> any:
+    """
+    Load data from the cache using a hashed key.
+
+    Args:
+        key (str): The cache key.
+
+    Returns:
+        any: The cached data if found, None otherwise.
+    """
+    hashed_key = hashlib.md5(key.encode()).hexdigest()
+    file_path = os.path.join(CACHE_DIR, f"{hashed_key}.pkl")
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as f:
+            return pickle.load(f)
+    return None
