@@ -23,19 +23,16 @@ class MockPinecone:
         self.indexes = {}
 
     def list_indexes(self):
-        class MockIndexList:
-            def __init__(self, names):
-                self._names = names
-            def names(self):
-                return self._names
-        return MockIndexList(list(self.indexes.keys()))
+        return list(self.indexes.keys())
 
     def create_index(self, name: str, dimension: int, metric: str, spec: Any):
+        if name in self.indexes:
+            raise ValueError(f"Index {name} already exists")
         self.indexes[name] = MockPineconeIndex()
 
     def Index(self, name: str) -> MockPineconeIndex:
         if name not in self.indexes:
-            self.indexes[name] = MockPineconeIndex()
+            raise ValueError(f"Index {name} does not exist")
         return self.indexes[name]
 
     def reset(self):

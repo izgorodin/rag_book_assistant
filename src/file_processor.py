@@ -1,6 +1,6 @@
 # src/file_processor.py
 import os
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 from docx import Document
 from odf import text
 from odf.opendocument import load

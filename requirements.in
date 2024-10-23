@@ -13,9 +13,9 @@ spacy # пакет используем для анализа текста
 # en-core-web-md пакет для spacy используем для анализа текста
 flask
 colorlog
-PyPDF2
 python-docx
 odf
 opendocument
 odfpy
 pinecone-client
+pypdf

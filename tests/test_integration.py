@@ -121,4 +121,5 @@ def test_pinecone_integration():
     assert len(embeddings) == 2
     assert all(len(emb) == 1536 for emb in embeddings)
     results = pinecone_manager.search_similar([0.1] * 1536, top_k=1)
-    results = pinecone_manager.search_similar([0.1] * 1536
+    assert len(results) == 1
+    assert "chunk" in results[0] and "score" in results[0]

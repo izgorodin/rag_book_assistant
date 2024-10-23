@@ -2,9 +2,8 @@ from abc import abstractmethod, ABC
 from contextlib import contextmanager
 import logging
 from pinecone import Pinecone, ServerlessSpec
-from typing import List, Dict, Any, Optional, Callable, Generator
-import numpy as np
-from src.config import PINECONE_API_KEY, PINECONE_ENVIRONMENT, EMBEDDING_DIMENSION
+from typing import List, Dict, Any, Callable, Generator
+from src.config import PINECONE_API_KEY, PINECONE_CLOUD, EMBEDDING_DIMENSION, PINECONE_INDEX_NAME, PINECONE_METRIC, PINECONE_REGION
 from src.cache_manager import get_cache_key, save_to_cache, load_from_cache
 
 logger = logging.getLogger(__name__)
@@ -48,7 +47,7 @@ class BasePineconeManager:
         pass
 
 class PineconeManager(BasePineconeManager):
-    def __init__(self, index_name: str = "book-embeddings", pinecone_client: PineconeInterface = None):
+    def __init__(self, index_name: str = PINECONE_INDEX_NAME, pinecone_client: PineconeInterface = None):
         self.index_name: str = index_name
         self.index: Any = None
         self.pc: PineconeInterface = pinecone_client or Pinecone(api_key=PINECONE_API_KEY)
@@ -56,19 +55,19 @@ class PineconeManager(BasePineconeManager):
 
     def _initialize_index(self) -> None:
         try:
-            if self.index_name not in self.pc.list_indexes().names():
+            if self.index_name not in self.pc.list_indexes():
                 logger.info(f"Creating new Pinecone index: {self.index_name}")
                 self.pc.create_index(
                     name=self.index_name,
                     dimension=EMBEDDING_DIMENSION,
-                    metric='cosine',
-                    spec=ServerlessSpec(cloud='aws', region=PINECONE_ENVIRONMENT)
+                    metric=PINECONE_METRIC,
+                    spec=ServerlessSpec(cloud=PINECONE_CLOUD, region=PINECONE_REGION)
                 )
             self.index = self.pc.Index(self.index_name)
             logger.info(f"Successfully initialized Pinecone index: {self.index_name}")
         except Exception as e:
             logger.error(f"Error initializing Pinecone: {str(e)}")
-            self.index = None
+            raise
 
     def is_available(self) -> bool:
         return self.index is not None
