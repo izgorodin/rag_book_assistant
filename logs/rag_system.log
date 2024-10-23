@@ -285,3 +285,977 @@ What is missing: Detailed information about the content of the file, its signifi
 2024-10-23 18:23:34,554 - werkzeug - INFO -  * Debugger PIN: 114-525-270
 2024-10-23 19:02:51,331 - werkzeug - INFO -  * Detected change in '/Users/eduardizgorodin/Projects/rag_book_assistant/app.py', reloading
 2024-10-23 19:02:51,518 - werkzeug - INFO -  * Restarting with stat
+2024-10-23 19:54:24,169 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 19:54:24,169 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 19:54:26,036 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:54:26,037 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:54:26,037 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:54:26,358 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:54:26,570 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:54:26,574 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:54:26,575 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:54:26,576 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:54:26,946 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:54:27,186 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:54:27,189 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:54:27,190 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:54:27,190 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:54:27,537 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:54:27,741 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:54:52,770 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 19:54:52,772 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 19:54:54,574 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:54:54,575 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:54:54,575 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:54:55,255 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:54:55,523 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:54:55,527 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:54:55,528 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:54:55,529 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:54:55,908 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:54:56,107 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:54:56,111 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:54:56,112 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:54:56,112 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:54:56,417 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:54:56,641 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:57:02,652 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 19:57:02,653 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 19:57:04,496 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:57:04,497 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:57:04,497 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:57:04,810 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:57:05,032 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:57:05,037 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:57:05,038 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:57:05,038 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:57:05,377 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:57:05,570 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:57:05,573 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:57:05,573 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:57:05,573 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:57:05,887 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:57:06,267 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:57:06,430 - tests.conftest - INFO - Test test_create_embeddings_length[chunks0-2] took 0.01 seconds
+2024-10-23 19:57:06,436 - tests.conftest - INFO - Test test_create_embeddings_length[chunks1-1] took 0.00 seconds
+2024-10-23 19:57:06,439 - tests.conftest - INFO - Test test_create_embeddings_length[chunks2-0] took 0.00 seconds
+2024-10-23 19:57:06,443 - tests.conftest - INFO - Test test_create_embeddings_structure took 0.00 seconds
+2024-10-23 19:57:06,444 - tests.conftest - INFO - Test test_create_embeddings_api_error took 0.00 seconds
+2024-10-23 19:57:06,448 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[-0] took 0.00 seconds
+2024-10-23 19:57:06,453 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[Short text-1536] took 0.00 seconds
+2024-10-23 19:57:06,458 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-1536] took 0.00 seconds
+2024-10-23 19:57:06,463 - tests.conftest - INFO - Test test_create_embeddings_with_cache took 0.00 seconds
+2024-10-23 19:57:06,463 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.pdf with extension: .pdf
+2024-10-23 19:57:06,463 - src.file_processor - INFO - Using processor for extension: .pdf
+2024-10-23 19:57:06,465 - tests.conftest - INFO - Test test_process_pdf took 0.00 seconds
+2024-10-23 19:57:06,465 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.docx with extension: .docx
+2024-10-23 19:57:06,465 - src.file_processor - INFO - Using processor for extension: .docx
+2024-10-23 19:57:06,475 - tests.conftest - INFO - Test test_process_docx took 0.01 seconds
+2024-10-23 19:57:06,475 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.odt with extension: .odt
+2024-10-23 19:57:06,475 - src.file_processor - INFO - Using processor for extension: .odt
+2024-10-23 19:57:06,477 - tests.conftest - INFO - Test test_process_odt took 0.00 seconds
+2024-10-23 19:57:06,477 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.txt with extension: .txt
+2024-10-23 19:57:06,478 - src.file_processor - INFO - Using processor for extension: .txt
+2024-10-23 19:57:06,478 - tests.conftest - INFO - Test test_process_txt took 0.00 seconds
+2024-10-23 19:57:06,479 - src.file_processor - INFO - Processing file: /private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-0/test_unsupported_file_format0/test.unsupported with extension: .unsupported
+2024-10-23 19:57:06,480 - src.file_processor - ERROR - Unsupported file format: .unsupported
+2024-10-23 19:57:06,480 - tests.conftest - INFO - Test test_unsupported_file_format took 0.00 seconds
+2024-10-23 19:57:06,519 - tests.conftest - INFO - Test test_search took 0.00 seconds
+2024-10-23 19:57:06,522 - tests.conftest - INFO - Test test_embedding_weight took 0.00 seconds
+2024-10-23 19:57:06,523 - tests.conftest - INFO - Test test_hybrid_search_initialization took 0.00 seconds
+2024-10-23 19:57:07,898 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x15eb6bec0>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus and and and and and and and and and and machine machine machine machine machine machine machine machine machine machine machine machine machine machine machine automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine political_machine learning learning learning learning learning learning learning learning learning learning learning learning learning determine determine determine determine determine determine determine determine determine determine determine determine determine determine determine take take take take take take take take take take take take take'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 19:57:07,933 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 19:57:07,933 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 19:57:08,066 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x16465f6b0>
+2024-10-23 19:57:08,066 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x117abebd0> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 19:57:08,116 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x16465f4d0>
+2024-10-23 19:57:08,116 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:08,117 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 19:57:08,117 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 19:57:08,117 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 19:57:08,117 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:08,422 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 18:57:08 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'47'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999588'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'4ms'), (b'x-request-id', b'req_32c0ffb7a23a8d56642c4e4f500e25ae'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=gylpVaOAdyaQkwUadzyR8.iI1JDFhJPIUEnVIgl_C0c-1729709828-1.0.1.1-SkbPhTmpZ6T7hat5q9EHD.g6gAx2nfZB_LpELd__bIRj0B6pOGSCnp5Qq6YgOAmnec_wlcZ2OElq9L9GPG6rzQ; path=/; expires=Wed, 23-Oct-24 19:27:08 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=0QxT7TaKA74lCeEyPFD8lzmR_dwQMA6bQkQBe1sOijg-1729709828536-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73f37a996c785c-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 19:57:08,424 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 19:57:08,425 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 19:57:08,426 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 19:57:08,426 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 19:57:08,427 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 19:57:08,427 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Wed, 23 Oct 2024 18:57:08 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-3-small'), ('openai-organization', 'uinside'), ('openai-processing-ms', '47'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '5000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '4999588'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '4ms'), ('x-request-id', 'req_32c0ffb7a23a8d56642c4e4f500e25ae'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=gylpVaOAdyaQkwUadzyR8.iI1JDFhJPIUEnVIgl_C0c-1729709828-1.0.1.1-SkbPhTmpZ6T7hat5q9EHD.g6gAx2nfZB_LpELd__bIRj0B6pOGSCnp5Qq6YgOAmnec_wlcZ2OElq9L9GPG6rzQ; path=/; expires=Wed, 23-Oct-24 19:27:08 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=0QxT7TaKA74lCeEyPFD8lzmR_dwQMA6bQkQBe1sOijg-1729709828536-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d73f37a996c785c-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-23 19:57:08,428 - openai._base_client - DEBUG - request_id: req_32c0ffb7a23a8d56642c4e4f500e25ae
+2024-10-23 19:57:08,431 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 19:57:08,448 - tests.conftest - INFO - Test test_hybrid_search_search took 1.92 seconds
+2024-10-23 19:57:08,451 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1646a1b20>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence artificial_intelligence Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 19:57:08,452 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 19:57:08,452 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:08,452 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 19:57:08,452 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 19:57:08,453 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 19:57:08,453 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:08,787 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 18:57:08 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'36'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999821'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'2ms'), (b'x-request-id', b'req_483dc3209b80b13721bff323c7c48f03'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73f37cbc03785c-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 19:57:08,787 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 19:57:08,789 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 19:57:08,791 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 19:57:08,791 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 19:57:08,792 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 19:57:08,792 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 18:57:08 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '36', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999821', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '2ms', 'x-request-id': 'req_483dc3209b80b13721bff323c7c48f03', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d73f37cbc03785c-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 19:57:08,793 - openai._base_client - DEBUG - request_id: req_483dc3209b80b13721bff323c7c48f03
+2024-10-23 19:57:08,794 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 19:57:08,808 - tests.conftest - INFO - Test test_hybrid_search_embedding_weight took 0.36 seconds
+2024-10-23 19:57:09,126 - tests.conftest - INFO - Test test_imports took 0.32 seconds
+2024-10-23 19:57:09,127 - tests.conftest - INFO - Test test_config_import took 0.00 seconds
+2024-10-23 19:57:09,128 - tests.conftest - INFO - Test test_openai_api_key took 0.00 seconds
+2024-10-23 19:57:09,129 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 19:57:09,130 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 19:57:09,130 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 19:57:09,322 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 19:57:09,323 - src.text_processing - INFO - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-23 19:57:09,334 - tests.conftest - INFO - Test test_different_book_types[True-test_book.txt] took 0.21 seconds
+2024-10-23 19:57:09,335 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 19:57:09,335 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 19:57:09,335 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 19:57:09,486 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 19:57:09,486 - src.text_processing - INFO - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-23 19:57:09,496 - tests.conftest - INFO - Test test_different_book_types[False-test_book.txt] took 0.16 seconds
+2024-10-23 19:57:09,497 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 19:57:09,497 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 19:57:09,497 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 19:57:09,648 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 19:57:09,648 - src.text_processing - INFO - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-23 19:57:09,659 - tests.conftest - INFO - Test test_rag_query[True] took 0.16 seconds
+2024-10-23 19:57:09,659 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 19:57:09,659 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 19:57:09,660 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 19:57:09,808 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 19:57:09,809 - src.text_processing - INFO - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-23 19:57:09,822 - tests.conftest - INFO - Test test_rag_query[False] took 0.16 seconds
+2024-10-23 19:57:09,823 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:57:09,823 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:57:09,823 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:57:10,183 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:57:10,395 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:57:10,409 - tests.conftest - INFO - Test test_pinecone_integration took 0.59 seconds
+2024-10-23 19:57:10,410 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:57:10,411 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:57:10,411 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:57:10,834 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:57:11,246 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:57:11,257 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x165913880>, 'json_data': {'input': ['Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test trial trial trial trial trial trial trial trial trial trial trial trial trial trial trial trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run query query query query query query query query query query query query query query query enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 19:57:11,258 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 19:57:11,258 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:11,259 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 19:57:11,259 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 19:57:11,259 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 19:57:11,259 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:11,631 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 18:57:11 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'23'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999839'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_ea6c9bd51075b42f856beb37bcbfa2c8'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73f38e4cef785c-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 19:57:11,632 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 19:57:11,634 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 19:57:11,635 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 19:57:11,635 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 19:57:11,635 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 19:57:11,635 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 18:57:11 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '23', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999839', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '1ms', 'x-request-id': 'req_ea6c9bd51075b42f856beb37bcbfa2c8', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d73f38e4cef785c-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 19:57:11,636 - openai._base_client - DEBUG - request_id: req_ea6c9bd51075b42f856beb37bcbfa2c8
+2024-10-23 19:57:11,638 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 19:57:11,654 - tests.conftest - INFO - Test test_find_most_relevant_chunks[1] took 0.40 seconds
+2024-10-23 19:57:11,656 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 19:57:11,673 - tests.conftest - INFO - Test test_find_most_relevant_chunks[2] took 0.02 seconds
+2024-10-23 19:57:11,675 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 19:57:11,684 - tests.conftest - INFO - Test test_find_most_relevant_chunks[3] took 0.01 seconds
+2024-10-23 19:57:11,685 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 19:57:11,686 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 19:57:11,695 - root - INFO - Generating answer for query: Test query
+2024-10-23 19:57:11,698 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing.'}, {'role': 'user', 'content': 'Context: Test context\n\nQuestion: Test query\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing.'}], 'model': 'gpt-4o-mini', 'max_tokens': 15000}}
+2024-10-23 19:57:11,698 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-10-23 19:57:11,698 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 19:57:11,734 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x164fb9880>
+2024-10-23 19:57:11,735 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x117c667d0> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 19:57:11,774 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x16468c740>
+2024-10-23 19:57:11,774 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:11,774 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 19:57:11,774 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 19:57:11,774 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 19:57:11,774 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:13,216 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 18:57:13 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'1270'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'10000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'9991828'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'49ms'), (b'x-request-id', b'req_9fbbb369681a217a74a01d327a3cbe7f'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=oXUXxR3lKtzrASq.pFlu5qA4NnJ20nBMn.wu8ZQF_UA-1729709833-1.0.1.1-LTrsTCIpgn8ls8dKdd_.6g9gDK02iwFGQG1RMbv.9v9faBP3faT9OmiwL3uw5Z.XBvFLsme9ovYOAqWWQoNM9w; path=/; expires=Wed, 23-Oct-24 19:27:13 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=eoyCTLA3u_TIhw8n3lOAa5dbUCnm__2trkiLeu9XGK8-1729709833330-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73f3917c60e3bd-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 19:57:13,218 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-23 19:57:13,219 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 19:57:13,219 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 19:57:13,220 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 19:57:13,220 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 19:57:13,220 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Wed, 23 Oct 2024 18:57:13 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'uinside'), ('openai-processing-ms', '1270'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '10000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '9991828'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '49ms'), ('x-request-id', 'req_9fbbb369681a217a74a01d327a3cbe7f'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=oXUXxR3lKtzrASq.pFlu5qA4NnJ20nBMn.wu8ZQF_UA-1729709833-1.0.1.1-LTrsTCIpgn8ls8dKdd_.6g9gDK02iwFGQG1RMbv.9v9faBP3faT9OmiwL3uw5Z.XBvFLsme9ovYOAqWWQoNM9w; path=/; expires=Wed, 23-Oct-24 19:27:13 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=eoyCTLA3u_TIhw8n3lOAa5dbUCnm__2trkiLeu9XGK8-1729709833330-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d73f3917c60e3bd-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-23 19:57:13,221 - openai._base_client - DEBUG - request_id: req_9fbbb369681a217a74a01d327a3cbe7f
+2024-10-23 19:57:13,227 - tests.conftest - INFO - Test test_generate_answer[True] took 1.54 seconds
+2024-10-23 19:57:13,229 - root - INFO - Generating answer for query: Test query
+2024-10-23 19:57:13,233 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing.'}, {'role': 'user', 'content': 'Context: Test context\n\nQuestion: Test query\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing.'}], 'model': 'gpt-4o-mini', 'max_tokens': 15000}}
+2024-10-23 19:57:13,234 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-10-23 19:57:13,235 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:13,235 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 19:57:13,235 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 19:57:13,236 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 19:57:13,236 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:14,050 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 18:57:14 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'644'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'10000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'9991828'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'49ms'), (b'x-request-id', b'req_04b4fc4c5a49ff4fd9b845d238d4675f'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73f39a9d05e3bd-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 19:57:14,052 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-23 19:57:14,053 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 19:57:14,053 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 19:57:14,054 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 19:57:14,054 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 19:57:14,054 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Wed, 23 Oct 2024 18:57:14 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'uinside', 'openai-processing-ms': '644', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '10000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '9991828', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '49ms', 'x-request-id': 'req_04b4fc4c5a49ff4fd9b845d238d4675f', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d73f39a9d05e3bd-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 19:57:14,055 - openai._base_client - DEBUG - request_id: req_04b4fc4c5a49ff4fd9b845d238d4675f
+2024-10-23 19:57:14,057 - tests.conftest - INFO - Test test_generate_answer[False] took 0.83 seconds
+2024-10-23 19:57:14,060 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 19:57:14,061 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 19:57:14,078 - root - INFO - Processing RAG query: Test query
+2024-10-23 19:57:14,079 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:57:14,079 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:57:14,079 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:57:14,389 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:57:14,646 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:57:14,648 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x165353a60>, 'json_data': {'input': ['Test query'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 19:57:14,649 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 19:57:14,650 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:14,650 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 19:57:14,651 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 19:57:14,651 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 19:57:14,651 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 19:57:14,980 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 18:57:15 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'48'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999998'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_01af29768f63af879bab96038ba77994'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73f3a37a93785c-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 19:57:14,980 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 19:57:14,980 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 19:57:15,013 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 19:57:15,013 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 19:57:15,013 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 19:57:15,013 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 18:57:15 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '48', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999998', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_01af29768f63af879bab96038ba77994', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d73f3a37a93785c-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 19:57:15,013 - openai._base_client - DEBUG - request_id: req_01af29768f63af879bab96038ba77994
+2024-10-23 19:57:15,014 - root - ERROR - Error in RAG query process: 'NoneType' object has no attribute 'upsert'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 111, in rag_query
+    query_embedding = create_embeddings([query])[0]
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/embedding.py", line 37, in create_embeddings
+    pinecone_manager.upsert_embeddings(chunks, all_embeddings)
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 26, in upsert_embeddings
+    self.index.upsert(vectors=vectors)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'upsert'
+2024-10-23 19:57:15,015 - tests.conftest - INFO - Test test_rag_query[True] took 0.96 seconds
+2024-10-23 19:57:15,018 - root - INFO - Processing RAG query: Test query
+2024-10-23 19:57:15,018 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 19:57:15,019 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 19:57:15,019 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 19:57:15,347 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 19:57:15,800 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 19:57:15,801 - root - ERROR - Error in RAG query process: 'NoneType' object has no attribute 'upsert'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 111, in rag_query
+    query_embedding = create_embeddings([query])[0]
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/embedding.py", line 37, in create_embeddings
+    pinecone_manager.upsert_embeddings(chunks, all_embeddings)
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 26, in upsert_embeddings
+    self.index.upsert(vectors=vectors)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'upsert'
+2024-10-23 19:57:15,803 - tests.conftest - INFO - Test test_rag_query[False] took 0.79 seconds
+2024-10-23 19:57:15,810 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 19:57:15,811 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 19:57:15,811 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 19:57:15,994 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 19:57:15,996 - tests.conftest - INFO - Test test_load_and_preprocess_text took 0.19 seconds
+2024-10-23 19:57:15,996 - src.text_processing - INFO - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-23 19:57:16,008 - tests.conftest - INFO - Test test_split_into_chunks[100-20] took 0.01 seconds
+2024-10-23 19:57:16,009 - src.text_processing - INFO - Splitting text into chunks (size: 200, overlap: 50)
+2024-10-23 19:57:16,013 - tests.conftest - INFO - Test test_split_into_chunks[200-50] took 0.00 seconds
+2024-10-23 19:57:16,013 - src.text_processing - INFO - Splitting text into chunks (size: 500, overlap: 100)
+2024-10-23 19:57:16,017 - tests.conftest - INFO - Test test_split_into_chunks[500-100] took 0.00 seconds
+2024-10-23 19:57:16,017 - src.text_processing - INFO - Splitting text into chunks (size: 10, overlap: 2)
+2024-10-23 19:57:16,020 - tests.conftest - INFO - Test test_split_into_chunks_short_text took 0.00 seconds
+2024-10-23 20:01:44,782 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 20:01:44,782 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 20:01:46,409 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:01:46,410 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:01:46,410 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:01:46,719 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:01:47,046 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:01:47,049 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:01:47,049 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:01:47,049 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:01:48,051 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:01:48,691 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:01:48,697 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:01:48,698 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:01:48,698 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:01:49,258 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:01:49,656 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:01:49,818 - tests.conftest - INFO - Test test_create_embeddings_length[chunks0-2] took 0.00 seconds
+2024-10-23 20:01:49,823 - tests.conftest - INFO - Test test_create_embeddings_length[chunks1-1] took 0.00 seconds
+2024-10-23 20:01:49,827 - tests.conftest - INFO - Test test_create_embeddings_length[chunks2-0] took 0.00 seconds
+2024-10-23 20:01:49,830 - tests.conftest - INFO - Test test_create_embeddings_structure took 0.00 seconds
+2024-10-23 20:01:49,831 - tests.conftest - INFO - Test test_create_embeddings_api_error took 0.00 seconds
+2024-10-23 20:01:49,836 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[-0] took 0.00 seconds
+2024-10-23 20:01:49,840 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[Short text-1536] took 0.00 seconds
+2024-10-23 20:01:49,844 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-1536] took 0.00 seconds
+2024-10-23 20:01:49,849 - tests.conftest - INFO - Test test_create_embeddings_with_cache took 0.00 seconds
+2024-10-23 20:01:49,849 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.pdf with extension: .pdf
+2024-10-23 20:01:49,850 - src.file_processor - INFO - Using processor for extension: .pdf
+2024-10-23 20:01:49,851 - tests.conftest - INFO - Test test_process_pdf took 0.00 seconds
+2024-10-23 20:01:49,851 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.docx with extension: .docx
+2024-10-23 20:01:49,851 - src.file_processor - INFO - Using processor for extension: .docx
+2024-10-23 20:01:49,859 - tests.conftest - INFO - Test test_process_docx took 0.01 seconds
+2024-10-23 20:01:49,859 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.odt with extension: .odt
+2024-10-23 20:01:49,859 - src.file_processor - INFO - Using processor for extension: .odt
+2024-10-23 20:01:49,861 - tests.conftest - INFO - Test test_process_odt took 0.00 seconds
+2024-10-23 20:01:49,861 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.txt with extension: .txt
+2024-10-23 20:01:49,861 - src.file_processor - INFO - Using processor for extension: .txt
+2024-10-23 20:01:49,862 - tests.conftest - INFO - Test test_process_txt took 0.00 seconds
+2024-10-23 20:01:49,863 - src.file_processor - INFO - Processing file: /private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-1/test_unsupported_file_format0/test.unsupported with extension: .unsupported
+2024-10-23 20:01:49,863 - src.file_processor - ERROR - Unsupported file format: .unsupported
+2024-10-23 20:01:49,863 - tests.conftest - INFO - Test test_unsupported_file_format took 0.00 seconds
+2024-10-23 20:01:49,942 - tests.conftest - INFO - Test test_search took 0.04 seconds
+2024-10-23 20:01:49,944 - tests.conftest - INFO - Test test_embedding_weight took 0.00 seconds
+2024-10-23 20:01:49,946 - tests.conftest - INFO - Test test_hybrid_search_initialization took 0.00 seconds
+2024-10-23 20:01:51,357 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x11da04400>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination and and and and and and and and and and machine machine machine machine machine machine machine machine machine machine machine machine machine machine machine automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine learning learning learning learning learning learning learning learning learning learning learning learning learning discover discover discover discover discover discover discover discover discover discover discover discover acquisition acquisition acquisition acquisition acquisition acquisition acquisition acquisition acquisition acquisition acquisition acquisition acquisition acquisition acquisition'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 20:01:51,390 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 20:01:51,391 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 20:01:51,575 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x15c24fc80>
+2024-10-23 20:01:51,576 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x10ae4ac50> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 20:01:51,619 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1165dc500>
+2024-10-23 20:01:51,620 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:01:51,621 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:01:51,621 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:01:51,622 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:01:51,622 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:01:51,853 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:01:51 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'28'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999582'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'5ms'), (b'x-request-id', b'req_e330effb4acfd7ee7ddba9f0713da229'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=q2uYmwe_23pmr7ImY8Q0kWvS6VwbvhbahNuc_7XbXiI-1729710111-1.0.1.1-TiSWH1nJTfXXWT_PtP21tod6mCBZi1mHO9sUpwjA2s4os8vT7VxGvKa1eTAukLMZd4K5Bz9s5Mj2NHGiP6o.fw; path=/; expires=Wed, 23-Oct-24 19:31:51 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=6DzXCOR7YUD_jAzrGYm_w8b1Cnrc27YPaL5_ucsnS2w-1729710111962-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73fa668f2ee3c4-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:01:51,856 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 20:01:51,857 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:01:51,858 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:01:51,859 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:01:51,859 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:01:51,860 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Wed, 23 Oct 2024 19:01:51 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-3-small'), ('openai-organization', 'uinside'), ('openai-processing-ms', '28'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '5000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '4999582'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '5ms'), ('x-request-id', 'req_e330effb4acfd7ee7ddba9f0713da229'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=q2uYmwe_23pmr7ImY8Q0kWvS6VwbvhbahNuc_7XbXiI-1729710111-1.0.1.1-TiSWH1nJTfXXWT_PtP21tod6mCBZi1mHO9sUpwjA2s4os8vT7VxGvKa1eTAukLMZd4K5Bz9s5Mj2NHGiP6o.fw; path=/; expires=Wed, 23-Oct-24 19:31:51 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=6DzXCOR7YUD_jAzrGYm_w8b1Cnrc27YPaL5_ucsnS2w-1729710111962-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d73fa668f2ee3c4-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-23 20:01:51,860 - openai._base_client - DEBUG - request_id: req_e330effb4acfd7ee7ddba9f0713da229
+2024-10-23 20:01:51,865 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:01:51,882 - tests.conftest - INFO - Test test_hybrid_search_search took 1.94 seconds
+2024-10-23 20:01:51,885 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x11da19c60>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 20:01:51,886 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 20:01:51,886 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:01:51,887 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:01:51,887 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:01:51,887 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:01:51,887 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:01:52,302 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:01:52 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'22'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999821'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'2ms'), (b'x-request-id', b'req_89be728285697c36c55b74d150999b13'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73fa682e49e3c4-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:01:52,302 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 20:01:52,303 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:01:52,455 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:01:52,456 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:01:52,456 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:01:52,457 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 19:01:52 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '22', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999821', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '2ms', 'x-request-id': 'req_89be728285697c36c55b74d150999b13', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d73fa682e49e3c4-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 20:01:52,458 - openai._base_client - DEBUG - request_id: req_89be728285697c36c55b74d150999b13
+2024-10-23 20:01:52,460 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:01:52,481 - tests.conftest - INFO - Test test_hybrid_search_embedding_weight took 0.60 seconds
+2024-10-23 20:01:52,493 - tests.conftest - INFO - Test test_imports took 0.01 seconds
+2024-10-23 20:01:52,494 - tests.conftest - INFO - Test test_config_import took 0.00 seconds
+2024-10-23 20:01:52,496 - tests.conftest - INFO - Test test_openai_api_key took 0.00 seconds
+2024-10-23 20:01:52,496 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:01:52,497 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:01:52,497 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:01:52,675 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:01:52,685 - tests.conftest - INFO - Test test_different_book_types[True-test_book.txt] took 0.19 seconds
+2024-10-23 20:01:52,686 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:01:52,686 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:01:52,686 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:01:52,844 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:01:52,854 - tests.conftest - INFO - Test test_different_book_types[False-test_book.txt] took 0.17 seconds
+2024-10-23 20:01:52,854 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:01:52,855 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:01:52,855 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:01:53,009 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:01:53,020 - tests.conftest - INFO - Test test_rag_query[True] took 0.17 seconds
+2024-10-23 20:01:53,021 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:01:53,021 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:01:53,021 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:01:53,172 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:01:53,182 - tests.conftest - INFO - Test test_rag_query[False] took 0.16 seconds
+2024-10-23 20:01:53,183 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:01:53,183 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:01:53,183 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:01:53,611 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:01:53,890 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:01:53,902 - tests.conftest - INFO - Test test_pinecone_integration took 0.72 seconds
+2024-10-23 20:01:53,903 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:01:53,904 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:01:53,904 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:01:54,466 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:01:55,129 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:01:55,138 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x15e31b4c0>, 'json_data': {'input': ['Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test quiz quiz quiz quiz quiz quiz quiz quiz quiz quiz quiz quiz quiz quiz quiz trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run query query query query query query query query query query query query query query query interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 20:01:55,139 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 20:01:55,140 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:01:55,140 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:01:55,140 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:01:55,140 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:01:55,141 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:01:55,428 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:01:55 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'39'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999821'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'2ms'), (b'x-request-id', b'req_6a7be343fd95abfc5d1f61d7ca963b47'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73fa7c8972e3c4-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:01:55,429 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 20:01:55,429 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:01:55,444 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:01:55,445 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:01:55,445 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:01:55,445 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 19:01:55 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '39', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999821', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '2ms', 'x-request-id': 'req_6a7be343fd95abfc5d1f61d7ca963b47', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d73fa7c8972e3c4-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 20:01:55,445 - openai._base_client - DEBUG - request_id: req_6a7be343fd95abfc5d1f61d7ca963b47
+2024-10-23 20:01:55,446 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:01:55,452 - tests.conftest - INFO - Test test_find_most_relevant_chunks[1] took 0.32 seconds
+2024-10-23 20:01:55,453 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:01:55,459 - tests.conftest - INFO - Test test_find_most_relevant_chunks[2] took 0.01 seconds
+2024-10-23 20:01:55,461 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:01:55,470 - tests.conftest - INFO - Test test_find_most_relevant_chunks[3] took 0.01 seconds
+2024-10-23 20:01:55,471 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 20:01:55,471 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 20:01:55,477 - root - INFO - Generating answer for query: Test query
+2024-10-23 20:01:55,479 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing.'}, {'role': 'user', 'content': 'Context: Test context\n\nQuestion: Test query\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing.'}], 'model': 'gpt-4o-mini', 'max_tokens': 15000}}
+2024-10-23 20:01:55,480 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-10-23 20:01:55,480 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 20:01:55,514 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x15e2fd730>
+2024-10-23 20:01:55,514 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x10aec6850> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 20:01:55,554 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x15e2fd9d0>
+2024-10-23 20:01:55,555 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:01:55,555 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:01:55,555 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:01:55,555 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:01:55,555 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:01:56,707 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:01:56 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'969'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'10000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'9991828'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'49ms'), (b'x-request-id', b'req_972cfbd45048ac99595ee1f4650a47ad'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=zNaKDu0PFvvEnqsWKOufj5QmjPjXU93LaUkQebRljvg-1729710116-1.0.1.1-8NJY8vMMBvdMcYiwTRygR781DEcAgnffdEJF5xtWd5f_zb7Marv87yfd07ArBiVvJvJjy8HBussYBG_umesC8Q; path=/; expires=Wed, 23-Oct-24 19:31:56 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=FifMzwsxzBwGAreIPZKOq5LZHO7rwsMdS647cqLRiTk-1729710116820-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73fa7f2c48489e-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:01:56,709 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-23 20:01:56,710 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:01:56,711 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:01:56,711 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:01:56,712 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:01:56,712 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Wed, 23 Oct 2024 19:01:56 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'uinside'), ('openai-processing-ms', '969'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '10000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '9991828'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '49ms'), ('x-request-id', 'req_972cfbd45048ac99595ee1f4650a47ad'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=zNaKDu0PFvvEnqsWKOufj5QmjPjXU93LaUkQebRljvg-1729710116-1.0.1.1-8NJY8vMMBvdMcYiwTRygR781DEcAgnffdEJF5xtWd5f_zb7Marv87yfd07ArBiVvJvJjy8HBussYBG_umesC8Q; path=/; expires=Wed, 23-Oct-24 19:31:56 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=FifMzwsxzBwGAreIPZKOq5LZHO7rwsMdS647cqLRiTk-1729710116820-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d73fa7f2c48489e-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-23 20:01:56,713 - openai._base_client - DEBUG - request_id: req_972cfbd45048ac99595ee1f4650a47ad
+2024-10-23 20:01:56,720 - tests.conftest - INFO - Test test_generate_answer[True] took 1.25 seconds
+2024-10-23 20:01:56,722 - root - INFO - Generating answer for query: Test query
+2024-10-23 20:01:56,727 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing.'}, {'role': 'user', 'content': 'Context: Test context\n\nQuestion: Test query\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing.'}], 'model': 'gpt-4o-mini', 'max_tokens': 15000}}
+2024-10-23 20:01:56,727 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-10-23 20:01:56,728 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:01:56,728 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:01:56,728 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:01:56,729 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:01:56,729 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:01:58,201 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:01:58 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'1286'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'10000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'9991828'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'49ms'), (b'x-request-id', b'req_d9c5cea84a64a5380f31e91b905ffe0d'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73fa866add489e-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:01:58,202 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-23 20:01:58,203 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:01:58,204 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:01:58,204 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:01:58,204 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:01:58,204 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Wed, 23 Oct 2024 19:01:58 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'uinside', 'openai-processing-ms': '1286', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '10000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '9991828', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '49ms', 'x-request-id': 'req_d9c5cea84a64a5380f31e91b905ffe0d', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d73fa866add489e-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 20:01:58,205 - openai._base_client - DEBUG - request_id: req_d9c5cea84a64a5380f31e91b905ffe0d
+2024-10-23 20:01:58,207 - tests.conftest - INFO - Test test_generate_answer[False] took 1.49 seconds
+2024-10-23 20:01:58,211 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 20:01:58,212 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 20:01:58,229 - root - INFO - Processing RAG query: Test query
+2024-10-23 20:01:58,230 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:01:58,231 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:01:58,231 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:01:58,565 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:01:58,785 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:01:58,789 - root - ERROR - Error in RAG query process: 'NoneType' object has no attribute 'upsert'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 111, in rag_query
+    query_embedding = create_embeddings([query])[0]
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/embedding.py", line 37, in create_embeddings
+    pinecone_manager.upsert_embeddings(chunks, all_embeddings)
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 26, in upsert_embeddings
+    self.index.upsert(vectors=vectors)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:01:58,793 - tests.conftest - INFO - Test test_rag_query[True] took 0.58 seconds
+2024-10-23 20:01:58,798 - root - INFO - Processing RAG query: Test query
+2024-10-23 20:01:58,799 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:01:58,800 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:01:58,800 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:01:59,247 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:01:59,449 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:01:59,451 - root - ERROR - Error in RAG query process: 'NoneType' object has no attribute 'upsert'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 111, in rag_query
+    query_embedding = create_embeddings([query])[0]
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/embedding.py", line 37, in create_embeddings
+    pinecone_manager.upsert_embeddings(chunks, all_embeddings)
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 26, in upsert_embeddings
+    self.index.upsert(vectors=vectors)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:01:59,454 - tests.conftest - INFO - Test test_rag_query[False] took 0.66 seconds
+2024-10-23 20:01:59,459 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:01:59,460 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:01:59,460 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:01:59,643 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:01:59,645 - tests.conftest - INFO - Test test_load_and_preprocess_text took 0.19 seconds
+2024-10-23 20:01:59,646 - src.text_processing - INFO - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-23 20:01:59,656 - tests.conftest - INFO - Test test_split_into_chunks[100-20] took 0.01 seconds
+2024-10-23 20:01:59,657 - src.text_processing - INFO - Splitting text into chunks (size: 200, overlap: 50)
+2024-10-23 20:01:59,659 - tests.conftest - INFO - Test test_split_into_chunks[200-50] took 0.00 seconds
+2024-10-23 20:01:59,659 - src.text_processing - INFO - Splitting text into chunks (size: 500, overlap: 100)
+2024-10-23 20:01:59,662 - tests.conftest - INFO - Test test_split_into_chunks[500-100] took 0.00 seconds
+2024-10-23 20:01:59,662 - src.text_processing - INFO - Splitting text into chunks (size: 10, overlap: 2)
+2024-10-23 20:01:59,664 - tests.conftest - INFO - Test test_split_into_chunks_short_text took 0.00 seconds
+2024-10-23 20:04:04,076 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 20:04:04,077 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 20:04:05,685 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:04:05,686 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:04:05,686 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:04:06,083 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:04:07,381 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:04:07,386 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:04:07,387 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:04:07,387 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:04:07,828 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:04:08,218 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:04:08,220 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:04:08,220 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:04:08,220 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:04:08,619 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:04:10,012 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:04:10,036 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:04:10,195 - tests.conftest - INFO - Test test_create_embeddings_length[chunks0-2] took 0.00 seconds
+2024-10-23 20:04:10,199 - tests.conftest - INFO - Test test_create_embeddings_length[chunks1-1] took 0.00 seconds
+2024-10-23 20:04:10,204 - tests.conftest - INFO - Test test_create_embeddings_length[chunks2-0] took 0.00 seconds
+2024-10-23 20:04:10,208 - tests.conftest - INFO - Test test_create_embeddings_structure took 0.00 seconds
+2024-10-23 20:04:10,209 - tests.conftest - INFO - Test test_create_embeddings_api_error took 0.00 seconds
+2024-10-23 20:04:10,213 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[-0] took 0.00 seconds
+2024-10-23 20:04:10,217 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[Short text-1536] took 0.00 seconds
+2024-10-23 20:04:10,222 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-1536] took 0.00 seconds
+2024-10-23 20:04:10,226 - tests.conftest - INFO - Test test_create_embeddings_with_cache took 0.00 seconds
+2024-10-23 20:04:10,227 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.pdf with extension: .pdf
+2024-10-23 20:04:10,227 - src.file_processor - INFO - Using processor for extension: .pdf
+2024-10-23 20:04:10,228 - tests.conftest - INFO - Test test_process_pdf took 0.00 seconds
+2024-10-23 20:04:10,228 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.docx with extension: .docx
+2024-10-23 20:04:10,228 - src.file_processor - INFO - Using processor for extension: .docx
+2024-10-23 20:04:10,234 - tests.conftest - INFO - Test test_process_docx took 0.01 seconds
+2024-10-23 20:04:10,235 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.odt with extension: .odt
+2024-10-23 20:04:10,235 - src.file_processor - INFO - Using processor for extension: .odt
+2024-10-23 20:04:10,237 - tests.conftest - INFO - Test test_process_odt took 0.00 seconds
+2024-10-23 20:04:10,237 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.txt with extension: .txt
+2024-10-23 20:04:10,237 - src.file_processor - INFO - Using processor for extension: .txt
+2024-10-23 20:04:10,238 - tests.conftest - INFO - Test test_process_txt took 0.00 seconds
+2024-10-23 20:04:10,240 - src.file_processor - INFO - Processing file: /private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-2/test_unsupported_file_format0/test.unsupported with extension: .unsupported
+2024-10-23 20:04:10,240 - src.file_processor - ERROR - Unsupported file format: .unsupported
+2024-10-23 20:04:10,240 - tests.conftest - INFO - Test test_unsupported_file_format took 0.00 seconds
+2024-10-23 20:04:10,241 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:04:10,337 - tests.conftest - INFO - Test test_search took 0.00 seconds
+2024-10-23 20:04:10,339 - tests.conftest - INFO - Test test_embedding_weight took 0.00 seconds
+2024-10-23 20:04:10,340 - tests.conftest - INFO - Test test_hybrid_search_initialization took 0.00 seconds
+2024-10-23 20:04:11,621 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x169360900>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence and and and and and and and and and and machine machine machine machine machine machine machine machine machine machine machine machine machine machine machine car car car car car car car car car car car car car car car motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar learning learning learning learning learning learning learning learning learning learning learning learning learning study study study study study study study study study study study study study study study instruct instruct instruct instruct instruct instruct instruct instruct instruct instruct instruct instruct instruct instruct instruct'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 20:04:11,647 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 20:04:11,648 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 20:04:11,780 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x170005a90>
+2024-10-23 20:04:11,780 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x1180ead50> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 20:04:11,817 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x170005a00>
+2024-10-23 20:04:11,817 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:04:11,818 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:04:11,818 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:04:11,818 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:04:11,818 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:04:12,242 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:04:12 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'115'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999669'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'3ms'), (b'x-request-id', b'req_b54b7c28eefdcd903dc2b9d1f115cc27'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=r4mXXwWRfveZ.lEX2aGrbX57PyNYTddWj6mw36yEIiQ-1729710252-1.0.1.1-T4LdX2Ej3IvAt09UrHqPn8QSQG7sJuMRqmttn66Y2geL1M5JySJSCrHjcFRBphullWsR2Q4NMb315kADcxyhwg; path=/; expires=Wed, 23-Oct-24 19:34:12 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=80ld5FsXsZHjlKppHsdehZVmnhiW_lrkA65nOqTSLdw-1729710252352-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73fdd2cad794e9-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:04:12,245 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 20:04:12,246 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:04:12,298 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:04:12,299 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:04:12,299 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:04:12,299 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Wed, 23 Oct 2024 19:04:12 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-3-small'), ('openai-organization', 'uinside'), ('openai-processing-ms', '115'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '5000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '4999669'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '3ms'), ('x-request-id', 'req_b54b7c28eefdcd903dc2b9d1f115cc27'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=r4mXXwWRfveZ.lEX2aGrbX57PyNYTddWj6mw36yEIiQ-1729710252-1.0.1.1-T4LdX2Ej3IvAt09UrHqPn8QSQG7sJuMRqmttn66Y2geL1M5JySJSCrHjcFRBphullWsR2Q4NMb315kADcxyhwg; path=/; expires=Wed, 23-Oct-24 19:34:12 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=80ld5FsXsZHjlKppHsdehZVmnhiW_lrkA65nOqTSLdw-1729710252352-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d73fdd2cad794e9-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-23 20:04:12,300 - openai._base_client - DEBUG - request_id: req_b54b7c28eefdcd903dc2b9d1f115cc27
+2024-10-23 20:04:12,305 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:04:12,320 - tests.conftest - INFO - Test test_hybrid_search_search took 1.98 seconds
+2024-10-23 20:04:12,323 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1693f2f20>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Bradypus_tridactylus Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 20:04:12,324 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 20:04:12,324 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:04:12,325 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:04:12,325 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:04:12,325 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:04:12,325 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:04:12,761 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:04:12 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'31'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999842'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_862b4f5cdfd07875237a2ea5389c68e0'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73fdd5e82994e9-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:04:12,763 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 20:04:12,764 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:04:12,765 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:04:12,766 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:04:12,766 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:04:12,766 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 19:04:12 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '31', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999842', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '1ms', 'x-request-id': 'req_862b4f5cdfd07875237a2ea5389c68e0', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d73fdd5e82994e9-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 20:04:12,767 - openai._base_client - DEBUG - request_id: req_862b4f5cdfd07875237a2ea5389c68e0
+2024-10-23 20:04:12,769 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:04:12,787 - tests.conftest - INFO - Test test_hybrid_search_embedding_weight took 0.47 seconds
+2024-10-23 20:04:12,799 - tests.conftest - INFO - Test test_imports took 0.01 seconds
+2024-10-23 20:04:12,800 - tests.conftest - INFO - Test test_config_import took 0.00 seconds
+2024-10-23 20:04:12,802 - tests.conftest - INFO - Test test_openai_api_key took 0.00 seconds
+2024-10-23 20:04:12,804 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:04:12,805 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:04:12,805 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:04:12,982 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:04:12,993 - tests.conftest - INFO - Test test_different_book_types[True-test_book.txt] took 0.19 seconds
+2024-10-23 20:04:12,994 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:04:12,994 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:04:12,994 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:04:13,139 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:04:13,149 - tests.conftest - INFO - Test test_different_book_types[False-test_book.txt] took 0.16 seconds
+2024-10-23 20:04:13,149 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:04:13,149 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:04:13,149 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:04:13,295 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:04:13,306 - tests.conftest - INFO - Test test_rag_query[True] took 0.16 seconds
+2024-10-23 20:04:13,307 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:04:13,307 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:04:13,307 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:04:13,469 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:04:13,478 - tests.conftest - INFO - Test test_rag_query[False] took 0.17 seconds
+2024-10-23 20:04:13,479 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:04:13,479 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:04:13,480 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:04:14,707 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:04:14,937 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:04:14,948 - tests.conftest - INFO - Test test_pinecone_integration took 1.47 seconds
+2024-10-23 20:04:14,950 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:04:14,950 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:04:14,951 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:04:15,859 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:04:16,090 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:04:16,102 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x170860a40>, 'json_data': {'input': ['Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out test test test test test test test test test test test test test test test query query query query query query query query query query query query query query query question question question question question question question question question question question question question question question enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 20:04:16,103 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 20:04:16,103 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:04:16,104 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:04:16,104 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:04:16,104 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:04:16,104 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:04:16,314 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:04:16 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'43'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999847'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_8cb8318428bfed629a76502351af5511'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73fded994d94e9-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:04:16,315 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 20:04:16,317 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:04:16,318 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:04:16,318 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:04:16,319 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:04:16,319 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 19:04:16 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '43', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999847', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '1ms', 'x-request-id': 'req_8cb8318428bfed629a76502351af5511', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d73fded994d94e9-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 20:04:16,320 - openai._base_client - DEBUG - request_id: req_8cb8318428bfed629a76502351af5511
+2024-10-23 20:04:16,321 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:04:16,333 - tests.conftest - INFO - Test test_find_most_relevant_chunks[1] took 0.24 seconds
+2024-10-23 20:04:16,335 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:04:16,351 - tests.conftest - INFO - Test test_find_most_relevant_chunks[2] took 0.02 seconds
+2024-10-23 20:04:16,354 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:04:16,364 - tests.conftest - INFO - Test test_find_most_relevant_chunks[3] took 0.01 seconds
+2024-10-23 20:04:16,366 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 20:04:16,367 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 20:04:16,377 - root - INFO - Generating answer for query: Test query
+2024-10-23 20:04:16,380 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing.'}, {'role': 'user', 'content': 'Context: Test context\n\nQuestion: Test query\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing.'}], 'model': 'gpt-4o-mini', 'max_tokens': 15000}}
+2024-10-23 20:04:16,381 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-10-23 20:04:16,381 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 20:04:16,411 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1714065d0>
+2024-10-23 20:04:16,412 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x1182c2950> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 20:04:16,453 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x171406ff0>
+2024-10-23 20:04:16,454 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:04:16,454 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:04:16,454 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:04:16,454 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:04:16,454 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:04:17,113 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:04:17 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'454'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'10000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'9991828'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'49ms'), (b'x-request-id', b'req_be3aeaad02dcd931d41cd1aefdb7def2'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=HAFKyVOpPF4oFcBZKNb_bRvN.r2KnuSdQ3mb2Q2KDes-1729710257-1.0.1.1-B6GnlDpoP0Op4hQj61.S.21UwKnRm.UoukdvPaxBEEBQfOiR9wjg23mZNMn_NPxKJmNUkVfRp6oLbnu2_oPdcw; path=/; expires=Wed, 23-Oct-24 19:34:17 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=_.XPbqAzQFQzj8b1FoywQdXBtGp1433fDc8kqm3aJ.E-1729710257221-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73fdefbae0e3c8-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:04:17,114 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-23 20:04:17,115 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:04:17,116 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:04:17,116 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:04:17,116 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:04:17,116 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Wed, 23 Oct 2024 19:04:17 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'uinside'), ('openai-processing-ms', '454'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '10000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '9991828'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '49ms'), ('x-request-id', 'req_be3aeaad02dcd931d41cd1aefdb7def2'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=HAFKyVOpPF4oFcBZKNb_bRvN.r2KnuSdQ3mb2Q2KDes-1729710257-1.0.1.1-B6GnlDpoP0Op4hQj61.S.21UwKnRm.UoukdvPaxBEEBQfOiR9wjg23mZNMn_NPxKJmNUkVfRp6oLbnu2_oPdcw; path=/; expires=Wed, 23-Oct-24 19:34:17 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=_.XPbqAzQFQzj8b1FoywQdXBtGp1433fDc8kqm3aJ.E-1729710257221-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d73fdefbae0e3c8-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-23 20:04:17,117 - openai._base_client - DEBUG - request_id: req_be3aeaad02dcd931d41cd1aefdb7def2
+2024-10-23 20:04:17,124 - tests.conftest - INFO - Test test_generate_answer[True] took 0.76 seconds
+2024-10-23 20:04:17,126 - root - INFO - Generating answer for query: Test query
+2024-10-23 20:04:17,130 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing.'}, {'role': 'user', 'content': 'Context: Test context\n\nQuestion: Test query\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing.'}], 'model': 'gpt-4o-mini', 'max_tokens': 15000}}
+2024-10-23 20:04:17,131 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-10-23 20:04:17,131 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:04:17,132 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:04:17,132 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:04:17,132 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:04:17,132 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:04:18,098 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:04:18 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'595'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'10000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'9991828'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'49ms'), (b'x-request-id', b'req_3e172f1c4b1a3f388dd31c0f3b3c8b94'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d73fdf3fec1e3c8-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:04:18,098 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-23 20:04:18,099 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:04:18,099 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:04:18,100 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:04:18,100 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:04:18,100 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Wed, 23 Oct 2024 19:04:18 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'uinside', 'openai-processing-ms': '595', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '10000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '9991828', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '49ms', 'x-request-id': 'req_3e172f1c4b1a3f388dd31c0f3b3c8b94', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d73fdf3fec1e3c8-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 20:04:18,101 - openai._base_client - DEBUG - request_id: req_3e172f1c4b1a3f388dd31c0f3b3c8b94
+2024-10-23 20:04:18,102 - tests.conftest - INFO - Test test_generate_answer[False] took 0.98 seconds
+2024-10-23 20:04:18,104 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 20:04:18,105 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 20:04:18,114 - root - INFO - Processing RAG query: Test query
+2024-10-23 20:04:18,116 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:04:18,116 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:04:18,116 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:04:18,426 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:04:19,268 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:04:19,270 - root - ERROR - Error in RAG query process: 'NoneType' object has no attribute 'upsert'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 111, in rag_query
+    query_embedding = create_embeddings([query])[0]
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/embedding.py", line 37, in create_embeddings
+    pinecone_manager.upsert_embeddings(chunks, all_embeddings)
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 26, in upsert_embeddings
+    self.index.upsert(vectors=vectors)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:04:19,271 - tests.conftest - INFO - Test test_rag_query[True] took 1.17 seconds
+2024-10-23 20:04:19,273 - root - INFO - Processing RAG query: Test query
+2024-10-23 20:04:19,273 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:04:19,274 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:04:19,274 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:04:19,850 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:04:21,209 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:04:21,210 - root - ERROR - Error in RAG query process: 'NoneType' object has no attribute 'upsert'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 111, in rag_query
+    query_embedding = create_embeddings([query])[0]
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/embedding.py", line 37, in create_embeddings
+    pinecone_manager.upsert_embeddings(chunks, all_embeddings)
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 26, in upsert_embeddings
+    self.index.upsert(vectors=vectors)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:04:21,213 - tests.conftest - INFO - Test test_rag_query[False] took 1.94 seconds
+2024-10-23 20:04:21,218 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:04:21,218 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:04:21,219 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:04:21,402 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:04:21,405 - tests.conftest - INFO - Test test_load_and_preprocess_text took 0.19 seconds
+2024-10-23 20:04:21,405 - src.text_processing - INFO - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-23 20:04:21,416 - tests.conftest - INFO - Test test_split_into_chunks[100-20] took 0.01 seconds
+2024-10-23 20:04:21,417 - src.text_processing - INFO - Splitting text into chunks (size: 200, overlap: 50)
+2024-10-23 20:04:21,420 - tests.conftest - INFO - Test test_split_into_chunks[200-50] took 0.00 seconds
+2024-10-23 20:04:21,421 - src.text_processing - INFO - Splitting text into chunks (size: 500, overlap: 100)
+2024-10-23 20:04:21,423 - tests.conftest - INFO - Test test_split_into_chunks[500-100] took 0.00 seconds
+2024-10-23 20:04:21,424 - src.text_processing - INFO - Splitting text into chunks (size: 10, overlap: 2)
+2024-10-23 20:04:21,426 - tests.conftest - INFO - Test test_split_into_chunks_short_text took 0.00 seconds
+2024-10-23 20:09:46,708 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 20:09:46,709 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 20:09:48,342 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:09:48,343 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:09:48,343 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:09:48,954 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:09:49,238 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:09:49,240 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:09:49,240 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:09:49,240 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:09:50,625 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:09:51,050 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:09:51,056 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:09:51,058 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:09:51,059 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:09:51,521 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:09:51,879 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:09:51,913 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:09:52,066 - tests.conftest - INFO - Test test_create_embeddings_length[chunks0-2] took 0.00 seconds
+2024-10-23 20:09:52,071 - tests.conftest - INFO - Test test_create_embeddings_length[chunks1-1] took 0.00 seconds
+2024-10-23 20:09:52,075 - tests.conftest - INFO - Test test_create_embeddings_length[chunks2-0] took 0.00 seconds
+2024-10-23 20:09:52,079 - tests.conftest - INFO - Test test_create_embeddings_structure took 0.00 seconds
+2024-10-23 20:09:52,080 - tests.conftest - INFO - Test test_create_embeddings_api_error took 0.00 seconds
+2024-10-23 20:09:52,084 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[-0] took 0.00 seconds
+2024-10-23 20:09:52,089 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[Short text-1536] took 0.00 seconds
+2024-10-23 20:09:52,094 - tests.conftest - INFO - Test test_create_embeddings_various_lengths[AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-1536] took 0.00 seconds
+2024-10-23 20:09:52,098 - tests.conftest - INFO - Test test_create_embeddings_with_cache took 0.00 seconds
+2024-10-23 20:09:52,099 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.pdf with extension: .pdf
+2024-10-23 20:09:52,099 - src.file_processor - INFO - Using processor for extension: .pdf
+2024-10-23 20:09:52,100 - tests.conftest - INFO - Test test_process_pdf took 0.00 seconds
+2024-10-23 20:09:52,100 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.docx with extension: .docx
+2024-10-23 20:09:52,100 - src.file_processor - INFO - Using processor for extension: .docx
+2024-10-23 20:09:52,110 - tests.conftest - INFO - Test test_process_docx took 0.01 seconds
+2024-10-23 20:09:52,111 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.odt with extension: .odt
+2024-10-23 20:09:52,111 - src.file_processor - INFO - Using processor for extension: .odt
+2024-10-23 20:09:52,113 - tests.conftest - INFO - Test test_process_odt took 0.00 seconds
+2024-10-23 20:09:52,113 - src.file_processor - INFO - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.txt with extension: .txt
+2024-10-23 20:09:52,113 - src.file_processor - INFO - Using processor for extension: .txt
+2024-10-23 20:09:52,114 - tests.conftest - INFO - Test test_process_txt took 0.00 seconds
+2024-10-23 20:09:52,115 - src.file_processor - INFO - Processing file: /private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-3/test_unsupported_file_format0/test.unsupported with extension: .unsupported
+2024-10-23 20:09:52,115 - src.file_processor - ERROR - Unsupported file format: .unsupported
+2024-10-23 20:09:52,115 - tests.conftest - INFO - Test test_unsupported_file_format took 0.00 seconds
+2024-10-23 20:09:52,116 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:09:52,244 - tests.conftest - INFO - Test test_search took 0.00 seconds
+2024-10-23 20:09:52,246 - tests.conftest - INFO - Test test_embedding_weight took 0.00 seconds
+2024-10-23 20:09:52,248 - tests.conftest - INFO - Test test_hybrid_search_initialization took 0.00 seconds
+2024-10-23 20:09:53,558 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x160d7c400>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai and and and and and and and and and and machine machine machine machine machine machine machine machine machine machine machine machine machine machine machine automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile automobile motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar learning learning learning learning learning learning learning learning learning learning learning learning learning discover discover discover discover discover discover discover discover discover discover discover discover discover discover discover get_a_line get_a_line get_a_line get_a_line get_a_line get_a_line get_a_line get_a_line get_a_line get_a_line get_a_line get_a_line get_a_line get_a_line get_a_line'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 20:09:53,585 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 20:09:53,586 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 20:09:53,807 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x166791910>
+2024-10-23 20:09:53,808 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x121e4ad50> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 20:09:53,859 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x166791700>
+2024-10-23 20:09:53,861 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:09:53,862 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:09:53,862 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:09:53,863 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:09:53,863 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:09:54,689 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:09:54 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'27'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999669'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'3ms'), (b'x-request-id', b'req_31f2454e9bdde7bb9dcb91fde3caa32a'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=PQ8bZ0tCNj_15LOtk1os4vvGU.P9YyT9hq71Aaqf_sI-1729710594-1.0.1.1-DwMJTQ1inCco0QTTWNE_3Dzut810whwawcHqmgLgArQkin.Oty6AawTt.QsQoj8MqnuG4xOKFyRAQUKcfi.tjg; path=/; expires=Wed, 23-Oct-24 19:39:54 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=apIIdOW8ZrR6dyMe9v.cm4ANqdvQ1Zi2N7tWXfshFkI-1729710594708-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74062c8f06692f-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:09:54,692 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 20:09:54,693 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:09:54,716 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:09:54,717 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:09:54,717 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:09:54,717 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Wed, 23 Oct 2024 19:09:54 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-3-small'), ('openai-organization', 'uinside'), ('openai-processing-ms', '27'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '5000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '4999669'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '3ms'), ('x-request-id', 'req_31f2454e9bdde7bb9dcb91fde3caa32a'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=PQ8bZ0tCNj_15LOtk1os4vvGU.P9YyT9hq71Aaqf_sI-1729710594-1.0.1.1-DwMJTQ1inCco0QTTWNE_3Dzut810whwawcHqmgLgArQkin.Oty6AawTt.QsQoj8MqnuG4xOKFyRAQUKcfi.tjg; path=/; expires=Wed, 23-Oct-24 19:39:54 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=apIIdOW8ZrR6dyMe9v.cm4ANqdvQ1Zi2N7tWXfshFkI-1729710594708-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d74062c8f06692f-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-23 20:09:54,718 - openai._base_client - DEBUG - request_id: req_31f2454e9bdde7bb9dcb91fde3caa32a
+2024-10-23 20:09:54,724 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:09:54,744 - tests.conftest - INFO - Test test_hybrid_search_search took 2.50 seconds
+2024-10-23 20:09:54,747 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1667c2de0>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination artificial_insemination ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 20:09:54,748 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 20:09:54,748 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:09:54,749 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:09:54,749 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:09:54,749 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:09:54,749 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:09:55,025 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:09:55 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'25'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999888'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_afa4694855cd25cb1a0485d800c822d8'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d740632098a692f-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:09:55,027 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 20:09:55,028 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:09:55,091 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:09:55,092 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:09:55,093 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:09:55,093 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 19:09:55 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '25', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999888', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '1ms', 'x-request-id': 'req_afa4694855cd25cb1a0485d800c822d8', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d740632098a692f-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 20:09:55,094 - openai._base_client - DEBUG - request_id: req_afa4694855cd25cb1a0485d800c822d8
+2024-10-23 20:09:55,096 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:09:55,114 - tests.conftest - INFO - Test test_hybrid_search_embedding_weight took 0.37 seconds
+2024-10-23 20:09:55,127 - tests.conftest - INFO - Test test_imports took 0.01 seconds
+2024-10-23 20:09:55,128 - tests.conftest - INFO - Test test_config_import took 0.00 seconds
+2024-10-23 20:09:55,130 - tests.conftest - INFO - Test test_openai_api_key took 0.00 seconds
+2024-10-23 20:09:55,131 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:09:55,132 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:09:55,132 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:09:55,306 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:09:55,316 - tests.conftest - INFO - Test test_different_book_types[True-test_book.txt] took 0.19 seconds
+2024-10-23 20:09:55,317 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:09:55,317 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:09:55,317 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:09:55,462 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:09:55,471 - tests.conftest - INFO - Test test_different_book_types[False-test_book.txt] took 0.15 seconds
+2024-10-23 20:09:55,471 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:09:55,472 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:09:55,472 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:09:55,618 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:09:55,628 - tests.conftest - INFO - Test test_rag_query[True] took 0.16 seconds
+2024-10-23 20:09:55,628 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:09:55,628 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:09:55,629 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:09:55,778 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-23 20:09:55,788 - tests.conftest - INFO - Test test_rag_query[False] took 0.16 seconds
+2024-10-23 20:09:55,789 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:09:55,789 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:09:55,789 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:09:56,110 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:09:56,473 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:09:56,483 - tests.conftest - INFO - Test test_pinecone_integration took 0.69 seconds
+2024-10-23 20:09:56,484 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:09:56,485 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:09:56,485 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:09:56,827 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:09:57,240 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:09:57,251 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1674e8ae0>, 'json_data': {'input': ['Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run screen screen screen screen screen screen screen screen screen screen screen screen screen screen screen query query query query query query query query query query query query query query query inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry inquiry interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-23 20:09:57,252 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-23 20:09:57,252 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:09:57,253 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:09:57,253 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:09:57,253 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:09:57,254 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:09:57,735 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:09:57 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'23'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999813'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'2ms'), (b'x-request-id', b'req_dd035e63d91dcbc83f7d299fb00cfe18'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d740641bfd0692f-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:09:57,736 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-23 20:09:57,737 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:09:57,796 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:09:57,796 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:09:57,796 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:09:57,796 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 23 Oct 2024 19:09:57 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '23', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999813', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '2ms', 'x-request-id': 'req_dd035e63d91dcbc83f7d299fb00cfe18', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d740641bfd0692f-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 20:09:57,797 - openai._base_client - DEBUG - request_id: req_dd035e63d91dcbc83f7d299fb00cfe18
+2024-10-23 20:09:57,798 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:09:57,811 - tests.conftest - INFO - Test test_find_most_relevant_chunks[1] took 0.56 seconds
+2024-10-23 20:09:57,813 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:09:57,821 - tests.conftest - INFO - Test test_find_most_relevant_chunks[2] took 0.01 seconds
+2024-10-23 20:09:57,823 - src.hybrid_search - ERROR - Error in hybrid search: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:09:57,830 - tests.conftest - INFO - Test test_find_most_relevant_chunks[3] took 0.01 seconds
+2024-10-23 20:09:57,832 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 20:09:57,832 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 20:09:57,840 - root - INFO - Generating answer for query: Test query
+2024-10-23 20:09:57,843 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing.'}, {'role': 'user', 'content': 'Context: Test context\n\nQuestion: Test query\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing.'}], 'model': 'gpt-4o-mini', 'max_tokens': 15000}}
+2024-10-23 20:09:57,843 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-10-23 20:09:57,843 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-23 20:09:57,876 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x16749ac90>
+2024-10-23 20:09:57,876 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x122062950> server_hostname='api.openai.com' timeout=5.0
+2024-10-23 20:09:57,914 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x167498c50>
+2024-10-23 20:09:57,914 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:09:57,914 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:09:57,914 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:09:57,914 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:09:57,914 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:09:58,888 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:09:58 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'684'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'10000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'9991828'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'49ms'), (b'x-request-id', b'req_c1320662fe4266ea8989102ed1fd2290'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=TmP3hm67SqkL14kQ8dFASYErzbESLEXYJR.ddnB_Kgs-1729710598-1.0.1.1-kcMoT1ipVQua13uZUHMVBxSyq9v4kdrrFpZY0fTS19BmV5ZHPx9uKT9RCnIIjl6Cu0gcwilNhUPwMPYt40yKEg; path=/; expires=Wed, 23-Oct-24 19:39:58 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=hBskNhYpGFMdZhAocq3MBD9ATEELRMbscZTgIUUpjUc-1729710598914-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d740645d808950c-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:09:58,890 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-23 20:09:58,892 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:09:58,892 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:09:58,892 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:09:58,893 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:09:58,893 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Wed, 23 Oct 2024 19:09:58 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'uinside'), ('openai-processing-ms', '684'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '10000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '9991828'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '49ms'), ('x-request-id', 'req_c1320662fe4266ea8989102ed1fd2290'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=TmP3hm67SqkL14kQ8dFASYErzbESLEXYJR.ddnB_Kgs-1729710598-1.0.1.1-kcMoT1ipVQua13uZUHMVBxSyq9v4kdrrFpZY0fTS19BmV5ZHPx9uKT9RCnIIjl6Cu0gcwilNhUPwMPYt40yKEg; path=/; expires=Wed, 23-Oct-24 19:39:58 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=hBskNhYpGFMdZhAocq3MBD9ATEELRMbscZTgIUUpjUc-1729710598914-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d740645d808950c-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-23 20:09:58,894 - openai._base_client - DEBUG - request_id: req_c1320662fe4266ea8989102ed1fd2290
+2024-10-23 20:09:58,902 - tests.conftest - INFO - Test test_generate_answer[True] took 1.07 seconds
+2024-10-23 20:09:58,904 - root - INFO - Generating answer for query: Test query
+2024-10-23 20:09:58,908 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing.'}, {'role': 'user', 'content': 'Context: Test context\n\nQuestion: Test query\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing.'}], 'model': 'gpt-4o-mini', 'max_tokens': 15000}}
+2024-10-23 20:09:58,909 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-10-23 20:09:58,909 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-10-23 20:09:58,910 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-10-23 20:09:58,910 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-10-23 20:09:58,910 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-10-23 20:09:58,910 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-10-23 20:10:00,279 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Oct 2024 19:10:00 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'1182'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'10000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'9991828'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'49ms'), (b'x-request-id', b'req_97130eec111c4648440635aa6a8ffc4b'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d74064c0b83950c-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-23 20:10:00,280 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-23 20:10:00,281 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-10-23 20:10:00,281 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-10-23 20:10:00,281 - httpcore.http11 - DEBUG - response_closed.started
+2024-10-23 20:10:00,281 - httpcore.http11 - DEBUG - response_closed.complete
+2024-10-23 20:10:00,281 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Wed, 23 Oct 2024 19:10:00 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'uinside', 'openai-processing-ms': '1182', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '10000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '9991828', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '49ms', 'x-request-id': 'req_97130eec111c4648440635aa6a8ffc4b', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d74064c0b83950c-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-23 20:10:00,282 - openai._base_client - DEBUG - request_id: req_97130eec111c4648440635aa6a8ffc4b
+2024-10-23 20:10:00,283 - tests.conftest - INFO - Test test_generate_answer[False] took 1.38 seconds
+2024-10-23 20:10:00,286 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 20:10:00,287 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-23 20:10:00,296 - root - INFO - Processing RAG query: Test query
+2024-10-23 20:10:00,296 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:10:00,296 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:10:00,296 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:10:00,594 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:10:01,661 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:10:01,664 - root - ERROR - Error in RAG query process: 'NoneType' object has no attribute 'upsert'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 111, in rag_query
+    query_embedding = create_embeddings([query])[0]
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/embedding.py", line 37, in create_embeddings
+    pinecone_manager.upsert_embeddings(chunks, all_embeddings)
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 26, in upsert_embeddings
+    self.index.upsert(vectors=vectors)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:10:01,667 - tests.conftest - INFO - Test test_rag_query[True] took 1.38 seconds
+2024-10-23 20:10:01,671 - root - INFO - Processing RAG query: Test query
+2024-10-23 20:10:01,672 - pinecone_plugin_interface.logging - INFO - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-23 20:10:01,672 - pinecone_plugin_interface.logging - INFO - Looking for plugins in pinecone_plugins.inference
+2024-10-23 20:10:01,672 - pinecone_plugin_interface.logging - INFO - Installing plugin inference into Pinecone
+2024-10-23 20:10:02,908 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"indexes":[]}'
+2024-10-23 20:10:03,231 - pinecone.core.openapi.shared.rest - DEBUG - response body: b'{"error":{"code":"NOT_FOUND","message":"Resource cloud: aws region: us-east1-gcp not found"},"status":404}'
+2024-10-23 20:10:03,231 - root - ERROR - Error in RAG query process: 'NoneType' object has no attribute 'upsert'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 111, in rag_query
+    query_embedding = create_embeddings([query])[0]
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/embedding.py", line 37, in create_embeddings
+    pinecone_manager.upsert_embeddings(chunks, all_embeddings)
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 26, in upsert_embeddings
+    self.index.upsert(vectors=vectors)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'upsert'
+2024-10-23 20:10:03,232 - tests.conftest - INFO - Test test_rag_query[False] took 1.56 seconds
+2024-10-23 20:10:03,234 - src.text_processing - INFO - Preprocessing text content
+2024-10-23 20:10:03,234 - src.text_processing - INFO - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-23 20:10:03,234 - src.text_processing - INFO - Created 1 chunks
+2024-10-23 20:10:03,405 - src.text_processing - INFO - Extracted 0 dates, 0 named entities, and 5 key phrases from the text
+2024-10-23 20:10:03,415 - tests.conftest - INFO - Test test_load_and_preprocess_text took 0.18 seconds
+2024-10-23 20:10:03,415 - src.text_processing - INFO - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-23 20:10:03,415 - src.text_processing - INFO - Created 13 chunks
+2024-10-23 20:10:03,416 - tests.conftest - INFO - Test test_split_into_chunks[100-20] took 0.00 seconds
+2024-10-23 20:10:03,416 - src.text_processing - INFO - Splitting text into chunks (size: 200, overlap: 50)
+2024-10-23 20:10:03,416 - src.text_processing - INFO - Created 7 chunks
+2024-10-23 20:10:03,417 - tests.conftest - INFO - Test test_split_into_chunks[200-50] took 0.00 seconds
+2024-10-23 20:10:03,417 - src.text_processing - INFO - Splitting text into chunks (size: 500, overlap: 100)
+2024-10-23 20:10:03,417 - src.text_processing - INFO - Created 3 chunks
+2024-10-23 20:10:03,417 - tests.conftest - INFO - Test test_split_into_chunks[500-100] took 0.00 seconds
+2024-10-23 20:10:03,418 - src.text_processing - INFO - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-23 20:10:03,420 - tests.conftest - INFO - Test test_split_into_chunks_with_dict_input took 0.00 seconds
+2024-10-23 21:01:55,745 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-23 21:01:55,746 - httpx - DEBUG - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'

@@ -59,7 +59,7 @@ def get_answer_from_system(question: str, chunks: List[str], embeddings: List[Li
 
 @pytest.fixture(scope="module")
 def system_setup():
-    book_path = "tests/book.txt"
+    book_path = "tests/data/book.txt"
     return initialize_system(book_path)
 
 @pytest.mark.parametrize("qa_pair", qa_pairs)

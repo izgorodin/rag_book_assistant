@@ -80,3 +80,5 @@ def test_hybrid_search_embedding_weight(sample_chunks, sample_embeddings):
     assert results_default != results_high_bm25
     assert all(isinstance(result, dict) for result in results_default + results_high_bm25)
     assert all('chunk' in result and 'score' in result for result in results_default + results_high_bm25)
+
+EMBEDDINGS_PATH = 'data/embeddings/test-file_chunks_embeddings.pkl'

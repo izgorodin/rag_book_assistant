@@ -12,3 +12,6 @@ MAX_TOKENS = 15000
 CHUNK_SIZE = 300
 OVERLAP = 150
 TOP_K_CHUNKS = 15  # Added for clarity
+PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
+PINECONE_ENVIRONMENT = "us-east1-gcp"
+EMBEDDING_DIMENSION = 1536  # This should match your embedding model's output dimension

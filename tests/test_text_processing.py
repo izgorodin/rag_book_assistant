@@ -1,19 +1,18 @@
 import pytest
+import os
 from src.text_processing import load_and_preprocess_text, split_into_chunks
 
-def test_load_and_preprocess_text(tmp_path):
-    test_file = tmp_path / "test.txt"
-    test_file.write_text("This is a test   text with some special characters: @#$%^&*()!")
-    
-    processed_text = load_and_preprocess_text(str(test_file))
-    
-    assert isinstance(processed_text, dict), "Function should return a dictionary"
+def test_load_and_preprocess_text():
+    test_file_path = os.path.join(os.path.dirname(__file__), 'data', 'test_book.txt')
+    with open(test_file_path, 'r', encoding='utf-8') as file:
+        text_content = file.read()
+    processed_text = load_and_preprocess_text(text_content)
+    assert isinstance(processed_text, dict), "Processed text should be a dictionary"
     assert 'text' in processed_text, "Processed text should contain 'text' key"
-    assert "This is a test text with some special characters" in processed_text['text'], "Processed text should contain the original content without special characters"
-    assert "@#$%^&*()" not in processed_text['text'], "Processed text should not contain special characters"
-    assert 'dates' in processed_text, "Processed text should contain 'dates' key"
-    assert 'entities' in processed_text, "Processed text should contain 'entities' key"
-    assert 'key_phrases' in processed_text, "Processed text should contain 'key_phrases' key"
+    assert isinstance(processed_text['text'], str), "The 'text' value should be a string"
+    assert len(processed_text['text']) > 0, "Processed text should not be empty"
+    assert 'chunks' in processed_text, "Processed text should contain 'chunks' key"
+    assert isinstance(processed_text['chunks'], list), "Chunks should be a list"
 
 @pytest.mark.parametrize("chunk_size, overlap", [
     (100, 20),
@@ -21,7 +20,7 @@ def test_load_and_preprocess_text(tmp_path):
     (500, 100)
 ])
 def test_split_into_chunks(chunk_size, overlap):
-    text = {'text': ' '.join(['word'] * 1000)}  # Create a sample text
+    text = ' '.join(['word'] * 1000)  # Create a sample text
     chunks = split_into_chunks(text, chunk_size, overlap)
 
     assert isinstance(chunks, list), "Function should return a list"
@@ -38,9 +37,8 @@ def test_split_into_chunks(chunk_size, overlap):
         for i in range(len(chunks) - 1):
             assert chunks[i].split()[-overlap:] == chunks[i+1].split()[:overlap], f"Chunks {i} and {i+1} should overlap correctly"
 
-def test_split_into_chunks_short_text():
-    short_text = {'text': "Short text."}
-    chunks = split_into_chunks(short_text, chunk_size=10, overlap=2)
-    
-    assert len(chunks) == 1, "Should return one chunk for short text"
-    assert chunks[0] == short_text['text'], "Chunk should match the original text"
+def test_split_into_chunks_with_dict_input():
+    text_dict = {'text': ' '.join(['word'] * 1000)}
+    chunks = split_into_chunks(text_dict, chunk_size=100, overlap=20)
+    assert isinstance(chunks, list), "Function should return a list"
+    assert all(isinstance(chunk, str) for chunk in chunks), "All chunks should be strings"

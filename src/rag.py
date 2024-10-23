@@ -32,11 +32,13 @@ from nltk.stem import WordNetLemmatizer
 from openai import OpenAI
 from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS
 import logging
+from src.embedding import create_embeddings
 from src.hybrid_search import HybridSearch
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from src.logger_config import setup_logger
 from src.book_data_interface import BookDataInterface
+from src.pinecone_manager import PineconeManager
 
 logger = setup_logger()
 
@@ -105,8 +107,9 @@ def rag_query(query: str, book_data: BookDataInterface) -> str:
     try:
         logger.info(f"Processing RAG query: {query}")
         
-        hybrid_search = HybridSearch(book_data.chunks, book_data.embeddings)
-        relevant_chunks = hybrid_search.search(query, top_k=10)
+        pinecone_manager = PineconeManager()
+        query_embedding = create_embeddings([query])[0]
+        relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
         logger.info(f"Number of relevant chunks found: {len(relevant_chunks)}")
         
         # Log the top 3 most relevant chunks

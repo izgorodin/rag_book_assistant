@@ -7,6 +7,9 @@ from src.text_processing import split_into_chunks
 from src.embedding import get_or_create_chunks_and_embeddings
 from src.logger_config import setup_logger, setup_results_logger
 import re
+from src.pinecone_manager import PineconeManager
+from src.embedding import create_embeddings
+from src.book_data_interface import BookDataInterface
 
 nlp = spacy.load("en_core_web_md")  # Используйте 'md' или 'lg' вместо 'sm'
 
@@ -52,29 +55,29 @@ def initialize_system(book_path):
     with open(book_path, 'r', encoding='utf-8') as file:
         text = file.read()
     
-    # Создаем словарь с ключом 'text'
     text_dict = {'text': text}
     
     chunks = split_into_chunks(text_dict)
-    chunks, embeddings = get_or_create_chunks_and_embeddings(chunks, 'embeddings_cache.pkl')
-    return chunks, embeddings
+    pinecone_manager = PineconeManager()
+    embeddings = pinecone_manager.get_or_create_embeddings(chunks, lambda x: create_embeddings(x))
+    return BookDataInterface(chunks, embeddings, {})
 
-def get_answer_from_system(question: str, chunks: List[str], embeddings: List[List[float]]) -> str:
-    return rag_query(question, chunks, embeddings)
+def get_answer_from_system(question: str, book_data: BookDataInterface) -> str:
+    return rag_query(question, book_data)
 
 @pytest.fixture(scope="module")
 def system_setup():
-    book_path = "tests/ford.txt"  # Убедитесь, что этот путь корректен
+    book_path = "tests/data/ford.txt"  # Убедитесь, что этот путь корректен
     return initialize_system(book_path)
 
 @pytest.mark.parametrize("qa_pair", qa_pairs)
 def test_qa_system(qa_pair, system_setup):
-    chunks, embeddings = system_setup
+    book_data = system_setup
     question = qa_pair["question"]
     correct_answer = qa_pair["answer"]
     context = qa_pair.get("context", "")
     
-    system_answer = get_answer_from_system(question, chunks, embeddings)
+    system_answer = get_answer_from_system(question, book_data)
     is_correct = check_answer(system_answer, correct_answer, context)
     
     results_logger.info(f"\nQ: {question}")

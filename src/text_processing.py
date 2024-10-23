@@ -72,7 +72,6 @@ def extract_key_phrases(text: str, num_phrases: int = 5) -> List[str]:
 def load_and_preprocess_text(text_content: str) -> Dict[str, Any]:
     """Load and preprocess the text content, extracting relevant information."""
     logger.info("Preprocessing text content")
-    chunks = split_into_chunks(text_content)
     
     dates = extract_dates(text_content)
     entities = extract_named_entities(text_content)
@@ -81,15 +80,20 @@ def load_and_preprocess_text(text_content: str) -> Dict[str, Any]:
     logger.info(f"Extracted {len(dates)} dates, {sum(len(v) for v in entities.values())} named entities, and {len(key_phrases)} key phrases from the text")
     
     return {
-        'chunks': chunks,
+        'text': text_content,
+        'chunks': split_into_chunks(text_content),
         'dates': dates,
         'entities': entities,
         'key_phrases': key_phrases
     }
 
-def split_into_chunks(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[str]:
+def split_into_chunks(text: Union[str, Dict[str, Any]], chunk_size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[str]:
     """Split the text into chunks with specified size and overlap."""
     logger.info(f"Splitting text into chunks (size: {chunk_size}, overlap: {overlap})")
+    
+    if isinstance(text, dict):
+        text = text.get('text', '')
+    
     words = text.split()
     chunks = []
     for i in range(0, len(words), chunk_size - overlap):
@@ -97,3 +101,6 @@ def split_into_chunks(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = OV
         chunks.append(chunk)
     logger.info(f"Created {len(chunks)} chunks")
     return chunks
+
+BOOK_PATH = 'tests/data/book.txt'
+FORD_PATH = 'tests/data/ford.txt'

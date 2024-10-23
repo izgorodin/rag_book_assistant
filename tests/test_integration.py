@@ -6,6 +6,8 @@ from src.rag import rag_query
 import logging
 from tests.ford_pinto_qa_data import qa_pairs
 import traceback
+from src.pinecone_manager import PineconeManager
+from tests.mock_pinecone import MockPinecone
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -78,9 +80,9 @@ def test_rag_query(use_openai):
 
 # Добавим определение функции process_book, если она не существует в основном коде
 def process_book(file_path: str, use_openai: bool = True):
-    full_path = os.path.join(TEST_FILES_DIR, file_path)
+    full_path = os.path.join(TEST_FILES_DIR, 'data', file_path)
     text_data = load_and_preprocess_text(full_path)
-    chunks = split_into_chunks(text_data, chunk_size=1000, overlap=100)
+    chunks = split_into_chunks(text_data['text'], chunk_size=1000, overlap=100)
     embeddings = create_embeddings(chunks) if use_openai else [None] * len(chunks)
     return chunks, embeddings
 
@@ -109,3 +111,14 @@ def test_rag_query(use_openai):
     
     # Можно добавить более строгую проверку, например:
     # assert correct_count / total_count >= 0.3, f"Expected at least 30% correct answers, but got {correct_count}/{total_count}"
+
+def test_pinecone_integration():
+    mock_pinecone = MockPinecone(api_key="fake_key")
+    pinecone_manager = PineconeManager(pinecone_client=mock_pinecone)
+    chunks = ["Test chunk 1", "Test chunk 2"]
+    embeddings = pinecone_manager.get_or_create_embeddings(chunks, lambda x: [[0.1] * 1536 for _ in x])
+    assert len(embeddings) == 2
+    assert len(embeddings) == 2
+    assert all(len(emb) == 1536 for emb in embeddings)
+    results = pinecone_manager.search_similar([0.1] * 1536, top_k=1)
+    results = pinecone_manager.search_similar([0.1] * 1536

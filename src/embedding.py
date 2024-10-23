@@ -9,14 +9,18 @@ import logging
 from src.cache_manager import get_cache_key, save_to_cache, load_from_cache
 from src.text_processing import extract_dates, extract_named_entities, extract_key_phrases
 from src.book_data_interface import BookDataInterface
+from src.pinecone_manager import PineconeManager
 
 logger = logging.getLogger(__name__)
 
 client = OpenAI(api_key=OPENAI_API_KEY)
+pinecone_manager = PineconeManager()
+if pinecone_manager.index is None:
+    print("Warning: Pinecone index is not available. Some functionality may be limited.")
 
 def create_embeddings(chunks: List[str], batch_size: int = 100) -> List[List[float]]:
     """
-    Create embeddings for chunks in batches.
+    Create embeddings for chunks in batches using OpenAI and store them in Pinecone.
     
     Args:
         chunks (List[str]): List of text chunks to embed.
@@ -25,26 +29,12 @@ def create_embeddings(chunks: List[str], batch_size: int = 100) -> List[List[flo
     Returns:
         List[List[float]]: List of embeddings for all chunks.
     """
-    all_embeddings = []
-    for i in tqdm(range(0, len(chunks), batch_size), desc="Creating embeddings"):
-        batch = chunks[i:i+batch_size]
-        cache_keys = [get_cache_key(chunk) for chunk in batch]
-        cached_embeddings = [load_from_cache(key) for key in cache_keys]
-        
-        # Find chunks that need embedding
-        new_chunks = [chunk for chunk, emb in zip(batch, cached_embeddings) if emb is None]
-        if new_chunks:
-            response = client.embeddings.create(input=new_chunks, model=EMBEDDING_MODEL)
-            new_embeddings = [item.embedding for item in response.data]
-            
-            # Save new embeddings to cache
-            for chunk, emb in zip(new_chunks, new_embeddings):
-                save_to_cache(get_cache_key(chunk), emb)
-            
-            # Merge cached and new embeddings
-            all_embeddings.extend([emb if emb is not None else new_embeddings.pop(0) for emb in cached_embeddings])
-        else:
-            all_embeddings.extend(cached_embeddings)
+    def embedding_function(batch):
+        response = client.embeddings.create(input=batch, model=EMBEDDING_MODEL)
+        return [item.embedding for item in response.data]
+
+    all_embeddings = pinecone_manager.get_or_create_embeddings(chunks, embedding_function)
+    pinecone_manager.upsert_embeddings(chunks, all_embeddings)
     
     return all_embeddings
 
@@ -62,16 +52,6 @@ def load_chunks_and_embeddings(file_path: str) -> Tuple[List[str], List[List[flo
     return data['chunks'], data.get('embeddings', []), data.get('processed_text', {})
 
 def get_or_create_chunks_and_embeddings(chunks: List[str], cache_file: str) -> BookDataInterface:
-    if os.path.exists(cache_file):
-        logger.info(f"Loading chunks, embeddings, and processed text from {cache_file}.")
-        with open(cache_file, 'rb') as f:
-            data = pickle.load(f)
-        if isinstance(data, BookDataInterface):
-            logger.info(f"Loaded {len(data.chunks)} chunks, embeddings, and processed text.")
-            return data
-        else:
-            logger.warning("Cached data is not in the correct format. Recreating embeddings and processed text.")
-
     embeddings = create_embeddings(chunks)
     full_text = ' '.join(chunks)
     processed_text = {
