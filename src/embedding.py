@@ -6,7 +6,7 @@ from openai import OpenAI
 from tqdm import tqdm
 from src.config import OPENAI_API_KEY, EMBEDDING_MODEL
 import logging
-from src.cache import get_cache_key, save_to_cache, load_from_cache
+from src.cache_manager import get_cache_key, save_to_cache, load_from_cache
 from src.text_processing import extract_dates, extract_named_entities, extract_key_phrases
 from src.book_data_interface import BookDataInterface
 
