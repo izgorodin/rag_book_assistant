@@ -9,6 +9,7 @@ from nltk.tree import Tree
 logger = logging.getLogger(__name__)
 
 def process_large_file(file_path: str, chunk_size: int = 1000000) -> Generator[str, None, None]:
+    """Process a large file in chunks of specified size."""
     logger.info(f"Processing large file: {file_path}")
     with open(file_path, 'r', encoding='utf-8') as file:
         while True:
@@ -19,10 +20,12 @@ def process_large_file(file_path: str, chunk_size: int = 1000000) -> Generator[s
     logger.info("Finished processing large file")
 
 def extract_dates(text: str) -> List[str]:
+    """Extract dates from the given text using regex patterns."""
     date_pattern = r'\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},?\s+\d{4}|\d{1,2}/\d{1,2}/\d{2,4}|\d{4}-\d{2}-\d{2}'
     return re.findall(date_pattern, text)
 
 def extract_named_entities(text: str) -> Dict[str, List[str]]:
+    """Extract named entities from the text and categorize them."""
     chunks = ne_chunk(pos_tag(word_tokenize(text)))
     entities = {
         'PERSON': [],
@@ -46,12 +49,13 @@ def extract_named_entities(text: str) -> Dict[str, List[str]]:
     return entities
 
 def extract_key_phrases(text: str, num_phrases: int = 5) -> List[str]:
+    """Extract key phrases from the text based on part-of-speech tagging."""
     words = word_tokenize(text)
     pos_tags = pos_tag(words)
     
     grammar = r"""
-        KP: {<JJ.*>*<NN.*>+}
-        CP: {<JJ.*>*<NN.*>+<IN><JJ.*>*<NN.*>+}
+        KP: {<JJ.*>*<NN.*>+}  # Key Phrases
+        CP: {<JJ.*>*<NN.*>+<IN><JJ.*>*<NN.*>+}  # Complex Phrases
     """
     
     chunk_parser = nltk.RegexpParser(grammar)
@@ -66,6 +70,7 @@ def extract_key_phrases(text: str, num_phrases: int = 5) -> List[str]:
     return sorted(set(phrases), key=phrases.count, reverse=True)[:num_phrases]
 
 def load_and_preprocess_text(text_content: str) -> Dict[str, Any]:
+    """Load and preprocess the text content, extracting relevant information."""
     logger.info("Preprocessing text content")
     chunks = split_into_chunks(text_content)
     
@@ -83,6 +88,7 @@ def load_and_preprocess_text(text_content: str) -> Dict[str, Any]:
     }
 
 def split_into_chunks(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[str]:
+    """Split the text into chunks with specified size and overlap."""
     logger.info(f"Splitting text into chunks (size: {chunk_size}, overlap: {overlap})")
     words = text.split()
     chunks = []
