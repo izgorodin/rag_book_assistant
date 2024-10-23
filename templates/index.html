@@ -104,8 +104,8 @@
         <h2>Ask a Question</h2>
         <form id="questionForm">
             <div class="input-group">
-                <input type="text" id="questionInput" name="question" placeholder="Enter your question">
-                <input type="submit" value="Ask">
+                <input type="text" id="question" placeholder="Ask a question about the book">
+                <input type="submit" value="Ask" id="askButton">
             </div>
         </form>
         <div id="answerStatus"></div>
@@ -135,22 +135,22 @@
                 uploadInProgress = true;
                 $('#uploadStatus').text('Uploading file...');
 
-                $.ajax({
-                    url: '/',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(data) {
-                        $('#uploadStatus').text(data.message);
-                        checkBookLoaded();
-                    },
-                    error: function(data) {
-                        $('#uploadStatus').text('Error: ' + data.responseJSON.message);
-                    },
-                    complete: function() {
-                        uploadInProgress = false;
+                fetch('/', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        document.getElementById('uploadStatus').textContent = data.message;
+                        document.getElementById('questionForm').style.display = 'block';
+                    } else {
+                        document.getElementById('uploadStatus').textContent = 'Error: ' + data.message;
                     }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('uploadStatus').textContent = 'An error occurred during file upload.';
                 });
             });
 

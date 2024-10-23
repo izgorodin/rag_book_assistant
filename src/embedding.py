@@ -1,61 +1,88 @@
-from typing import List, Tuple, Dict, Any, Union
+from typing import List, Tuple, Dict, Any
 import os
 import pickle
+import numpy as np
 from openai import OpenAI
+from tqdm import tqdm
 from src.config import OPENAI_API_KEY, EMBEDDING_MODEL
 import logging
-import numpy as np
-from src.text_processing import split_into_chunks
 from src.cache import get_cache_key, save_to_cache, load_from_cache
+from src.text_processing import extract_dates, extract_named_entities, extract_key_phrases
+from src.book_data_interface import BookDataInterface
 
 logger = logging.getLogger(__name__)
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-def create_embeddings(chunks: List[str]) -> List[List[float]]:
+def create_embeddings(chunks: List[str], batch_size: int = 100) -> List[List[float]]:
+    """
+    Create embeddings for chunks in batches.
+    
+    Args:
+        chunks (List[str]): List of text chunks to embed.
+        batch_size (int): Number of chunks to process in each batch.
+    
+    Returns:
+        List[List[float]]: List of embeddings for all chunks.
+    """
     all_embeddings = []
-    for chunk in chunks:
-        cache_key = get_cache_key(chunk)
-        cached_embedding = load_from_cache(cache_key)
-        if cached_embedding:
-            all_embeddings.append(cached_embedding)
+    for i in tqdm(range(0, len(chunks), batch_size), desc="Creating embeddings"):
+        batch = chunks[i:i+batch_size]
+        cache_keys = [get_cache_key(chunk) for chunk in batch]
+        cached_embeddings = [load_from_cache(key) for key in cache_keys]
+        
+        # Find chunks that need embedding
+        new_chunks = [chunk for chunk, emb in zip(batch, cached_embeddings) if emb is None]
+        if new_chunks:
+            response = client.embeddings.create(input=new_chunks, model=EMBEDDING_MODEL)
+            new_embeddings = [item.embedding for item in response.data]
+            
+            # Save new embeddings to cache
+            for chunk, emb in zip(new_chunks, new_embeddings):
+                save_to_cache(get_cache_key(chunk), emb)
+            
+            # Merge cached and new embeddings
+            all_embeddings.extend([emb if emb is not None else new_embeddings.pop(0) for emb in cached_embeddings])
         else:
-            response = client.embeddings.create(input=chunk, model="text-embedding-ada-002")
-            embedding = response.data[0].embedding
-            save_to_cache(cache_key, embedding)
-            all_embeddings.append(embedding)
+            all_embeddings.extend(cached_embeddings)
+    
     return all_embeddings
 
-def save_chunks_and_embeddings(chunks: List[str], embeddings: List[List[float]], file_path: str):
-    logger.info(f"Saving {len(chunks)} chunks and their embeddings to {file_path}.")
-    data = {'chunks': chunks, 'embeddings': embeddings}
+def save_chunks_and_embeddings(book_data: BookDataInterface, file_path: str):
+    logger.info(f"Saving {len(book_data.chunks)} chunks, their embeddings, and processed text to {file_path}.")
     with open(file_path, 'wb') as f:
-        pickle.dump(data, f)
-    logger.info(f"Chunks and embeddings saved to {file_path}.")
+        pickle.dump(book_data, f)
+    logger.info(f"Data saved to {file_path}.")
 
-def load_chunks_and_embeddings(file_path: str) -> Tuple[List[str], List[List[float]]]:
-    logger.info(f"Loading chunks and embeddings from {file_path}.")
+def load_chunks_and_embeddings(file_path: str) -> Tuple[List[str], List[List[float]], Dict[str, Any]]:
+    logger.info(f"Loading chunks, embeddings, and processed text from {file_path}.")
     with open(file_path, 'rb') as f:
         data = pickle.load(f)
-    logger.info(f"Loaded {len(data['chunks'])} chunks and embeddings.")
-    return data['chunks'], data['embeddings']
+    logger.info(f"Loaded {len(data['chunks'])} chunks, embeddings, and processed text.")
+    return data['chunks'], data.get('embeddings', []), data.get('processed_text', {})
 
-def get_or_create_chunks_and_embeddings(text: Union[Dict[str, Any], List[str], str], cache_file: str) -> Tuple[List[str], List[List[float]]]:
+def get_or_create_chunks_and_embeddings(chunks: List[str], cache_file: str) -> BookDataInterface:
     if os.path.exists(cache_file):
+        logger.info(f"Loading chunks, embeddings, and processed text from {cache_file}.")
         with open(cache_file, 'rb') as f:
-            chunks, embeddings = pickle.load(f)
-        if not all(isinstance(emb, list) and all(isinstance(x, float) for x in emb) for emb in embeddings):
-            logger.warning("Cached embeddings are not in the correct format. Recreating embeddings.")
+            data = pickle.load(f)
+        if isinstance(data, BookDataInterface):
+            logger.info(f"Loaded {len(data.chunks)} chunks, embeddings, and processed text.")
+            return data
         else:
-            return chunks, embeddings
-    
-    chunks = split_into_chunks(text)
+            logger.warning("Cached data is not in the correct format. Recreating embeddings and processed text.")
+
     embeddings = create_embeddings(chunks)
+    full_text = ' '.join(chunks)
+    processed_text = {
+        'dates': extract_dates(full_text),
+        'entities': extract_named_entities(full_text),
+        'key_phrases': extract_key_phrases(full_text)
+    }
+    book_data = BookDataInterface(chunks, embeddings, processed_text)
+    save_chunks_and_embeddings(book_data, cache_file)
     
-    with open(cache_file, 'wb') as f:
-        pickle.dump((chunks, embeddings), f)
-    
-    return chunks, embeddings
+    return book_data
 
 def cosine_similarity(a: List[float], b: List[float]) -> float:
     a = np.array(a, dtype=np.float64)

@@ -48,7 +48,7 @@ def run_cli():
         chunks = split_into_chunks(text)
         logger.info(f"Text split into {len(chunks)} chunks")
         
-        chunks, embeddings = get_or_create_chunks_and_embeddings(chunks, 'embeddings_cache.pkl')
+        chunks, embeddings, processed_text = get_or_create_chunks_and_embeddings(chunks, 'embeddings_cache.pkl')
         
         print("Book successfully loaded and processed. You can ask questions!")
         
@@ -58,7 +58,7 @@ def run_cli():
                 break
             
             logger.info(f"Received query: {query}")
-            answer = rag_query(query, chunks, embeddings)
+            answer = rag_query(query, chunks, embeddings, processed_text)
             logger.info(f"Generated answer: {answer}")
             print(f"\nAnswer: {answer}")
 

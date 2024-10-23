@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict, Any, Union
+from typing import List, Dict, Any, Union, Generator
 from src.config import CHUNK_SIZE, OVERLAP
 import logging
 import nltk
@@ -7,6 +7,16 @@ from nltk import ne_chunk, pos_tag, word_tokenize
 from nltk.tree import Tree
 
 logger = logging.getLogger(__name__)
+
+def process_large_file(file_path: str, chunk_size: int = 1000000) -> Generator[str, None, None]:
+    logger.info(f"Processing large file: {file_path}")
+    with open(file_path, 'r', encoding='utf-8') as file:
+        while True:
+            chunk = file.read(chunk_size)
+            if not chunk:
+                break
+            yield chunk
+    logger.info("Finished processing large file")
 
 def extract_dates(text: str) -> List[str]:
     date_pattern = r'\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},?\s+\d{4}|\d{1,2}/\d{1,2}/\d{2,4}|\d{4}-\d{2}-\d{2}'
@@ -55,38 +65,29 @@ def extract_key_phrases(text: str, num_phrases: int = 5) -> List[str]:
     
     return sorted(set(phrases), key=phrases.count, reverse=True)[:num_phrases]
 
-def load_and_preprocess_text(file_path: str) -> Dict[str, any]:
-    with open(file_path, 'r', encoding='utf-8') as file:
-        text = file.read()
+def load_and_preprocess_text(text_content: str) -> Dict[str, Any]:
+    logger.info("Preprocessing text content")
+    chunks = split_into_chunks(text_content)
     
-    text = re.sub(r'\s+', ' ', text)
-    text = re.sub(r'[^a-zA-Z0-9\s.,!?]', '', text)
-    
-    dates = extract_dates(text)
-    entities = extract_named_entities(text)
-    key_phrases = extract_key_phrases(text)
+    dates = extract_dates(text_content)
+    entities = extract_named_entities(text_content)
+    key_phrases = extract_key_phrases(text_content)
     
     logger.info(f"Extracted {len(dates)} dates, {sum(len(v) for v in entities.values())} named entities, and {len(key_phrases)} key phrases from the text")
     
     return {
-        'text': text.strip(),
+        'chunks': chunks,
         'dates': dates,
         'entities': entities,
         'key_phrases': key_phrases
     }
 
-def split_into_chunks(text: Union[Dict[str, Any], List[str], str], chunk_size: int = 1000, overlap: int = 100) -> List[str]:
-    if isinstance(text, dict) and 'text' in text:
-        words = text['text'].split()
-    elif isinstance(text, str):
-        words = text.split()
-    elif isinstance(text, list):
-        words = ' '.join(text).split()
-    else:
-        raise ValueError("Input must be either a dictionary with 'text' key, a string, or a list of strings")
-    
+def split_into_chunks(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[str]:
+    logger.info(f"Splitting text into chunks (size: {chunk_size}, overlap: {overlap})")
+    words = text.split()
     chunks = []
     for i in range(0, len(words), chunk_size - overlap):
         chunk = ' '.join(words[i:i + chunk_size])
         chunks.append(chunk)
+    logger.info(f"Created {len(chunks)} chunks")
     return chunks

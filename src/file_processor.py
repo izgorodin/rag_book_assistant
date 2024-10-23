@@ -12,6 +12,7 @@ class FileProcessor:
     def process_file(self, file_path: str) -> str:
         _, extension = os.path.splitext(file_path)
         extension = extension.lower()
+        logger.info(f"Processing file: {file_path} with extension: {extension}")
 
         processors = {
             '.pdf': self._process_pdf,
@@ -22,8 +23,10 @@ class FileProcessor:
 
         processor = processors.get(extension)
         if processor:
+            logger.info(f"Using processor for extension: {extension}")
             return processor(file_path)
         else:
+            logger.error(f"Unsupported file format: {extension}")
             raise ValueError(f"Unsupported file format: {extension}")
 
     def _process_pdf(self, file_path: str) -> str:
