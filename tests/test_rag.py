@@ -4,15 +4,11 @@ from src.openai_service import OpenAIService
 from src.rag import generate_answer, rag_query
 from src.hybrid_search import HybridSearch
 from src.book_data_interface import BookDataInterface
-from openai import APIError, APITimeoutError, OpenAI, RateLimitError
-from openai.types.chat import ChatCompletion
 from unittest.mock import patch, MagicMock
 
 @pytest.fixture
 def mock_openai_service():
-    with patch('src.rag.OpenAIService') as mock_service:
-        mock_service.return_value.generate_answer.return_value = "Mocked answer"
-        yield mock_service
+    return MagicMock(spec=OpenAIService)
 
 @pytest.mark.parametrize("top_k", [1, 2, 3])
 def test_find_most_relevant_chunks(sample_chunks, sample_embeddings, top_k):
@@ -56,16 +52,16 @@ def test_rag_query_with_different_queries(query):
     # Additional logic to test the behavior of rag_query with different queries can be added here
 
 @pytest.mark.performance
-def test_rag_query_performance():
+def test_rag_query_performance(mock_openai_service):
     query = "Test query"
     book_data = BookDataInterface(["Test chunk"] * 1000, [[0.1] * 1536] * 1000, {})
     
     start_time = time.time()
-    rag_query(query, book_data)
+    rag_query(query, book_data, mock_openai_service)
     end_time = time.time()
     
     execution_time = end_time - start_time
-    assert execution_time < 10, f"RAG query took {execution_time} seconds, which is more than the expected 5 seconds"
+    assert execution_time < 10, f"RAG query took {execution_time} seconds, which is more than the expected 10 seconds"
 
 def test_rag_error_handling():
     query = "Test query"
@@ -78,21 +74,45 @@ def test_generate_answer(mock_openai_service):
     query = "Test query"
     context = "Test context"
     
-    answer = generate_answer(query, context)
+    mock_openai_service.generate_answer.return_value = "Mocked answer"
+    answer = generate_answer(query, context, mock_openai_service)
     
     assert isinstance(answer, str)
     assert len(answer) > 0
-    mock_openai_service.return_value.generate_answer.assert_called_once_with(query, context)
+    mock_openai_service.generate_answer.assert_called_once_with(query, context)
 
-@pytest.mark.parametrize("error_type, error_message, expected_message", [
-    (RateLimitError, "Rate limit exceeded", "Rate limit exceeded"),
-    (APIError, "API error", "API error"),
-    (APITimeoutError, "Request timed out", "Request timed out")
+@pytest.mark.parametrize("error_type, error_message", [
+    (Exception, "Test error"),
 ])
-def test_generate_answer_error_handling(error_type, error_message, expected_message):
-    with patch('src.rag.OpenAIService.generate_answer') as mock_generate:
-        error = OpenAIService.create_test_exception(error_type, error_message)
-        mock_generate.side_effect = error
-        answer = generate_answer("Query", "Context")
-        assert "Sorry, I encountered an error" in answer
-        assert expected_message in answer
+def test_generate_answer_error_handling(mock_openai_service, error_type, error_message):
+    mock_openai_service.generate_answer.side_effect = error_type(error_message)
+    answer = generate_answer("Query", "Context", mock_openai_service)
+    assert "Sorry, I encountered an error" in answer
+    assert error_message in answer
+
+@patch('src.rag.PineconeManager')
+@patch('src.rag.create_embeddings')
+def test_rag_query(mock_create_embeddings, mock_pinecone_manager, mock_openai_service):
+    query = "Test query"
+    book_data = BookDataInterface([], [], {})
+    
+    mock_create_embeddings.return_value = [[0.1, 0.2, 0.3]]
+    mock_pinecone_manager.return_value.search_similar.return_value = [
+        {"chunk": "Test chunk", "score": 0.9}
+    ]
+    mock_openai_service.generate_answer.return_value = "Test answer"
+    
+    answer = rag_query(query, book_data, mock_openai_service)
+    
+    assert isinstance(answer, str)
+    assert len(answer) > 0
+    mock_openai_service.generate_answer.assert_called_once()
+
+def test_rag_error_handling(mock_openai_service):
+    query = "Test query"
+    book_data = BookDataInterface([], [], {})
+    
+    mock_openai_service.generate_answer.side_effect = Exception("Test error")
+    
+    answer = rag_query(query, book_data, mock_openai_service)
+    assert "Sorry, I encountered an error" in answer

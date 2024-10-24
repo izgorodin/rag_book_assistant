@@ -33,11 +33,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 from src.logger import setup_logger
 from src.book_data_interface import BookDataInterface
 from src.pinecone_manager import PineconeManager
-from openai import RateLimitError, APIError, APITimeoutError
 
 logger = setup_logger()
-
-openai_service = OpenAIService()
 
 def preprocess_text(text: str) -> str:
     """
@@ -59,57 +56,33 @@ def preprocess_text(text: str) -> str:
     tokens = [lemmatizer.lemmatize(token) for token in tokens]
     return ' '.join(tokens)
 
-def generate_answer(query: str, context: str) -> str:
+def generate_answer(query: str, context: str, openai_service: OpenAIService) -> str:
     try:
         return openai_service.generate_answer(query, context)
-    except (RateLimitError, APIError, APITimeoutError) as e:
+    except Exception as e:
+        logger.error(f"Error in generate_answer: {str(e)}")
         return f"Sorry, I encountered an error while processing your query: {str(e)}"
 
-def rag_query(query: str, book_data: BookDataInterface) -> str:
-    """
-    Process a RAG query by finding relevant chunks, constructing context, and generating an answer.
-
-    Args:
-        query (str): The user's question.
-        book_data (BookDataInterface): The book data interface object containing chunks, embeddings, and processed text.
-
-    Returns:
-        str: The generated answer or an error message if processing fails.
-    """
+def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
     try:
         logger.info(f"Processing RAG query: {query}")
         
         pinecone_manager = PineconeManager()
         query_embedding = create_embeddings([query])[0]
         relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
-        logger.info(f"Number of relevant chunks found: {len(relevant_chunks)}")
         
-        # Log the top 3 most relevant chunks
-        for i, chunk in enumerate(relevant_chunks[:3]):
-            logger.debug(f"Chunk {i+1} (score: {chunk['score']:.2f}):")
-            logger.debug(f"Content: {chunk['chunk'][:200]}...")
-        
-        # Construct context from relevant chunks
-        context = "\n\n".join(f"Chunk {i+1} (score: {chunk['score']:.2f}): {chunk['chunk']}" for i, chunk in enumerate(relevant_chunks))
-        
-        # Add metadata to context
-        context += f"\n\nDates mentioned: {', '.join(book_data.processed_text.get('dates', []))}"
-        context += f"\n\nKey phrases: {', '.join(book_data.processed_text.get('key_phrases', []))}"
-        context += "\n\nNamed entities:"
-        for entity_type, entities in book_data.processed_text.get('entities', {}).items():
-            if entities:
-                context += f"\n- {entity_type}: {', '.join(entities[:5])}"
+        context = "\n\n".join(f"Chunk {i+1} (score: {chunk['score']:.2f}): {chunk['chunk']}" 
+                              for i, chunk in enumerate(relevant_chunks))
         
         full_context = f"Original text chunks and metadata:\n\n{context}\n\nQuestion: {query}"
         
-        # Generate answer using the constructed context
-        answer = generate_answer(query, full_context)
+        answer = generate_answer(query, full_context, openai_service)
         logger.info(f"Generated answer: {answer}")
         return answer
     except Exception as e:
         logger.error(f"Error in RAG query process: {str(e)}", exc_info=True)
         return f"Sorry, I encountered an error while processing your query: {str(e)}"
-    
+
 def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> float:
     """
     Evaluate the quality of a generated answer against a reference answer.
@@ -135,9 +108,5 @@ def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> flo
 
     return score
 
-def get_answer_from_system(question: str, book_data: BookDataInterface) -> str:
-    try:
-        return rag_query(question, book_data)
-    except Exception as e:
-        logger.error(f"Error in rag_query: {str(e)}")
-        return f"Sorry, I encountered an error while processing your query: {str(e)}"
+def get_answer_from_system(question: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
+    return rag_query(question, book_data, openai_service)

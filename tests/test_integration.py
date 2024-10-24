@@ -8,6 +8,8 @@ from tests.ford_pinto_qa_data import qa_pairs
 import traceback
 from src.pinecone_manager import PineconeManager
 from tests.mock_pinecone import MockPinecone
+from unittest.mock import MagicMock
+from src.book_data_interface import BookDataInterface
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -97,10 +99,11 @@ def test_different_book_types(book_file, use_openai):
     else:
         assert all(embedding is None for embedding in embeddings)
 
-def test_rag_query(use_openai):
+def test_rag_query(use_openai, mock_openai_service):
     chunks, embeddings = process_book("test_book.txt", use_openai=use_openai)
     query = "What is the main topic of the book?"
-    answer = rag_query(query, chunks, embeddings)
+    book_data = BookDataInterface(chunks, embeddings, {})
+    answer = rag_query(query, book_data, mock_openai_service)
     
     assert isinstance(answer, str)
     assert len(answer) > 0

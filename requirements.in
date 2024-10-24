@@ -19,3 +19,4 @@ opendocument
 odfpy
 pinecone-client
 pypdf
+tenacity
