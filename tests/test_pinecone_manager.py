@@ -1,9 +1,9 @@
 import pytest
 from src.pinecone_manager import PineconeManager
 from tests.mock_pinecone import MockPinecone
-import logging
+from src.logger import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger()
 
 @pytest.fixture(scope="function")
 def pinecone_manager():

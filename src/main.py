@@ -20,6 +20,10 @@ def initialize_nltk():
         nltk.download('wordnet', quiet=True)
 
 def main():
+    # Initialize the logger
+    logger = setup_logger('main.log')
+    logger.info("Starting the RAG Book Assistant")
+
     parser = argparse.ArgumentParser(description="RAG Book Assistant")
     parser.add_argument("mode", choices=["cli"], help="Mode to run the assistant (only cli is currently supported)")
     args = parser.parse_args()
@@ -27,7 +31,7 @@ def main():
     if args.mode == "cli":
         run_cli()  # Use the run_cli from cli.py
     else:
-        print(f"Unknown mode: {args.mode}")
+        logger.error(f"Unknown mode: {args.mode}")
 
 if __name__ == "__main__":
     main()

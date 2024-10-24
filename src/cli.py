@@ -1,13 +1,13 @@
-import logging
 import argparse
 import os
 import hashlib
+from src.logger import setup_logger
 from src.text_processing import load_and_preprocess_text
 from src.embedding import get_or_create_chunks_and_embeddings
 from src.rag import rag_query
 from src.book_data_interface import BookDataInterface
 
-logger = logging.getLogger(__name__)
+logger = setup_logger()
 
 def setup_logging():
     logging.basicConfig(

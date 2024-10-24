@@ -6,13 +6,13 @@ from src.rag import rag_query
 from src.text_processing import split_into_chunks
 from src.embedding import get_or_create_chunks_and_embeddings
 from src.logger import setup_logger, setup_results_logger
-import re
 from src.pinecone_manager import PineconeManager
 from src.embedding import create_embeddings
 from src.book_data_interface import BookDataInterface
 
 nlp = spacy.load("en_core_web_md")  # Используйте 'md' или 'lg' вместо 'sm'
 
+# Use the logger from logger.py
 logger = setup_logger('test_rag_system.log')
 results_logger = setup_results_logger()
 
@@ -71,13 +71,15 @@ def system_setup():
     return initialize_system(book_path)
 
 @pytest.mark.parametrize("qa_pair", qa_pairs)
-def test_qa_system(qa_pair, system_setup):
+def test_qa_system(qa_pair, system_setup, mock_openai_service):
     book_data = system_setup
     question = qa_pair["question"]
     correct_answer = qa_pair["answer"]
     context = qa_pair.get("context", "")
     
-    system_answer = get_answer_from_system(question, book_data)
+    # Передаем mock_openai_service в rag_query
+    system_answer = rag_query(question, book_data, mock_openai_service)
+    
     is_correct = check_answer(system_answer, correct_answer, context)
     
     results_logger.info(f"\nQ: {question}")

@@ -5,14 +5,14 @@ import numpy as np
 from openai import OpenAI
 from tqdm import tqdm
 from src.config import OPENAI_API_KEY, EMBEDDING_MODEL
-import logging
+from src.logger import setup_logger
 from src.text_processing import extract_dates, extract_named_entities, extract_key_phrases
 from src.book_data_interface import BookDataInterface
 from src.pinecone_manager import PineconeManager
 from src.cache_manager import CACHE_DIR, save_to_cache, load_from_cache
 import hashlib
 
-logger = logging.getLogger(__name__)
+logger = setup_logger()
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 pinecone_manager = PineconeManager()

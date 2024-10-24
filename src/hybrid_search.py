@@ -1,13 +1,13 @@
 import numpy as np
-from typing import List, Dict, Any, Union
+from typing import List, Dict, Any
 from rank_bm25 import BM25Okapi
 from src.embedding import create_embeddings, cosine_similarity
-import logging
 from nltk.corpus import wordnet
 from nltk import word_tokenize, pos_tag
 from nltk.stem import WordNetLemmatizer
+from src.logger import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger()
 
 class HybridSearch:
     def __init__(self, chunks: List[str], embeddings: List[List[float]], embedding_weight: float = 0.75):

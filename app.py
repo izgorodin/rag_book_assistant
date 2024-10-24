@@ -1,36 +1,28 @@
 import os
-import logging
 from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 from src.cli import load_and_process_book, answer_question
 from src.file_processor import FileProcessor
 from src.rag import rag_query
+from src.logger import setup_logger  # Import the setup_logger function
 
 
 app = Flask(__name__)
 
-# Настройка логирования
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('app.log'),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
+# Initialize the logger using setup_logger from logger.py
+logger = setup_logger('app.log')
 
-# Создаем директорию uploads, если она не существует
+# Create the uploads directory if it doesn't exist
 UPLOAD_FOLDER = 'uploads'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 320 * 1024 * 1024  # Увеличиваем до 320 MB
+app.config['MAX_CONTENT_LENGTH'] = 320 * 1024 * 1024  # Increase to 320 MB
 
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'doc', 'docx', 'odt'}
 
-# Глобальная переменная для хранения данных книги
+# Global variable to store book data
 book_data = None
 
 def allowed_file(filename):

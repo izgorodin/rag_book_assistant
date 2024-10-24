@@ -4,9 +4,9 @@ from pypdf import PdfReader
 from docx import Document
 from odf import text
 from odf.opendocument import load
-import logging
+from src.logger import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger()
 
 class FileProcessor:
     def process_file(self, file_path: str) -> str:

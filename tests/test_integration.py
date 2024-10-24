@@ -3,16 +3,15 @@ import os
 from src.text_processing import load_and_preprocess_text, split_into_chunks
 from src.embedding import create_embeddings
 from src.rag import rag_query
-import logging
 from tests.ford_pinto_qa_data import qa_pairs
-import traceback
 from src.pinecone_manager import PineconeManager
 from tests.mock_pinecone import MockPinecone
 from unittest.mock import MagicMock
 from src.book_data_interface import BookDataInterface
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
+from src.logger import setup_logger
+
+logger = setup_logger()
 
 # Путь к директории с тестовыми файлами
 TEST_FILES_DIR = os.path.dirname(os.path.abspath(__file__))

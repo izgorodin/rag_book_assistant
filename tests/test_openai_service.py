@@ -2,7 +2,6 @@ import pytest
 from unittest.mock import patch, MagicMock
 from src.openai_service import OpenAIService
 from openai import RateLimitError, APIError, APITimeoutError, APIConnectionError
-import httpx
 
 @pytest.fixture
 def openai_service():

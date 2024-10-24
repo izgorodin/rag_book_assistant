@@ -27,19 +27,18 @@ def setup_logger(log_file='rag_system.log'):
     logger = colorlog.getLogger()
     logger.setLevel(logging.DEBUG)
 
-    # Обработчик для записи в файл
-    file_handler = logging.FileHandler(log_file_path)
-    file_handler.setLevel(logging.DEBUG)
-    file_handler.setFormatter(file_formatter)
+    # Check if handlers are already added
+    if not logger.handlers:
+        file_handler = logging.FileHandler(log_file_path)
+        file_handler.setLevel(logging.DEBUG)
+        file_handler.setFormatter(file_formatter)
 
-    # Обработчик для вывода в консоль
-    console_handler = colorlog.StreamHandler()
-    console_handler.setLevel(logging.INFO)
-    console_handler.setFormatter(console_formatter)
+        console_handler = colorlog.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+        console_handler.setFormatter(console_formatter)
 
-    # Добавляем обработчики к логгеру
-    logger.addHandler(file_handler)
-    logger.addHandler(console_handler)
+        logger.addHandler(file_handler)
+        logger.addHandler(console_handler)
 
     return logger
 

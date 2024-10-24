@@ -2,7 +2,6 @@ import pytest
 from unittest.mock import patch, Mock
 from src.embedding import create_embeddings
 from src.cache_manager import get_cache_key, load_from_cache, save_to_cache
-import os
 
 @pytest.mark.parametrize("chunks, expected_length", [
     (["Test chunk 1", "Test chunk 2"], 2),

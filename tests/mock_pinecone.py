@@ -1,7 +1,9 @@
 from typing import List, Dict, Any
 import time
 import random
-import logging
+from src.logger import setup_logger
+
+logger = setup_logger()
 
 class MockPineconeIndex:
     def __init__(self):
@@ -39,7 +41,7 @@ class MockPinecone:
         if name not in self.indexes:
             self.indexes[name] = MockPineconeIndex()
         else:
-            logging.info(f"Index {name} already exists.")
+            logger.info(f"Index {name} already exists.")
 
     def Index(self, name: str) -> MockPineconeIndex:
         self.simulate_network_delay()

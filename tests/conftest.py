@@ -3,10 +3,9 @@ from unittest.mock import Mock, patch
 from openai import OpenAI
 import os
 import time
-import logging
+from src.logger import setup_logger
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
+logger = setup_logger()
 
 def pytest_addoption(parser):
     parser.addoption(
