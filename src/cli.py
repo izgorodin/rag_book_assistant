@@ -69,9 +69,13 @@ def run_cli():
                 break
             
             logger.info(f"Received query: {query}")
-            answer = rag_query(query, book_data)
-            logger.info(f"Generated answer: {answer}")
-            print(f"\nAnswer: {answer}")
+            try:
+                answer = rag_query(query, book_data)
+                logger.info(f"Generated answer: {answer}")
+                print(f"\nAnswer: {answer}")
+            except Exception as e:
+                logger.error(f"Error generating answer: {str(e)}")
+                print(f"An error occurred while generating the answer: {str(e)}")
 
     except Exception as e:
         logger.error(f"An error occurred: {str(e)}")

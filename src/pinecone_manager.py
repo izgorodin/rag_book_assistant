@@ -1,14 +1,15 @@
 from abc import abstractmethod, ABC
 from contextlib import contextmanager
-import logging
 from pinecone import Pinecone, ServerlessSpec
 from typing import List, Dict, Any, Callable, Generator
 from src.config import PINECONE_API_KEY, PINECONE_CLOUD, EMBEDDING_DIMENSION, PINECONE_INDEX_NAME, PINECONE_METRIC, PINECONE_REGION
 from src.cache_manager import get_cache_key, save_to_cache, load_from_cache
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 from pinecone.core.openapi.shared.exceptions import PineconeApiException
+from src.logger import setup_logger    
 
-logger = logging.getLogger(__name__)
+logger = setup_logger()
+
 
 class PineconeInterface(ABC):
     @abstractmethod

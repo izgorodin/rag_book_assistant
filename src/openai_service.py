@@ -3,10 +3,10 @@ from openai import OpenAI, RateLimitError, APIError, APITimeoutError, APIConnect
 from openai.types.chat import ChatCompletion
 from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS
 from typing import List, Dict, Union
-import logging
 import httpx
+from src.logger import setup_logger    
 
-logger = logging.getLogger(__name__)
+logger = setup_logger()
 
 class BaseOpenAIService(ABC):
     def __init__(self, api_key: str = OPENAI_API_KEY):

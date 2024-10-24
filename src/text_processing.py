@@ -1,12 +1,13 @@
 import re
 from typing import List, Dict, Any, Union, Generator
 from src.config import CHUNK_SIZE, OVERLAP
-import logging
 import nltk
 from nltk import ne_chunk, pos_tag, word_tokenize
 from nltk.tree import Tree
+from src.logger import setup_logger    
 
-logger = logging.getLogger(__name__)
+logger = setup_logger()
+
 
 def process_large_file(file_path: str, chunk_size: int = 1000000) -> Generator[str, None, None]:
     """Process a large file in chunks of specified size."""
