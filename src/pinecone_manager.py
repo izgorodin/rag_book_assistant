@@ -118,7 +118,7 @@ class PineconeManager(BasePineconeManager):
             raise ValueError("Pinecone index is not initialized")
         
         results = self._pinecone_query(query_embedding, top_k=top_k, include_metadata=True)
-        return [{"chunk": match['metadata']['chunk'], "score": match['score']} for match in results['matches']]
+        return [{"chunk": match['metadata'].get('chunk', ''), "score": match['score']} for match in results['matches']]
 
     def clear_index(self) -> None:
         if self.is_available():

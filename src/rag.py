@@ -76,7 +76,7 @@ def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAISe
         
         full_context = f"Original text chunks and metadata:\n\n{context}\n\nQuestion: {query}"
         
-        answer = generate_answer(query, full_context, openai_service)
+        answer = openai_service.generate_answer(query, full_context)
         logger.info(f"Generated answer: {answer}")
         return answer
     except Exception as e:

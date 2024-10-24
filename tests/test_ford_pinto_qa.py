@@ -9,6 +9,8 @@ from src.logger import setup_logger, setup_results_logger
 from src.pinecone_manager import PineconeManager
 from src.embedding import create_embeddings
 from src.book_data_interface import BookDataInterface
+from unittest.mock import MagicMock
+from src.openai_service import OpenAIService
 
 nlp = spacy.load("en_core_web_md")  # Используйте 'md' или 'lg' вместо 'sm'
 
@@ -62,13 +64,19 @@ def initialize_system(book_path):
     embeddings = pinecone_manager.get_or_create_embeddings(chunks, lambda x: create_embeddings(x))
     return BookDataInterface(chunks, embeddings, {})
 
-def get_answer_from_system(question: str, book_data: BookDataInterface) -> str:
-    return rag_query(question, book_data)
+def get_answer_from_system(question: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
+    return rag_query(question, book_data, openai_service)
 
 @pytest.fixture(scope="module")
 def system_setup():
     book_path = "tests/data/ford.txt"  # Убедитесь, что этот путь корректен
     return initialize_system(book_path)
+
+@pytest.fixture
+def mock_openai_service():
+    mock_service = MagicMock(spec=OpenAIService)
+    mock_service.generate_answer.return_value = "This is a mock answer"
+    return mock_service
 
 @pytest.mark.parametrize("qa_pair", qa_pairs)
 def test_qa_system(qa_pair, system_setup, mock_openai_service):
@@ -77,8 +85,9 @@ def test_qa_system(qa_pair, system_setup, mock_openai_service):
     correct_answer = qa_pair["answer"]
     context = qa_pair.get("context", "")
     
-    # Передаем mock_openai_service в rag_query
     system_answer = rag_query(question, book_data, mock_openai_service)
+    
+    assert isinstance(system_answer, str), f"Expected string, got {type(system_answer)}"
     
     is_correct = check_answer(system_answer, correct_answer, context)
     

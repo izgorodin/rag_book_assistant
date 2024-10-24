@@ -25,7 +25,6 @@ def create_embeddings(chunks: List[str]) -> List[List[float]]:
 
     for chunk in chunks:
         if not chunk.strip():
-            # Для пустых строк создаем нулевой вектор, но не сохраняем в Pinecone
             all_embeddings.append([0.0] * 1536)
         else:
             cached_embedding = load_from_cache(chunk)
@@ -37,11 +36,9 @@ def create_embeddings(chunks: List[str]) -> List[List[float]]:
                 all_embeddings.append(embedding)
                 save_to_cache(chunk, embedding)
 
-    # Сохраняем в Pinecone только непустые чанки
     non_empty_chunks = [c for c in chunks if c.strip()]
-    non_empty_embeddings = [e for c, e in zip(chunks, all_embeddings) if c.strip()]
     if non_empty_chunks:
-        pinecone_manager.upsert_embeddings(non_empty_chunks, non_empty_embeddings)
+        pinecone_manager.upsert_embeddings(non_empty_chunks, all_embeddings)
 
     return all_embeddings
 

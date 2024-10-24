@@ -1,0 +1,18 @@
+
+Q: What was the model year of the Ford Pinto involved in the accident?
+Expected A: 1972
+System A: Sorry, I encountered an error while processing your query: 'chunk'
+Is correct: False
+--------------------------------------------------
+
+Q: What was the model year of the Ford Pinto involved in the accident?
+Expected A: 1972
+System A: Sorry, I encountered an error while processing your query: 'chunk'
+Is correct: False
+--------------------------------------------------
+
+Q: What was the model year of the Ford Pinto involved in the accident?
+Expected A: 1972
+System A: This is a mock answer
+Is correct: False
+--------------------------------------------------

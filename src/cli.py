@@ -6,16 +6,17 @@ from src.text_processing import load_and_preprocess_text
 from src.embedding import get_or_create_chunks_and_embeddings
 from src.rag import rag_query
 from src.book_data_interface import BookDataInterface
+from src.openai_service import OpenAIService
 
 logger = setup_logger()
 
 def setup_logging():
-    logging.basicConfig(
-        level=logging.INFO,
+    logger.basicConfig(
+        level=logger.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         handlers=[
-            logging.FileHandler('rag_system.log'),
-            logging.StreamHandler()
+            logger.FileHandler('rag_system.log'),
+            logger.StreamHandler()
         ]
     )
 
@@ -38,19 +39,24 @@ def load_and_process_book(text_content: str) -> BookDataInterface:
     
     return book_data
 
-def answer_question(query: str, book_data: BookDataInterface) -> str:
-    logger = logging.getLogger(__name__)
+def answer_question(query: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
     logger.info(f"Received query: {query}")
-    answer = rag_query(query, book_data)
-    logger.info(f"Generated answer: {answer}")
-    return answer
+    try:
+        answer = rag_query(query, book_data, openai_service)
+        logger.info(f"Generated answer: {answer}")
+        return answer
+    except Exception as e:
+        logger.error(f"Error generating answer: {str(e)}")
+        print(f"An error occurred while generating the answer: {str(e)}")
+        return None
 
 def run_cli():
-    setup_logging()
-    logger = logging.getLogger(__name__)
     logger.info("Starting the RAG system")
 
     try:
+        # Initialize OpenAIService
+        openai_service = OpenAIService()
+
         # Load and preprocess the book
         book_path = input("Enter the path to the book file: ")
         if not os.path.exists(book_path):
@@ -69,13 +75,11 @@ def run_cli():
                 break
             
             logger.info(f"Received query: {query}")
-            try:
-                answer = rag_query(query, book_data)
-                logger.info(f"Generated answer: {answer}")
+            answer = answer_question(query, book_data, openai_service)
+            if answer is not None:
                 print(f"\nAnswer: {answer}")
-            except Exception as e:
-                logger.error(f"Error generating answer: {str(e)}")
-                print(f"An error occurred while generating the answer: {str(e)}")
+            else:
+                print("An error occurred while generating the answer.")
 
     except Exception as e:
         logger.error(f"An error occurred: {str(e)}")
@@ -97,7 +101,7 @@ def main():
         else:
             print(f"Unknown mode: {args.mode}")
     except Exception as e:
-        logging.error(f"An error occurred in main: {str(e)}", exc_info=True)
+        logger.error(f"An error occurred in main: {str(e)}", exc_info=True)
         print(f"An unexpected error occurred: {str(e)}")
 
 if __name__ == "__main__":

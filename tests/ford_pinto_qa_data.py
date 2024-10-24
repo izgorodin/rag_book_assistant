@@ -4,7 +4,9 @@ qa_pairs = [
         "answer": "1972",
         "context": "In November 1971, the Grays purchased a new 1972 Ford Pinto hatchback manufactured by Ford in October 1971."
     },
-    """
+]
+
+qa_pairs_extended = [
     {
         "question": "Who was the executive vice president of Ford who conceived the Pinto project?",
         "answer": "Lee Iacocca",
@@ -75,5 +77,4 @@ qa_pairs = [
         "answer": "Through the testimony of Harley Copp",
         "context": "Harley Copp's testimony revealed the existence of Ford's internal cost-benefit analysis memo, which compared the cost of improvements to the potential costs of lawsuits from deaths and injuries."
     },
-    """
-    ]
+]
