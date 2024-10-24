@@ -5,6 +5,8 @@ from pinecone import Pinecone, ServerlessSpec
 from typing import List, Dict, Any, Callable, Generator
 from src.config import PINECONE_API_KEY, PINECONE_CLOUD, EMBEDDING_DIMENSION, PINECONE_INDEX_NAME, PINECONE_METRIC, PINECONE_REGION
 from src.cache_manager import get_cache_key, save_to_cache, load_from_cache
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
+from pinecone.core.openapi.shared.exceptions import PineconeApiException
 
 logger = logging.getLogger(__name__)
 
@@ -47,33 +49,57 @@ class BasePineconeManager:
         pass
 
 class PineconeManager(BasePineconeManager):
-    def __init__(self, index_name: str = PINECONE_INDEX_NAME, pinecone_client: PineconeInterface = None):
-        self.index_name: str = index_name
-        self.index: Any = None
-        self.pc: PineconeInterface = pinecone_client or Pinecone(api_key=PINECONE_API_KEY)
+    def __init__(self, index_name: str = PINECONE_INDEX_NAME, pinecone_client: Pinecone = None,
+                 max_retries: int = 3, min_wait: int = 1, max_wait: int = 10):
+        self.index_name = index_name
+        self.pc = pinecone_client or Pinecone(api_key=PINECONE_API_KEY)
+        self.index = None
+        self.max_retries = max_retries
+        self.min_wait = min_wait
+        self.max_wait = max_wait
         self._initialize_index()
 
-    def _initialize_index(self) -> None:
-        try:
-            indexes = self.pc.list_indexes()
-            if self.index_name not in indexes:
-                logger.info(f"Creating new Pinecone index: {self.index_name}")
-                try:
+    def _initialize_index(self):
+        @retry(stop=stop_after_attempt(self.max_retries),
+               wait=wait_exponential(multiplier=1, min=self.min_wait, max=self.max_wait),
+               retry=retry_if_exception_type((Exception,)),
+               reraise=True)
+        def _initialize():
+            try:
+                indexes = self.pc.list_indexes()
+                if self.index_name not in indexes:
+                    logger.info(f"Creating new Pinecone index: {self.index_name}")
                     self.pc.create_index(
                         name=self.index_name,
                         dimension=EMBEDDING_DIMENSION,
                         metric=PINECONE_METRIC,
                         spec=ServerlessSpec(cloud=PINECONE_CLOUD, region=PINECONE_REGION)
                     )
-                except Exception as e:
-                    if "ALREADY_EXISTS" in str(e):
-                        logger.info(f"Index {self.index_name} already exists. Using existing index.")
-                    else:
-                        raise
-            self.index = self.pc.Index(self.index_name)
-            logger.info(f"Successfully initialized Pinecone index: {self.index_name}")
-        except Exception as e:
-            logger.error(f"Error initializing Pinecone: {str(e)}")
+                else:
+                    logger.info(f"Index {self.index_name} already exists. Using existing index.")
+                
+                self.index = self.pc.Index(self.index_name)
+                logger.info(f"Successfully initialized Pinecone index: {self.index_name}")
+            except PineconeApiException as e:
+                if "ALREADY_EXISTS" in str(e):
+                    logger.info(f"Index {self.index_name} already exists. Using existing index.")
+                    self.index = self.pc.Index(self.index_name)
+                else:
+                    logger.error(f"Error initializing Pinecone: {str(e)}")
+                    raise
+            except Exception as e:
+                logger.error(f"Unexpected error initializing Pinecone: {str(e)}")
+                raise
+
+        _initialize()
+
+    def _pinecone_query(self, vector: List[float], top_k: int, include_metadata: bool = True) -> Dict[str, Any]:
+        try:
+            return self.index.query(vector=vector, top_k=top_k, include_metadata=include_metadata)
+        except ValueError as e:
+            if "argument order" in str(e):
+                # Fallback to old API if the new one fails
+                return self.index.query(vector, top_k=top_k, include_metadata=include_metadata)
             raise
 
     def is_available(self) -> bool:
@@ -81,18 +107,17 @@ class PineconeManager(BasePineconeManager):
 
     def upsert_embeddings(self, chunks: List[str], embeddings: List[List[float]]) -> None:
         if not self.is_available():
-            raise ValueError("Pinecone index is not available. Cannot upsert embeddings.")
-        if not chunks or not embeddings:
-            logger.warning("No chunks or embeddings to upsert.")
-            return
-        vectors = [(get_cache_key(chunk), emb, {"text": chunk[:1000]}) for chunk, emb in zip(chunks, embeddings)]
+            raise ValueError("Pinecone index is not initialized")
+        
+        vectors = [(str(i), embedding, {"chunk": chunk}) for i, (chunk, embedding) in enumerate(zip(chunks, embeddings))]
         self.index.upsert(vectors=vectors)
 
     def search_similar(self, query_embedding: List[float], top_k: int = 5) -> List[Dict[str, Any]]:
         if not self.is_available():
-            raise ValueError("Pinecone index is not available. Cannot search for similar embeddings.")
-        results = self.index.query(query_embedding, top_k=top_k, include_metadata=True)
-        return [{"chunk": match['metadata']['text'], "score": match['score']} for match in results['matches']]
+            raise ValueError("Pinecone index is not initialized")
+        
+        results = self._pinecone_query(query_embedding, top_k=top_k, include_metadata=True)
+        return [{"chunk": match['metadata']['chunk'], "score": match['score']} for match in results['matches']]
 
     def clear_index(self) -> None:
         if self.is_available():

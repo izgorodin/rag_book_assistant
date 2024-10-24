@@ -7,8 +7,9 @@ logger = logging.getLogger(__name__)
 
 @pytest.fixture(scope="function")
 def pinecone_manager():
-    mock_pinecone = MockPinecone(api_key="fake_key")
-    manager = PineconeManager(index_name="test-index", pinecone_client=mock_pinecone)
+    mock_pinecone = MockPinecone(api_key="fake_key", error_probability=0.5, max_consecutive_errors=2)
+    manager = PineconeManager(index_name="test-index", pinecone_client=mock_pinecone,
+                              max_retries=5, min_wait=1, max_wait=3)
     yield manager
     try:
         mock_pinecone.reset()

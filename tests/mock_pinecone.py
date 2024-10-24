@@ -1,6 +1,7 @@
 from typing import List, Dict, Any
 import time
 import random
+import logging
 
 class MockPineconeIndex:
     def __init__(self):
@@ -20,10 +21,12 @@ class MockPineconeIndex:
             self.vectors.clear()
 
 class MockPinecone:
-    def __init__(self, api_key=None):
+    def __init__(self, api_key=None, error_probability=0.1, max_consecutive_errors=2):
         self.api_key = api_key
         self.indexes = {}
-        self.error_probability = 0.1
+        self.error_probability = error_probability
+        self.max_consecutive_errors = max_consecutive_errors
+        self.consecutive_errors = 0
 
     def list_indexes(self):
         self.simulate_network_delay()
@@ -33,9 +36,10 @@ class MockPinecone:
     def create_index(self, name: str, dimension: int, metric: str, spec: Any):
         self.simulate_network_delay()
         self.simulate_error()
-        if name in self.indexes:
-            raise Exception("ALREADY_EXISTS: Resource already exists")
-        self.indexes[name] = MockPineconeIndex()
+        if name not in self.indexes:
+            self.indexes[name] = MockPineconeIndex()
+        else:
+            logging.info(f"Index {name} already exists.")
 
     def Index(self, name: str) -> MockPineconeIndex:
         self.simulate_network_delay()
@@ -51,8 +55,10 @@ class MockPinecone:
         time.sleep(random.uniform(0.1, 0.5))
 
     def simulate_error(self):
-        if random.random() < self.error_probability:
+        if random.random() < self.error_probability and self.consecutive_errors < self.max_consecutive_errors:
+            self.consecutive_errors += 1
             raise Exception("Simulated Pinecone error")
+        self.consecutive_errors = 0
 
     def set_error_probability(self, probability: float):
         self.error_probability = probability

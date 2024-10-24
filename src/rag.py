@@ -24,25 +24,20 @@ The main function, rag_query, orchestrates the process from relevant chunk retri
 
 import re
 from typing import List, Dict, Any
-from rank_bm25 import BM25Okapi
-import numpy as np
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from openai import OpenAI
-from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS
-import logging
+from src.openai_service import OpenAIService
 from src.embedding import create_embeddings
-from src.hybrid_search import HybridSearch
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from src.logger_config import setup_logger
+from src.logger import setup_logger
 from src.book_data_interface import BookDataInterface
 from src.pinecone_manager import PineconeManager
+from openai import RateLimitError, APIError, APITimeoutError
 
 logger = setup_logger()
 
-client = OpenAI(api_key=OPENAI_API_KEY)
+openai_service = OpenAIService()
 
 def preprocess_text(text: str) -> str:
     """
@@ -65,33 +60,10 @@ def preprocess_text(text: str) -> str:
     return ' '.join(tokens)
 
 def generate_answer(query: str, context: str) -> str:
-    """
-    Generate an answer to the given query based on the provided context using OpenAI's GPT model.
-
-    Args:
-        query (str): The user's question.
-        context (str): The context information retrieved from the document.
-
-    Returns:
-        str: The generated answer or an error message if generation fails.
-    """
-    messages = [
-        {"role": "system", "content": "You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing."},
-        {"role": "user", "content": f"Context: {context}\n\nQuestion: {query}\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing."}
-    ]
-    
-    logger.info(f"Generating answer for query: {query}")
-    
     try:
-        response = client.chat.completions.create(
-            model=GPT_MODEL,
-            messages=messages,
-            max_tokens=MAX_TOKENS
-        )
-        return response.choices[0].message.content
-    except Exception as e:
-        logger.error(f"Error in generate_answer: {str(e)}")
-        return f"Sorry, I encountered an error while generating the answer: {str(e)}"
+        return openai_service.generate_answer(query, context)
+    except (RateLimitError, APIError, APITimeoutError) as e:
+        return f"Sorry, I encountered an error while processing your query: {str(e)}"
 
 def rag_query(query: str, book_data: BookDataInterface) -> str:
     """
@@ -162,3 +134,10 @@ def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> flo
     score = 1.0 if generated_answer == reference_answer else 0.0
 
     return score
+
+def get_answer_from_system(question: str, book_data: BookDataInterface) -> str:
+    try:
+        return rag_query(question, book_data)
+    except Exception as e:
+        logger.error(f"Error in rag_query: {str(e)}")
+        return f"Sorry, I encountered an error while processing your query: {str(e)}"

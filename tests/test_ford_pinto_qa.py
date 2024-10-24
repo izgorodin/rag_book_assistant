@@ -5,7 +5,7 @@ from tests.ford_pinto_qa_data import qa_pairs
 from src.rag import rag_query
 from src.text_processing import split_into_chunks
 from src.embedding import get_or_create_chunks_and_embeddings
-from src.logger_config import setup_logger, setup_results_logger
+from src.logger import setup_logger, setup_results_logger
 import re
 from src.pinecone_manager import PineconeManager
 from src.embedding import create_embeddings
