@@ -2,18 +2,24 @@ import pytest
 import time
 from src.openai_service import OpenAIService
 from src.rag import generate_answer, rag_query
-from src.hybrid_search import HybridSearch
+from src.search import HybridSearch, SimpleSearch
 from src.book_data_interface import BookDataInterface
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch, MagicMock, Mock
+from src.error_handler import format_error_message, RAGError
 
 @pytest.fixture
 def mock_openai_service():
     return MagicMock(spec=OpenAIService)
 
+@pytest.fixture
+def mock_book_data():
+    return Mock(spec=BookDataInterface)
+
 @pytest.mark.parametrize("top_k", [1, 2, 3])
 def test_find_most_relevant_chunks(sample_chunks, sample_embeddings, top_k):
     query = "Test query"
-    hybrid_search = HybridSearch(sample_chunks, sample_embeddings)
+    book_data = BookDataInterface(sample_chunks, sample_embeddings, {})
+    hybrid_search = HybridSearch(book_data)
     relevant_chunks = hybrid_search.search(query, top_k=top_k)
     
     assert isinstance(relevant_chunks, list), "Function should return a list"
@@ -63,12 +69,15 @@ def test_rag_query_performance(mock_openai_service):
     execution_time = end_time - start_time
     assert execution_time < 10, f"RAG query took {execution_time} seconds, which is more than the expected 10 seconds"
 
-def test_rag_error_handling():
+def test_rag_error_handling(mock_openai_service):
     query = "Test query"
     book_data = BookDataInterface([], [], {})
     
-    with pytest.raises(Exception):
-        rag_query(query, book_data)
+    mock_openai_service.generate_answer.side_effect = RAGError("Test error")
+    
+    answer = rag_query(query, book_data, mock_openai_service)
+    expected_error_message = format_error_message(RAGError("Test error"))
+    assert expected_error_message in answer
 
 def test_generate_answer(mock_openai_service):
     query = "Test query"
@@ -82,13 +91,14 @@ def test_generate_answer(mock_openai_service):
     mock_openai_service.generate_answer.assert_called_once_with(query, context)
 
 @pytest.mark.parametrize("error_type, error_message", [
-    (Exception, "Test error"),
+    (RAGError, "Test error"),
+    (Exception, "Unexpected error"),
 ])
 def test_generate_answer_error_handling(mock_openai_service, error_type, error_message):
     mock_openai_service.generate_answer.side_effect = error_type(error_message)
     answer = generate_answer("Query", "Context", mock_openai_service)
-    assert "Sorry, I encountered an error" in answer
-    assert error_message in answer
+    expected_error_message = format_error_message(error_type(error_message))
+    assert expected_error_message in answer
 
 @patch('src.rag.PineconeManager')
 @patch('src.rag.create_embeddings')
@@ -108,11 +118,25 @@ def test_rag_query(mock_create_embeddings, mock_pinecone_manager, mock_openai_se
     assert len(answer) > 0
     mock_openai_service.generate_answer.assert_called_once()
 
-def test_rag_error_handling(mock_openai_service):
-    query = "Test query"
-    book_data = BookDataInterface([], [], {})
+def test_rag_query(mock_book_data, mock_openai_service):
+    mock_book_data.chunks = ["Test chunk 1", "Test chunk 2"]
+    mock_book_data.embeddings = [[0.1, 0.2], [0.3, 0.4]]
     
-    mock_openai_service.generate_answer.side_effect = Exception("Test error")
+    mock_openai_service.generate_answer.return_value = "Test answer"
     
-    answer = rag_query(query, book_data, mock_openai_service)
-    assert "Sorry, I encountered an error" in answer
+    with patch('src.rag.get_search_strategy') as mock_get_strategy:
+        mock_search = Mock(spec=SimpleSearch)
+        mock_search.search.return_value = [{'chunk': 'Test chunk 1', 'score': 0.9}]
+        mock_get_strategy.return_value = mock_search
+        
+        result = rag_query("Test question", mock_book_data, mock_openai_service)
+        
+        assert result == "Test answer"
+        mock_search.search.assert_called_once_with("Test question")
+        mock_openai_service.generate_answer.assert_called_once()
+
+def test_rag_query_error_handling(mock_book_data, mock_openai_service):
+    with patch('src.rag.get_search_strategy', side_effect=RAGError("Test error")):
+        result = rag_query("Test question", mock_book_data, mock_openai_service)
+        expected_error_message = format_error_message(RAGError("Test error"))
+        assert expected_error_message in result

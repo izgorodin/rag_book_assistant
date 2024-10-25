@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 from openai import OpenAI
 from tqdm import tqdm
-from src.config import OPENAI_API_KEY, EMBEDDING_MODEL
+from src.config import EMBEDDING_DIMENSION, OPENAI_API_KEY, EMBEDDING_MODEL
 from src.logger import setup_logger
 from src.text_processing import extract_dates, extract_named_entities, extract_key_phrases
 from src.book_data_interface import BookDataInterface
@@ -25,7 +25,7 @@ def create_embeddings(chunks: List[str]) -> List[List[float]]:
 
     for chunk in chunks:
         if not chunk.strip():
-            all_embeddings.append([0.0] * 1536)
+            all_embeddings.append([0.0] * EMBEDDING_DIMENSION)
         else:
             cached_embedding = load_from_cache(chunk)
             if cached_embedding:
@@ -35,6 +35,11 @@ def create_embeddings(chunks: List[str]) -> List[List[float]]:
                 embedding = response.data[0].embedding
                 all_embeddings.append(embedding)
                 save_to_cache(chunk, embedding)
+        
+        # Добавляем проверку размерности
+        if len(all_embeddings[-1]) != 1536:
+            logger.error(f"Incorrect embedding dimension: {len(all_embeddings[-1])} for chunk: {chunk[:50]}...")
+            raise ValueError(f"Incorrect embedding dimension: {len(all_embeddings[-1])}")
 
     non_empty_chunks = [c for c in chunks if c.strip()]
     if non_empty_chunks:
@@ -71,6 +76,11 @@ def get_or_create_chunks_and_embeddings(chunks: List[str], cache_file: str) -> B
 def cosine_similarity(a: List[float], b: List[float]) -> float:
     a = np.array(a, dtype=np.float64)
     b = np.array(b, dtype=np.float64)
+    
+    # Добавляем проверку размерности
+    if a.shape != b.shape:
+        raise ValueError(f"Vectors have different shapes: {a.shape} and {b.shape}")
+    
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
 def get_or_create_query_embedding(query: str, cache_file: str) -> List[float]:

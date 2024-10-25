@@ -32,10 +32,12 @@ from src.embedding import create_embeddings
 from sklearn.metrics.pairwise import cosine_similarity
 from src.logger import setup_logger
 from src.book_data_interface import BookDataInterface
-from src.pinecone_manager import PineconeManager
+from src.search import get_search_strategy
+from src.error_handler import handle_rag_error, format_error_message, RAGError
 
 logger = setup_logger()
 
+@handle_rag_error
 def preprocess_text(text: str) -> str:
     """
     Preprocess the input text by converting to lowercase, removing punctuation,
@@ -56,26 +58,19 @@ def preprocess_text(text: str) -> str:
     tokens = [lemmatizer.lemmatize(token) for token in tokens]
     return ' '.join(tokens)
 
+@handle_rag_error
 def generate_answer(query: str, context: str, openai_service: OpenAIService) -> str:
-    try:
-        return openai_service.generate_answer(query, context)
-    except Exception as e:
-        logger.error(f"Error in generate_answer: {str(e)}")
-        return f"Sorry, I encountered an error while processing your query: {str(e)}"
+    return openai_service.generate_answer(query, context)
 
-def rag_query(question: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
+@handle_rag_error
+def rag_query(question: str, book_data: BookDataInterface, openai_service: OpenAIService, search_strategy: str = "simple") -> str:
     logger.info(f"Processing query: {question}")
-    try:
-        relevant_chunks = book_data.get_relevant_chunks(question)
-        logger.info(f"Found {len(relevant_chunks)} relevant chunks")
-        context = "\n".join(relevant_chunks)
-        answer = openai_service.generate_answer(question, context)
-        logger.info(f"Generated answer: {answer}")
-        return answer
-    except Exception as e:
-        logger.error(f"Error in rag_query: {str(e)}", exc_info=True)
-        return f"An error occurred while processing the query: {str(e)}"
+    search = get_search_strategy(search_strategy, book_data)
+    relevant_chunks = search.search(question)
+    context = " ".join(chunk['chunk'] for chunk in relevant_chunks)
+    return openai_service.generate_answer(question, context)
 
+@handle_rag_error
 def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> float:
     """
     Evaluate the quality of a generated answer against a reference answer.
@@ -101,5 +96,6 @@ def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> flo
 
     return score
 
+@handle_rag_error
 def get_answer_from_system(question: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
     return rag_query(question, book_data, openai_service)
