@@ -3556,3 +3556,1756 @@ Traceback (most recent call last):
                                                ^^^^^^^^^^^^^^^^
 ValueError: could not convert string to float: 'S'
 2024-10-25 16:02:15,320 - root - INFO - conftest.py:58 - timer - Test test_hybrid_search_error_handling took 3.38 seconds
+2024-10-25 16:10:38,368 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:10:38,370 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:10:38,376 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:10:38,377 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:10:38,384 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:10:39,068 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:10:39,070 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:10:40,994 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:10:40,995 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:10:41,666 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-25 16:10:41,671 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:41,741 - root - INFO - conftest.py:58 - timer - Test test_simple_search took 0.07 seconds
+2024-10-25 16:10:41,742 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,278 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:10:43,278 - root - DEBUG - search.py:81 - search - BM25 scores shape: (4,), dtype: float64
+2024-10-25 16:10:43,278 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:10:43,281 - root - INFO - conftest.py:58 - timer - Test test_hybrid_search took 1.54 seconds
+2024-10-25 16:10:43,281 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,282 - root - ERROR - error_handler.py:17 - wrapper - Error in get_search_strategy: __init__() should return None, not 'str'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 157, in get_search_strategy
+    return SimpleSearch(data_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: __init__() should return None, not 'str'
+2024-10-25 16:10:43,283 - root - INFO - conftest.py:58 - timer - Test test_get_search_strategy took 0.00 seconds
+2024-10-25 16:10:43,284 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,284 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 115, in _get_embedding_scores
+    query_embedding = self._create_weighted_query_embedding(query)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Test error
+2024-10-25 16:10:43,286 - root - DEBUG - search.py:81 - search - BM25 scores shape: (4,), dtype: float64
+2024-10-25 16:10:43,286 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:10:43,289 - root - INFO - conftest.py:58 - timer - Test test_search_error_handling took 0.01 seconds
+2024-10-25 16:10:43,289 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,291 - root - INFO - conftest.py:58 - timer - Test test_query_expansion[run-expected_expansion0] took 0.00 seconds
+2024-10-25 16:10:43,291 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,292 - root - INFO - conftest.py:58 - timer - Test test_query_expansion[happy-expected_expansion1] took 0.00 seconds
+2024-10-25 16:10:43,292 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,293 - root - INFO - conftest.py:58 - timer - Test test_bm25_scores took 0.00 seconds
+2024-10-25 16:10:43,293 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,294 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:10:43,296 - root - INFO - conftest.py:58 - timer - Test test_embedding_scores took 0.00 seconds
+2024-10-25 16:10:43,297 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,298 - root - INFO - conftest.py:58 - timer - Test test_combine_scores took 0.00 seconds
+2024-10-25 16:10:43,298 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,301 - root - INFO - conftest.py:58 - timer - Test test_get_top_chunks took 0.00 seconds
+2024-10-25 16:10:43,301 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,304 - root - INFO - conftest.py:58 - timer - Test test_simple_search_error_handling took 0.00 seconds
+2024-10-25 16:10:43,304 - root - ERROR - error_handler.py:17 - wrapper - Error in __init__: Some embeddings have incorrect dimension
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    raise ValueError("Some embeddings have incorrect dimension")
+ValueError: Some embeddings have incorrect dimension
+2024-10-25 16:10:43,305 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:10:43,306 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:10:43,306 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:10:44,450 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:10:44,451 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:10:44,900 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:10:44,901 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:10:45,961 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:10:45,962 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:10:45,963 - root - DEBUG - search.py:81 - search - BM25 scores shape: (4,), dtype: float64
+2024-10-25 16:10:45,963 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:10:45,978 - root - INFO - conftest.py:58 - timer - Test test_hybrid_search_error_handling took 2.67 seconds
+2024-10-25 16:11:46,239 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:11:46,241 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:11:46,248 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:11:46,250 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:11:46,259 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:11:46,922 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:11:46,922 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:11:47,448 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:11:47,448 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:11:47,701 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-25 16:11:49,300 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:11:49,300 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:11:49,300 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:11:50,417 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:11:50,417 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:11:51,171 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:11:51,171 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:11:52,027 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:11:52,029 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:11:52,031 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:11:52,031 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:11:52,098 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[1] took 4.39 seconds
+2024-10-25 16:11:52,100 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:11:52,100 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:11:52,100 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:11:52,397 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:11:52,397 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:11:52,756 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:11:52,756 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:11:53,572 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:11:53,574 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:11:53,575 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:11:53,575 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:11:53,578 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[2] took 1.48 seconds
+2024-10-25 16:11:53,580 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:11:53,580 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:11:53,580 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:11:53,968 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:11:53,969 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:11:54,388 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:11:54,389 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:11:55,357 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:11:55,359 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:11:55,359 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:11:55,359 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:11:55,362 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[3] took 1.78 seconds
+2024-10-25 16:11:55,363 - root - INFO - conftest.py:58 - timer - Test test_generate_answer took 0.00 seconds
+2024-10-25 16:11:55,364 - root - INFO - rag.py:67 - rag_query - Processing query: Test question
+2024-10-25 16:11:55,364 - root - INFO - conftest.py:58 - timer - Test test_rag_query took 0.00 seconds
+2024-10-25 16:11:55,365 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[Short query] took 0.00 seconds
+2024-10-25 16:11:55,365 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[A very long query that contains multiple sentences and specific terms] took 0.00 seconds
+2024-10-25 16:11:55,365 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[] took 0.00 seconds
+2024-10-25 16:11:55,366 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 16:11:55,366 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:11:55,366 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:11:55,366 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:11:56,525 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:11:56,525 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:11:57,833 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:11:57,833 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:11:58,838 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:11:58,907 - root - INFO - conftest.py:58 - timer - Test test_rag_query_performance took 3.54 seconds
+2024-10-25 16:11:58,910 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 16:11:58,910 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:11:58,911 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:11:58,911 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:11:59,662 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:11:59,662 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:12:00,880 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:12:00,880 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:12:01,679 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:12:01,680 - root - ERROR - error_handler.py:17 - wrapper - Error in rag_query: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 71, in rag_query
+    return openai_service.generate_answer(question, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:12:01,685 - root - INFO - conftest.py:58 - timer - Test test_rag_error_handling took 2.78 seconds
+2024-10-25 16:12:01,685 - root - ERROR - error_handler.py:17 - wrapper - Error in generate_answer: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 63, in generate_answer
+    return openai_service.generate_answer(query, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:12:01,690 - root - INFO - conftest.py:58 - timer - Test test_generate_answer_error_handling[RAGError-Test error] took 0.00 seconds
+2024-10-25 16:12:01,691 - root - ERROR - error_handler.py:17 - wrapper - Error in generate_answer: Unexpected error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 63, in generate_answer
+    return openai_service.generate_answer(query, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Unexpected error
+2024-10-25 16:12:01,691 - root - INFO - conftest.py:58 - timer - Test test_generate_answer_error_handling[Exception-Unexpected error] took 0.00 seconds
+2024-10-25 16:12:01,692 - root - INFO - rag.py:67 - rag_query - Processing query: Test question
+2024-10-25 16:12:01,692 - root - ERROR - error_handler.py:17 - wrapper - Error in rag_query: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 68, in rag_query
+    search = get_search_strategy(search_strategy, book_data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:12:01,694 - root - INFO - conftest.py:58 - timer - Test test_rag_query_error_handling took 0.00 seconds
+2024-10-25 16:13:45,104 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:13:45,105 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:13:45,112 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:13:45,112 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:13:45,120 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:13:45,438 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:13:45,440 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:13:45,759 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:13:45,759 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:13:45,970 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-25 16:13:47,497 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:13:47,497 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:13:47,497 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:13:48,551 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:13:48,553 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:13:48,846 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:13:48,847 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:13:49,841 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:13:49,848 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:13:49,852 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:13:49,852 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:13:49,951 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[1] took 3.96 seconds
+2024-10-25 16:13:49,953 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:13:49,953 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:13:49,953 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:13:50,247 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:13:50,248 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:13:50,540 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:13:50,541 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:13:51,517 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:13:51,525 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:13:51,526 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:13:51,526 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:13:51,533 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[2] took 1.58 seconds
+2024-10-25 16:13:51,538 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:13:51,539 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:13:51,539 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:13:52,215 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:13:52,216 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:13:52,486 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:13:52,486 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:13:53,358 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:13:53,367 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:13:53,368 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:13:53,368 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:13:53,375 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[3] took 1.84 seconds
+2024-10-25 16:13:53,377 - root - INFO - conftest.py:58 - timer - Test test_generate_answer took 0.00 seconds
+2024-10-25 16:13:53,380 - root - INFO - rag.py:67 - rag_query - Processing query: Test question
+2024-10-25 16:13:53,381 - root - INFO - conftest.py:58 - timer - Test test_rag_query took 0.00 seconds
+2024-10-25 16:13:53,382 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[Short query] took 0.00 seconds
+2024-10-25 16:13:53,383 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[A very long query that contains multiple sentences and specific terms] took 0.00 seconds
+2024-10-25 16:13:53,384 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[] took 0.00 seconds
+2024-10-25 16:13:53,385 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 16:13:53,386 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:13:53,386 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:13:53,386 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:13:53,917 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:13:53,918 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:13:54,955 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:13:54,956 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:13:55,788 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:13:55,899 - root - INFO - conftest.py:58 - timer - Test test_rag_query_performance took 2.51 seconds
+2024-10-25 16:13:55,901 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 16:13:55,901 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:13:55,901 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:13:55,902 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:13:56,205 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:13:56,207 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:13:58,589 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:13:58,589 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:13:59,427 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:13:59,427 - root - ERROR - error_handler.py:17 - wrapper - Error in rag_query: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 71, in rag_query
+    return openai_service.generate_answer(question, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:13:59,437 - root - INFO - conftest.py:58 - timer - Test test_rag_error_handling took 3.54 seconds
+2024-10-25 16:13:59,439 - root - ERROR - error_handler.py:17 - wrapper - Error in generate_answer: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 63, in generate_answer
+    return openai_service.generate_answer(query, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:13:59,442 - root - INFO - conftest.py:58 - timer - Test test_generate_answer_error_handling[RAGError-Test error] took 0.00 seconds
+2024-10-25 16:13:59,443 - root - ERROR - error_handler.py:17 - wrapper - Error in generate_answer: Unexpected error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 63, in generate_answer
+    return openai_service.generate_answer(query, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Unexpected error
+2024-10-25 16:13:59,443 - root - INFO - conftest.py:58 - timer - Test test_generate_answer_error_handling[Exception-Unexpected error] took 0.00 seconds
+2024-10-25 16:13:59,445 - root - INFO - rag.py:67 - rag_query - Processing query: Test question
+2024-10-25 16:13:59,445 - root - ERROR - error_handler.py:17 - wrapper - Error in rag_query: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 68, in rag_query
+    search = get_search_strategy(search_strategy, book_data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:13:59,448 - root - INFO - conftest.py:58 - timer - Test test_rag_query_error_handling took 0.00 seconds
+2024-10-25 16:14:30,138 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:14:30,139 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:14:30,146 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:14:30,146 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:14:30,154 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:14:30,476 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:14:30,479 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:14:30,740 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:14:30,740 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:14:31,065 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-25 16:14:32,565 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:14:32,566 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:14:32,567 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:14:32,874 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:14:32,876 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:14:33,187 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:14:33,187 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:14:34,117 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:14:34,126 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:14:34,128 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:14:34,129 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:14:34,227 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[1] took 3.15 seconds
+2024-10-25 16:14:34,228 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:14:34,229 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:14:34,229 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:14:34,704 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:14:34,705 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:14:35,017 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:14:35,018 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:14:35,911 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:14:35,916 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:14:35,917 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:14:35,917 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:14:35,924 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[2] took 1.70 seconds
+2024-10-25 16:14:35,929 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:14:35,930 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:14:35,930 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:14:36,331 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:14:36,333 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:14:36,786 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:14:36,787 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:14:37,597 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:14:37,605 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:14:37,606 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:14:37,606 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:14:37,613 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[3] took 1.69 seconds
+2024-10-25 16:14:37,616 - root - INFO - conftest.py:58 - timer - Test test_generate_answer took 0.00 seconds
+2024-10-25 16:14:37,619 - root - INFO - rag.py:67 - rag_query - Processing query: Test question
+2024-10-25 16:14:37,619 - root - INFO - conftest.py:58 - timer - Test test_rag_query took 0.00 seconds
+2024-10-25 16:14:37,620 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[Short query] took 0.00 seconds
+2024-10-25 16:14:37,621 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[A very long query that contains multiple sentences and specific terms] took 0.00 seconds
+2024-10-25 16:14:37,622 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[] took 0.00 seconds
+2024-10-25 16:14:37,623 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 16:14:37,624 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:14:37,625 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:14:37,625 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:14:37,941 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:14:37,943 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:14:38,243 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:14:38,244 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:14:39,123 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:14:39,233 - root - INFO - conftest.py:58 - timer - Test test_rag_query_performance took 1.61 seconds
+2024-10-25 16:14:39,235 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 16:14:39,236 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:14:39,236 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:14:39,236 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:14:39,709 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:14:39,711 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:14:40,006 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:14:40,006 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:14:40,870 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:14:40,871 - root - ERROR - error_handler.py:17 - wrapper - Error in rag_query: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 71, in rag_query
+    return openai_service.generate_answer(question, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:14:40,889 - root - INFO - conftest.py:58 - timer - Test test_rag_error_handling took 1.66 seconds
+2024-10-25 16:14:40,890 - root - ERROR - error_handler.py:17 - wrapper - Error in generate_answer: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 63, in generate_answer
+    return openai_service.generate_answer(query, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:14:40,896 - root - INFO - conftest.py:58 - timer - Test test_generate_answer_error_handling[RAGError-Test error] took 0.01 seconds
+2024-10-25 16:14:40,898 - root - ERROR - error_handler.py:17 - wrapper - Error in generate_answer: Unexpected error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 63, in generate_answer
+    return openai_service.generate_answer(query, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Unexpected error
+2024-10-25 16:14:40,899 - root - INFO - conftest.py:58 - timer - Test test_generate_answer_error_handling[Exception-Unexpected error] took 0.00 seconds
+2024-10-25 16:14:40,900 - root - INFO - rag.py:67 - rag_query - Processing query: Test question
+2024-10-25 16:14:40,901 - root - ERROR - error_handler.py:17 - wrapper - Error in rag_query: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 68, in rag_query
+    search = get_search_strategy(search_strategy, book_data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:14:40,905 - root - INFO - conftest.py:58 - timer - Test test_rag_query_error_handling took 0.01 seconds
+2024-10-25 16:14:53,928 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:14:53,929 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:14:53,936 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:14:53,936 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:14:53,944 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:14:54,264 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:14:54,265 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:14:54,542 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:14:54,543 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:14:55,070 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-25 16:14:55,085 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:14:55,086 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:14:55,086 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:14:55,394 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:14:55,396 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:14:56,199 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:14:56,199 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:14:56,206 - openai._base_client - DEBUG - _base_client.py:446 - _build_request - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x10be42480>, 'json_data': {'input': ['journey'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-25 16:14:56,247 - openai._base_client - DEBUG - _base_client.py:980 - _request - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-25 16:14:56,248 - httpcore.connection - DEBUG - _trace.py:45 - trace - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-25 16:14:56,391 - httpcore.connection - DEBUG - _trace.py:45 - trace - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10be753a0>
+2024-10-25 16:14:56,392 - httpcore.connection - DEBUG - _trace.py:45 - trace - start_tls.started ssl_context=<ssl.SSLContext object at 0x10bd75cd0> server_hostname='api.openai.com' timeout=5.0
+2024-10-25 16:14:56,437 - httpcore.connection - DEBUG - _trace.py:45 - trace - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10be760c0>
+2024-10-25 16:14:56,438 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.started request=<Request [b'POST']>
+2024-10-25 16:14:56,439 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.complete
+2024-10-25 16:14:56,439 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.started request=<Request [b'POST']>
+2024-10-25 16:14:56,440 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.complete
+2024-10-25 16:14:56,440 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.started request=<Request [b'POST']>
+2024-10-25 16:14:56,843 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 25 Oct 2024 15:14:56 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'119'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999999'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_d3c5143f44e2fe1e5015a2dc0ad785c4'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=E0ms7ApJsPLpnmUZCYxsrB4F6ZwJyvItrvcttuFfDhE-1729869296-1.0.1.1-eUjTfP5suzt.P1HryfoWn7v0L2MWMwu98hoMDOEzeFvmfO3hON.OQ3OfwFQJfzWUi.3cGlmaw162mVBc_2peFQ; path=/; expires=Fri, 25-Oct-24 15:44:56 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=ieP9K6VrLb2nEaTLDH1tlaImGwoBkuNSxu5evUX1l2I-1729869296957-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d8328bfac1a94fb-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-25 16:14:56,846 - httpx - INFO - _client.py:1038 - _send_single_request - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-25 16:14:56,847 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.started request=<Request [b'POST']>
+2024-10-25 16:14:56,848 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.complete
+2024-10-25 16:14:56,848 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.started
+2024-10-25 16:14:56,848 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.complete
+2024-10-25 16:14:56,848 - openai._base_client - DEBUG - _base_client.py:1019 - _request - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Fri, 25 Oct 2024 15:14:56 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-3-small'), ('openai-organization', 'uinside'), ('openai-processing-ms', '119'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '5000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '4999999'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '0s'), ('x-request-id', 'req_d3c5143f44e2fe1e5015a2dc0ad785c4'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=E0ms7ApJsPLpnmUZCYxsrB4F6ZwJyvItrvcttuFfDhE-1729869296-1.0.1.1-eUjTfP5suzt.P1HryfoWn7v0L2MWMwu98hoMDOEzeFvmfO3hON.OQ3OfwFQJfzWUi.3cGlmaw162mVBc_2peFQ; path=/; expires=Fri, 25-Oct-24 15:44:56 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=ieP9K6VrLb2nEaTLDH1tlaImGwoBkuNSxu5evUX1l2I-1729869296957-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d8328bfac1a94fb-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-25 16:14:56,849 - openai._base_client - DEBUG - _base_client.py:1027 - _request - request_id: req_d3c5143f44e2fe1e5015a2dc0ad785c4
+2024-10-25 16:14:57,702 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:14:57,714 - root - INFO - conftest.py:58 - timer - Test test_simple_search took 2.63 seconds
+2024-10-25 16:14:59,393 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:14:59,393 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:14:59,393 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:14:59,883 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:14:59,884 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:15:00,211 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:15:00,212 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:15:00,215 - openai._base_client - DEBUG - _base_client.py:446 - _build_request - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x10befd120>, 'json_data': {'input': ['journey journey journey journey journey journey journey journey journey journey journey journey journey journey journey journeying journeying journeying journeying journeying journeying journeying journeying journeying journeying journeying journeying journeying travel travel travel travel travel travel travel travel travel travel travel travel travel travel travel'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-25 16:15:00,217 - openai._base_client - DEBUG - _base_client.py:980 - _request - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-25 16:15:00,217 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.started request=<Request [b'POST']>
+2024-10-25 16:15:00,218 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.complete
+2024-10-25 16:15:00,218 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.started request=<Request [b'POST']>
+2024-10-25 16:15:00,219 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.complete
+2024-10-25 16:15:00,219 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.started request=<Request [b'POST']>
+2024-10-25 16:15:00,676 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 25 Oct 2024 15:15:00 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'79'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999908'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_d8a85c210b87912c9cf094185b733820'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d8328d75dd194fb-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-25 16:15:00,677 - httpx - INFO - _client.py:1038 - _send_single_request - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-25 16:15:00,677 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.started request=<Request [b'POST']>
+2024-10-25 16:15:00,678 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.complete
+2024-10-25 16:15:00,678 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.started
+2024-10-25 16:15:00,679 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.complete
+2024-10-25 16:15:00,679 - openai._base_client - DEBUG - _base_client.py:1019 - _request - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Fri, 25 Oct 2024 15:15:00 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '79', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999908', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '1ms', 'x-request-id': 'req_d8a85c210b87912c9cf094185b733820', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d8328d75dd194fb-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-25 16:15:00,679 - openai._base_client - DEBUG - _base_client.py:1027 - _request - request_id: req_d8a85c210b87912c9cf094185b733820
+2024-10-25 16:15:01,602 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:15:01,604 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:15:01,607 - root - DEBUG - search.py:81 - search - BM25 scores shape: (4,), dtype: float64
+2024-10-25 16:15:01,607 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:15:01,714 - root - INFO - conftest.py:58 - timer - Test test_hybrid_search took 4.00 seconds
+2024-10-25 16:15:01,715 - root - ERROR - error_handler.py:17 - wrapper - Error in get_search_strategy: Unknown search strategy: unknown
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 161, in get_search_strategy
+    raise ValueError(f"Unknown search strategy: {strategy}")
+ValueError: Unknown search strategy: unknown
+2024-10-25 16:15:01,716 - root - INFO - conftest.py:58 - timer - Test test_get_search_strategy took 0.00 seconds
+2024-10-25 16:15:01,718 - root - ERROR - error_handler.py:17 - wrapper - Error in _create_weighted_query_embedding: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 139, in _create_weighted_query_embedding
+    return create_embeddings([weighted_query])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Test error
+2024-10-25 16:15:01,720 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+2024-10-25 16:15:01,720 - root - DEBUG - search.py:81 - search - BM25 scores shape: (4,), dtype: float64
+2024-10-25 16:15:01,720 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:15:01,723 - root - INFO - conftest.py:58 - timer - Test test_search_error_handling took 0.01 seconds
+2024-10-25 16:15:01,724 - root - INFO - conftest.py:58 - timer - Test test_embedding_scores took 0.00 seconds
+2024-10-25 16:15:01,725 - root - INFO - conftest.py:58 - timer - Test test_get_top_chunks took 0.00 seconds
+2024-10-25 16:15:01,726 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 50, in search
+    query_embedding = create_embeddings([query])[0]
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Test error
+2024-10-25 16:15:01,729 - root - INFO - conftest.py:58 - timer - Test test_simple_search_error_handling took 0.00 seconds
+2024-10-25 16:15:01,730 - root - ERROR - error_handler.py:17 - wrapper - Error in _create_weighted_query_embedding: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 139, in _create_weighted_query_embedding
+    return create_embeddings([weighted_query])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Test error
+2024-10-25 16:15:01,731 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+2024-10-25 16:15:01,731 - root - DEBUG - search.py:81 - search - BM25 scores shape: (4,), dtype: float64
+2024-10-25 16:15:01,731 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:15:01,733 - root - INFO - conftest.py:58 - timer - Test test_hybrid_search_error_handling took 0.00 seconds
+2024-10-25 16:25:54,348 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:25:54,348 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:25:54,355 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:25:54,355 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:25:54,363 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:25:54,849 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:25:54,851 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:25:55,321 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:25:55,321 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:25:55,614 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-25 16:25:57,297 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 16:25:57,312 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1389 chunks
+2024-10-25 16:25:57,314 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:25:57,315 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:25:57,315 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:25:57,671 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:25:57,672 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:25:58,067 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:25:58,068 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:19,362 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"code":11,"message":"Error, message length too large: found 13124219 bytes, the limit is: 4194304 bytes","details":[]}'
+2024-10-25 16:26:20,017 - root - INFO - conftest.py:58 - timer - Test test_main_cli_mode took 0.00 seconds
+2024-10-25 16:26:20,018 - root - INFO - conftest.py:58 - timer - Test test_main_api_mode took 0.00 seconds
+2024-10-25 16:26:20,019 - root - INFO - conftest.py:58 - timer - Test test_main_invalid_mode took 0.00 seconds
+2024-10-25 16:26:20,020 - root - INFO - cli.py:25 - load_and_process_book - Starting to process book content
+2024-10-25 16:26:20,020 - root - INFO - cli.py:28 - load_and_process_book - Text preprocessed. Number of chunks: 2
+2024-10-25 16:26:20,020 - root - INFO - cli.py:38 - load_and_process_book - Book data created. Number of chunks: 2
+2024-10-25 16:26:20,020 - root - INFO - conftest.py:58 - timer - Test test_load_and_process_book took 0.00 seconds
+2024-10-25 16:26:20,024 - root - INFO - conftest.py:58 - timer - Test test_answer_question took 0.00 seconds
+2024-10-25 16:26:20,025 - root - INFO - cli.py:53 - run_cli - Starting the RAG system
+2024-10-25 16:26:20,025 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:26:20,026 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:26:20,033 - root - INFO - cli.py:64 - run_cli - Loading book from: input1
+2024-10-25 16:26:20,033 - root - INFO - cli.py:66 - run_cli - Book loaded and preprocessed. Text split into 2 chunks
+2024-10-25 16:26:20,033 - root - ERROR - cli.py:84 - run_cli - An error occurred: 
+2024-10-25 16:26:20,033 - root - INFO - cli.py:87 - run_cli - Exiting the RAG system
+2024-10-25 16:26:20,034 - root - INFO - conftest.py:58 - timer - Test test_run_cli[input1] took 0.01 seconds
+2024-10-25 16:26:20,035 - root - INFO - cli.py:53 - run_cli - Starting the RAG system
+2024-10-25 16:26:20,036 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:26:20,036 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:26:20,042 - root - INFO - cli.py:64 - run_cli - Loading book from: input2
+2024-10-25 16:26:20,042 - root - INFO - cli.py:66 - run_cli - Book loaded and preprocessed. Text split into 2 chunks
+2024-10-25 16:26:20,043 - root - ERROR - cli.py:84 - run_cli - An error occurred: 
+2024-10-25 16:26:20,043 - root - INFO - cli.py:87 - run_cli - Exiting the RAG system
+2024-10-25 16:26:20,044 - root - INFO - conftest.py:58 - timer - Test test_run_cli[input2] took 0.01 seconds
+2024-10-25 16:26:20,045 - root - INFO - cli.py:53 - run_cli - Starting the RAG system
+2024-10-25 16:26:20,045 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:26:20,046 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:26:20,053 - root - ERROR - cli.py:84 - run_cli - An error occurred: The file nonexistent_file.txt does not exist.
+2024-10-25 16:26:20,053 - root - INFO - cli.py:87 - run_cli - Exiting the RAG system
+2024-10-25 16:26:20,053 - root - INFO - conftest.py:58 - timer - Test test_run_cli_file_not_found took 0.01 seconds
+2024-10-25 16:26:20,054 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:20,055 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:20,055 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:20,570 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:20,571 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:20,835 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:20,835 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:21,724 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":2}'
+2024-10-25 16:26:21,725 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_length[chunks0-2] took 1.67 seconds
+2024-10-25 16:26:21,726 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:21,726 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:21,726 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:22,004 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:22,006 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:22,240 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:22,240 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:22,923 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:26:22,924 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_length[chunks1-1] took 1.20 seconds
+2024-10-25 16:26:22,926 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:22,926 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:22,926 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:23,247 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:23,249 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:23,511 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:23,511 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:23,514 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_length[chunks2-0] took 0.59 seconds
+2024-10-25 16:26:23,536 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:23,536 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:23,537 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:23,837 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:23,838 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:24,137 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:24,138 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:24,814 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:26:24,817 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_structure took 1.30 seconds
+2024-10-25 16:26:24,827 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:24,828 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:24,828 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:25,122 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:25,123 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:25,447 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:25,448 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:25,451 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_api_error took 0.63 seconds
+2024-10-25 16:26:25,456 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:25,457 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:25,457 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:25,751 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:25,752 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:26,119 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:26,120 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:26,123 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_various_lengths[-1536] took 0.67 seconds
+2024-10-25 16:26:26,128 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:26,128 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:26,128 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:26,419 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:26,421 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:26,684 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:26,685 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:26,689 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_various_lengths[Short text-1536] took 0.56 seconds
+2024-10-25 16:26:26,694 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:26,695 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:26,695 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:26,976 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:26,977 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:27,472 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:27,473 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:27,477 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_various_lengths[AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-1536] took 0.79 seconds
+2024-10-25 16:26:27,485 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_with_cache took 0.01 seconds
+2024-10-25 16:26:27,487 - root - INFO - file_processor.py:15 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.pdf with extension: .pdf
+2024-10-25 16:26:27,488 - root - INFO - file_processor.py:26 - process_file - Using processor for extension: .pdf
+2024-10-25 16:26:27,491 - root - INFO - conftest.py:58 - timer - Test test_process_pdf took 0.00 seconds
+2024-10-25 16:26:27,492 - root - INFO - file_processor.py:15 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.docx with extension: .docx
+2024-10-25 16:26:27,493 - root - INFO - file_processor.py:26 - process_file - Using processor for extension: .docx
+2024-10-25 16:26:27,510 - root - INFO - conftest.py:58 - timer - Test test_process_docx took 0.02 seconds
+2024-10-25 16:26:27,511 - root - INFO - file_processor.py:15 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.odt with extension: .odt
+2024-10-25 16:26:27,511 - root - INFO - file_processor.py:26 - process_file - Using processor for extension: .odt
+2024-10-25 16:26:27,517 - root - INFO - conftest.py:58 - timer - Test test_process_odt took 0.01 seconds
+2024-10-25 16:26:27,518 - root - INFO - file_processor.py:15 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.txt with extension: .txt
+2024-10-25 16:26:27,518 - root - INFO - file_processor.py:26 - process_file - Using processor for extension: .txt
+2024-10-25 16:26:27,519 - root - INFO - conftest.py:58 - timer - Test test_process_txt took 0.00 seconds
+2024-10-25 16:26:27,521 - root - INFO - file_processor.py:15 - process_file - Processing file: /private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-12/test_unsupported_file_format0/test.unsupported with extension: .unsupported
+2024-10-25 16:26:27,522 - root - ERROR - file_processor.py:29 - process_file - Unsupported file format: .unsupported
+2024-10-25 16:26:27,522 - root - INFO - conftest.py:58 - timer - Test test_unsupported_file_format took 0.00 seconds
+2024-10-25 16:26:27,523 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 16:26:27,527 - root - INFO - text_processing.py:103 - split_into_chunks - Created 199 chunks
+2024-10-25 16:26:27,527 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:27,528 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:27,528 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:27,826 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:27,828 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:28,277 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:28,277 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:28,323 - root - INFO - rag.py:67 - rag_query - Processing query: What was the model year of the Ford Pinto involved in the accident?
+2024-10-25 16:26:28,323 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:28,323 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:28,323 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:28,616 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:28,617 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:29,043 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:29,043 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:29,896 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:26:29,945 - rag_results - INFO - test_ford_pinto_qa.py:94 - test_qa_system - 
+Q: What was the model year of the Ford Pinto involved in the accident?
+2024-10-25 16:26:29,945 - rag_results - INFO - test_ford_pinto_qa.py:95 - test_qa_system - Expected A: 1972
+2024-10-25 16:26:29,946 - rag_results - INFO - test_ford_pinto_qa.py:96 - test_qa_system - System A: This is a mock answer
+2024-10-25 16:26:29,946 - rag_results - INFO - test_ford_pinto_qa.py:97 - test_qa_system - Is correct: False
+2024-10-25 16:26:29,946 - rag_results - INFO - test_ford_pinto_qa.py:98 - test_qa_system - --------------------------------------------------
+2024-10-25 16:26:29,948 - root - INFO - conftest.py:58 - timer - Test test_qa_system[qa_pair0] took 1.63 seconds
+2024-10-25 16:26:29,957 - root - INFO - conftest.py:58 - timer - Test test_imports took 0.01 seconds
+2024-10-25 16:26:29,957 - root - INFO - conftest.py:58 - timer - Test test_config_import took 0.00 seconds
+2024-10-25 16:26:29,958 - root - INFO - conftest.py:58 - timer - Test test_openai_api_key took 0.00 seconds
+2024-10-25 16:26:29,959 - root - INFO - text_processing.py:75 - load_and_preprocess_text - Preprocessing text content
+2024-10-25 16:26:30,285 - root - INFO - text_processing.py:81 - load_and_preprocess_text - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-25 16:26:30,285 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 16:26:30,285 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 16:26:30,285 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-25 16:26:30,285 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 16:26:30,286 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:26:30,286 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:26:30,286 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:26:30,580 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:26:30,580 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:30,887 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:26:30,887 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:26:31,763 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:26:31,767 - root - INFO - conftest.py:58 - timer - Test test_different_book_types[True-test_book.txt] took 1.81 seconds
+2024-10-25 16:26:31,769 - root - INFO - text_processing.py:75 - load_and_preprocess_text - Preprocessing text content
+2024-10-25 16:26:31,954 - root - INFO - text_processing.py:81 - load_and_preprocess_text - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-25 16:26:31,954 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 16:26:31,954 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 16:26:31,954 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-25 16:26:31,954 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 16:26:31,955 - root - INFO - conftest.py:58 - timer - Test test_different_book_types[False-test_book.txt] took 0.19 seconds
+2024-10-25 16:26:31,956 - root - INFO - conftest.py:58 - timer - Test test_rag_query[True] took 0.00 seconds
+2024-10-25 16:26:31,957 - root - INFO - conftest.py:58 - timer - Test test_rag_query[False] took 0.00 seconds
+2024-10-25 16:26:32,252 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:33,531 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:34,003 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:36,447 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:26:36,587 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:36,656 - root - INFO - conftest.py:58 - timer - Test test_pinecone_integration took 4.70 seconds
+2024-10-25 16:26:36,657 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:26:36,658 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:26:36,666 - root - INFO - openai_service.py:40 - generate_answer - Generating answer for query: Test query
+2024-10-25 16:26:36,666 - root - INFO - conftest.py:58 - timer - Test test_generate_answer took 0.01 seconds
+2024-10-25 16:26:36,667 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:26:36,667 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:26:36,675 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings took 0.01 seconds
+2024-10-25 16:26:36,676 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:26:36,676 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:26:36,684 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[RateLimitError-Rate limit exceeded] took 0.01 seconds
+2024-10-25 16:26:36,684 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:26:36,685 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:26:36,692 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APIError-API error] took 0.01 seconds
+2024-10-25 16:26:36,693 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:26:36,693 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:26:36,699 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APITimeoutError-Request timed out] took 0.01 seconds
+2024-10-25 16:26:36,700 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:26:36,700 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:26:36,710 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APIConnectionError-Connection error] took 0.01 seconds
+2024-10-25 16:26:36,711 - root - INFO - conftest.py:58 - timer - Test test_create_test_exception took 0.00 seconds
+2024-10-25 16:26:37,191 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:26:37,626 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:38,837 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:41,232 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:26:41,714 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:44,906 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:48,340 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:26:48,680 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:48,738 - root - INFO - conftest.py:58 - timer - Test test_pinecone_manager_initialization took 12.03 seconds
+2024-10-25 16:26:49,122 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:50,281 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:26:50,714 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:52,993 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:56,140 - root - INFO - pinecone_manager.py:80 - _initialize - Index test-index already exists. Using existing index.
+2024-10-25 16:26:56,478 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:59,691 - root - INFO - pinecone_manager.py:80 - _initialize - Index test-index already exists. Using existing index.
+2024-10-25 16:26:59,919 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:26:59,976 - root - INFO - conftest.py:58 - timer - Test test_upsert_and_search[chunks0-embeddings0] took 11.24 seconds
+2024-10-25 16:27:00,324 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:27:00,740 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:02,061 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:04,436 - root - INFO - pinecone_manager.py:80 - _initialize - Index test-index already exists. Using existing index.
+2024-10-25 16:27:04,600 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:07,767 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:11,229 - root - INFO - pinecone_manager.py:80 - _initialize - Index test-index already exists. Using existing index.
+2024-10-25 16:27:11,355 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 16:27:11,357 - root - INFO - conftest.py:58 - timer - Test test_upsert_and_search[chunks1-embeddings1] took 11.38 seconds
+2024-10-25 16:27:11,643 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:27:12,508 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 16:27:12,509 - root - INFO - conftest.py:58 - timer - Test test_upsert_and_search[chunks2-embeddings2] took 1.15 seconds
+2024-10-25 16:27:12,928 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:27:13,321 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 16:27:13,327 - root - INFO - conftest.py:58 - timer - Test test_get_or_create_embeddings took 0.82 seconds
+2024-10-25 16:27:13,654 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:27:14,325 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 16:27:14,328 - root - INFO - conftest.py:58 - timer - Test test_clear_index took 1.00 seconds
+2024-10-25 16:27:14,720 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:27:15,472 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 16:27:15,491 - root - WARNING - pinecone_manager.py:127 - clear_index - Pinecone index is not available. Skipping clear operation.
+2024-10-25 16:27:15,492 - root - INFO - conftest.py:58 - timer - Test test_error_handling took 1.16 seconds
+2024-10-25 16:27:15,885 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:27:16,114 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 16:27:16,117 - root - INFO - conftest.py:58 - timer - Test test_batch_operation[1] took 0.63 seconds
+2024-10-25 16:27:16,591 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:17,922 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:27:18,322 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:20,542 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:24,019 - root - INFO - pinecone_manager.py:80 - _initialize - Index test-index already exists. Using existing index.
+2024-10-25 16:27:24,290 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:27,786 - root - INFO - pinecone_manager.py:80 - _initialize - Index test-index already exists. Using existing index.
+2024-10-25 16:27:28,008 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:28,046 - root - INFO - conftest.py:58 - timer - Test test_batch_operation[10] took 11.93 seconds
+2024-10-25 16:27:28,171 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:29,550 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 16:27:32,011 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 16:27:32,702 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 16:27:32,705 - root - INFO - conftest.py:58 - timer - Test test_batch_operation[100] took 4.66 seconds
+2024-10-25 16:27:34,226 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:27:34,227 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:27:34,227 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:27:34,570 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:27:34,572 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:27:34,876 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:27:34,877 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:27:35,786 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:27:35,792 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:27:35,794 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:27:35,794 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:27:35,800 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[1] took 3.09 seconds
+2024-10-25 16:27:35,804 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:27:35,805 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:27:35,805 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:27:36,131 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:27:36,132 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:27:36,392 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:27:36,393 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:27:37,302 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:27:37,311 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:27:37,313 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:27:37,313 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:27:37,320 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[2] took 1.52 seconds
+2024-10-25 16:27:37,325 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:27:37,325 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:27:37,325 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:27:37,674 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:27:37,675 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:27:37,939 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:27:37,940 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:27:38,796 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:27:38,798 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:27:38,799 - root - DEBUG - search.py:81 - search - BM25 scores shape: (3,), dtype: float64
+2024-10-25 16:27:38,799 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:27:38,802 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[3] took 1.48 seconds
+2024-10-25 16:27:38,803 - root - INFO - conftest.py:58 - timer - Test test_generate_answer took 0.00 seconds
+2024-10-25 16:27:38,804 - root - INFO - rag.py:67 - rag_query - Processing query: Test question
+2024-10-25 16:27:38,805 - root - INFO - conftest.py:58 - timer - Test test_rag_query took 0.00 seconds
+2024-10-25 16:27:38,805 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[Short query] took 0.00 seconds
+2024-10-25 16:27:38,806 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[A very long query that contains multiple sentences and specific terms] took 0.00 seconds
+2024-10-25 16:27:38,806 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[] took 0.00 seconds
+2024-10-25 16:27:38,807 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 16:27:38,807 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:27:38,807 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:27:38,807 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:27:39,132 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:27:39,133 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:27:39,420 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:27:39,420 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:27:40,221 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:27:40,299 - root - INFO - conftest.py:58 - timer - Test test_rag_query_performance took 1.49 seconds
+2024-10-25 16:27:40,301 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 16:27:40,302 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:27:40,302 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:27:40,302 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:27:40,583 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:27:40,584 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:27:40,842 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:27:40,842 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:27:41,683 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:27:41,684 - root - ERROR - error_handler.py:17 - wrapper - Error in rag_query: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 71, in rag_query
+    return openai_service.generate_answer(question, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:27:41,696 - root - INFO - conftest.py:58 - timer - Test test_rag_error_handling took 1.40 seconds
+2024-10-25 16:27:41,699 - root - ERROR - error_handler.py:17 - wrapper - Error in generate_answer: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 63, in generate_answer
+    return openai_service.generate_answer(query, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:27:41,704 - root - INFO - conftest.py:58 - timer - Test test_generate_answer_error_handling[RAGError-Test error] took 0.01 seconds
+2024-10-25 16:27:41,706 - root - ERROR - error_handler.py:17 - wrapper - Error in generate_answer: Unexpected error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 63, in generate_answer
+    return openai_service.generate_answer(query, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Unexpected error
+2024-10-25 16:27:41,707 - root - INFO - conftest.py:58 - timer - Test test_generate_answer_error_handling[Exception-Unexpected error] took 0.00 seconds
+2024-10-25 16:27:41,708 - root - INFO - rag.py:67 - rag_query - Processing query: Test question
+2024-10-25 16:27:41,708 - root - ERROR - error_handler.py:17 - wrapper - Error in rag_query: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 68, in rag_query
+    search = get_search_strategy(search_strategy, book_data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+src.error_handler.RAGError: Test error
+2024-10-25 16:27:41,718 - root - INFO - conftest.py:58 - timer - Test test_rag_query_error_handling took 0.01 seconds
+2024-10-25 16:27:41,720 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:27:41,720 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:27:41,720 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:27:42,014 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:27:42,016 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:27:42,310 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:27:42,310 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:27:43,154 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:27:43,156 - root - INFO - conftest.py:58 - timer - Test test_simple_search took 1.44 seconds
+2024-10-25 16:27:43,161 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:27:43,161 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:27:43,161 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:27:43,457 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:27:43,459 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:27:43,728 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:27:43,729 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:27:44,588 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:27:44,589 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'list' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'shape'
+2024-10-25 16:27:44,590 - root - DEBUG - search.py:81 - search - BM25 scores shape: (4,), dtype: float64
+2024-10-25 16:27:44,590 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:27:44,597 - root - INFO - conftest.py:58 - timer - Test test_hybrid_search took 1.44 seconds
+2024-10-25 16:27:44,599 - root - ERROR - error_handler.py:17 - wrapper - Error in get_search_strategy: Unknown search strategy: unknown
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 161, in get_search_strategy
+    raise ValueError(f"Unknown search strategy: {strategy}")
+ValueError: Unknown search strategy: unknown
+2024-10-25 16:27:44,605 - root - INFO - conftest.py:58 - timer - Test test_get_search_strategy took 0.01 seconds
+2024-10-25 16:27:44,608 - root - ERROR - error_handler.py:17 - wrapper - Error in _create_weighted_query_embedding: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 139, in _create_weighted_query_embedding
+    return create_embeddings([weighted_query])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Test error
+2024-10-25 16:27:44,609 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+2024-10-25 16:27:44,609 - root - DEBUG - search.py:81 - search - BM25 scores shape: (4,), dtype: float64
+2024-10-25 16:27:44,609 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:27:44,615 - root - INFO - conftest.py:58 - timer - Test test_search_error_handling took 0.01 seconds
+2024-10-25 16:27:44,618 - root - INFO - conftest.py:58 - timer - Test test_embedding_scores took 0.00 seconds
+2024-10-25 16:27:44,619 - root - INFO - conftest.py:58 - timer - Test test_get_top_chunks took 0.00 seconds
+2024-10-25 16:27:44,621 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 50, in search
+    query_embedding = create_embeddings([query])[0]
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Test error
+2024-10-25 16:27:44,625 - root - INFO - conftest.py:58 - timer - Test test_simple_search_error_handling took 0.00 seconds
+2024-10-25 16:27:44,627 - root - ERROR - error_handler.py:17 - wrapper - Error in _create_weighted_query_embedding: Test error
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 139, in _create_weighted_query_embedding
+    return create_embeddings([weighted_query])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1137, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1141, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 1196, in _execute_mock_call
+    raise effect
+Exception: Test error
+2024-10-25 16:27:44,627 - root - ERROR - error_handler.py:17 - wrapper - Error in _get_embedding_scores: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 116, in _get_embedding_scores
+    if query_embedding.shape != self.embeddings[0].shape:
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+2024-10-25 16:27:44,628 - root - DEBUG - search.py:81 - search - BM25 scores shape: (4,), dtype: float64
+2024-10-25 16:27:44,628 - root - ERROR - error_handler.py:17 - wrapper - Error in search: Error in hybrid search: 'str' object has no attribute 'shape'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 82, in search
+    logger.debug(f"Embedding scores shape: {embedding_scores.shape}, dtype: {embedding_scores.dtype}")
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 15, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 90, in search
+    raise RAGError(f"Error in hybrid search: {str(e)}")
+src.error_handler.RAGError: Error in hybrid search: 'str' object has no attribute 'shape'
+2024-10-25 16:27:44,631 - root - INFO - conftest.py:58 - timer - Test test_hybrid_search_error_handling took 0.01 seconds
+2024-10-25 16:27:44,632 - root - INFO - text_processing.py:75 - load_and_preprocess_text - Preprocessing text content
+2024-10-25 16:27:44,797 - root - INFO - text_processing.py:81 - load_and_preprocess_text - Extracted 0 dates, 0 named entities, and 5 key phrases from the text
+2024-10-25 16:27:44,797 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 16:27:44,797 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 16:27:44,797 - root - INFO - conftest.py:58 - timer - Test test_load_and_preprocess_text took 0.17 seconds
+2024-10-25 16:27:44,798 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-25 16:27:44,798 - root - INFO - text_processing.py:103 - split_into_chunks - Created 13 chunks
+2024-10-25 16:27:44,798 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks[100-20] took 0.00 seconds
+2024-10-25 16:27:44,798 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 200, overlap: 50)
+2024-10-25 16:27:44,799 - root - INFO - text_processing.py:103 - split_into_chunks - Created 7 chunks
+2024-10-25 16:27:44,799 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks[200-50] took 0.00 seconds
+2024-10-25 16:27:44,799 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 500, overlap: 100)
+2024-10-25 16:27:44,799 - root - INFO - text_processing.py:103 - split_into_chunks - Created 3 chunks
+2024-10-25 16:27:44,799 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks[500-100] took 0.00 seconds
+2024-10-25 16:27:44,800 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-25 16:27:44,800 - root - INFO - text_processing.py:103 - split_into_chunks - Created 13 chunks
+2024-10-25 16:27:44,800 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks_with_dict_input took 0.00 seconds
+2024-10-25 16:27:46,960 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:27:46,961 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:27:46,967 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:27:46,967 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:27:46,975 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:27:47,246 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:27:47,248 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:27:47,517 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:27:47,518 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:27:47,714 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-25 16:27:47,725 - root - INFO - cli.py:53 - run_cli - Starting the RAG system
+2024-10-25 16:27:47,726 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 16:27:47,727 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 16:27:56,790 - root - INFO - cli.py:64 - run_cli - Loading book from: tests/data/test.pdf
+2024-10-25 16:27:56,791 - root - INFO - cli.py:25 - load_and_process_book - Starting to process book content
+2024-10-25 16:27:56,791 - root - INFO - text_processing.py:75 - load_and_preprocess_text - Preprocessing text content
+2024-10-25 16:27:57,074 - root - INFO - text_processing.py:81 - load_and_preprocess_text - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-25 16:27:57,074 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 16:27:57,074 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 16:27:57,074 - root - INFO - cli.py:28 - load_and_process_book - Text preprocessed. Number of chunks: 1
+2024-10-25 16:27:57,074 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 16:27:57,074 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 16:27:57,075 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 16:27:57,431 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 16:27:57,431 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 16:27:57,743 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 16:27:57,744 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 16:27:58,568 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 16:27:58,733 - root - ERROR - cli.py:84 - run_cli - An error occurred: 'BookDataInterface' object has no attribute 'chunks'
+2024-10-25 16:27:58,733 - root - INFO - cli.py:87 - run_cli - Exiting the RAG system
