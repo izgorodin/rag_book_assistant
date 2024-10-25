@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
+from src import openai_service
 from src.cli import load_and_process_book, answer_question
 from src.file_processor import FileProcessor
 from src.rag import rag_query
@@ -109,3 +110,4 @@ if __name__ == '__main__':
             else:
                 logger.exception("Failed to start the Flask app")
                 raise
+

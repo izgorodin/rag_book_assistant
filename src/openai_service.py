@@ -5,6 +5,7 @@ from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS
 from typing import List, Dict, Union
 import httpx
 from src.logger import setup_logger
+from src.error_handler import handle_rag_error, OpenAIError
 
 logger = setup_logger()
 
@@ -31,6 +32,10 @@ class BaseOpenAIService(ABC):
         pass
 
 class OpenAIService(BaseOpenAIService):
+    def __init__(self):
+        self.client = OpenAI(api_key=OPENAI_API_KEY)
+
+    @handle_rag_error
     def generate_answer(self, query: str, context: str) -> str:
         messages = [
             {"role": "system", "content": "You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing."},
@@ -51,6 +56,7 @@ class OpenAIService(BaseOpenAIService):
             logger.error(f"Error in generate_answer: {str(error)}")
             return f"Sorry, I encountered an error while generating the answer: {str(error)}"
 
+    @handle_rag_error
     def create_embeddings(self, texts: List[str]) -> List[List[float]]:
         try:
             response = self.client.embeddings.create(input=texts, model="text-embedding-ada-002")
@@ -60,6 +66,7 @@ class OpenAIService(BaseOpenAIService):
             logger.error(f"Error in create_embeddings: {str(error)}")
             raise ValueError(f"Failed to create embeddings: {str(error)}")
 
+    @handle_rag_error
     def _handle_openai_error(self, error: Exception) -> Union[RateLimitError, APIError, APITimeoutError, APIConnectionError, Exception]:
         if isinstance(error, (RateLimitError, APIError, APITimeoutError, APIConnectionError)):
             return error
@@ -67,6 +74,7 @@ class OpenAIService(BaseOpenAIService):
             return Exception(f"An unexpected error occurred: {str(error)}")
 
     @staticmethod
+    @handle_rag_error
     def create_test_exception(error_type: type, message: str) -> Union[RateLimitError, APIError, APITimeoutError, APIConnectionError, Exception]:
         mock_response = httpx.Response(status_code=400, request=httpx.Request("GET", "https://api.openai.com/v1/test"))
         if error_type == RateLimitError:
@@ -79,3 +87,18 @@ class OpenAIService(BaseOpenAIService):
             return APIConnectionError(message=message, request=mock_response.request)
         else:
             return Exception(message)
+
+    @handle_rag_error
+    def create_embedding(self, text: str):
+        try:
+            logger.info(f"Creating embedding for text: {text[:50]}...")
+            response = self.client.embeddings.create(
+                input=text,
+                model="text-embedding-ada-002"
+            )
+            embedding = response.data[0].embedding
+            logger.info(f"Successfully created embedding of length {len(embedding)}")
+            return embedding
+        except Exception as e:
+            logger.error(f"Error creating embedding: {str(e)}")
+            raise OpenAIError(f"Error creating embedding: {str(e)}")

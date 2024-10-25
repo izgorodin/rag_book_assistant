@@ -5,6 +5,7 @@ import nltk
 from nltk import ne_chunk, pos_tag, word_tokenize
 from nltk.tree import Tree
 from src.logger import setup_logger    
+from src.types import Chunk
 
 logger = setup_logger()
 
@@ -80,26 +81,29 @@ def load_and_preprocess_text(text_content: str) -> Dict[str, Any]:
     
     logger.info(f"Extracted {len(dates)} dates, {sum(len(v) for v in entities.values())} named entities, and {len(key_phrases)} key phrases from the text")
     
+    chunks = split_into_chunks(text_content)
+    
     return {
         'text': text_content,
-        'chunks': split_into_chunks(text_content),
+        'chunks': chunks,
         'dates': dates,
         'entities': entities,
         'key_phrases': key_phrases
     }
 
-def split_into_chunks(text: Union[str, Dict[str, Any]], chunk_size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[str]:
+def split_into_chunks(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[Chunk]:
     """Split the text into chunks with specified size and overlap."""
     logger.info(f"Splitting text into chunks (size: {chunk_size}, overlap: {overlap})")
     
-    if isinstance(text, dict):
-        text = text.get('text', '')
-    
-    words = text.split()
     chunks = []
-    for i in range(0, len(words), chunk_size - overlap):
-        chunk = ' '.join(words[i:i + chunk_size])
-        chunks.append(chunk)
+    start = 0
+    while start < len(text):
+        end = start + chunk_size
+        if end > len(text):
+            end = len(text)
+        chunk = text[start:end]
+        chunks.append(Chunk(chunk))
+        start = end - overlap
     logger.info(f"Created {len(chunks)} chunks")
     return chunks
 

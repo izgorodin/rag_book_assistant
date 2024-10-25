@@ -11,6 +11,9 @@ from src.book_data_interface import BookDataInterface
 from src.pinecone_manager import PineconeManager
 from src.cache_manager import CACHE_DIR, save_to_cache, load_from_cache
 import hashlib
+from src.types import Chunk, EmbeddingList
+from src.openai_service import OpenAIService
+from src.error_handler import handle_rag_error, DataSourceError
 
 logger = setup_logger()
 
@@ -19,36 +22,25 @@ pinecone_manager = PineconeManager()
 if pinecone_manager.index is None:
     print("Warning: Pinecone index is not available. Some functionality may be limited.")
 
-def create_embeddings(chunks: List[str]) -> List[List[float]]:
-    all_embeddings = []
-    pinecone_manager = PineconeManager()
-
-    for chunk in chunks:
-        if not chunk.strip():
-            all_embeddings.append([0.0] * EMBEDDING_DIMENSION)
-        else:
-            cached_embedding = load_from_cache(chunk)
-            if cached_embedding:
-                all_embeddings.append(cached_embedding)
-            else:
-                response = client.embeddings.create(input=[chunk], model=EMBEDDING_MODEL)
-                embedding = response.data[0].embedding
-                all_embeddings.append(embedding)
-                save_to_cache(chunk, embedding)
-        
-        # Добавляем проверку размерности
-        if len(all_embeddings[-1]) != 1536:
-            logger.error(f"Incorrect embedding dimension: {len(all_embeddings[-1])} for chunk: {chunk[:50]}...")
-            raise ValueError(f"Incorrect embedding dimension: {len(all_embeddings[-1])}")
-
-    non_empty_chunks = [c for c in chunks if c.strip()]
-    if non_empty_chunks:
-        pinecone_manager.upsert_embeddings(non_empty_chunks, all_embeddings)
-
-    return all_embeddings
+@handle_rag_error
+def create_embeddings(chunks: List[Chunk]) -> EmbeddingList:
+    logger.info(f"Starting to create embeddings for {len(chunks)} chunks")
+    openai_service = OpenAIService()
+    embeddings = []
+    for i, chunk in enumerate(chunks):
+        try:
+            embedding = openai_service.create_embedding(chunk)
+            embeddings.append(embedding)
+            if (i + 1) % 100 == 0:
+                logger.info(f"Created embeddings for {i + 1} chunks")
+        except Exception as e:
+            logger.error(f"Error creating embedding for chunk {i}: {str(e)}")
+            raise DataSourceError(f"Error creating embedding for chunk {i}: {str(e)}")
+    logger.info(f"Finished creating embeddings for {len(chunks)} chunks")
+    return embeddings
 
 def save_chunks_and_embeddings(book_data: BookDataInterface, file_path: str):
-    logger.info(f"Saving {len(book_data.chunks)} chunks, their embeddings, and processed text to {file_path}.")
+    logger.info(f"Saving {len(book_data.get_chunks())} chunks, their embeddings, and processed text to {file_path}.")
     with open(file_path, 'wb') as f:
         pickle.dump(book_data, f)
     logger.info(f"Data saved to {file_path}.")
@@ -60,18 +52,38 @@ def load_chunks_and_embeddings(file_path: str) -> Tuple[List[str], List[List[flo
     logger.info(f"Loaded {len(data['chunks'])} chunks, embeddings, and processed text.")
     return data['chunks'], data.get('embeddings', []), data.get('processed_text', {})
 
-def get_or_create_chunks_and_embeddings(chunks: List[str], cache_file: str) -> BookDataInterface:
-    embeddings = create_embeddings(chunks)
-    full_text = ' '.join(chunks)
-    processed_text = {
-        'dates': extract_dates(full_text),
-        'entities': extract_named_entities(full_text),
-        'key_phrases': extract_key_phrases(full_text)
-    }
-    book_data = BookDataInterface(chunks, embeddings, processed_text)
-    save_chunks_and_embeddings(book_data, cache_file)
-    
-    return book_data
+@handle_rag_error
+def get_or_create_chunks_and_embeddings(chunks: List[Chunk], file_path: str, index) -> BookDataInterface:
+    if os.path.exists(file_path):
+        logger.info(f"Loading existing chunks and embeddings from {file_path}")
+        try:
+            with open(file_path, 'rb') as f:
+                data = pickle.load(f)
+            logger.info(f"Loaded data type: {type(data)}")
+            if isinstance(data, dict):
+                logger.info("Creating BookDataInterface from dictionary")
+                return BookDataInterface(data['chunks'], data['embeddings'], data.get('processed_text', {}))
+            elif isinstance(data, BookDataInterface):
+                logger.info("Loaded BookDataInterface object directly")
+                return data
+            else:
+                logger.error(f"Unexpected data type in file: {type(data)}")
+                raise ValueError(f"Unexpected data type in file: {type(data)}")
+        except Exception as e:
+            logger.error(f"Error loading from file: {str(e)}")
+            raise DataSourceError(f"Error loading from file {file_path}: {str(e)}")
+    else:
+        logger.info("Creating new embeddings")
+        try:
+            embeddings = create_embeddings(chunks)
+            logger.info(f"Created {len(embeddings)} embeddings")
+            book_data = BookDataInterface(chunks, embeddings, {})
+            book_data.save(file_path)
+            logger.info(f"Saved book data to {file_path}")
+            return book_data
+        except Exception as e:
+            logger.error(f"Error creating embeddings: {str(e)}")
+            raise DataSourceError(f"Error creating embeddings: {str(e)}")
 
 def cosine_similarity(a: List[float], b: List[float]) -> float:
     a = np.array(a, dtype=np.float64)
