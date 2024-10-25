@@ -1,18 +1,40 @@
 import numpy as np
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Protocol
 from rank_bm25 import BM25Okapi
 from src.embedding import create_embeddings, cosine_similarity
 from nltk.corpus import wordnet
 from nltk import word_tokenize, pos_tag
 from nltk.stem import WordNetLemmatizer
 from src.logger import setup_logger
+from src.book_data_interface import BookDataInterface
 
 logger = setup_logger()
 
-class HybridSearch:
-    def __init__(self, chunks: List[str], embeddings: List[List[float]], embedding_weight: float = 0.75):
-        self.chunks = chunks
-        self.embeddings = embeddings
+class SearchStrategy(Protocol):
+    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+        ...
+
+class BaseSearch:
+    def __init__(self, book_data: BookDataInterface):
+        self.chunks = book_data.chunks
+        self.embeddings = book_data.embeddings
+
+    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+        raise NotImplementedError("Subclasses must implement this method")
+
+    def _get_top_chunks(self, scores: np.ndarray, top_k: int) -> List[Dict[str, Any]]:
+        top_indices = np.argsort(scores)[-top_k:][::-1]
+        return [{'chunk': self.chunks[i], 'score': float(scores[i])} for i in top_indices]
+
+class SimpleSearch(BaseSearch):
+    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+        query_embedding = create_embeddings([query])[0]
+        scores = np.array([cosine_similarity(query_embedding, chunk_embedding) for chunk_embedding in self.embeddings])
+        return self._get_top_chunks(scores, top_k)
+
+class HybridSearch(BaseSearch):
+    def __init__(self, book_data: BookDataInterface, embedding_weight: float = 0.75):
+        super().__init__(book_data)
         self.embedding_weight = embedding_weight
         self.bm25 = self._initialize_bm25()
         self.lemmatizer = WordNetLemmatizer()
@@ -21,7 +43,7 @@ class HybridSearch:
         tokenized_chunks = [chunk.split() for chunk in self.chunks]
         return BM25Okapi(tokenized_chunks)
 
-    def search(self, query: str, top_k: int = 25) -> List[Dict[str, Any]]:
+    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
         try:
             expanded_query = self._expand_query(query)
             bm25_scores = self._get_bm25_scores(expanded_query)
@@ -85,6 +107,10 @@ class HybridSearch:
         embedding_scores = (embedding_scores - embedding_scores.min()) / (embedding_scores.max() - embedding_scores.min() + 1e-8)
         return (1 - self.embedding_weight) * bm25_scores + self.embedding_weight * embedding_scores
 
-    def _get_top_chunks(self, scores: np.ndarray, top_k: int) -> List[Dict[str, Any]]:
-        top_indices = np.argsort(scores)[-top_k:][::-1]
-        return [{'chunk': self.chunks[i], 'score': scores[i]} for i in top_indices]
+def get_search_strategy(strategy: str, book_data: BookDataInterface) -> SearchStrategy:
+    if strategy == "simple":
+        return SimpleSearch(book_data)
+    elif strategy == "hybrid":
+        return HybridSearch(book_data)
+    else:
+        raise ValueError(f"Unknown search strategy: {strategy}")

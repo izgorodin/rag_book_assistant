@@ -823,3 +823,527 @@ Q: What was the model year of the Ford Pinto involved in the accident?
 2024-10-24 23:37:09,195 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
 2024-10-24 23:37:09,195 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
 2024-10-24 23:37:09,506 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-24 23:44:42,934 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-24 23:44:42,935 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-24 23:44:42,942 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-24 23:44:42,943 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-24 23:44:42,951 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-24 23:44:43,513 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-24 23:44:43,513 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-24 23:44:43,839 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-24 23:44:43,839 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-24 23:44:45,061 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-24 23:45:33,108 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-24 23:45:33,109 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-24 23:45:33,117 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-24 23:45:33,117 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-24 23:45:33,126 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-24 23:45:34,597 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-24 23:45:34,597 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-24 23:45:36,976 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-24 23:45:36,977 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-24 23:45:37,204 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-24 23:47:00,208 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-24 23:47:00,209 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-24 23:47:00,216 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-24 23:47:00,216 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-24 23:47:00,224 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-24 23:47:00,545 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-24 23:47:00,547 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-24 23:47:00,886 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-24 23:47:00,886 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-24 23:47:01,173 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-24 23:47:34,229 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-24 23:47:34,230 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-24 23:47:34,238 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-24 23:47:34,239 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-24 23:47:34,248 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-24 23:47:34,607 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-24 23:47:34,609 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-24 23:47:35,105 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-24 23:47:35,106 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-24 23:47:35,366 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-24 23:49:22,741 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-24 23:49:22,741 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-24 23:49:22,748 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-24 23:49:22,748 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-24 23:49:22,756 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-24 23:49:23,076 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-24 23:49:23,077 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-24 23:49:23,430 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-24 23:49:23,430 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-24 23:49:23,662 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-24 23:49:23,668 - root - INFO - cli.py:53 - run_cli - Starting the RAG system
+2024-10-24 23:49:23,669 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-24 23:49:23,670 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-24 23:49:37,109 - root - INFO - cli.py:64 - run_cli - Loading book from: uploads/ford.txt
+2024-10-24 23:49:37,109 - root - INFO - cli.py:25 - load_and_process_book - Starting to process book content
+2024-10-24 23:49:37,109 - root - INFO - text_processing.py:75 - load_and_preprocess_text - Preprocessing text content
+2024-10-24 23:49:37,391 - root - INFO - text_processing.py:81 - load_and_preprocess_text - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-24 23:49:37,392 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-24 23:49:37,392 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-24 23:49:37,392 - root - INFO - cli.py:28 - load_and_process_book - Text preprocessed. Number of chunks: 1
+2024-10-24 23:49:37,392 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-24 23:49:37,392 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-24 23:49:37,392 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-24 23:49:37,869 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-24 23:49:37,869 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-24 23:49:38,130 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-24 23:49:38,130 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-24 23:49:38,131 - openai._base_client - DEBUG - _base_client.py:446 - _build_request - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x10b2a5580>, 'json_data': {'input': ['uploads/ford.txt'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-24 23:49:38,157 - openai._base_client - DEBUG - _base_client.py:980 - _request - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-24 23:49:38,158 - httpcore.connection - DEBUG - _trace.py:45 - trace - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-24 23:49:38,333 - httpcore.connection - DEBUG - _trace.py:45 - trace - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10b3546e0>
+2024-10-24 23:49:38,333 - httpcore.connection - DEBUG - _trace.py:45 - trace - start_tls.started ssl_context=<ssl.SSLContext object at 0x10b1af7d0> server_hostname='api.openai.com' timeout=5.0
+2024-10-24 23:49:38,374 - httpcore.connection - DEBUG - _trace.py:45 - trace - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10b355580>
+2024-10-24 23:49:38,374 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.started request=<Request [b'POST']>
+2024-10-24 23:49:38,375 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.complete
+2024-10-24 23:49:38,375 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.started request=<Request [b'POST']>
+2024-10-24 23:49:38,375 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.complete
+2024-10-24 23:49:38,376 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.started request=<Request [b'POST']>
+2024-10-24 23:49:38,614 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 24 Oct 2024 22:49:38 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'81'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999995'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_c7732d411f6065ec06feb83fd0d2d681'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=r.UFYyjc0_cKbWE895adTbhJKBmD5N0vllmcL66LWZM-1729810178-1.0.1.1-f5TzV564f3wVQExD5xK44NGFw3od_D9BC2UIUDSpziLtaeT_2B_EsI1mkuZVvbE14Lb6SDFchwkXsm3rfbeghA; path=/; expires=Thu, 24-Oct-24 23:19:38 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=83TyLY6shvFwCQREEkLzj7WwUJloVPEJtBnI8tHB5_Q-1729810178669-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d7d856f6c92785f-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-24 23:49:38,616 - httpx - INFO - _client.py:1038 - _send_single_request - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-24 23:49:38,616 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.started request=<Request [b'POST']>
+2024-10-24 23:49:38,617 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.complete
+2024-10-24 23:49:38,617 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.started
+2024-10-24 23:49:38,618 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.complete
+2024-10-24 23:49:38,618 - openai._base_client - DEBUG - _base_client.py:1019 - _request - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Thu, 24 Oct 2024 22:49:38 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-3-small'), ('openai-organization', 'uinside'), ('openai-processing-ms', '81'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '5000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '4999995'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '0s'), ('x-request-id', 'req_c7732d411f6065ec06feb83fd0d2d681'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=r.UFYyjc0_cKbWE895adTbhJKBmD5N0vllmcL66LWZM-1729810178-1.0.1.1-f5TzV564f3wVQExD5xK44NGFw3od_D9BC2UIUDSpziLtaeT_2B_EsI1mkuZVvbE14Lb6SDFchwkXsm3rfbeghA; path=/; expires=Thu, 24-Oct-24 23:19:38 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=83TyLY6shvFwCQREEkLzj7WwUJloVPEJtBnI8tHB5_Q-1729810178669-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d7d856f6c92785f-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-24 23:49:38,618 - openai._base_client - DEBUG - _base_client.py:1027 - _request - request_id: req_c7732d411f6065ec06feb83fd0d2d681
+2024-10-24 23:49:39,643 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-24 23:49:39,835 - root - INFO - embedding.py:46 - save_chunks_and_embeddings - Saving 1 chunks, their embeddings, and processed text to data/embeddings/f516f4df12faa415bf60a3e635a5fd4a_chunks_embeddings.pkl.
+2024-10-24 23:49:39,835 - root - INFO - embedding.py:49 - save_chunks_and_embeddings - Data saved to data/embeddings/f516f4df12faa415bf60a3e635a5fd4a_chunks_embeddings.pkl.
+2024-10-24 23:49:39,835 - root - INFO - cli.py:38 - load_and_process_book - Book data created. Number of chunks: 1
+2024-10-24 23:49:39,835 - root - INFO - cli.py:66 - run_cli - Book loaded and preprocessed. Text split into 1 chunks
+2024-10-24 23:50:08,102 - root - INFO - cli.py:76 - run_cli - Received query: Опиши инцидент произошедший с машиной
+2024-10-24 23:50:08,103 - root - INFO - cli.py:43 - answer_question - Received query: Опиши инцидент произошедший с машиной
+2024-10-24 23:50:08,103 - root - INFO - rag.py:67 - rag_query - Processing query: Опиши инцидент произошедший с машиной
+2024-10-24 23:50:08,103 - root - ERROR - rag.py:76 - rag_query - Error in rag_query: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 69, in rag_query
+    relevant_chunks = book_data.get_relevant_chunks(question)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+2024-10-24 23:50:08,106 - root - INFO - cli.py:46 - answer_question - Generated answer: An error occurred while processing the query: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+2024-10-25 13:52:01,401 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 13:52:01,402 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 13:52:01,408 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:01,409 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:01,418 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:02,084 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:02,087 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:02,427 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:02,428 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:02,823 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-25 13:52:04,552 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 13:52:04,566 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1389 chunks
+2024-10-25 13:52:04,569 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:04,569 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:04,569 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:05,017 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:05,019 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:06,465 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:06,465 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:33,410 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"code":11,"message":"Error, message length too large: found 13124219 bytes, the limit is: 4194304 bytes","details":[]}'
+2024-10-25 13:52:34,020 - root - INFO - conftest.py:58 - timer - Test test_main_cli_mode took 0.00 seconds
+2024-10-25 13:52:34,021 - root - INFO - conftest.py:58 - timer - Test test_main_api_mode took 0.00 seconds
+2024-10-25 13:52:34,021 - root - INFO - conftest.py:58 - timer - Test test_main_invalid_mode took 0.00 seconds
+2024-10-25 13:52:34,022 - root - INFO - cli.py:25 - load_and_process_book - Starting to process book content
+2024-10-25 13:52:34,022 - root - INFO - cli.py:28 - load_and_process_book - Text preprocessed. Number of chunks: 2
+2024-10-25 13:52:34,022 - root - INFO - cli.py:38 - load_and_process_book - Book data created. Number of chunks: 2
+2024-10-25 13:52:34,022 - root - INFO - conftest.py:58 - timer - Test test_load_and_process_book took 0.00 seconds
+2024-10-25 13:52:34,025 - root - INFO - conftest.py:58 - timer - Test test_answer_question took 0.00 seconds
+2024-10-25 13:52:34,026 - root - INFO - cli.py:53 - run_cli - Starting the RAG system
+2024-10-25 13:52:34,027 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 13:52:34,027 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 13:52:34,034 - root - INFO - cli.py:64 - run_cli - Loading book from: input1
+2024-10-25 13:52:34,035 - root - INFO - cli.py:66 - run_cli - Book loaded and preprocessed. Text split into 2 chunks
+2024-10-25 13:52:34,035 - root - ERROR - cli.py:84 - run_cli - An error occurred: 
+2024-10-25 13:52:34,035 - root - INFO - cli.py:87 - run_cli - Exiting the RAG system
+2024-10-25 13:52:34,036 - root - INFO - conftest.py:58 - timer - Test test_run_cli[input1] took 0.01 seconds
+2024-10-25 13:52:34,037 - root - INFO - cli.py:53 - run_cli - Starting the RAG system
+2024-10-25 13:52:34,038 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 13:52:34,038 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 13:52:34,044 - root - INFO - cli.py:64 - run_cli - Loading book from: input2
+2024-10-25 13:52:34,044 - root - INFO - cli.py:66 - run_cli - Book loaded and preprocessed. Text split into 2 chunks
+2024-10-25 13:52:34,044 - root - ERROR - cli.py:84 - run_cli - An error occurred: 
+2024-10-25 13:52:34,044 - root - INFO - cli.py:87 - run_cli - Exiting the RAG system
+2024-10-25 13:52:34,045 - root - INFO - conftest.py:58 - timer - Test test_run_cli[input2] took 0.01 seconds
+2024-10-25 13:52:34,046 - root - INFO - cli.py:53 - run_cli - Starting the RAG system
+2024-10-25 13:52:34,046 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 13:52:34,046 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 13:52:34,052 - root - ERROR - cli.py:84 - run_cli - An error occurred: The file nonexistent_file.txt does not exist.
+2024-10-25 13:52:34,052 - root - INFO - cli.py:87 - run_cli - Exiting the RAG system
+2024-10-25 13:52:34,053 - root - INFO - conftest.py:58 - timer - Test test_run_cli_file_not_found took 0.01 seconds
+2024-10-25 13:52:34,053 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:34,054 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:34,054 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:34,555 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:34,557 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:34,928 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:34,928 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:35,891 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":2}'
+2024-10-25 13:52:35,893 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_length[chunks0-2] took 1.84 seconds
+2024-10-25 13:52:35,897 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:35,897 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:35,898 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:36,420 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:36,422 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:36,700 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:36,701 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:37,445 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 13:52:37,448 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_length[chunks1-1] took 1.55 seconds
+2024-10-25 13:52:37,452 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:37,453 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:37,453 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:38,044 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:38,046 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:38,449 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:38,449 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:38,452 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_length[chunks2-0] took 1.00 seconds
+2024-10-25 13:52:38,455 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:38,455 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:38,456 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:38,796 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:38,798 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:39,475 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:39,476 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:40,248 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 13:52:40,257 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_structure took 1.80 seconds
+2024-10-25 13:52:40,259 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:40,260 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:40,260 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:40,629 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:40,631 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:40,951 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:40,952 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:40,979 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_api_error took 0.72 seconds
+2024-10-25 13:52:40,982 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:40,982 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:40,982 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:41,297 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:41,298 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:41,713 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:41,714 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:41,717 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_various_lengths[-1536] took 0.74 seconds
+2024-10-25 13:52:41,723 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:41,723 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:41,724 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:42,105 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:42,107 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:42,797 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:42,798 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:42,801 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_various_lengths[Short text-1536] took 1.08 seconds
+2024-10-25 13:52:42,806 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:42,806 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:42,807 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:43,113 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:43,114 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:43,624 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:43,625 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:43,630 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_various_lengths[AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-1536] took 0.83 seconds
+2024-10-25 13:52:43,635 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_with_cache took 0.00 seconds
+2024-10-25 13:52:43,637 - root - INFO - file_processor.py:15 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.pdf with extension: .pdf
+2024-10-25 13:52:43,638 - root - INFO - file_processor.py:26 - process_file - Using processor for extension: .pdf
+2024-10-25 13:52:43,641 - root - INFO - conftest.py:58 - timer - Test test_process_pdf took 0.00 seconds
+2024-10-25 13:52:43,643 - root - INFO - file_processor.py:15 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.docx with extension: .docx
+2024-10-25 13:52:43,643 - root - INFO - file_processor.py:26 - process_file - Using processor for extension: .docx
+2024-10-25 13:52:43,660 - root - INFO - conftest.py:58 - timer - Test test_process_docx took 0.02 seconds
+2024-10-25 13:52:43,661 - root - INFO - file_processor.py:15 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.odt with extension: .odt
+2024-10-25 13:52:43,661 - root - INFO - file_processor.py:26 - process_file - Using processor for extension: .odt
+2024-10-25 13:52:43,665 - root - INFO - conftest.py:58 - timer - Test test_process_odt took 0.00 seconds
+2024-10-25 13:52:43,666 - root - INFO - file_processor.py:15 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.txt with extension: .txt
+2024-10-25 13:52:43,666 - root - INFO - file_processor.py:26 - process_file - Using processor for extension: .txt
+2024-10-25 13:52:43,667 - root - INFO - conftest.py:58 - timer - Test test_process_txt took 0.00 seconds
+2024-10-25 13:52:43,669 - root - INFO - file_processor.py:15 - process_file - Processing file: /private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-11/test_unsupported_file_format0/test.unsupported with extension: .unsupported
+2024-10-25 13:52:43,669 - root - ERROR - file_processor.py:29 - process_file - Unsupported file format: .unsupported
+2024-10-25 13:52:43,670 - root - INFO - conftest.py:58 - timer - Test test_unsupported_file_format took 0.00 seconds
+2024-10-25 13:52:43,671 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 13:52:43,674 - root - INFO - text_processing.py:103 - split_into_chunks - Created 199 chunks
+2024-10-25 13:52:43,678 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:43,678 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:43,678 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:44,113 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:44,114 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:44,770 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:44,770 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:44,817 - root - INFO - rag.py:67 - rag_query - Processing query: What was the model year of the Ford Pinto involved in the accident?
+2024-10-25 13:52:44,817 - root - ERROR - rag.py:76 - rag_query - Error in rag_query: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 69, in rag_query
+    relevant_chunks = book_data.get_relevant_chunks(question)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+2024-10-25 13:52:44,841 - rag_results - INFO - test_ford_pinto_qa.py:94 - test_qa_system - 
+Q: What was the model year of the Ford Pinto involved in the accident?
+2024-10-25 13:52:44,841 - rag_results - INFO - test_ford_pinto_qa.py:95 - test_qa_system - Expected A: 1972
+2024-10-25 13:52:44,841 - rag_results - INFO - test_ford_pinto_qa.py:96 - test_qa_system - System A: An error occurred while processing the query: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+2024-10-25 13:52:44,841 - rag_results - INFO - test_ford_pinto_qa.py:97 - test_qa_system - Is correct: False
+2024-10-25 13:52:44,841 - rag_results - INFO - test_ford_pinto_qa.py:98 - test_qa_system - --------------------------------------------------
+2024-10-25 13:52:44,844 - root - INFO - conftest.py:58 - timer - Test test_qa_system[qa_pair0] took 0.03 seconds
+2024-10-25 13:52:44,851 - root - INFO - conftest.py:58 - timer - Test test_search took 0.01 seconds
+2024-10-25 13:52:44,854 - root - INFO - conftest.py:58 - timer - Test test_embedding_weight took 0.00 seconds
+2024-10-25 13:52:44,855 - root - INFO - conftest.py:58 - timer - Test test_hybrid_search_initialization took 0.00 seconds
+2024-10-25 13:52:46,197 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:46,197 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:46,197 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:46,497 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:46,498 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:46,797 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:46,797 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:46,803 - openai._base_client - DEBUG - _base_client.py:446 - _build_request - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x158a1e020>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI ai ai ai ai ai ai ai ai ai ai ai ai ai Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence and and and and and and and and and and machine machine machine machine machine machine machine machine machine machine machine machine machine machine machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine simple_machine motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar motorcar learning learning learning learning learning learning learning learning learning learning learning learning learning find_out find_out find_out find_out find_out find_out find_out find_out find_out find_out find_out find_out find_out find_out find_out learnedness learnedness learnedness learnedness learnedness learnedness learnedness learnedness learnedness learnedness learnedness learnedness learnedness learnedness learnedness'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-25 13:52:46,859 - openai._base_client - DEBUG - _base_client.py:980 - _request - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-25 13:52:46,859 - httpcore.connection - DEBUG - _trace.py:45 - trace - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-25 13:52:47,003 - httpcore.connection - DEBUG - _trace.py:45 - trace - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10bff1ee0>
+2024-10-25 13:52:47,003 - httpcore.connection - DEBUG - _trace.py:45 - trace - start_tls.started ssl_context=<ssl.SSLContext object at 0x10d2f7b50> server_hostname='api.openai.com' timeout=5.0
+2024-10-25 13:52:47,048 - httpcore.connection - DEBUG - _trace.py:45 - trace - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1621d9640>
+2024-10-25 13:52:47,048 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.started request=<Request [b'POST']>
+2024-10-25 13:52:47,049 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.complete
+2024-10-25 13:52:47,050 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.started request=<Request [b'POST']>
+2024-10-25 13:52:47,050 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.complete
+2024-10-25 13:52:47,050 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.started request=<Request [b'POST']>
+2024-10-25 13:52:47,605 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 25 Oct 2024 12:52:47 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'174'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999673'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'3ms'), (b'x-request-id', b'req_bd03629d3992fc42166bcdaf66c2bc36'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=BDLCyGwvYUCQ9YXeeVV6S.KP7e8vswhLN5qqYV5wH.8-1729860767-1.0.1.1-b3Le1P9chGlXoLFWmEByUqdKp806wLy9oWXDw3Uq66hZpq9mQ542KCy7Vp6wdm4NVZ1fiO7kaEwvPWCM6I9fQQ; path=/; expires=Fri, 25-Oct-24 13:22:47 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=BnkyF.7MTbJn3AggY7XCnPuvxlQjiXc5uNnRofXRvzo-1729860767688-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d825882cc44e3bd-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-25 13:52:47,607 - httpx - INFO - _client.py:1038 - _send_single_request - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-25 13:52:47,608 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.started request=<Request [b'POST']>
+2024-10-25 13:52:47,609 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.complete
+2024-10-25 13:52:47,609 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.started
+2024-10-25 13:52:47,609 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.complete
+2024-10-25 13:52:47,610 - openai._base_client - DEBUG - _base_client.py:1019 - _request - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Fri, 25 Oct 2024 12:52:47 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-3-small'), ('openai-organization', 'uinside'), ('openai-processing-ms', '174'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '5000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '4999673'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '3ms'), ('x-request-id', 'req_bd03629d3992fc42166bcdaf66c2bc36'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=BDLCyGwvYUCQ9YXeeVV6S.KP7e8vswhLN5qqYV5wH.8-1729860767-1.0.1.1-b3Le1P9chGlXoLFWmEByUqdKp806wLy9oWXDw3Uq66hZpq9mQ542KCy7Vp6wdm4NVZ1fiO7kaEwvPWCM6I9fQQ; path=/; expires=Fri, 25-Oct-24 13:22:47 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=BnkyF.7MTbJn3AggY7XCnPuvxlQjiXc5uNnRofXRvzo-1729860767688-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d825882cc44e3bd-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-25 13:52:47,610 - openai._base_client - DEBUG - _base_client.py:1027 - _request - request_id: req_bd03629d3992fc42166bcdaf66c2bc36
+2024-10-25 13:52:48,431 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 13:52:48,438 - root - INFO - conftest.py:58 - timer - Test test_hybrid_search_search took 3.58 seconds
+2024-10-25 13:52:48,442 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:48,443 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:48,443 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:48,776 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:48,777 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:49,146 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:49,147 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:49,150 - openai._base_client - DEBUG - _base_client.py:446 - _build_request - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x15dfb7e20>, 'json_data': {'input': ['AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI ai ai ai ai ai ai ai ai ai ai ai ai ai Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence Army_Intelligence'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-25 13:52:49,152 - openai._base_client - DEBUG - _base_client.py:980 - _request - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-25 13:52:49,153 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.started request=<Request [b'POST']>
+2024-10-25 13:52:49,153 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.complete
+2024-10-25 13:52:49,153 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.started request=<Request [b'POST']>
+2024-10-25 13:52:49,154 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.complete
+2024-10-25 13:52:49,154 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.started request=<Request [b'POST']>
+2024-10-25 13:52:49,926 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 25 Oct 2024 12:52:50 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'205'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999912'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_e17e3eedb2da9aa0c634836032950f4f'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d82588febeae3bd-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-25 13:52:49,927 - httpx - INFO - _client.py:1038 - _send_single_request - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-25 13:52:49,928 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.started request=<Request [b'POST']>
+2024-10-25 13:52:49,929 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.complete
+2024-10-25 13:52:49,930 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.started
+2024-10-25 13:52:49,930 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.complete
+2024-10-25 13:52:49,930 - openai._base_client - DEBUG - _base_client.py:1019 - _request - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Fri, 25 Oct 2024 12:52:50 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '205', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999912', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '1ms', 'x-request-id': 'req_e17e3eedb2da9aa0c634836032950f4f', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d82588febeae3bd-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-25 13:52:49,930 - openai._base_client - DEBUG - _base_client.py:1027 - _request - request_id: req_e17e3eedb2da9aa0c634836032950f4f
+2024-10-25 13:52:50,795 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 13:52:50,800 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:50,802 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:50,802 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:51,126 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:51,128 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:51,760 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:51,761 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:52,682 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 13:52:52,686 - root - INFO - conftest.py:58 - timer - Test test_hybrid_search_embedding_weight took 4.25 seconds
+2024-10-25 13:52:52,713 - root - INFO - conftest.py:58 - timer - Test test_imports took 0.03 seconds
+2024-10-25 13:52:52,714 - root - INFO - conftest.py:58 - timer - Test test_config_import took 0.00 seconds
+2024-10-25 13:52:52,716 - root - INFO - conftest.py:58 - timer - Test test_openai_api_key took 0.00 seconds
+2024-10-25 13:52:52,717 - root - INFO - text_processing.py:75 - load_and_preprocess_text - Preprocessing text content
+2024-10-25 13:52:52,894 - root - INFO - text_processing.py:81 - load_and_preprocess_text - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-25 13:52:52,894 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 13:52:52,894 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 13:52:52,894 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-25 13:52:52,894 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 13:52:52,895 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:52:52,895 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:52:52,895 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:52:53,399 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:52:53,401 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:53,804 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:52:53,805 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:54,689 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 13:52:54,690 - root - INFO - conftest.py:58 - timer - Test test_different_book_types[True-test_book.txt] took 1.97 seconds
+2024-10-25 13:52:54,691 - root - INFO - text_processing.py:75 - load_and_preprocess_text - Preprocessing text content
+2024-10-25 13:52:54,841 - root - INFO - text_processing.py:81 - load_and_preprocess_text - Extracted 0 dates, 0 named entities, and 1 key phrases from the text
+2024-10-25 13:52:54,841 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 13:52:54,841 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 13:52:54,841 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 1000, overlap: 100)
+2024-10-25 13:52:54,841 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 13:52:54,841 - root - INFO - conftest.py:58 - timer - Test test_different_book_types[False-test_book.txt] took 0.15 seconds
+2024-10-25 13:52:54,842 - root - INFO - conftest.py:58 - timer - Test test_rag_query[True] took 0.00 seconds
+2024-10-25 13:52:54,843 - root - INFO - conftest.py:58 - timer - Test test_rag_query[False] took 0.00 seconds
+2024-10-25 13:52:54,950 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:52:55,602 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:52:56,834 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:52:59,065 - root - INFO - pinecone_manager.py:80 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:52:59,477 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:52:59,546 - root - INFO - conftest.py:58 - timer - Test test_pinecone_integration took 4.70 seconds
+2024-10-25 13:52:59,547 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 13:52:59,547 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 13:52:59,555 - root - INFO - openai_service.py:40 - generate_answer - Generating answer for query: Test query
+2024-10-25 13:52:59,556 - root - INFO - conftest.py:58 - timer - Test test_generate_answer took 0.01 seconds
+2024-10-25 13:52:59,556 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 13:52:59,557 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 13:52:59,565 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings took 0.01 seconds
+2024-10-25 13:52:59,565 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 13:52:59,566 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 13:52:59,573 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[RateLimitError-Rate limit exceeded] took 0.01 seconds
+2024-10-25 13:52:59,574 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 13:52:59,574 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 13:52:59,581 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APIError-API error] took 0.01 seconds
+2024-10-25 13:52:59,581 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 13:52:59,582 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 13:52:59,588 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APITimeoutError-Request timed out] took 0.01 seconds
+2024-10-25 13:52:59,589 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-25 13:52:59,589 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-25 13:52:59,595 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APIConnectionError-Connection error] took 0.01 seconds
+2024-10-25 13:52:59,598 - root - INFO - conftest.py:58 - timer - Test test_create_test_exception took 0.00 seconds
+2024-10-25 13:52:59,865 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:00,164 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:01,393 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:03,643 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:04,137 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:07,299 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:10,662 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:11,388 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 13:53:11,390 - root - INFO - conftest.py:58 - timer - Test test_pinecone_manager_initialization took 11.79 seconds
+2024-10-25 13:53:11,837 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:12,351 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 13:53:12,355 - root - INFO - conftest.py:58 - timer - Test test_upsert_and_search[chunks0-embeddings0] took 0.96 seconds
+2024-10-25 13:53:12,702 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:13,351 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:14,777 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:17,243 - root - INFO - pinecone_manager.py:80 - _initialize - Index test-index already exists. Using existing index.
+2024-10-25 13:53:17,637 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 13:53:17,641 - root - INFO - conftest.py:58 - timer - Test test_upsert_and_search[chunks1-embeddings1] took 5.29 seconds
+2024-10-25 13:53:18,098 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:19,395 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:21,713 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:22,115 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:25,313 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:25,691 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:28,973 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:29,034 - root - INFO - conftest.py:58 - timer - Test test_upsert_and_search[chunks2-embeddings2] took 11.39 seconds
+2024-10-25 13:53:29,269 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:29,784 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 13:53:29,788 - root - INFO - conftest.py:58 - timer - Test test_get_or_create_embeddings took 0.75 seconds
+2024-10-25 13:53:29,958 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:31,195 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:31,383 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:33,557 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:34,094 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 13:53:34,096 - root - INFO - conftest.py:58 - timer - Test test_clear_index took 4.31 seconds
+2024-10-25 13:53:34,576 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:35,448 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 13:53:35,462 - root - WARNING - pinecone_manager.py:127 - clear_index - Pinecone index is not available. Skipping clear operation.
+2024-10-25 13:53:35,462 - root - INFO - conftest.py:58 - timer - Test test_error_handling took 1.37 seconds
+2024-10-25 13:53:35,862 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:36,298 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:37,462 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:39,688 - root - INFO - pinecone_manager.py:80 - _initialize - Index test-index already exists. Using existing index.
+2024-10-25 13:53:39,897 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 13:53:39,899 - root - INFO - conftest.py:58 - timer - Test test_batch_operation[1] took 4.44 seconds
+2024-10-25 13:53:40,190 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:40,772 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:41,882 - root - INFO - pinecone_manager.py:80 - _initialize - Index test-index already exists. Using existing index.
+2024-10-25 13:53:42,296 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 13:53:42,298 - root - INFO - conftest.py:58 - timer - Test test_batch_operation[10] took 2.40 seconds
+2024-10-25 13:53:42,593 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: test-index
+2024-10-25 13:53:43,008 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:44,322 - root - ERROR - pinecone_manager.py:92 - _initialize - Unexpected error initializing Pinecone: Simulated Pinecone error
+2024-10-25 13:53:46,509 - root - INFO - pinecone_manager.py:80 - _initialize - Index test-index already exists. Using existing index.
+2024-10-25 13:53:47,002 - root - INFO - pinecone_manager.py:83 - _initialize - Successfully initialized Pinecone index: test-index
+2024-10-25 13:53:47,007 - root - INFO - conftest.py:58 - timer - Test test_batch_operation[100] took 4.71 seconds
+2024-10-25 13:53:47,014 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:53:47,016 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:53:47,016 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:53:47,868 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:53:47,870 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:53:48,131 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:53:48,131 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:53:48,135 - openai._base_client - DEBUG - _base_client.py:446 - _build_request - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x15dfb6f20>, 'json_data': {'input': ['Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out try_out trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run trial_run query query query query query query query query query query query query query query query interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation interrogation enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry enquiry'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-10-25 13:53:48,136 - openai._base_client - DEBUG - _base_client.py:980 - _request - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-25 13:53:48,137 - httpcore.connection - DEBUG - _trace.py:45 - trace - close.started
+2024-10-25 13:53:48,137 - httpcore.connection - DEBUG - _trace.py:45 - trace - close.complete
+2024-10-25 13:53:48,137 - httpcore.connection - DEBUG - _trace.py:45 - trace - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-25 13:53:48,172 - httpcore.connection - DEBUG - _trace.py:45 - trace - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x162114b30>
+2024-10-25 13:53:48,173 - httpcore.connection - DEBUG - _trace.py:45 - trace - start_tls.started ssl_context=<ssl.SSLContext object at 0x10d2f7b50> server_hostname='api.openai.com' timeout=5.0
+2024-10-25 13:53:48,215 - httpcore.connection - DEBUG - _trace.py:45 - trace - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x162117680>
+2024-10-25 13:53:48,215 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.started request=<Request [b'POST']>
+2024-10-25 13:53:48,216 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.complete
+2024-10-25 13:53:48,216 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.started request=<Request [b'POST']>
+2024-10-25 13:53:48,216 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.complete
+2024-10-25 13:53:48,216 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.started request=<Request [b'POST']>
+2024-10-25 13:53:48,500 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 25 Oct 2024 12:53:48 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'57'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999809'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'2ms'), (b'x-request-id', b'req_e15b09327b632e08cd6032a83e5829b0'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d825a011ab0e3b1-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-25 13:53:48,501 - httpx - INFO - _client.py:1038 - _send_single_request - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-25 13:53:48,501 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.started request=<Request [b'POST']>
+2024-10-25 13:53:48,502 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.complete
+2024-10-25 13:53:48,502 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.started
+2024-10-25 13:53:48,502 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.complete
+2024-10-25 13:53:48,503 - openai._base_client - DEBUG - _base_client.py:1019 - _request - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Fri, 25 Oct 2024 12:53:48 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'uinside', 'openai-processing-ms': '57', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999809', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '2ms', 'x-request-id': 'req_e15b09327b632e08cd6032a83e5829b0', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d825a011ab0e3b1-LIS', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-10-25 13:53:48,503 - openai._base_client - DEBUG - _base_client.py:1027 - _request - request_id: req_e15b09327b632e08cd6032a83e5829b0
+2024-10-25 13:53:49,406 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 13:53:49,410 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[1] took 2.40 seconds
+2024-10-25 13:53:49,414 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:53:49,415 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:53:49,415 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:53:49,702 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:53:49,704 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:53:50,193 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:53:50,193 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:53:51,153 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 13:53:51,156 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[2] took 1.74 seconds
+2024-10-25 13:53:51,160 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-25 13:53:51,161 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-25 13:53:51,161 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-25 13:53:51,499 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-25 13:53:51,500 - root - INFO - pinecone_manager.py:72 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-25 13:53:51,796 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-25 13:53:51,797 - root - INFO - pinecone_manager.py:86 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-25 13:53:52,717 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"upsertedCount":1}'
+2024-10-25 13:53:52,718 - root - INFO - conftest.py:58 - timer - Test test_find_most_relevant_chunks[3] took 1.56 seconds
+2024-10-25 13:53:52,720 - root - INFO - conftest.py:58 - timer - Test test_generate_answer took 0.00 seconds
+2024-10-25 13:53:52,721 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 13:53:52,722 - root - ERROR - rag.py:76 - rag_query - Error in rag_query: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 69, in rag_query
+    relevant_chunks = book_data.get_relevant_chunks(question)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+2024-10-25 13:53:52,758 - root - INFO - conftest.py:58 - timer - Test test_rag_query took 0.04 seconds
+2024-10-25 13:53:52,759 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[Short query] took 0.00 seconds
+2024-10-25 13:53:52,759 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[A very long query that contains multiple sentences and specific terms] took 0.00 seconds
+2024-10-25 13:53:52,760 - root - INFO - conftest.py:58 - timer - Test test_rag_query_with_different_queries[] took 0.00 seconds
+2024-10-25 13:53:52,760 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 13:53:52,760 - root - ERROR - rag.py:76 - rag_query - Error in rag_query: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 69, in rag_query
+    relevant_chunks = book_data.get_relevant_chunks(question)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+2024-10-25 13:53:52,761 - root - INFO - conftest.py:58 - timer - Test test_rag_query_performance took 0.00 seconds
+2024-10-25 13:53:52,761 - root - INFO - rag.py:67 - rag_query - Processing query: Test query
+2024-10-25 13:53:52,761 - root - ERROR - rag.py:76 - rag_query - Error in rag_query: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 69, in rag_query
+    relevant_chunks = book_data.get_relevant_chunks(question)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+2024-10-25 13:53:52,764 - root - INFO - conftest.py:58 - timer - Test test_rag_error_handling took 0.00 seconds
+2024-10-25 13:53:52,764 - root - ERROR - rag.py:63 - generate_answer - Error in generate_answer: Test error
+2024-10-25 13:53:52,765 - root - INFO - conftest.py:58 - timer - Test test_generate_answer_error_handling[Exception-Test error] took 0.00 seconds
+2024-10-25 13:53:52,765 - root - INFO - text_processing.py:75 - load_and_preprocess_text - Preprocessing text content
+2024-10-25 13:53:52,917 - root - INFO - text_processing.py:81 - load_and_preprocess_text - Extracted 0 dates, 0 named entities, and 5 key phrases from the text
+2024-10-25 13:53:52,917 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 13:53:52,917 - root - INFO - text_processing.py:103 - split_into_chunks - Created 1 chunks
+2024-10-25 13:53:52,918 - root - INFO - conftest.py:58 - timer - Test test_load_and_preprocess_text took 0.15 seconds
+2024-10-25 13:53:52,918 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-25 13:53:52,918 - root - INFO - text_processing.py:103 - split_into_chunks - Created 13 chunks
+2024-10-25 13:53:52,918 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks[100-20] took 0.00 seconds
+2024-10-25 13:53:52,919 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 200, overlap: 50)
+2024-10-25 13:53:52,919 - root - INFO - text_processing.py:103 - split_into_chunks - Created 7 chunks
+2024-10-25 13:53:52,919 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks[200-50] took 0.00 seconds
+2024-10-25 13:53:52,919 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 500, overlap: 100)
+2024-10-25 13:53:52,919 - root - INFO - text_processing.py:103 - split_into_chunks - Created 3 chunks
+2024-10-25 13:53:52,920 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks[500-100] took 0.00 seconds
+2024-10-25 13:53:52,920 - root - INFO - text_processing.py:93 - split_into_chunks - Splitting text into chunks (size: 100, overlap: 20)
+2024-10-25 13:53:52,920 - root - INFO - text_processing.py:103 - split_into_chunks - Created 13 chunks
+2024-10-25 13:53:52,920 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks_with_dict_input took 0.00 seconds

@@ -46,9 +46,8 @@ def answer_question(query: str, book_data: BookDataInterface, openai_service: Op
         logger.info(f"Generated answer: {answer}")
         return answer
     except Exception as e:
-        logger.error(f"Error generating answer: {str(e)}")
-        print(f"An error occurred while generating the answer: {str(e)}")
-        return None
+        logger.error(f"Error generating answer: {str(e)}", exc_info=True)
+        return f"An error occurred while generating the answer: {str(e)}"
 
 def run_cli():
     logger.info("Starting the RAG system")

@@ -34,29 +34,35 @@ def index():
     logger.info("Index route accessed")
     if request.method == 'POST':
         logger.info("POST request received")
-        if 'file' not in request.files:
-            logger.warning("No file part in the request")
-            return jsonify({'status': 'error', 'message': 'No file part'})
-        file = request.files['file']
-        if file.filename == '':
-            logger.warning("No selected file")
-            return jsonify({'status': 'error', 'message': 'No selected file'})
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(file_path)
+        if 'file' in request.files:
+            file = request.files['file']
+            if file.filename == '':
+                logger.warning("No selected file")
+                return jsonify({'status': 'error', 'message': 'No selected file'})
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(file_path)
+                try:
+                    global book_data
+                    file_processor = FileProcessor()
+                    text_content = file_processor.process_file(file_path)
+                    book_data = load_and_process_book(text_content)
+                    logger.info(f"Book data loaded: {len(book_data.chunks)} chunks")
+                    return jsonify({'status': 'success', 'message': 'File uploaded and processed successfully'})
+                except Exception as e:
+                    logger.exception(f"Error processing file: {str(e)}")
+                    return jsonify({'status': 'error', 'message': f'Error processing file: {str(e)}'})
+            else:
+                return jsonify({'status': 'error', 'message': 'File type not allowed'})
+        elif 'question' in request.form:
+            question = request.form['question']
             try:
-                global book_data
-                file_processor = FileProcessor()
-                text_content = file_processor.process_file(file_path)
-                book_data = load_and_process_book(text_content)
-                logger.info(f"Book data loaded: {len(book_data.chunks)} chunks")
-                return jsonify({'status': 'success', 'message': 'File uploaded and processed successfully'})
+                answer = answer_question(question, book_data, openai_service)
+                return jsonify({'answer': answer})
             except Exception as e:
-                logger.exception(f"Error processing file: {str(e)}")
-                return jsonify({'status': 'error', 'message': f'Error processing file: {str(e)}'})
-        else:
-            return jsonify({'status': 'error', 'message': 'File type not allowed'})
+                logger.error(f"Error processing question: {str(e)}", exc_info=True)
+                return jsonify({'error': str(e)}), 500
     logger.info("Rendering index.html")
     return render_template('index.html')
 

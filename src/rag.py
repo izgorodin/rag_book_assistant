@@ -63,25 +63,18 @@ def generate_answer(query: str, context: str, openai_service: OpenAIService) -> 
         logger.error(f"Error in generate_answer: {str(e)}")
         return f"Sorry, I encountered an error while processing your query: {str(e)}"
 
-def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
+def rag_query(question: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
+    logger.info(f"Processing query: {question}")
     try:
-        logger.info(f"Processing RAG query: {query}")
-        
-        pinecone_manager = PineconeManager()
-        query_embedding = create_embeddings([query])[0]
-        relevant_chunks = pinecone_manager.search_similar(query_embedding, top_k=10)
-        
-        context = "\n\n".join(f"Chunk {i+1} (score: {chunk['score']:.2f}): {chunk['chunk']}" 
-                              for i, chunk in enumerate(relevant_chunks))
-        
-        full_context = f"Original text chunks and metadata:\n\n{context}\n\nQuestion: {query}"
-        
-        answer = openai_service.generate_answer(query, full_context)
+        relevant_chunks = book_data.get_relevant_chunks(question)
+        logger.info(f"Found {len(relevant_chunks)} relevant chunks")
+        context = "\n".join(relevant_chunks)
+        answer = openai_service.generate_answer(question, context)
         logger.info(f"Generated answer: {answer}")
         return answer
     except Exception as e:
-        logger.error(f"Error in RAG query process: {str(e)}", exc_info=True)
-        return f"Sorry, I encountered an error while processing your query: {str(e)}"
+        logger.error(f"Error in rag_query: {str(e)}", exc_info=True)
+        return f"An error occurred while processing the query: {str(e)}"
 
 def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> float:
     """

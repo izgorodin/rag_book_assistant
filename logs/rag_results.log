@@ -16,3 +16,9 @@ Expected A: 1972
 System A: This is a mock answer
 Is correct: False
 --------------------------------------------------
+
+Q: What was the model year of the Ford Pinto involved in the accident?
+Expected A: 1972
+System A: An error occurred while processing the query: 'BookDataInterface' object has no attribute 'get_relevant_chunks'
+Is correct: False
+--------------------------------------------------

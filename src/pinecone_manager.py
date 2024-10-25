@@ -155,3 +155,12 @@ class PineconeManager(BasePineconeManager):
         # In a real implementation, you might start a transaction or prepare a batch
         yield
         # After yield, you might commit the transaction or execute the batch
+
+    def check_pinecone_index(self):
+        try:
+            index_stats = self.index.describe_index_stats()
+            logger.info(f"Pinecone index stats: {index_stats}")
+            return index_stats
+        except Exception as e:
+            logger.error(f"Error checking Pinecone index: {str(e)}", exc_info=True)
+            return None
