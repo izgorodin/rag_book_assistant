@@ -1,5 +1,6 @@
 import os
 import hashlib
+import psutil
 from typing import List
 
 from openai import OpenAIError
@@ -10,45 +11,28 @@ from src.embedding import get_or_create_chunks_and_embeddings
 from src.rag import rag_query
 from src.book_data_interface import BookDataInterface
 from src.openai_service import OpenAIService
-from src.types import Chunk, QueryType
+from src.types import APIKey, ProcessedBook, QueryType
+from src.config import PATH_CONFIG, OPENAI_CONFIG
+from src.pinecone_manager import PineconeManager
 
 logger = setup_logger()
 
 @handle_rag_error
-def load_and_process_book(text_content: str) -> BookDataInterface:
+def load_and_process_book(file_path: str) -> BookDataInterface:
     """
-    Process the book content by preprocessing the text and creating embeddings.
-
-    Args:
-        text_content (str): The raw text content of the book.
-
-    Returns:
-        BookDataInterface: An object containing the processed book data.
-
-    Raises:
-        DataSourceError: If there's an issue processing the book data.
+    Process book from file path instead of keeping content in memory
     """
-    logger.info("Starting to process book content")
+    logger.info("=== Starting book processing pipeline ===")
     
-    processed_text = load_and_preprocess_text(text_content)
-    logger.info(f"Text preprocessed. Number of chunks: {len(processed_text['chunks'])}")
-    for i, chunk in enumerate(processed_text['chunks']):
-        logger.info(f"Chunk {i+1} content ({len(chunk)} chars): {chunk[:100]}...")
+    processed_text: ProcessedBook = load_and_preprocess_text(file_path)
+    chunk_count = len(processed_text['chunks'])
     
-    content_hash = hashlib.md5(text_content.encode()).hexdigest()
+    logger.info(f"Text preprocessed. Generated {chunk_count} chunks")
     
-    embeddings_dir = os.path.join("data", "embeddings")
-    os.makedirs(embeddings_dir, exist_ok=True)
-    embeddings_file = os.path.join(embeddings_dir, f"{content_hash}_chunks_embeddings.pkl")
-    
-    book_data = get_or_create_chunks_and_embeddings(processed_text['chunks'], embeddings_file)
-    logger.info(f"Book data created. Type: {type(book_data)}")
-    
-    if isinstance(book_data, BookDataInterface):
-        logger.info(f"Book data created. Number of chunks: {len(book_data.get_chunks())}")
-        logger.info(f"First chunk content: {book_data.get_chunks()[0][:100]}...")
-    else:
-        logger.error(f"Unexpected book_data type: {type(book_data)}")
+    book_data = get_or_create_chunks_and_embeddings(
+        processed_text['chunks'], 
+        file_path
+    )
     
     return book_data
 
@@ -71,27 +55,29 @@ def answer_question(query: QueryType, book_data: BookDataInterface, openai_servi
     logger.info(f"Received query: {query}")
     return rag_query(query, book_data, openai_service)
 
+def log_memory_usage():
+    process = psutil.Process(os.getpid())
+    logger.info(f"Memory usage: {process.memory_info().rss / 1024 / 1024:.2f} MB")
+
 def run_cli():
     """
     Run the Command Line Interface for the RAG Book Assistant.
-    Handles user input, book processing, and question-answering loop.
     """
     logger.info("Starting the RAG system")
 
     try:
-        openai_service = OpenAIService()
+        openai_service = OpenAIService(api_key=APIKey(OPENAI_CONFIG['api_key']))
 
         book_path = input("Enter the path to the book file: ")
         if not os.path.exists(book_path):
             raise FileNotFoundError(f"The file {book_path} does not exist.")
         
-        logger.info(f"Loading book from: {book_path}")
-        with open(book_path, 'r', encoding='utf-8') as file:
-            text_content = file.read()
-        logger.info(f"File content loaded: {len(text_content)} characters")
+        # Создаем один экземпляр PineconeManager
+        book_id = hashlib.md5(book_path.encode()).hexdigest()
+        pinecone_manager = PineconeManager(project_id=book_id)
         
-        book_data = load_and_process_book(text_content)
-        logger.info(f"Book loaded and preprocessed. Text split into {len(book_data.get_chunks())} chunks")
+        # Передаем его в функции, которые его используют
+        book_data = load_and_process_book(book_path)
         
         print("Book successfully loaded and processed. You can ask questions!")
         

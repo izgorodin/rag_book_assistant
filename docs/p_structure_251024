@@ -16,11 +16,14 @@
    - Uses OpenAI's API to generate embeddings.
    - Handles caching of embeddings to avoid redundant API calls.
    - Provides functions to save and load chunks and embeddings from files.
-   - Methods:
+   - Functions:
      - `create_embeddings(chunks: List[Chunk]) -> EmbeddingList`: Creates embeddings for given chunks.
-     - `save_chunks_and_embeddings(book_data: BookDataInterface, file_path: str)`: Saves chunks and embeddings to a file.
-     - `load_chunks_and_embeddings(file_path: str) -> Tuple[List[str], List[List[float]], Dict[str, Any]]`: Loads chunks and embeddings from a file.
-     - `get_or_create_chunks_and_embeddings(chunks: List[Chunk], file_path: str, index) -> BookDataInterface`: Retrieves or creates chunks and embeddings.
+     - `save_chunks_and_embeddings(book_data: BookDataInterface, file_path: str) -> None`: Saves chunks and embeddings to a file.
+     - `load_chunks_and_embeddings(file_path: str) -> Tuple[List[Chunk], EmbeddingList, Dict[str, Any]]`: Loads chunks and embeddings from a file.
+     - `get_or_create_chunks_and_embeddings(chunks: List[Chunk], file_path: str) -> BookDataInterface`: Retrieves or creates chunks and embeddings.
+     - `cosine_similarity(a: Embedding, b: Embedding) -> float`: Calculates cosine similarity between two embeddings.
+     - `get_or_create_query_embedding(query: str, cache_file: str) -> Embedding`: Retrieves or creates an embedding for a query.
+     - `load_from_cache(key: str) -> Any`: Loads data from cache using a hashed key.
 
 3. **Book Data Interface (`book_data_interface.py`)**:
    - Represents the data structure for storing chunks, embeddings, and processed text.
@@ -50,6 +53,8 @@
      - `PineconeManager(BasePineconeManager)`: Concrete implementation of Pinecone management
        - Additional Methods:
          - `check_pinecone_index() -> Dict[str, Any]`
+         - `_initialize_index() -> None`
+         - `_pinecone_query(vector: List[float], top_k: int, include_metadata: bool) -> Dict[str, Any]`
 
 5. **RAG System (`rag.py`)**:
    - Implements the RAG system for generating answers based on the context retrieved from embeddings.
@@ -119,6 +124,27 @@
       - `initialize_nltk()`: Downloads necessary NLTK data.
       - `main()`: Entry point of the application.
 
+15. **File Processor (`file_processor.py`)**:
+    - Handles the processing of various file types (PDF, DOCX, ODT, TXT).
+    - Extracts text content from these files.
+    - Class: `FileProcessor`
+      - Methods:
+        - `process_file(file_path: str) -> Chunk`: Processes a file and returns its content as a Chunk.
+        - `_process_pdf(file_path: str) -> str`: Processes PDF files.
+        - `_process_docx(file_path: str) -> str`: Processes DOCX files.
+        - `_process_odt(file_path: str) -> str`: Processes ODT files.
+        - `_process_txt(file_path: str) -> str`: Processes TXT files.
+
+16. **Text Processing (`text_processing.py`)**:
+    - Handles text preprocessing, including chunking, entity extraction, and key phrase extraction.
+    - Functions:
+      - `process_large_file(file_path: str, chunk_size: int) -> Generator[str, None, None]`: Processes large files in chunks.
+      - `extract_dates(text: str) -> List[str]`: Extracts dates from text.
+      - `extract_named_entities(text: str) -> Dict[str, List[str]]`: Extracts and categorizes named entities.
+      - `extract_key_phrases(text: str, num_phrases: int) -> List[str]`: Extracts key phrases from text.
+      - `load_and_preprocess_text(text_content: str) -> Dict[str, Any]`: Preprocesses text and extracts relevant information.
+      - `split_into_chunks(text: str, chunk_size: int, overlap: int) -> List[Chunk]`: Splits text into overlapping chunks.
+
 ### Type Usage in Classes
 
 1. **BookDataInterface**:
@@ -156,3 +182,5 @@
 - **Logging**: Ensure that all critical operations, especially those involving external API calls and file I/O, have sufficient logging for debugging.
 - **Error Handling**: Review and enhance error handling to cover more edge cases and provide clearer error messages.
 - **Performance Optimization**: Consider optimizing the embedding creation process, especially for large texts, to reduce API usage and improve response times.
+
+

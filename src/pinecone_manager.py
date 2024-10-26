@@ -1,98 +1,141 @@
 from abc import abstractmethod, ABC
 from contextlib import contextmanager
 from pinecone import Pinecone, ServerlessSpec
-from typing import List, Dict, Any, Callable, Generator
-from src.config import PINECONE_API_KEY, PINECONE_CLOUD, EMBEDDING_DIMENSION, PINECONE_INDEX_NAME, PINECONE_METRIC, PINECONE_REGION
+from typing import List, Dict, Any, Generator, Optional
+from src.config import PINECONE_CONFIG, TEXT_PROCESSING_CONFIG
+
 from src.cache_manager import get_cache_key, save_to_cache, load_from_cache
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 from pinecone.core.openapi.shared.exceptions import PineconeApiException
-from src.logger import setup_logger    
+from src.logger import setup_logger
+from src.error_handler import handle_rag_error, DataSourceError
+from src.types import (
+    Chunk, EmbeddingList, Embedding, SearchResults,
+    PineconeIndex, EmbeddingFunction, TopK
+)
 
 logger = setup_logger()
 
 
 class PineconeInterface(ABC):
+    """Abstract base class defining the interface for Pinecone operations."""
+    
     @abstractmethod
-    def list_indexes(self):
+    def list_indexes(self) -> List[str]:
+        """List all available Pinecone indexes."""
         pass
 
     @abstractmethod
-    def create_index(self, name: str, dimension: int, metric: str, spec: Any):
+    def create_index(self, name: str, dimension: int, metric: str, spec: Any) -> None:
+        """Create a new Pinecone index with specified parameters."""
         pass
 
     @abstractmethod
-    def Index(self, name: str):
+    def Index(self, name: str) -> PineconeIndex:
+        """Get a Pinecone index instance by name."""
         pass
 
-class BasePineconeManager:
+class BasePineconeManager(ABC):
+    """Abstract base class for Pinecone management operations."""
+
     @abstractmethod
     def is_available(self) -> bool:
+        """Check if the Pinecone index is available."""
         pass
 
     @abstractmethod
-    def upsert_embeddings(self, chunks: List[str], embeddings: List[List[float]]):
+    def upsert_embeddings(self, chunks: List[Chunk], embeddings: EmbeddingList) -> None:
+        """Upsert embeddings and their corresponding chunks to Pinecone."""
         pass
 
     @abstractmethod
-    def search_similar(self, query_embedding: List[float], top_k: int = 5) -> List[Dict[str, Any]]:
+    def search_similar(self, query_embedding: Embedding, top_k: TopK = TEXT_PROCESSING_CONFIG['top_k_chunks']) -> SearchResults:
+        """Search for similar vectors in Pinecone."""
         pass
 
     @abstractmethod
-    def clear_index(self):
+    def clear_index(self) -> None:
+        """Clear all vectors from the Pinecone index."""
         pass
 
     @abstractmethod
-    def get_or_create_embeddings(self, chunks: List[str], embedding_function) -> List[List[float]]:
+    def get_or_create_embeddings(
+        self, chunks: List[Chunk], 
+        embedding_function: EmbeddingFunction
+    ) -> EmbeddingList:
+        """Get existing embeddings from cache or create new ones."""
         pass
 
     @abstractmethod
     def batch_operation(self) -> Generator[None, None, None]:
+        """Context manager for batch operations."""
         pass
 
 class PineconeManager(BasePineconeManager):
-    def __init__(self, index_name: str = PINECONE_INDEX_NAME, pinecone_client: Pinecone = None,
-                 max_retries: int = 3, min_wait: int = 1, max_wait: int = 10):
-        self.index_name = index_name
-        self.pc = pinecone_client or Pinecone(api_key=PINECONE_API_KEY)
+    """Implementation of Pinecone management operations with per-book indexes."""
+
+    def __init__(
+        self,
+        project_id: str,
+        pinecone_client: Optional[Pinecone] = None,
+        max_retries: int = 3,
+        min_wait: int = 1,
+        max_wait: int = 10
+    ):
+        """
+        Initialize PineconeManager for a specific book.
+
+        Args:
+            book_id (str): Unique identifier for the book
+            pinecone_client (Optional[Pinecone]): Existing Pinecone client
+            max_retries (int): Maximum number of retry attempts
+            min_wait (int): Minimum wait time between retries
+            max_wait (int): Maximum wait time between retries
+        """
+        self.project_id = project_id
+        sanitized_id = ''.join(c.lower() for c in project_id if c.isalnum() or c == '-')
+        self.index_name = f"{PINECONE_CONFIG['index_prefix']}{sanitized_id}"
+        self.pc = pinecone_client or Pinecone(api_key=PINECONE_CONFIG['api_key'])
         self.index = None
         self.max_retries = max_retries
         self.min_wait = min_wait
         self.max_wait = max_wait
-        self._initialize_index()
+        # Только подключаемся к существующему индексу, если он есть
+        self._connect_to_index()
 
-    def _initialize_index(self):
-        @retry(stop=stop_after_attempt(self.max_retries),
-               wait=wait_exponential(multiplier=1, min=self.min_wait, max=self.max_wait),
-               retry=retry_if_exception_type((Exception,)),
-               reraise=True)
-        def _initialize():
-            try:
-                indexes = self.pc.list_indexes()
-                if self.index_name not in indexes:
-                    logger.info(f"Creating new Pinecone index: {self.index_name}")
-                    self.pc.create_index(
-                        name=self.index_name,
-                        dimension=EMBEDDING_DIMENSION,
-                        metric=PINECONE_METRIC,
-                        spec=ServerlessSpec(cloud=PINECONE_CLOUD, region=PINECONE_REGION)
-                    )
-                else:
-                    logger.info(f"Index {self.index_name} already exists. Using existing index.")
-                
+    def _connect_to_index(self) -> None:
+        """Try to connect to existing index."""
+        try:
+            indexes = self.pc.list_indexes()
+            if self.index_name in indexes:
                 self.index = self.pc.Index(self.index_name)
-                logger.info(f"Successfully initialized Pinecone index: {self.index_name}")
-            except PineconeApiException as e:
-                if "ALREADY_EXISTS" in str(e):
-                    logger.info(f"Index {self.index_name} already exists. Using existing index.")
-                    self.index = self.pc.Index(self.index_name)
-                else:
-                    logger.error(f"Error initializing Pinecone: {str(e)}")
-                    raise
-            except Exception as e:
-                logger.error(f"Unexpected error initializing Pinecone: {str(e)}")
-                raise
+                logger.info(f"Connected to existing Pinecone index: {self.index_name}")
+        except Exception as e:
+            logger.error(f"Error connecting to Pinecone index: {str(e)}")
+            self.index = None
 
-        _initialize()
+    def initialize_index(self) -> None:
+        """Create new index if it doesn't exist."""
+        if self.index is not None:
+            logger.info(f"Index {self.index_name} already exists")
+            return
+        
+        try:
+            logger.info(f"Creating new Pinecone index: {self.index_name}")
+            self.pc.create_index(
+                name=self.index_name,
+                dimension=PINECONE_CONFIG['dimension'],
+                metric=PINECONE_CONFIG['metric'],
+                spec=ServerlessSpec(
+                    cloud=PINECONE_CONFIG['cloud'],
+                    region=PINECONE_CONFIG['region']
+                )
+            )
+            self.index = self.pc.Index(self.index_name)
+            logger.info(f"Successfully created Pinecone index: {self.index_name}")
+        except Exception as e:
+            logger.error(f"Error creating Pinecone index: {str(e)}")
+            raise DataSourceError(f"Failed to create Pinecone index: {str(e)}")
 
     def _pinecone_query(self, vector: List[float], top_k: int, include_metadata: bool = True) -> Dict[str, Any]:
         try:
@@ -106,14 +149,14 @@ class PineconeManager(BasePineconeManager):
     def is_available(self) -> bool:
         return self.index is not None
 
-    def upsert_embeddings(self, chunks: List[str], embeddings: List[List[float]]) -> None:
+    def upsert_embeddings(self, chunks: List[Chunk], embeddings: EmbeddingList) -> None:
         if not self.is_available():
             raise ValueError("Pinecone index is not initialized")
         
         vectors = [(str(i), embedding, {"chunk": chunk}) for i, (chunk, embedding) in enumerate(zip(chunks, embeddings))]
         self.index.upsert(vectors=vectors)
 
-    def search_similar(self, query_embedding: List[float], top_k: int = 5) -> List[Dict[str, Any]]:
+    def search_similar(self, query_embedding: Embedding, top_k: int = TEXT_PROCESSING_CONFIG['top_k_chunks']) -> SearchResults:
         if not self.is_available():
             raise ValueError("Pinecone index is not initialized")
         
@@ -126,28 +169,18 @@ class PineconeManager(BasePineconeManager):
         else:
             logger.warning("Pinecone index is not available. Skipping clear operation.")
 
-    def get_or_create_embeddings(self, chunks: List[str], embedding_function: Callable[[List[str]], List[List[float]]]) -> List[List[float]]:
-        all_embeddings: List[List[float]] = []
-        new_chunks: List[str] = []
-        new_chunk_indices: List[int] = []
-
-        for i, chunk in enumerate(chunks):
+    def get_or_create_embeddings(self, chunks: List[Chunk], embedding_function: EmbeddingFunction) -> Generator[Embedding, None, None]:
+        """Return generator instead of list to avoid memory accumulation"""
+        for chunk in chunks:
             cache_key = get_cache_key(chunk)
             cached_embedding = load_from_cache(cache_key)
+            
             if cached_embedding is not None:
-                all_embeddings.append(cached_embedding)
+                yield cached_embedding
             else:
-                new_chunks.append(chunk)
-                new_chunk_indices.append(i)
-
-        if new_chunks:
-            new_embeddings = embedding_function(new_chunks)
-            for chunk, emb, index in zip(new_chunks, new_embeddings, new_chunk_indices):
-                cache_key = get_cache_key(chunk)
-                save_to_cache(cache_key, emb)
-                all_embeddings.insert(index, emb)
-
-        return all_embeddings
+                embedding = embedding_function([chunk])[0]
+                save_to_cache(cache_key, embedding)
+                yield embedding
 
     @contextmanager
     def batch_operation(self) -> Generator[None, None, None]:
@@ -164,3 +197,16 @@ class PineconeManager(BasePineconeManager):
         except Exception as e:
             logger.error(f"Error checking Pinecone index: {str(e)}", exc_info=True)
             return None
+
+def generate_index_name(book_id: str) -> str:
+    """
+    Generate unique Pinecone index name for a book.
+    
+    Args:
+        book_id (str): Unique identifier of the book (e.g., hash of content)
+        
+    Returns:
+        str: Index name in format 'book-{book_id}'
+    """
+    prefix = PINECONE_CONFIG['index_prefix']
+    return f"{prefix}{book_id}"

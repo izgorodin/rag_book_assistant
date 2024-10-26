@@ -1,104 +1,100 @@
+"""
+OpenAI Service Module
+
+This module provides interfaces and implementations for interacting with OpenAI's API,
+including text generation and embedding creation.
+"""
+
 from abc import ABC, abstractmethod
-from openai import OpenAI, RateLimitError, APIError, APITimeoutError, APIConnectionError
-from openai.types.chat import ChatCompletion
-from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS
-from typing import List, Dict, Union
-import httpx
+from openai import OpenAI
+from typing import List, Dict, Optional
+from src.config import OPENAI_CONFIG
 from src.logger import setup_logger
-from src.error_handler import handle_rag_error, OpenAIError
+from src.error_handler import (
+    handle_rag_error, OpenAIError
+)
+from src.types import (
+    Embedding, EmbeddingInput, EmbeddingList, QueryType,
+    ModelResponse, EmbeddingResponse, ChatMessage,
+    ChatMessages, APIKey, ModelName, MaxTokens,
+    ServiceResponse
+)
 
 logger = setup_logger()
 
-
-
 class BaseOpenAIService(ABC):
-    def __init__(self, api_key: str = OPENAI_API_KEY):
-        self.client = OpenAI(api_key=api_key)
-
+    """Abstract base class defining the interface for OpenAI services."""
+    
     @abstractmethod
-    def generate_answer(self, query: str, context: str) -> str:
+    def generate_answer(self, query: QueryType, context: str) -> ModelResponse:
+        """Generate an answer based on the query and context."""
         pass
 
     @abstractmethod
-    def create_embeddings(self, texts: List[str]) -> List[List[float]]:
+    def create_embeddings(self, texts: List[str]) -> EmbeddingList:
+        """Create embeddings for a list of texts."""
         pass
 
     @abstractmethod
-    def _handle_openai_error(self, error: Exception) -> Union[RateLimitError, APIError, APITimeoutError, APIConnectionError, Exception]:
-        pass
-
-    @abstractmethod
-    def create_test_exception(self, error_type: type, message: str) -> Union[RateLimitError, APIError, APITimeoutError, APIConnectionError, Exception]:
+    def create_embedding(self, text: str) -> Embedding:
+        """Create embedding for a single text."""
         pass
 
 class OpenAIService(BaseOpenAIService):
-    def __init__(self):
-        self.client = OpenAI(api_key=OPENAI_API_KEY)
+    """Implementation of OpenAI service for text generation and embeddings."""
+
+    def __init__(self, api_key: APIKey):
+        """Initialize OpenAI service."""
+        self.client = OpenAI(api_key=OPENAI_CONFIG['api_key'])
 
     @handle_rag_error
-    def generate_answer(self, query: str, context: str) -> str:
-        messages = [
-            {"role": "system", "content": "You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing."},
-            {"role": "user", "content": f"Context: {context}\n\nQuestion: {query}\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing."}
+    def generate_answer(self, query: QueryType, context: str) -> ModelResponse:
+        """Generate an answer using OpenAI's chat completion."""
+        messages: ChatMessages = [
+            ChatMessage({
+                "role": "system",
+                "content": "You are a helpful assistant specialized in extracting precise information from texts."
+            }),
+            ChatMessage({
+                "role": "user",
+                "content": f"Context: {context}\n\nQuestion: {query}"
+            })
         ]
         
-        logger.info(f"Generating answer for query: {query}")
-        
         try:
-            response = self.client.chat.completions.create(
-                model=GPT_MODEL,
+            response: ServiceResponse = self.client.chat.completions.create(
+                model=ModelName(OPENAI_CONFIG['gpt_model']),
                 messages=messages,
-                max_tokens=MAX_TOKENS
+                max_tokens=MaxTokens(OPENAI_CONFIG['max_tokens'])
             )
-            return response.choices[0].message.content
+            return ModelResponse(response.choices[0].message.content)
         except Exception as e:
-            error = self._handle_openai_error(e)
-            logger.error(f"Error in generate_answer: {str(error)}")
-            return f"Sorry, I encountered an error while generating the answer: {str(error)}"
+            logger.error(f"Error in generate_answer: {str(e)}")
+            raise OpenAIError(f"Failed to generate answer: {str(e)}")
 
     @handle_rag_error
-    def create_embeddings(self, texts: List[str]) -> List[List[float]]:
+    def create_embeddings(self, texts: List[str]) -> EmbeddingList:
+        """Create embeddings for multiple texts."""
         try:
-            response = self.client.embeddings.create(input=texts, model="text-embedding-ada-002")
-            return [embedding.embedding for embedding in response.data]
+            response: EmbeddingResponse = self.client.embeddings.create(
+                input=texts,
+                model=ModelName(OPENAI_CONFIG['embedding_model'])
+            )
+            return EmbeddingList([Embedding(embedding.embedding) for embedding in response.data])
         except Exception as e:
-            error = self._handle_openai_error(e)
-            logger.error(f"Error in create_embeddings: {str(error)}")
-            raise ValueError(f"Failed to create embeddings: {str(error)}")
+            logger.error(f"Error in create_embeddings: {str(e)}")
+            raise OpenAIError(f"Failed to create embeddings: {str(e)}")
 
     @handle_rag_error
-    def _handle_openai_error(self, error: Exception) -> Union[RateLimitError, APIError, APITimeoutError, APIConnectionError, Exception]:
-        if isinstance(error, (RateLimitError, APIError, APITimeoutError, APIConnectionError)):
-            return error
-        else:
-            return Exception(f"An unexpected error occurred: {str(error)}")
-
-    @staticmethod
-    @handle_rag_error
-    def create_test_exception(error_type: type, message: str) -> Union[RateLimitError, APIError, APITimeoutError, APIConnectionError, Exception]:
-        mock_response = httpx.Response(status_code=400, request=httpx.Request("GET", "https://api.openai.com/v1/test"))
-        if error_type == RateLimitError:
-            return RateLimitError(message=message, response=mock_response, body={})
-        elif error_type == APIError:
-            return APIError(message=message, request=mock_response.request, body={})
-        elif error_type == APITimeoutError:
-            return APITimeoutError(request=mock_response.request)
-        elif error_type == APIConnectionError:
-            return APIConnectionError(message=message, request=mock_response.request)
-        else:
-            return Exception(message)
-
-    @handle_rag_error
-    def create_embedding(self, text: str):
+    def create_embedding(self, text: EmbeddingInput) -> Embedding:
+        """Create embedding for a single text."""
         try:
             logger.info(f"Creating embedding for text: {text[:50]}...")
-            response = self.client.embeddings.create(
+            response: EmbeddingResponse = self.client.embeddings.create(
                 input=text,
-                model="text-embedding-ada-002"
+                model=ModelName(OPENAI_CONFIG['embedding_model'])
             )
-            embedding = response.data[0].embedding
-            logger.info(f"Successfully created embedding of length {len(embedding)}")
-            return embedding
+            return Embedding(response.data[0].embedding)
         except Exception as e:
             logger.error(f"Error creating embedding: {str(e)}")
             raise OpenAIError(f"Error creating embedding: {str(e)}")

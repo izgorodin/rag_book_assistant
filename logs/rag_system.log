@@ -6125,3 +6125,807 @@ RICHARD GRIMSHAW, a Minor, etc., Plaintiff...
 2024-10-25 20:19:32,064 - root - INFO - text_processing.py:76 - load_and_preprocess_text - Preprocessing text content
 2024-10-25 20:19:36,111 - root - INFO - text_processing.py:82 - load_and_preprocess_text - Extracted 10 dates, 1436 named entities, and 5 key phrases from the text
 2024-10-25 20:19:36,111 - root - INFO - text_processing.py:96 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-25 21:04:48,749 - root - INFO - file_processor.py:36 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.pdf with extension: .pdf
+2024-10-25 21:04:48,749 - root - INFO - file_processor.py:47 - process_file - Using processor for extension: .pdf
+2024-10-25 21:04:48,750 - root - INFO - conftest.py:58 - timer - Test test_process_pdf took 0.00 seconds
+2024-10-25 21:04:48,750 - root - INFO - file_processor.py:36 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.docx with extension: .docx
+2024-10-25 21:04:48,751 - root - INFO - file_processor.py:47 - process_file - Using processor for extension: .docx
+2024-10-25 21:04:48,758 - root - INFO - conftest.py:58 - timer - Test test_process_docx took 0.01 seconds
+2024-10-25 21:04:48,759 - root - INFO - file_processor.py:36 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.odt with extension: .odt
+2024-10-25 21:04:48,759 - root - INFO - file_processor.py:47 - process_file - Using processor for extension: .odt
+2024-10-25 21:04:48,760 - root - INFO - conftest.py:58 - timer - Test test_process_odt took 0.00 seconds
+2024-10-25 21:04:48,761 - root - INFO - file_processor.py:36 - process_file - Processing file: /Users/eduardizgorodin/Projects/rag_book_assistant/tests/data/test.txt with extension: .txt
+2024-10-25 21:04:48,761 - root - INFO - file_processor.py:47 - process_file - Using processor for extension: .txt
+2024-10-25 21:04:48,761 - root - INFO - conftest.py:58 - timer - Test test_process_txt took 0.00 seconds
+2024-10-25 21:04:48,763 - root - INFO - file_processor.py:36 - process_file - Processing file: /private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-14/test_unsupported_file_format0/test.unsupported with extension: .unsupported
+2024-10-25 21:04:48,763 - root - ERROR - file_processor.py:50 - process_file - Unsupported file format: .unsupported
+2024-10-25 21:04:48,763 - root - ERROR - error_handler.py:65 - wrapper - RAG Error in process_file: Unsupported file format: .unsupported
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/file_processor.py", line 51, in process_file
+    raise DataSourceError(f"Unsupported file format: {extension}")
+src.error_handler.DataSourceError: Unsupported file format: .unsupported
+2024-10-25 21:04:48,801 - root - INFO - conftest.py:58 - timer - Test test_unsupported_file_format took 0.04 seconds
+2024-10-26 00:40:00,726 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 00:40:00,730 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 00:40:00,739 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 00:40:00,739 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 00:40:00,747 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 00:40:01,964 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 00:40:01,966 - root - INFO - pinecone_manager.py:107 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-26 00:40:03,021 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-26 00:40:03,022 - root - INFO - pinecone_manager.py:121 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-26 00:40:03,435 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-26 00:41:03,515 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 00:41:03,516 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 00:41:03,522 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 00:41:03,522 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 00:41:03,529 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 00:41:04,020 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 00:41:04,022 - root - INFO - pinecone_manager.py:107 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-26 00:41:04,286 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-26 00:41:04,286 - root - INFO - pinecone_manager.py:121 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-26 00:41:04,484 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-26 00:42:24,282 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 00:42:24,283 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 00:42:24,290 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 00:42:24,290 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 00:42:24,298 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 00:42:24,717 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 00:42:24,719 - root - INFO - pinecone_manager.py:107 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-26 00:42:25,029 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-26 00:42:25,029 - root - INFO - pinecone_manager.py:121 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-26 00:42:25,234 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-26 00:48:52,084 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 00:48:52,085 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 00:48:52,092 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 00:48:52,092 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 00:48:52,098 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 00:48:52,820 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 00:48:52,821 - root - INFO - pinecone_manager.py:107 - _initialize - Creating new Pinecone index: book-embeddings
+2024-10-26 00:48:53,884 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-26 00:48:53,885 - root - INFO - pinecone_manager.py:121 - _initialize - Index book-embeddings already exists. Using existing index.
+2024-10-26 00:48:54,395 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-26 00:48:54,406 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 00:48:54,407 - root - INFO - cli.py:79 - run_cli - Starting the RAG system
+2024-10-26 00:48:54,407 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 00:48:54,408 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 00:49:05,360 - root - INFO - cli.py:88 - run_cli - Loading book from: tests/data/test_book.txt
+2024-10-26 00:49:05,362 - root - INFO - cli.py:91 - run_cli - File content loaded: 108 characters
+2024-10-26 00:49:05,362 - root - INFO - cli.py:31 - load_and_process_book - Starting to process book content
+2024-10-26 00:49:05,363 - root - INFO - text_processing.py:137 - load_and_preprocess_text - Preprocessing text content
+2024-10-26 00:49:05,648 - root - INFO - text_processing.py:143 - load_and_preprocess_text - Extracted 0 dates, 0 named entities, and 5 key phrases from the text
+2024-10-26 00:49:05,648 - root - INFO - text_processing.py:168 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-26 09:53:19,664 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 09:53:19,668 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 09:56:24,261 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 09:56:24,262 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 09:56:24,269 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 09:56:24,269 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 09:56:24,277 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 09:56:24,741 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 09:56:24,744 - root - INFO - pinecone_manager.py:117 - _initialize - Creating new Pinecone index for book default_book_index: book-default_book_index
+2024-10-26 09:56:24,952 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or \'-\'"},"status":400}'
+2024-10-26 09:56:24,952 - root - ERROR - pinecone_manager.py:130 - _initialize - Error initializing Pinecone index for book default_book_index: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': 'f00f10e48f056360b7b61e5ef9057398', 'Date': 'Sat, 26 Oct 2024 08:56:24 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+2024-10-26 09:56:26,186 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 09:56:26,188 - root - INFO - pinecone_manager.py:117 - _initialize - Creating new Pinecone index for book default_book_index: book-default_book_index
+2024-10-26 09:56:26,420 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or \'-\'"},"status":400}'
+2024-10-26 09:56:26,420 - root - ERROR - pinecone_manager.py:130 - _initialize - Error initializing Pinecone index for book default_book_index: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '75500c3accdb68cd4cfa08c60407e89a', 'Date': 'Sat, 26 Oct 2024 08:56:26 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+2024-10-26 09:56:28,625 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 09:56:28,627 - root - INFO - pinecone_manager.py:117 - _initialize - Creating new Pinecone index for book default_book_index: book-default_book_index
+2024-10-26 09:56:28,814 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or \'-\'"},"status":400}'
+2024-10-26 09:56:28,815 - root - ERROR - pinecone_manager.py:130 - _initialize - Error initializing Pinecone index for book default_book_index: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '6373abc6a3842776808aa1cfc3773b58', 'Date': 'Sat, 26 Oct 2024 08:56:28 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+2024-10-26 09:56:28,815 - root - ERROR - error_handler.py:65 - wrapper - RAG Error in _initialize_index: Failed to initialize Pinecone index: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '6373abc6a3842776808aa1cfc3773b58', 'Date': 'Sat, 26 Oct 2024 08:56:28 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 118, in _initialize
+    self.pc.create_index(
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/control/pinecone.py", line 384, in create_index
+    api_instance.create_index(
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 761, in __call__
+    return self.callable(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/control/api/manage_indexes_api.py", line 273, in __create_index
+    return self.call_with_http_info(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 819, in call_with_http_info
+    return self.api_client.call_api(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 380, in call_api
+    return self.__call_api(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 187, in __call_api
+    raise e
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 175, in __call_api
+    response_data = self.request(
+                    ^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 460, in request
+    return self.rest_client.POST(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/rest.py", line 345, in POST
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/rest.py", line 279, in request
+    raise PineconeApiException(http_resp=r)
+pinecone.core.openapi.shared.exceptions.PineconeApiException: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '6373abc6a3842776808aa1cfc3773b58', 'Date': 'Sat, 26 Oct 2024 08:56:28 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 133, in _initialize_index
+    _initialize()
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 376, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 131, in _initialize
+    raise DataSourceError(f"Failed to initialize Pinecone index: {str(e)}")
+src.error_handler.DataSourceError: Failed to initialize Pinecone index: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '6373abc6a3842776808aa1cfc3773b58', 'Date': 'Sat, 26 Oct 2024 08:56:28 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+2024-10-26 09:56:28,822 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 09:57:17,415 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 09:57:17,416 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 09:57:17,422 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 09:57:17,423 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 09:57:17,426 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 09:57:17,749 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 09:57:17,750 - root - INFO - pinecone_manager.py:117 - _initialize - Creating new Pinecone index for book default_book_index: book-default_book_index
+2024-10-26 09:57:17,973 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or \'-\'"},"status":400}'
+2024-10-26 09:57:17,974 - root - ERROR - pinecone_manager.py:130 - _initialize - Error initializing Pinecone index for book default_book_index: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '1ceedf8ad8be265c49d26129cb4fb4a7', 'Date': 'Sat, 26 Oct 2024 08:57:18 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+2024-10-26 09:57:19,191 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 09:57:19,193 - root - INFO - pinecone_manager.py:117 - _initialize - Creating new Pinecone index for book default_book_index: book-default_book_index
+2024-10-26 09:57:19,369 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or \'-\'"},"status":400}'
+2024-10-26 09:57:19,369 - root - ERROR - pinecone_manager.py:130 - _initialize - Error initializing Pinecone index for book default_book_index: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '95d9e577e64707f53d7f63d448c10e54', 'Date': 'Sat, 26 Oct 2024 08:57:19 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+2024-10-26 09:57:21,620 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 09:57:21,622 - root - INFO - pinecone_manager.py:117 - _initialize - Creating new Pinecone index for book default_book_index: book-default_book_index
+2024-10-26 09:57:21,848 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or \'-\'"},"status":400}'
+2024-10-26 09:57:21,849 - root - ERROR - pinecone_manager.py:130 - _initialize - Error initializing Pinecone index for book default_book_index: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '36dc372a3b8c5b5c6750f7da81ed59ac', 'Date': 'Sat, 26 Oct 2024 08:57:21 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+2024-10-26 09:57:21,849 - root - ERROR - error_handler.py:65 - wrapper - RAG Error in _initialize_index: Failed to initialize Pinecone index: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '36dc372a3b8c5b5c6750f7da81ed59ac', 'Date': 'Sat, 26 Oct 2024 08:57:21 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 118, in _initialize
+    self.pc.create_index(
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/control/pinecone.py", line 384, in create_index
+    api_instance.create_index(
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 761, in __call__
+    return self.callable(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/control/api/manage_indexes_api.py", line 273, in __create_index
+    return self.call_with_http_info(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 819, in call_with_http_info
+    return self.api_client.call_api(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 380, in call_api
+    return self.__call_api(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 187, in __call_api
+    raise e
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 175, in __call_api
+    response_data = self.request(
+                    ^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 460, in request
+    return self.rest_client.POST(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/rest.py", line 345, in POST
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/rest.py", line 279, in request
+    raise PineconeApiException(http_resp=r)
+pinecone.core.openapi.shared.exceptions.PineconeApiException: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '36dc372a3b8c5b5c6750f7da81ed59ac', 'Date': 'Sat, 26 Oct 2024 08:57:21 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 133, in _initialize_index
+    _initialize()
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 376, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 131, in _initialize
+    raise DataSourceError(f"Failed to initialize Pinecone index: {str(e)}")
+src.error_handler.DataSourceError: Failed to initialize Pinecone index: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '36dc372a3b8c5b5c6750f7da81ed59ac', 'Date': 'Sat, 26 Oct 2024 08:57:21 GMT', 'Server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+2024-10-26 09:57:21,856 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 09:57:21,862 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 09:57:21,863 - root - INFO - cli.py:80 - run_cli - Starting the RAG system
+2024-10-26 09:57:21,863 - root - ERROR - cli.py:111 - run_cli - An unexpected error occurred: OpenAIService.__init__() missing 1 required positional argument: 'api_key'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/cli.py", line 83, in run_cli
+    openai_service = OpenAIService()
+                     ^^^^^^^^^^^^^^^
+TypeError: OpenAIService.__init__() missing 1 required positional argument: 'api_key'
+2024-10-26 09:57:21,864 - root - INFO - cli.py:114 - run_cli - Exiting the RAG system
+2024-10-26 09:59:37,874 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 09:59:37,875 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 09:59:37,882 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 09:59:37,882 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 09:59:37,890 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 09:59:38,176 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 09:59:38,179 - root - INFO - pinecone_manager.py:119 - _initialize - Creating new Pinecone index for book default_book_index: book-defaultbookindex
+2024-10-26 09:59:38,589 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":false,"state":"Initializing"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-26 09:59:38,803 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":false,"state":"Initializing"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-26 09:59:44,016 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-26 09:59:44,228 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}'
+2024-10-26 09:59:44,231 - root - INFO - pinecone_manager.py:130 - _initialize - Successfully initialized Pinecone index for book default_book_index
+2024-10-26 09:59:44,240 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 09:59:44,241 - root - INFO - cli.py:80 - run_cli - Starting the RAG system
+2024-10-26 09:59:44,241 - root - ERROR - cli.py:111 - run_cli - An unexpected error occurred: OpenAIService.__init__() missing 1 required positional argument: 'api_key'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/cli.py", line 83, in run_cli
+    openai_service = OpenAIService()
+                     ^^^^^^^^^^^^^^^
+TypeError: OpenAIService.__init__() missing 1 required positional argument: 'api_key'
+2024-10-26 09:59:44,242 - root - INFO - cli.py:114 - run_cli - Exiting the RAG system
+2024-10-26 10:01:44,359 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 10:01:44,360 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 10:01:44,366 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 10:01:44,367 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 10:01:44,375 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 10:01:44,747 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 10:01:44,750 - root - INFO - pinecone_manager.py:119 - _initialize - Creating new Pinecone index for book default_book_index: book-defaultbookindex
+2024-10-26 10:01:45,157 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-26 10:01:45,157 - root - ERROR - pinecone_manager.py:132 - _initialize - Error initializing Pinecone index for book default_book_index: (409)
+Reason: Conflict
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': 'ce84169e4b5c6f1b506b1b63fa9a6b9d', 'Date': 'Sat, 26 Oct 2024 09:01:45 GMT', 'Server': 'Google Frontend', 'Content-Length': '85', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}
+
+2024-10-26 10:01:46,386 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 10:01:46,388 - root - INFO - pinecone_manager.py:119 - _initialize - Creating new Pinecone index for book default_book_index: book-defaultbookindex
+2024-10-26 10:01:46,693 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-26 10:01:46,694 - root - ERROR - pinecone_manager.py:132 - _initialize - Error initializing Pinecone index for book default_book_index: (409)
+Reason: Conflict
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': 'be914bdae3f4887efdd3cdd24ae5a7da', 'Date': 'Sat, 26 Oct 2024 09:01:46 GMT', 'Server': 'Google Frontend', 'Content-Length': '85', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}
+
+2024-10-26 10:01:48,902 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 10:01:48,903 - root - INFO - pinecone_manager.py:119 - _initialize - Creating new Pinecone index for book default_book_index: book-defaultbookindex
+2024-10-26 10:01:49,321 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}'
+2024-10-26 10:01:49,321 - root - ERROR - pinecone_manager.py:132 - _initialize - Error initializing Pinecone index for book default_book_index: (409)
+Reason: Conflict
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '534009a104193cc98d474c2a84580886', 'Date': 'Sat, 26 Oct 2024 09:01:49 GMT', 'Server': 'Google Frontend', 'Content-Length': '85', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}
+
+2024-10-26 10:01:49,322 - root - ERROR - error_handler.py:65 - wrapper - RAG Error in _initialize_index: Failed to initialize Pinecone index: (409)
+Reason: Conflict
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '534009a104193cc98d474c2a84580886', 'Date': 'Sat, 26 Oct 2024 09:01:49 GMT', 'Server': 'Google Frontend', 'Content-Length': '85', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 120, in _initialize
+    self.pc.create_index(
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/control/pinecone.py", line 384, in create_index
+    api_instance.create_index(
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 761, in __call__
+    return self.callable(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/control/api/manage_indexes_api.py", line 273, in __create_index
+    return self.call_with_http_info(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 819, in call_with_http_info
+    return self.api_client.call_api(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 380, in call_api
+    return self.__call_api(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 187, in __call_api
+    raise e
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 175, in __call_api
+    response_data = self.request(
+                    ^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/api_client.py", line 460, in request
+    return self.rest_client.POST(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/rest.py", line 345, in POST
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone/core/openapi/shared/rest.py", line 279, in request
+    raise PineconeApiException(http_resp=r)
+pinecone.core.openapi.shared.exceptions.PineconeApiException: (409)
+Reason: Conflict
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '534009a104193cc98d474c2a84580886', 'Date': 'Sat, 26 Oct 2024 09:01:49 GMT', 'Server': 'Google Frontend', 'Content-Length': '85', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 135, in _initialize_index
+    _initialize()
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 376, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/tenacity/__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/pinecone_manager.py", line 133, in _initialize
+    raise DataSourceError(f"Failed to initialize Pinecone index: {str(e)}")
+src.error_handler.DataSourceError: Failed to initialize Pinecone index: (409)
+Reason: Conflict
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2024-07', 'X-Cloud-Trace-Context': '534009a104193cc98d474c2a84580886', 'Date': 'Sat, 26 Oct 2024 09:01:49 GMT', 'Server': 'Google Frontend', 'Content-Length': '85', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"ALREADY_EXISTS","message":"Resource  already exists"},"status":409}
+
+2024-10-26 10:01:49,332 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 10:01:49,336 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 10:01:49,337 - root - INFO - cli.py:80 - run_cli - Starting the RAG system
+2024-10-26 10:01:49,338 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 10:01:49,339 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 10:05:13,086 - root - INFO - cli.py:89 - run_cli - Loading book from: tests/data/ford.txt
+2024-10-26 10:05:13,089 - root - INFO - cli.py:92 - run_cli - File content loaded: 178970 characters
+2024-10-26 10:05:13,089 - root - INFO - cli.py:32 - load_and_process_book - Starting to process book content
+2024-10-26 10:05:13,089 - root - INFO - text_processing.py:137 - load_and_preprocess_text - Preprocessing text content
+2024-10-26 10:05:17,061 - root - INFO - text_processing.py:143 - load_and_preprocess_text - Extracted 10 dates, 1436 named entities, and 5 key phrases from the text
+2024-10-26 10:05:17,061 - root - INFO - text_processing.py:168 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-26 10:07:55,276 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 10:07:55,277 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 10:07:55,284 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 10:07:55,284 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 10:07:55,291 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 10:07:55,706 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 10:07:55,709 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 10:07:55,715 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 10:07:55,717 - root - INFO - cli.py:69 - run_cli - Starting the RAG system
+2024-10-26 10:07:55,718 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 10:07:55,719 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 10:08:14,116 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 10:08:14,116 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 10:08:14,117 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 10:08:14,435 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 10:08:14,437 - root - INFO - cli.py:21 - load_and_process_book - === Starting book processing pipeline ===
+2024-10-26 10:08:14,437 - root - INFO - cli.py:23 - load_and_process_book - 1. Preprocessing text...
+2024-10-26 10:08:14,438 - root - INFO - text_processing.py:137 - load_and_preprocess_text - Preprocessing text content
+2024-10-26 10:08:18,508 - root - INFO - text_processing.py:143 - load_and_preprocess_text - Extracted 10 dates, 1436 named entities, and 5 key phrases from the text
+2024-10-26 10:08:18,508 - root - INFO - text_processing.py:168 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-26 10:11:18,903 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 10:11:18,904 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 10:11:18,911 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 10:11:18,911 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 10:11:18,920 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 10:11:19,234 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 10:11:19,235 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 10:11:19,239 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 10:11:19,240 - root - INFO - cli.py:72 - run_cli - Starting the RAG system
+2024-10-26 10:11:19,241 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 10:11:19,242 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 10:11:37,293 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 10:11:37,294 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 10:11:37,294 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 10:11:37,649 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 10:11:37,651 - root - INFO - cli.py:21 - load_and_process_book - === Starting book processing pipeline ===
+2024-10-26 10:11:37,652 - root - INFO - cli.py:23 - load_and_process_book - 1. Preprocessing text...
+2024-10-26 10:11:37,652 - root - INFO - text_processing.py:137 - load_and_preprocess_text - Preprocessing text content
+2024-10-26 10:11:41,683 - root - INFO - text_processing.py:143 - load_and_preprocess_text - Extracted 10 dates, 1436 named entities, and 5 key phrases from the text
+2024-10-26 10:11:41,683 - root - INFO - text_processing.py:168 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-26 15:20:55,555 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:20:55,559 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:20:55,566 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:20:55,567 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:20:55,575 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:20:55,977 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:20:55,978 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 15:20:55,982 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 15:20:55,983 - root - INFO - cli.py:72 - run_cli - Starting the RAG system
+2024-10-26 15:20:55,984 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:20:55,984 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:21:13,820 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:21:13,820 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:21:13,821 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:21:14,147 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:21:14,148 - root - INFO - cli.py:21 - load_and_process_book - === Starting book processing pipeline ===
+2024-10-26 15:21:14,148 - root - INFO - cli.py:23 - load_and_process_book - 1. Preprocessing text...
+2024-10-26 15:21:14,148 - root - INFO - text_processing.py:137 - load_and_preprocess_text - Preprocessing text content
+2024-10-26 15:21:18,195 - root - INFO - text_processing.py:143 - load_and_preprocess_text - Extracted 10 dates, 1436 named entities, and 5 key phrases from the text
+2024-10-26 15:21:18,196 - root - INFO - text_processing.py:168 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-26 15:31:15,988 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:31:15,991 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:31:15,999 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:31:15,999 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:31:16,007 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:31:16,414 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:31:16,417 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 15:31:16,423 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 15:31:16,424 - root - INFO - cli.py:72 - run_cli - Starting the RAG system
+2024-10-26 15:31:16,425 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:31:16,426 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:31:32,283 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:31:32,284 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:31:32,284 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:31:32,616 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:31:32,618 - root - INFO - cli.py:21 - load_and_process_book - === Starting book processing pipeline ===
+2024-10-26 15:31:32,618 - root - INFO - cli.py:23 - load_and_process_book - 1. Preprocessing text...
+2024-10-26 15:31:32,619 - root - INFO - text_processing.py:137 - load_and_preprocess_text - Preprocessing text content
+2024-10-26 15:31:33,102 - root - INFO - text_processing.py:143 - load_and_preprocess_text - Extracted 0 dates, 64 named entities, and 5 key phrases from the text
+2024-10-26 15:31:33,102 - root - INFO - text_processing.py:168 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-26 15:35:52,904 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:35:52,906 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:35:52,914 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:35:52,914 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:35:52,921 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:35:54,436 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:35:54,437 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 15:35:54,441 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 15:35:54,442 - root - INFO - cli.py:72 - run_cli - Starting the RAG system
+2024-10-26 15:35:54,443 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:35:54,443 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:37:09,186 - root - ERROR - cli.py:107 - run_cli - An unexpected error occurred: 'utf-8' codec can't decode byte 0x83 in position 11: invalid start byte
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/cli.py", line 82, in run_cli
+    text_content = file.read()
+                   ^^^^^^^^^^^
+  File "<frozen codecs>", line 322, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x83 in position 11: invalid start byte
+2024-10-26 15:37:09,188 - root - INFO - cli.py:110 - run_cli - Exiting the RAG system
+2024-10-26 15:37:41,433 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:37:41,434 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:37:41,440 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:37:41,440 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:37:41,444 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:37:41,886 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:37:41,888 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 15:37:41,892 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 15:37:41,893 - root - INFO - cli.py:72 - run_cli - Starting the RAG system
+2024-10-26 15:37:41,894 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:37:41,895 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:37:50,543 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:37:50,543 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:37:50,544 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:37:52,097 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:37:52,098 - root - INFO - cli.py:21 - load_and_process_book - === Starting book processing pipeline ===
+2024-10-26 15:37:52,098 - root - INFO - cli.py:23 - load_and_process_book - 1. Preprocessing text...
+2024-10-26 15:37:52,098 - root - INFO - text_processing.py:137 - load_and_preprocess_text - Preprocessing text content
+2024-10-26 15:37:56,278 - root - INFO - text_processing.py:143 - load_and_preprocess_text - Extracted 10 dates, 1436 named entities, and 5 key phrases from the text
+2024-10-26 15:37:56,278 - root - INFO - text_processing.py:168 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)
+2024-10-26 15:42:32,795 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:42:32,797 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:42:32,805 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:42:32,805 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:42:32,815 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:42:33,163 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:42:33,164 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 15:42:33,168 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 15:42:33,169 - root - INFO - cli.py:90 - run_cli - Starting the RAG system
+2024-10-26 15:42:33,171 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:42:33,171 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:42:46,521 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:42:46,523 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:42:46,523 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:42:46,836 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:42:46,837 - root - INFO - cli.py:25 - load_and_process_book - === Starting book processing pipeline ===
+2024-10-26 15:42:46,838 - root - INFO - cli.py:43 - load_and_process_book - 1. Preprocessing text...
+2024-10-26 15:42:46,839 - root - INFO - text_processing.py:137 - load_and_preprocess_text - Preprocessing text content
+2024-10-26 15:42:46,840 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in extract_dates: expected string or bytes-like object, got '_io.TextIOWrapper'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/text_processing.py", line 53, in extract_dates
+    return re.findall(date_pattern, text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/re/__init__.py", line 217, in findall
+    return _compile(pattern, flags).findall(string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected string or bytes-like object, got '_io.TextIOWrapper'
+2024-10-26 15:42:46,868 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in extract_named_entities: module 'nltk' has no attribute 'exceptions'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/text_processing.py", line 70, in extract_named_entities
+    chunks = ne_chunk(pos_tag(word_tokenize(text)))
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/__init__.py", line 142, in word_tokenize
+    sentences = [text] if preserve_line else sent_tokenize(text, language)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/__init__.py", line 120, in sent_tokenize
+    return tokenizer.tokenize(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1280, in tokenize
+    return list(self.sentences_from_text(text, realign_boundaries))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1340, in sentences_from_text
+    return [text[s:e] for s, e in self.span_tokenize(text, realign_boundaries)]
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1328, in span_tokenize
+    for sentence in slices:
+                    ^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1457, in _realign_boundaries
+    for sentence1, sentence2 in _pair_iter(slices):
+                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 321, in _pair_iter
+    prev = next(iterator)
+           ^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1429, in _slices_from_text
+    for match, context in self._match_potential_end_contexts(text):
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1394, in _match_potential_end_contexts
+    for match in self._lang_vars.period_context_re().finditer(text):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected string or bytes-like object, got '_io.TextIOWrapper'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/text_processing.py", line 84, in extract_named_entities
+    except nltk.exceptions.NLTKException as e:
+           ^^^^^^^^^^^^^^^
+AttributeError: module 'nltk' has no attribute 'exceptions'
+2024-10-26 15:42:46,878 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in extract_key_phrases: module 'nltk' has no attribute 'exceptions'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/text_processing.py", line 104, in extract_key_phrases
+    words = word_tokenize(text)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/__init__.py", line 142, in word_tokenize
+    sentences = [text] if preserve_line else sent_tokenize(text, language)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/__init__.py", line 120, in sent_tokenize
+    return tokenizer.tokenize(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1280, in tokenize
+    return list(self.sentences_from_text(text, realign_boundaries))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1340, in sentences_from_text
+    return [text[s:e] for s, e in self.span_tokenize(text, realign_boundaries)]
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1328, in span_tokenize
+    for sentence in slices:
+                    ^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1457, in _realign_boundaries
+    for sentence1, sentence2 in _pair_iter(slices):
+                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 321, in _pair_iter
+    prev = next(iterator)
+           ^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1429, in _slices_from_text
+    for match, context in self._match_potential_end_contexts(text):
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py", line 1394, in _match_potential_end_contexts
+    for match in self._lang_vars.period_context_re().finditer(text):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected string or bytes-like object, got '_io.TextIOWrapper'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/text_processing.py", line 122, in extract_key_phrases
+    except nltk.exceptions.NLTKException as e:
+           ^^^^^^^^^^^^^^^
+AttributeError: module 'nltk' has no attribute 'exceptions'
+2024-10-26 15:42:46,887 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in load_and_preprocess_text: 'str' object has no attribute 'values'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/text_processing.py", line 143, in load_and_preprocess_text
+    logger.info(f"Extracted {len(dates)} dates, {sum(len(v) for v in entities.values())} named entities, and {len(key_phrases)} key phrases from the text")
+                                                                     ^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'values'
+2024-10-26 15:42:46,888 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in load_and_process_book: string indices must be integers, not 'str'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/cli.py", line 48, in load_and_process_book
+    chunk_count = len(processed_text['chunks'])
+                      ~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+2024-10-26 15:42:58,777 - root - INFO - cli.py:79 - answer_question - Received query: о чем файл?
+2024-10-26 15:42:58,778 - root - INFO - rag.py:107 - rag_query - Processing query: о чем файл?
+2024-10-26 15:42:58,778 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in __init__: 'str' object has no attribute 'get_chunks'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    self.chunks: List[Chunk] = data_source.get_chunks()
+                               ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get_chunks'
+2024-10-26 15:42:58,780 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in get_search_strategy: __init__() should return None, not 'str'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 157, in get_search_strategy
+    return SimpleSearch(data_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: __init__() should return None, not 'str'
+2024-10-26 15:42:58,780 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in rag_query: 'str' object has no attribute 'search'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 109, in rag_query
+    relevant_chunks = search.search(question)
+                      ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'search'
+2024-10-26 15:48:32,195 - root - INFO - cli.py:79 - answer_question - Received query: tests/data/test.txt
+2024-10-26 15:48:32,196 - root - INFO - rag.py:107 - rag_query - Processing query: tests/data/test.txt
+2024-10-26 15:48:32,196 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in __init__: 'str' object has no attribute 'get_chunks'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 29, in __init__
+    self.chunks: List[Chunk] = data_source.get_chunks()
+                               ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get_chunks'
+2024-10-26 15:48:32,199 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in get_search_strategy: __init__() should return None, not 'str'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/search.py", line 157, in get_search_strategy
+    return (1 - self.embedding_weight) * bm25_scores + self.embedding_weight * embedding_scores
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: __init__() should return None, not 'str'
+2024-10-26 15:48:32,200 - root - ERROR - error_handler.py:68 - wrapper - Unexpected error in rag_query: 'str' object has no attribute 'search'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/error_handler.py", line 63, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/rag.py", line 109, in rag_query
+AttributeError: 'str' object has no attribute 'search'
+2024-10-26 15:48:42,829 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:48:42,830 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:48:42,836 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:48:42,837 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:48:42,841 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:48:43,267 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:48:43,268 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 15:51:50,287 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:51:50,288 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:51:50,294 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:51:50,294 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:51:50,300 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:51:50,615 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:51:50,616 - root - WARNING - embedding.py:26 - <module> - Pinecone index is not available. Some functionality may be limited.
+2024-10-26 15:52:07,674 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:52:07,675 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:52:37,240 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:52:37,242 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:53:11,445 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:53:11,446 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:53:11,477 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 15:53:11,477 - root - INFO - cli.py:66 - run_cli - Starting the RAG system
+2024-10-26 15:53:11,477 - root - ERROR - cli.py:96 - run_cli - An unexpected error occurred: name 'APIKey' is not defined
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/cli.py", line 69, in run_cli
+    openai_service = OpenAIService(api_key=APIKey(OPENAI_CONFIG['api_key']))
+                                           ^^^^^^
+NameError: name 'APIKey' is not defined
+2024-10-26 15:53:11,478 - root - INFO - cli.py:99 - run_cli - Exiting the RAG system
+2024-10-26 15:54:51,153 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:54:51,154 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:54:51,184 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 15:54:51,184 - root - INFO - cli.py:66 - run_cli - Starting the RAG system
+2024-10-26 15:54:51,185 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:54:51,185 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:55:14,394 - root - ERROR - cli.py:96 - run_cli - An unexpected error occurred: The file /Users/eduardizgorodin/Projects/rag_bo does not exist.
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/cli.py", line 73, in run_cli
+    raise FileNotFoundError(f"The file {book_path} does not exist.")
+FileNotFoundError: The file /Users/eduardizgorodin/Projects/rag_bo does not exist.
+2024-10-26 15:55:14,396 - root - INFO - cli.py:99 - run_cli - Exiting the RAG system
+2024-10-26 15:55:17,768 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:55:17,769 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:55:17,798 - main.log - INFO - main.py:8 - main - Starting the RAG Book Assistant
+2024-10-26 15:55:17,799 - root - INFO - cli.py:66 - run_cli - Starting the RAG system
+2024-10-26 15:55:17,799 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-26 15:55:17,799 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-26 15:55:29,065 - pinecone_plugin_interface.logging - INFO - discover_namespace_packages.py:12 - discover_subpackages - Discovering subpackages in _NamespacePath(['/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/pinecone_plugins'])
+2024-10-26 15:55:29,066 - pinecone_plugin_interface.logging - INFO - discover_plugins.py:9 - discover_plugins - Looking for plugins in pinecone_plugins.inference
+2024-10-26 15:55:29,076 - pinecone_plugin_interface.logging - INFO - installation.py:10 - install_plugins - Installing plugin inference into Pinecone
+2024-10-26 15:55:29,692 - pinecone.core.openapi.shared.rest - DEBUG - rest.py:264 - request - response body: b'{"indexes":[{"name":"book-embeddings","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-embeddings-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"},{"name":"book-defaultbookindex","metric":"cosine","dimension":1536,"status":{"ready":true,"state":"Ready"},"host":"book-defaultbookindex-uoy9ovm.svc.aped-4627-b74a.pinecone.io","spec":{"serverless":{"region":"us-east-1","cloud":"aws"}},"deletion_protection":"disabled"}]}'
+2024-10-26 15:55:29,695 - root - INFO - cli.py:25 - load_and_process_book - === Starting book processing pipeline ===
+2024-10-26 15:55:29,696 - root - INFO - text_processing.py:132 - load_and_preprocess_text - Preprocessing text content
+2024-10-26 15:55:29,697 - root - INFO - text_processing.py:163 - split_into_chunks - Splitting text into chunks (size: 300, overlap: 150)

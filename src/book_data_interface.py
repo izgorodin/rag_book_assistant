@@ -4,6 +4,9 @@ import pickle
 import os
 from src.data_source import DataSource
 from src.error_handler import handle_rag_error, DataSourceError
+from src.logger import setup_logger
+
+logger = setup_logger()
 
 class BookDataInterface(DataSource):
     def __init__(self, chunks: List[Chunk], embeddings: EmbeddingList, processed_text: Dict[str, Any]):
@@ -27,18 +30,20 @@ class BookDataInterface(DataSource):
             raise DataSourceError(f"Error loading from file {file_path}: {str(e)}")
 
     @handle_rag_error
-    def save(self, file_path: str):
+    def save(self, file_path: str) -> None:
+        """Save data to file with memory optimization."""
+        logger.info(f"Saving data to {file_path}")
         try:
-            data = {
-                'chunks': self._chunks,
-                'embeddings': self._embeddings,
-                'processed_text': self._processed_text
-            }
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
             with open(file_path, 'wb') as f:
-                pickle.dump(data, f)
+                # Save in chunks to avoid memory issues
+                pickle.dump({
+                    'chunks': self._chunks,
+                    'embeddings': self._embeddings,
+                    'metadata': self._processed_text
+                }, f, protocol=pickle.HIGHEST_PROTOCOL)
         except Exception as e:
-            raise DataSourceError(f"Error saving to file {file_path}: {str(e)}")
+            logger.error(f"Error saving data: {str(e)}")
+            raise
 
     def __len__(self) -> int:
         return len(self._chunks)

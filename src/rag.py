@@ -23,65 +23,110 @@ The main function, rag_query, orchestrates the process from relevant chunk retri
 """
 
 import re
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional, Tuple
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from src.openai_service import OpenAIService
-from src.embedding import create_embeddings
-from sklearn.metrics.pairwise import cosine_similarity
 from src.logger import setup_logger
 from src.book_data_interface import BookDataInterface
-from src.search import get_search_strategy
-from src.error_handler import handle_rag_error, format_error_message, RAGError
+from src.search import get_search_strategy, SearchStrategy
+from src.error_handler import (
+    handle_rag_error, RAGError, QueryExpansionError,
+    ModelError, TokenizationError, SearchError,
+    ScoreComputationError, OpenAIError
+)
+from src.types import (
+    Context, GeneratedAnswer, ModelResponse, QualityScore, QueryType, ReferenceAnswer, ExpandedQuery, SearchResults, RelevantChunks
+)
+from src.config import TEXT_PROCESSING_CONFIG, OPENAI_CONFIG
 
 logger = setup_logger()
 
 @handle_rag_error
-def preprocess_text(text: str) -> str:
+def preprocess_text(text: str) -> ExpandedQuery:
     """
-    Preprocess the input text by converting to lowercase, removing punctuation,
-    tokenizing, removing stop words, and lemmatizing.
+    Preprocess the input text for RAG processing.
+    
+    Args:
+        text (str): Raw input text.
+        
+    Returns:
+        ExpandedQuery: Preprocessed and expanded query text.
+        
+    Raises:
+        TokenizationError: If text tokenization fails.
+    """
+    try:
+        text = text.lower()
+        text = re.sub(r'[^\w\s]', '', text)
+        tokens = word_tokenize(text)
+        stop_words = set(stopwords.words('english'))
+        tokens = [token for token in tokens if token not in stop_words]
+        lemmatizer = WordNetLemmatizer()
+        tokens = [lemmatizer.lemmatize(token) for token in tokens]
+        return ExpandedQuery(' '.join(tokens))
+    except Exception as e:
+        logger.error(f"Tokenization error: {str(e)}")
+        raise TokenizationError(f"Error in text preprocessing: {str(e)}")
+
+@handle_rag_error
+def generate_answer(
+    query: QueryType, 
+    context: Context, 
+    openai_service: OpenAIService
+) -> ModelResponse:
+    """
+    Generate an answer using OpenAI's API based on the query and context.
 
     Args:
-        text (str): The input text to preprocess.
+        query (QueryType): The user's question
+        context (Context): Retrieved context for answer generation
+        openai_service (OpenAIService): Service for interacting with OpenAI API
 
     Returns:
-        str: The preprocessed text.
+        ModelResponse: Generated answer
+
+    Raises:
+        OpenAIError: If there's an issue with the OpenAI API
+        ModelError: If there's an issue with answer generation
     """
-    text = text.lower()
-    text = re.sub(r'[^\w\s]', '', text)
-    tokens = word_tokenize(text)
-    stop_words = set(stopwords.words('english'))
-    tokens = [token for token in tokens if token not in stop_words]
-    lemmatizer = WordNetLemmatizer()
-    tokens = [lemmatizer.lemmatize(token) for token in tokens]
-    return ' '.join(tokens)
+    try:
+        return openai_service.generate_answer(query, context)
+    except Exception as e:
+        logger.error(f"Error generating answer: {str(e)}")
+        raise ModelError(f"Failed to generate answer: {str(e)}")
 
 @handle_rag_error
-def generate_answer(query: str, context: str, openai_service: OpenAIService) -> str:
-    return openai_service.generate_answer(query, context)
+def rag_query(
+    query: QueryType,
+    book_data: BookDataInterface,
+    openai_service: OpenAIService
+) -> GeneratedAnswer:
+    search = get_search_strategy(book_data)
+    relevant_chunks: SearchResults = search.search(query)
+    
+    # Формируем контекст и генерируем ответ
+    context = format_context(relevant_chunks)
+    answer = generate_answer(query, context, openai_service)
+    
+    return GeneratedAnswer(answer)
 
 @handle_rag_error
-def rag_query(question: str, book_data: BookDataInterface, openai_service: OpenAIService, search_strategy: str = "simple") -> str:
-    logger.info(f"Processing query: {question}")
-    search = get_search_strategy(search_strategy, book_data)
-    relevant_chunks = search.search(question)
-    context = " ".join(chunk['chunk'] for chunk in relevant_chunks)
-    return openai_service.generate_answer(question, context)
-
-@handle_rag_error
-def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> float:
+def evaluate_answer_quality(
+    generated_answer: GeneratedAnswer, 
+    reference_answer: ReferenceAnswer
+) -> QualityScore:
     """
     Evaluate the quality of a generated answer against a reference answer.
 
     Args:
-        generated_answer (str): The answer generated by the model.
-        reference_answer (str): The correct or expected answer for comparison.
+        generated_answer (GeneratedAnswer): The answer generated by the model.
+        reference_answer (ReferenceAnswer): The correct or expected answer for comparison.
 
     Returns:
-        float: A score between 0 and 1 indicating the quality of the generated answer,
-               where 1 means a perfect match and 0 means no similarity.
+        QualityScore: A score between 0 and 1 indicating the quality of the generated answer,
+                       where 1 means a perfect match and 0 means no similarity.
     """
     # Simple evaluation logic based on string similarity
     if not generated_answer or not reference_answer:
@@ -99,3 +144,88 @@ def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> flo
 @handle_rag_error
 def get_answer_from_system(question: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
     return rag_query(question, book_data, openai_service)
+
+# Использовать конфигурацию для параметров:
+top_k_chunks = TEXT_PROCESSING_CONFIG['top_k_chunks']
+max_tokens = OPENAI_CONFIG['max_tokens']
+
+def format_context(chunks: SearchResults) -> Context:
+    """
+    Форматирует найденные чанки в контекст для запроса.
+    
+    Args:
+        chunks: Результаты поиска релевантных чанков
+        
+    Returns:
+        Отформатированный контекст для запроса к LLM
+    """
+    formatted_chunks = []
+    for i, chunk in enumerate(chunks, 1):
+        # Проверяем, является ли chunk словарем с 'text' или просто строкой
+        chunk_text = chunk['text'] if isinstance(chunk, dict) else chunk
+        formatted_chunks.append(f"[{i}] {chunk_text}")
+    
+    return Context("\n\n".join(formatted_chunks))
+
+def generate_answer(
+    query: QueryType,
+    context: Context,
+    openai_service: OpenAIService
+) -> str:
+    """
+    Генерирует ответ на основе контекста и запроса.
+    
+    Args:
+        query: Вопрос пользователя
+        context: Подготовленный контекст из релевантных чанков
+        openai_service: Сервис для работы с OpenAI API
+        
+    Returns:
+        Сгенерированный ответ
+    """
+    prompt = f"""Based on the following context, please answer the question. 
+    If you cannot find the answer in the context, say so.
+    
+    Context:
+    {context}
+    
+    Question: {query}
+    
+    Answer:"""
+    
+    try:
+        response = openai_service.create_completion(prompt)
+        return response.strip()
+    except Exception as e:
+        logger.error(f"Error generating answer: {str(e)}")
+        return "Sorry, I encountered an error while generating the answer."
+
+def rag_query(
+    query: QueryType,
+    book_data: BookDataInterface,
+    openai_service: OpenAIService
+) -> GeneratedAnswer:
+    """
+    Выполняет RAG-запрос: поиск релевантных чанков и генерация ответа.
+    
+    Args:
+        query: Вопрос пользователя
+        book_data: Интерфейс для работы с данными книги
+        openai_service: Сервис для работы с OpenAI API
+        
+    Returns:
+        Сгенерированный ответ на вопрос
+    """
+    logger.info(f"Processing query: {query}")
+    
+    # Получаем стратегию поиска и ищем релевантные чанки
+    search = get_search_strategy(book_data)
+    relevant_chunks = search.search(query)
+    
+    # Форматируем контекст из найденных чанков
+    context = format_context(relevant_chunks)
+    
+    # Генерируем ответ на основе контекста
+    answer = generate_answer(query, context, openai_service)
+    
+    return GeneratedAnswer(answer)

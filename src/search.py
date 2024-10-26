@@ -1,6 +1,7 @@
 import numpy as np
 from typing import List, Dict, Any, Protocol, Tuple
 from rank_bm25 import BM25Okapi
+from src.book_data_interface import BookDataInterface
 from src.embedding import create_embeddings, cosine_similarity
 from nltk.corpus import wordnet
 from nltk import word_tokenize, pos_tag
@@ -8,11 +9,10 @@ from nltk.stem import WordNetLemmatizer
 from src.logger import setup_logger
 from src.data_source import DataSource
 import nltk
-from src.error_handler import handle_rag_error, SimpleSearchError, HybridSearchError, QueryExpansionError, DimensionMismatchError
-from src.config import EMBEDDING_DIMENSION
+from src.error_handler import handle_rag_error, RAGError, SimpleSearchError, HybridSearchError, QueryExpansionError, ScoreComputationError, DimensionMismatchError
+from src.config import TEXT_PROCESSING_CONFIG
 from src.types import (
-    Chunk, EmbeddingList, QueryType, TopK, SearchResults, 
-    Config, Vector, SimilarityScores, ExpandedQuery, Weight,
+    Chunk, EmbeddingList, QueryType, TopK, SearchResults, ExpandedQuery, Weight,
     TokenizedChunks, Embedding
 )
 
@@ -29,7 +29,7 @@ class BaseSearch:
         self.chunks: List[Chunk] = data_source.get_chunks()
         self.embeddings: EmbeddingList = data_source.get_embeddings()
         
-        if any(len(emb) != EMBEDDING_DIMENSION for emb in self.embeddings):
+        if any(len(emb) != TEXT_PROCESSING_CONFIG['dimension'] for emb in self.embeddings):
             raise ValueError("Some embeddings have incorrect dimension")
 
     @handle_rag_error
@@ -48,10 +48,15 @@ class BaseSearch:
 
 class SimpleSearch(BaseSearch):
     @handle_rag_error
+    def __init__(self, data_source: BookDataInterface):
+        self.chunks = data_source.get_chunks()
+        self.embeddings = data_source.get_embeddings()
+
+    @handle_rag_error
     def search(self, query: QueryType, top_k: TopK = TopK(5)) -> SearchResults:
         try:
             query_embedding: Embedding = create_embeddings([query])[0]
-            if len(query_embedding) != EMBEDDING_DIMENSION:
+            if len(query_embedding) != TEXT_PROCESSING_CONFIG['dimension']:
                 raise ValueError(f"Query embedding has incorrect dimension: {len(query_embedding)}")
             scores: np.ndarray = np.array([cosine_similarity(query_embedding, chunk_embedding) for chunk_embedding in self.embeddings])
             return self._get_top_chunks(scores, top_k)
