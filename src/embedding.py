@@ -37,75 +37,42 @@ class EmbeddingService:
         self.batch_size = batch_size
 
     def create_embeddings(self, chunks: List[str]) -> List[List[float]]:
-        """Create embeddings for multiple chunks of text in batches."""
-        if not chunks:
-            return []
-        
-        # Ensure chunks is a list
-        if not isinstance(chunks, list):
-            logger.error(f"Expected list of strings, got {type(chunks)}")
-            chunks = list(chunks)
-            
+        """Create embeddings for chunks in batches."""
         logger.info(f"Creating embeddings for {len(chunks)} chunks")
-        embeddings = []
+        all_embeddings = []
+        batch_size = 100  # Можно настроить в зависимости от размера чанков
         
-        # Process chunks in batches with progress bar
-        with tqdm(total=len(chunks), desc="Creating embeddings") as pbar:
-            for i in range(0, len(chunks), self.batch_size):
-                batch = list(chunks[i:i + self.batch_size])  # Ensure batch is a list
-                # Skip empty chunks
-                batch = [chunk for chunk in batch if chunk.strip()]
-                if not batch:
-                    continue
-                
-                # Get cached embeddings
-                batch_embeddings = []
-                uncached_chunks = []
-                uncached_indices = []
-                
-                for j, chunk in enumerate(batch):
-                    cached_embedding = self.cache_manager.load(chunk)
-                    if cached_embedding is not None:
-                        batch_embeddings.append(cached_embedding)
-                    else:
-                        uncached_chunks.append(chunk)
-                        uncached_indices.append(j)
-                
-                # Create embeddings for uncached chunks
-                if uncached_chunks:
-                    response = self.client.embeddings.create(
-                        input=uncached_chunks,
-                        model=EMBEDDING_MODEL
-                    )
-                    
-                    # Insert new embeddings at correct positions
-                    for idx, emb_data in zip(uncached_indices, response.data):
-                        embedding = emb_data.embedding
-                        if len(embedding) != EMBEDDING_DIMENSION:
-                            raise ValueError(f"Incorrect embedding dimension: {len(embedding)}")
-                        
-                        batch_embeddings.insert(idx, embedding)
-                        # Cache the new embedding
-                        self.cache_manager.save(uncached_chunks[uncached_indices.index(idx)], embedding)
-                
-                embeddings.extend(batch_embeddings)
-                pbar.update(len(batch))
-        
-        # Store vectors in Pinecone
-        if embeddings:
+        for i in tqdm(range(0, len(chunks), batch_size), desc="Creating embeddings"):
+            batch = chunks[i:i + batch_size]
+            batch_embeddings = []
+            
+            # Создаем эмбеддинги для батча
+            response = self.client.embeddings.create(
+                input=batch,
+                model=EMBEDDING_MODEL
+            )
+            batch_embeddings = [item.embedding for item in response.data]
+            
+            # Сохраняем в векторное хранилище
             vectors = [
                 {
-                    "id": str(i),
-                    "values": emb,
-                    "metadata": {"text": chunk}
+                    'id': str(i + j),
+                    'values': emb,
+                    'metadata': {'text': chunk}
                 }
-                for i, (chunk, emb) in enumerate(zip(chunks, embeddings))
-                if chunk.strip()
+                for j, (chunk, emb) in enumerate(zip(batch, batch_embeddings))
             ]
-            self.vector_store.upsert_vectors(vectors)
-            logger.info(f"Stored {len(vectors)} vectors in Pinecone")
             
-        return embeddings
+            try:
+                self.vector_store.upsert_vectors(vectors)
+                logger.info(f"Successfully upserted batch of {len(vectors)} vectors")
+            except Exception as e:
+                logger.error(f"Error upserting vectors batch: {str(e)}")
+                raise
+                
+            all_embeddings.extend(batch_embeddings)
+        
+        return all_embeddings
 
     def create_embedding(self, text: str) -> List[float]:
         """Create embedding for a single text."""
