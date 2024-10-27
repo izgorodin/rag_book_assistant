@@ -14,17 +14,34 @@ def web_progress_callback(status: str, current: int, total: int):
     """Callback для отправки прогресса через websocket."""
     emit_progress(status, current, total)
 
-def create_app():
+def create_app(init_services=True):
+    # Определяем пути и конфигурацию в начале функции
+    UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '..', '..', 'uploads')
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+    
+    # Определяем пользователей
+    USERS = {
+        'admin': os.environ.get('ADMIN_PASSWORD', 'admin1q2w3e'),
+        'tester1': os.environ.get('TESTER_PASSWORD', '41dsf3qw7sDa')
+    }
+    
     app = Flask(__name__, 
                 template_folder=os.path.join(os.path.dirname(__file__), 'templates'),
                 static_folder=os.path.join(os.path.dirname(__file__), 'static'),
                 static_url_path='')
     
+    # Конфигурация приложения
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    app.config['MAX_CONTENT_LENGTH'] = 320 * 1024 * 1024
     app.secret_key = os.environ.get('FLASK_SECRET_KEY', FLASK_SECRET_KEY)
-    USERS = {
-        'admin': os.environ.get('ADMIN_PASSWORD', 'admin1q2w3e'),
-        'tester1': os.environ.get('TESTER_PASSWORD', '41dsf3qw7sDa')
-    }
+    
+    # Инициализируем сервисы только если нужно
+    if init_services:
+        assistant = BookAssistant(progress_callback=web_progress_callback)
+    else:
+        assistant = None
+        
+    book_data = None
     
     socketio.init_app(app)
     
@@ -63,18 +80,6 @@ def create_app():
     
     def allowed_file(filename):
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-    ALLOWED_EXTENSIONS = {'txt', 'pdf', 'doc', 'docx', 'odt'}
-    
-    def allowed_file(filename):
-        return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-    # Конфигурация
-    UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '..', '..', 'uploads')
-    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-    
-    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    app.config['MAX_CONTENT_LENGTH'] = 320 * 1024 * 1024
     
     @app.route('/', methods=['GET', 'POST'])
     @login_required

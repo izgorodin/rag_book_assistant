@@ -43,3 +43,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+"""
+# Run CLI mode
+python -m src.main cli
+
+# Run web mode
+python -m src.main web
+
+# Run with gunicorn (production)
+gunicorn --bind 0.0.0.0:8080 --worker-class eventlet wsgi:app
+
+"""

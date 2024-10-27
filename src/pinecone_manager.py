@@ -35,11 +35,20 @@ class VectorStore(ABC):
 class PineconeManager(VectorStore):
     """Manages interactions with Pinecone vector database."""
     
-    def __init__(self):
+    def __init__(self, lazy_init=True):
         """Initialize Pinecone client and index."""
+        self.initialized = False
+        if not lazy_init:
+            self._init()
+
+    def _init(self):
+        if self.initialized:
+            return
+        
         try:
             self.pc = Pinecone(api_key=PINECONE_API_KEY)
             self._initialize_index()
+            self.initialized = True
             logger.info("Pinecone manager initialized successfully")
         except Exception as e:
             logger.error(f"Pinecone initialization error: {str(e)}")

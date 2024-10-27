@@ -1,7 +1,7 @@
 # src/file_processor.py
 import os
 from typing import Optional
-import PyPDF2
+import pypdf
 from docx import Document
 from odf import text, teletype
 from odf.opendocument import load
@@ -45,7 +45,7 @@ class FileProcessor:
 
     def _process_pdf(self, file_path: str) -> str:
         with open(file_path, 'rb') as file:
-            reader = PyPDF2.PdfReader(file)
+            reader = pypdf.PdfReader(file)
             return ' '.join(page.extract_text() for page in reader.pages)
 
     def _process_docx(self, file_path: str) -> str:
