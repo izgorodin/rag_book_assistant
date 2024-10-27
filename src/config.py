@@ -26,3 +26,5 @@ PINECONE_METRIC = "cosine"
 CACHE_DIR = 'data/cache'
 EMBEDDINGS_DIR = 'data/embeddings'
 BATCH_SIZE = 100
+
+FLASK_SECRET_KEY = os.environ.get('FLASK_SECRET_KEY') 

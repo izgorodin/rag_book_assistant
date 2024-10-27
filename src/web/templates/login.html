@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - RAG Book QA System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form method="POST" action="/login" id="loginForm">
+            <div class="input-group">
+                <input type="text" name="username" placeholder="Username" required class="login-input" autocomplete="username">
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Password" required class="login-input" autocomplete="current-password">
+            </div>
+            <input type="submit" value="Login">
+        </form>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const inputs = this.getElementsByTagName('input');
+                const currentInput = document.activeElement;
+                const currentIndex = Array.from(inputs).indexOf(currentInput);
+                
+                if (currentIndex < inputs.length - 1) {
+                    inputs[currentIndex + 1].focus();
+                } else {
+                    this.submit();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

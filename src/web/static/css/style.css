@@ -149,3 +149,52 @@ input[type="submit"]:hover {
 .copy-icon.copied {
     color: #28a745;
 }
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e1e4e8;
+}
+
+.login-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: #dc3545;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.login-container form {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.login-container .input-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Базовые стили для всех полей ввода */
+.login-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.login-container input[type="submit"] {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+}
