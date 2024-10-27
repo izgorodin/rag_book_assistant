@@ -70,29 +70,23 @@ def extract_key_phrases(text: str, num_phrases: int = 5) -> List[str]:
     
     return sorted(set(phrases), key=phrases.count, reverse=True)[:num_phrases]
 
-def load_and_preprocess_text(file_path: str) -> Dict[str, Any]:
-    """Load and preprocess the text content from file."""
-    logger.info(f"Loading and preprocessing file: {file_path}")
+def load_and_preprocess_text(text: str) -> Dict[str, Any]:
+    """Process text content and extract useful information."""
+    logger.info("Processing text content")
     
-    # Read full content
-    text_content = read_file_content(file_path)
-    if not text_content:
-        logger.error("Empty file content")
-        raise ValueError("Empty file content")
-        
-    # Process text
-    dates = extract_dates(text_content)
-    entities = extract_named_entities(text_content)
-    key_phrases = extract_key_phrases(text_content)
-    chunks = split_into_chunks(text_content)
+    # Разбиваем текст на чанки
+    chunks = split_into_chunks(text)
     
-    return {
-        'text': text_content,
+    # Извлекаем полезную информацию
+    processed_data = {
         'chunks': chunks,
-        'dates': dates,
-        'entities': entities,
-        'key_phrases': key_phrases
+        'dates': extract_dates(text),
+        'entities': extract_named_entities(text),
+        'key_phrases': extract_key_phrases(text)
     }
+    
+    logger.info(f"Text processed. Found {len(chunks)} chunks")
+    return processed_data
 
 def split_into_chunks(text: Union[str, Dict[str, Any]], chunk_size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[str]:
     """Split the text into chunks with specified size and overlap."""

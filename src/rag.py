@@ -30,8 +30,9 @@ from nltk.stem import WordNetLemmatizer
 from src.openai_service import OpenAIService
 from src.logger import setup_logger
 from src.book_data_interface import BookDataInterface
-from src.search import get_search_strategy
+from src.search import CosineSearch, get_search_strategy
 from src.error_handler import handle_rag_error
+from src.embedding import EmbeddingService
 
 logger = setup_logger()
 
@@ -58,12 +59,22 @@ def preprocess_text(text: str) -> str:
 
 
 @handle_rag_error
-def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAIService, search_strategy: str = "cosine") -> str:
-    logger.info(f"Processing query: {query}")
-    search = get_search_strategy(search_strategy, book_data)
-    relevant_chunks = search.search(query)
-    context = " ".join(chunk['chunk'] for chunk in relevant_chunks)
-    return openai_service.generate_answer(query, context)
+def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAIService, 
+             embedding_service: EmbeddingService) -> str:
+    """Process query using RAG approach."""
+    try:
+        # Создаем поисковую стратегию с embedding_service
+        search_strategy = CosineSearch(book_data, embedding_service)
+        relevant_chunks = search_strategy.search(query, top_k=3)
+        
+        # Формируем контекст из найденных чанков
+        context = " ".join(chunk['chunk'] for chunk in relevant_chunks)
+        
+        # Генерируем ответ
+        return openai_service.generate_answer(query, context)
+    except Exception as e:
+        logger.error(f"Error in rag_query: {str(e)}")
+        return f"Sorry, I encountered an error while processing your request: {str(e)}"
 
 @handle_rag_error
 def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> float:
@@ -96,5 +107,5 @@ def get_answer_from_system(query: str, book_data: BookDataInterface, openai_serv
     return rag_query(query, book_data, openai_service)
 
 def format_context(chunks: List[str]) -> str:
-    """Форматирует найденные чанки в контек��т для запроса."""
+    """Форматирует найденные чанки в контект для запроса."""
     return "\n\n".join(f"[{i+1}] {chunk}" for i, chunk in enumerate(chunks))

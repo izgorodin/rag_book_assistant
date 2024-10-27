@@ -5,11 +5,10 @@ from src.data_source import DataSource
 
 class BookDataInterface(DataSource):
     def __init__(self, chunks: List[str], embeddings: List[List[float]], 
-                 processed_text: Dict[str, Any], embedding_service: Any):
+                 processed_text: Dict[str, Any]):
         self._chunks = chunks
         self._embeddings = embeddings
         self._processed_text = processed_text
-        self._embedding_service = embedding_service
         
     @classmethod
     def from_file(cls, file_path: str):
@@ -40,4 +39,4 @@ class BookDataInterface(DataSource):
         return self._processed_text
 
     def create_embedding(self, text: str) -> List[float]:
-        return self._embedding_service.create_embedding(text)
+        raise NotImplementedError("This method should be handled by EmbeddingService")

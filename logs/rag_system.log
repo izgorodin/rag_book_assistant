@@ -10,3 +10,27 @@
 2024-10-27 15:28:01,100 - root - INFO - cache_manager.py:78 - clear - Cache cleared
 2024-10-27 15:45:23,081 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/embedding.py
 2024-10-27 15:45:23,204 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 16:40:43,258 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 16:40:43,259 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 16:41:36,779 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 16:41:36,780 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 16:44:29,752 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 16:44:29,753 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 16:48:54,033 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 16:48:54,033 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:01:27,322 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 17:01:27,323 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:09:57,962 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 17:09:57,963 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:10:24,398 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 17:10:24,398 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:17:00,917 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 17:17:00,917 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:22:10,689 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/embedding.py
+2024-10-27 17:22:10,690 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:23:50,586 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/embedding.py
+2024-10-27 17:23:50,587 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:27:09,901 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/rag.py
+2024-10-27 17:27:09,901 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:30:14,441 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 17:30:14,441 - root - INFO - cache_manager.py:78 - clear - Cache cleared

@@ -1,4 +1,4 @@
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import os
 import pickle
 import numpy as np
@@ -27,51 +27,58 @@ class EmbeddingService:
     def __init__(
         self, 
         openai_client: OpenAI,
-        vector_store: PineconeManager,
         cache_manager: CacheManager,
         batch_size: int = BATCH_SIZE
     ):
         self.client = openai_client
-        self.vector_store = vector_store
         self.cache_manager = cache_manager
         self.batch_size = batch_size
+
+    def _get_cached_embeddings(self, texts: List[str]) -> Optional[List[List[float]]]:
+        """Get embeddings from cache if they exist."""
+        cached_embeddings = []
+        cache_hits = True
+        
+        for text in texts:
+            cached = self.cache_manager.load(text)
+            if cached is None:
+                cache_hits = False
+                break
+            cached_embeddings.append(cached)
+            
+        return cached_embeddings if cache_hits else None
+
+    def _cache_embeddings(self, texts: List[str], embeddings: List[List[float]]) -> None:
+        """Cache embeddings for given texts."""
+        for text, embedding in zip(texts, embeddings):
+            self.cache_manager.save(text, embedding)
 
     def create_embeddings(self, chunks: List[str]) -> List[List[float]]:
         """Create embeddings for chunks in batches."""
         logger.info(f"Creating embeddings for {len(chunks)} chunks")
         all_embeddings = []
-        batch_size = 100  # Можно настроить в зависимости от размера чанков
         
-        for i in tqdm(range(0, len(chunks), batch_size), desc="Creating embeddings"):
-            batch = chunks[i:i + batch_size]
-            batch_embeddings = []
+        for i in tqdm(range(0, len(chunks), self.batch_size), desc="Creating embeddings"):
+            batch = chunks[i:i + self.batch_size]
             
-            # Создаем эмбеддинги для батча
+            # Проверяем кэш
+            cached_embeddings = self._get_cached_embeddings(batch)
+            if cached_embeddings:
+                logger.info(f"Using cached embeddings for batch {i//self.batch_size + 1}")
+                all_embeddings.extend(cached_embeddings)
+                continue
+            
+            # Создаем новые эмбеддинги
             response = self.client.embeddings.create(
                 input=batch,
                 model=EMBEDDING_MODEL
             )
             batch_embeddings = [item.embedding for item in response.data]
             
-            # Сохраняем в векторное хранилище
-            vectors = [
-                {
-                    'id': str(i + j),
-                    'values': emb,
-                    'metadata': {'text': chunk}
-                }
-                for j, (chunk, emb) in enumerate(zip(batch, batch_embeddings))
-            ]
-            
-            try:
-                self.vector_store.upsert_vectors(vectors)
-                logger.info(f"Successfully upserted batch of {len(vectors)} vectors")
-            except Exception as e:
-                logger.error(f"Error upserting vectors batch: {str(e)}")
-                raise
-                
+            # Кэшируем результаты
+            self._cache_embeddings(batch, batch_embeddings)
             all_embeddings.extend(batch_embeddings)
-        
+            
         return all_embeddings
 
     def create_embedding(self, text: str) -> List[float]:

@@ -1,7 +1,7 @@
 import numpy as np
 from typing import List, Dict, Any, Protocol
 from rank_bm25 import BM25Okapi
-from src.embedding import cosine_similarity
+from src.embedding import EmbeddingService, cosine_similarity
 from nltk.corpus import wordnet
 from nltk import word_tokenize, pos_tag
 from nltk.stem import WordNetLemmatizer
@@ -18,9 +18,9 @@ class SearchStrategy(Protocol):
         ...
 
 class BaseSearch:
-    @handle_rag_error
-    def __init__(self, data_source: DataSource):
+    def __init__(self, data_source: DataSource, embedding_service: EmbeddingService):
         self.data_source = data_source
+        self.embedding_service = embedding_service
         self.chunks = data_source.get_chunks()
         self.embeddings = data_source.get_embeddings()
         
@@ -184,6 +184,24 @@ class CosineSimilaritySearch(BaseSearch):
             ])
             return self._get_top_chunks(scores, top_k)
         except Exception as e:
+            raise RAGError(f"Error in cosine similarity search: {str(e)}")
+
+class CosineSearch(BaseSearch):
+    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+        """Search for most similar chunks using cosine similarity."""
+        try:
+            # Создаем эмбеддинг для запроса через сервис
+            query_embedding = self.embedding_service.create_embedding(query)
+            
+            # Вычисляем косинусное сходство
+            scores = np.array([
+                cosine_similarity(query_embedding, chunk_embedding) 
+                for chunk_embedding in self.embeddings
+            ])
+            
+            return self._get_top_chunks(scores, top_k)
+        except Exception as e:
+            logger.error(f"Error in cosine similarity search: {str(e)}")
             raise RAGError(f"Error in cosine similarity search: {str(e)}")
 
 @handle_rag_error

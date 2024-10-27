@@ -1,14 +1,19 @@
 import os
 from openai import OpenAI
+from src.book_data_factory import BookDataFactory
+from src.file_processor import FileProcessor
 from src.logger import setup_logger
 from src.text_processing import load_and_preprocess_text
-from src.embedding import EmbeddingService, create_book_data
+from src.embedding import EmbeddingService
 from src.rag import rag_query
 from src.book_data_interface import BookDataInterface
 from src.openai_service import OpenAIService
 from src.pinecone_manager import PineconeManager
 from src.cache_manager import FileSystemCache, CacheManager
 from src.config import OPENAI_API_KEY, CACHE_DIR
+from typing import Union, TextIO
+
+from src.vector_store_service import VectorStoreService
 
 logger = setup_logger()
 
@@ -17,25 +22,44 @@ class BookAssistant:
     
     def __init__(self):
         """Initialize all necessary services."""
+        # Базовые сервисы
         self.openai_client = OpenAI(api_key=OPENAI_API_KEY)
-        self.openai_service = OpenAIService()
         self.vector_store = PineconeManager()
         self.cache_manager = CacheManager(FileSystemCache(CACHE_DIR))
         
+        # Сервисы для обработки данных
+        self.openai_service = OpenAIService()
         self.embedding_service = EmbeddingService(
             openai_client=self.openai_client,
-            vector_store=self.vector_store,
             cache_manager=self.cache_manager
+        )
+        self.vector_store_service = VectorStoreService(self.vector_store)
+        
+        # Фабрика для создания BookData
+        self.book_data_factory = BookDataFactory(
+            embedding_service=self.embedding_service,
+            vector_store_service=self.vector_store_service
         )
         logger.info("Book Assistant initialized")
 
-    def load_and_process_book(self, book_path: str) -> BookDataInterface:
-        """Load and process book from file."""
+    def load_and_process_book(self, input_data: Union[str, TextIO]) -> BookDataInterface:
+        """Load and process book from file path or text content."""
         try:
-            text = load_and_preprocess_text(book_path)
-            book_data = create_book_data(text, self.embedding_service)
-            logger.info(f"Book data created. Number of chunks: {len(book_data.get_chunks())}")
-            return book_data
+            # Получаем текст
+            if isinstance(input_data, str):
+                if os.path.exists(input_data):
+                    file_processor = FileProcessor()
+                    text = file_processor.process_file(input_data)
+                else:
+                    text = input_data
+            else:
+                text = input_data.read()
+            
+            if not text:
+                raise ValueError("Empty text content")
+                
+            logger.info(f"Text content loaded, length: {len(text)}")
+            return self.book_data_factory.create_from_text(text)
         except Exception as e:
             logger.error(f"Error processing book: {str(e)}")
             raise
@@ -44,7 +68,7 @@ class BookAssistant:
         """Generate answer for a question about the book."""
         logger.info(f"Processing query: {query}")
         try:
-            answer = rag_query(query, book_data, self.openai_service)
+            answer = rag_query(query, book_data, self.openai_service, self.embedding_service)
             logger.info(f"Generated answer: {answer}")
             return answer
         except Exception as e:

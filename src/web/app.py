@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 import os
 from cli import BookAssistant
 from logger import setup_logger
+from file_processor import FileProcessor
 
 logger = setup_logger('web')
 
@@ -12,7 +13,13 @@ def create_app():
                 static_folder=os.path.join(os.path.dirname(__file__), 'static'))
     
     assistant = BookAssistant()
+    file_processor = FileProcessor()
     book_data = None
+
+    ALLOWED_EXTENSIONS = {'txt', 'pdf', 'doc', 'docx', 'odt'}
+    
+    def allowed_file(filename):
+        return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
     # Конфигурация
     UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '..', '..', 'uploads')
@@ -30,12 +37,13 @@ def create_app():
                 if file.filename == '':
                     return jsonify({'status': 'error', 'message': 'No selected file'})
                 
-                if file:
-                    filename = secure_filename(file.filename)
-                    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-                    file.save(file_path)
-                    
+                if file and allowed_file(file.filename):
                     try:
+                        filename = secure_filename(file.filename)
+                        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                        file.save(file_path)
+                        
+                        # Загружаем и обрабатываем книгу напрямую через assistant
                         book_data = assistant.load_and_process_book(file_path)
                         return jsonify({
                             'status': 'success',
@@ -45,6 +53,8 @@ def create_app():
                     except Exception as e:
                         logger.error(f"Error processing file: {str(e)}")
                         return jsonify({'status': 'error', 'message': str(e)})
+                else:
+                    return jsonify({'status': 'error', 'message': 'Invalid file type'})
             elif 'question' in request.form:
                 if not book_data:
                     return jsonify({'status': 'error', 'message': 'No book loaded'})
