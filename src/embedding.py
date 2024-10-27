@@ -1,4 +1,4 @@
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Callable
 import os
 import pickle
 import numpy as np
@@ -28,11 +28,13 @@ class EmbeddingService:
         self, 
         openai_client: OpenAI,
         cache_manager: CacheManager,
-        batch_size: int = BATCH_SIZE
+        batch_size: int = BATCH_SIZE,
+        progress_callback: Optional[Callable[[str, int, int], None]] = None
     ):
         self.client = openai_client
         self.cache_manager = cache_manager
         self.batch_size = batch_size
+        self.progress_callback = progress_callback
 
     def _get_cached_embeddings(self, texts: List[str]) -> Optional[List[List[float]]]:
         """Get embeddings from cache if they exist."""
@@ -57,27 +59,34 @@ class EmbeddingService:
         """Create embeddings for chunks in batches."""
         logger.info(f"Creating embeddings for {len(chunks)} chunks")
         all_embeddings = []
+        total_chunks = len(chunks)
         
-        for i in tqdm(range(0, len(chunks), self.batch_size), desc="Creating embeddings"):
+        if self.progress_callback:
+            self.progress_callback("Creating embeddings", 0, total_chunks)
+        
+        for i in tqdm(range(0, total_chunks, self.batch_size), desc="Creating embeddings"):
             batch = chunks[i:i + self.batch_size]
             
-            # Проверяем кэш
+            # Обновляем прогресс
+            if self.progress_callback:
+                self.progress_callback("Processing chunks", i, total_chunks)
+            
+            # Проверяем кэш и создаем эмбеддинги
             cached_embeddings = self._get_cached_embeddings(batch)
             if cached_embeddings:
-                logger.info(f"Using cached embeddings for batch {i//self.batch_size + 1}")
                 all_embeddings.extend(cached_embeddings)
                 continue
-            
-            # Создаем новые эмбеддинги
+                
             response = self.client.embeddings.create(
                 input=batch,
                 model=EMBEDDING_MODEL
             )
             batch_embeddings = [item.embedding for item in response.data]
-            
-            # Кэшируем результаты
             self._cache_embeddings(batch, batch_embeddings)
             all_embeddings.extend(batch_embeddings)
+        
+        if self.progress_callback:
+            self.progress_callback("Embeddings created", total_chunks, total_chunks)
             
         return all_embeddings
 

@@ -1,18 +1,32 @@
 from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 import os
-from cli import BookAssistant
+from cli import BookAssistant, progress_callback
 from logger import setup_logger
 from file_processor import FileProcessor
+from flask_socketio import SocketIO
+from .websocket import socketio, emit_progress
 
 logger = setup_logger('web')
+
+def web_progress_callback(status: str, current: int, total: int):
+    """Callback для отправки прогресса через WebSocket."""
+    socketio.emit('progress_update', {
+        'status': status,
+        'current': current,
+        'total': total,
+        'progress': (current / total * 100) if total > 0 else 0
+    })
 
 def create_app():
     app = Flask(__name__, 
                 template_folder=os.path.join(os.path.dirname(__file__), 'templates'),
                 static_folder=os.path.join(os.path.dirname(__file__), 'static'))
     
-    assistant = BookAssistant()
+    socketio.init_app(app)
+    
+    # Инициализируем BookAssistant с веб-колбэком
+    assistant = BookAssistant(progress_callback=web_progress_callback)
     file_processor = FileProcessor()
     book_data = None
 
@@ -43,18 +57,25 @@ def create_app():
                         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
                         file.save(file_path)
                         
-                        # Загружаем и обрабатываем книгу напрямую через assistant
+                        # Отправляем начальный статус
+                        emit_progress("Starting file processing", 0, 100)
+                        
+                        # Загружаем и обрабатываем книгу
                         book_data = assistant.load_and_process_book(file_path)
+                        
+                        # Отправляем финальный статус
+                        emit_progress("Processing complete", 100, 100, {
+                            'chunks_count': len(book_data.get_chunks())
+                        })
+                        
                         return jsonify({
                             'status': 'success',
                             'message': 'File processed successfully',
                             'chunks_count': len(book_data.get_chunks())
                         })
                     except Exception as e:
-                        logger.error(f"Error processing file: {str(e)}")
+                        emit_progress("Error", 0, 100, {'error': str(e)})
                         return jsonify({'status': 'error', 'message': str(e)})
-                else:
-                    return jsonify({'status': 'error', 'message': 'Invalid file type'})
             elif 'question' in request.form:
                 if not book_data:
                     return jsonify({'status': 'error', 'message': 'No book loaded'})

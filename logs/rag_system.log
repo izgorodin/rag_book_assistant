@@ -34,3 +34,18 @@
 2024-10-27 17:27:09,901 - root - INFO - cache_manager.py:78 - clear - Cache cleared
 2024-10-27 17:30:14,441 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
 2024-10-27 17:30:14,441 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:39:47,272 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/embedding.py
+2024-10-27 17:39:47,286 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:40:32,241 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 17:40:32,242 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 17:44:24,775 - root - ERROR - main.py:41 - main - Application error: No module named 'flask_socketio'
+Traceback (most recent call last):
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/main.py", line 35, in main
+    from web.app import run_web_app
+  File "/Users/eduardizgorodin/Projects/rag_book_assistant/src/web/app.py", line 7, in <module>
+    from flask_socketio import SocketIO
+ModuleNotFoundError: No module named 'flask_socketio'
+2024-10-27 17:48:45,583 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 17:48:45,687 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 18:00:22,788 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 18:00:22,897 - root - INFO - cache_manager.py:78 - clear - Cache cleared

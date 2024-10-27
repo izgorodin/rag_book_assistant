@@ -10,17 +10,23 @@ from src.book_data_interface import BookDataInterface
 from src.openai_service import OpenAIService
 from src.pinecone_manager import PineconeManager
 from src.cache_manager import FileSystemCache, CacheManager
-from src.config import OPENAI_API_KEY, CACHE_DIR
+from src.config import OPENAI_API_KEY, CACHE_DIR, BATCH_SIZE
 from typing import Union, TextIO
-
 from src.vector_store_service import VectorStoreService
 
 logger = setup_logger()
 
+def progress_callback(status: str, current: int, total: int):
+    """Callback для отображения прогресса в консоли."""
+    progress = (current / total) * 100 if total > 0 else 0
+    print(f"\r{status}: [{current}/{total}] {progress:.1f}%", end="", flush=True)
+    if current == total:
+        print()  # Новая строка после завершения
+
 class BookAssistant:
     """Main class for handling book processing and question answering."""
     
-    def __init__(self):
+    def __init__(self, progress_callback=progress_callback):
         """Initialize all necessary services."""
         # Базовые сервисы
         self.openai_client = OpenAI(api_key=OPENAI_API_KEY)
@@ -31,14 +37,16 @@ class BookAssistant:
         self.openai_service = OpenAIService()
         self.embedding_service = EmbeddingService(
             openai_client=self.openai_client,
-            cache_manager=self.cache_manager
+            cache_manager=self.cache_manager,
+            progress_callback=progress_callback  # Добавляем callback
         )
-        self.vector_store_service = VectorStoreService(self.vector_store)
+        self.vector_store_service = VectorStoreService(vector_store=self.vector_store)
         
         # Фабрика для создания BookData
         self.book_data_factory = BookDataFactory(
             embedding_service=self.embedding_service,
-            vector_store_service=self.vector_store_service
+            vector_store_service=self.vector_store_service,
+            progress_callback=progress_callback  # Добавляем callback
         )
         logger.info("Book Assistant initialized")
 
