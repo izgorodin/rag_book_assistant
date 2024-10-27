@@ -21,3 +21,4 @@ pinecone-client
 pypdf
 tenacity
 flask-socketio
+gunicorn

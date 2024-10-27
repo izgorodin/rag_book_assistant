@@ -26,9 +26,6 @@ jobs:
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         FLASK_SECRET_KEY: ${{ secrets.FLASK_SECRET_KEY }}
-        ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
-        TESTER_PASSWORD: ${{ secrets.TESTER_PASSWORD }}
-        PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
       run: |
         python -m pytest
         

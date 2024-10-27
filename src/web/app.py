@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from werkzeug.utils import secure_filename
 import os
-from cli import BookAssistant, progress_callback
-from logger import setup_logger
-from file_processor import FileProcessor
+from src.cli import BookAssistant
+from src.logger import setup_logger
+from src.file_processor import FileProcessor
 from flask_socketio import SocketIO
 
 from src.config import FLASK_SECRET_KEY
