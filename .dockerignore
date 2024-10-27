@@ -6,3 +6,12 @@ __pycache__/
 .pytest_cache/
 uploads/*
 logs/*
+tests/*
+cache/*
+data/*
+*.pdf
+*.docx
+*.odt
+*.pkl
+*.log
+uploads/*

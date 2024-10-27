@@ -27,8 +27,13 @@ RUN pip install -e .
 # Создание необходимых директорий
 RUN mkdir -p uploads logs
 
-# Установка NLTK данных
-RUN python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk.download('wordnet')"
+# Устанавливаем NLTK данные
+RUN python -c "import nltk; \
+    nltk.download('punkt'); \
+    nltk.download('stopwords'); \
+    nltk.download('wordnet'); \
+    nltk.download('averaged_perceptron_tagger'); \
+    nltk.download('punkt_tab')"
 
 # Установка переменных окружения
 ENV FLASK_APP=src.web.app
