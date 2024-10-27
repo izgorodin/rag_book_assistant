@@ -1,7 +1,7 @@
-from logger import setup_logger
+from src.logger import setup_logger
 import argparse
 import nltk
-from cli import BookAssistant
+from src.cli import BookAssistant
 
 logger = setup_logger('main.log')
 
@@ -32,7 +32,7 @@ def main():
             assistant = BookAssistant()
             assistant.run()
         elif args.mode == "web":
-            from web.app import run_web_app
+            from src.web.app import run_web_app
             run_web_app()
         elif args.mode == "api":
             logger.info("API mode not implemented yet")

@@ -1,9 +1,9 @@
 from typing import Dict, Any, Optional, Callable
-from logger import setup_logger
-from book_data_interface import BookDataInterface
-from embedding import EmbeddingService
-from text_processing import load_and_preprocess_text
-from vector_store_service import VectorStoreService
+from src.logger import setup_logger
+from src.book_data_interface import BookDataInterface
+from src.embedding import EmbeddingService
+from src.text_processing import load_and_preprocess_text
+from src.vector_store_service import VectorStoreService
 from tqdm import tqdm
 
 logger = setup_logger()

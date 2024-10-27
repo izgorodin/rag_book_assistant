@@ -4,7 +4,6 @@ from unittest.mock import Mock, patch
 from src.data_source import DataSource
 from src.search import SimpleSearch, HybridSearch, get_search_strategy, BaseSearch
 from src.book_data_interface import BookDataInterface
-from tests.test_utils import ListDataSource
 from src.error_handler import format_error_message, RAGError
 
 @pytest.fixture

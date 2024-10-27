@@ -1,15 +1,20 @@
 import pytest
 import time
 from src.openai_service import OpenAIService
-from src.rag import generate_answer, rag_query
-from src.search import HybridSearch, SimpleSearch
+from src.rag import generate_answer, rag_query, evaluate_answer_quality, preprocess_text
+from src.search import HybridSearch, SimpleSearch, CosineSearch
 from src.book_data_interface import BookDataInterface
 from unittest.mock import patch, MagicMock, Mock
 from src.error_handler import format_error_message, RAGError
+from src.embedding import EmbeddingService
 
 @pytest.fixture
 def mock_openai_service():
     return MagicMock(spec=OpenAIService)
+
+@pytest.fixture
+def mock_embedding_service():
+    return MagicMock(spec=EmbeddingService)
 
 @pytest.fixture
 def mock_book_data():
@@ -140,3 +145,54 @@ def test_rag_query_error_handling(mock_book_data, mock_openai_service):
         result = rag_query("Test question", mock_book_data, mock_openai_service)
         expected_error_message = format_error_message(RAGError("Test error"))
         assert expected_error_message in result
+
+def test_preprocess_text():
+    test_text = "This is a TEST sentence with Punctuation!!!"
+    processed = preprocess_text(test_text)
+    assert isinstance(processed, str)
+    assert processed == "test sentence punctuation"
+
+def test_evaluate_answer_quality():
+    test_cases = [
+        ("The answer is correct", "The answer is correct", 1.0),
+        ("Different answer", "The answer is correct", 0.0),
+        ("", "The answer", 0.0),
+        ("The answer", "", 0.0),
+    ]
+    
+    for generated, reference, expected in test_cases:
+        score = evaluate_answer_quality(generated, reference)
+        assert score == expected
+
+def test_rag_query_basic(mock_book_data, mock_openai_service, mock_embedding_service):
+    query = "Test question"
+    mock_openai_service.generate_answer.return_value = "Test answer"
+    
+    with patch('src.rag.CosineSearch') as mock_search_class:
+        mock_search = MagicMock()
+        mock_search.search.return_value = [{'chunk': 'Test chunk', 'score': 0.9}]
+        mock_search_class.return_value = mock_search
+        
+        result = rag_query(query, mock_book_data, mock_openai_service, mock_embedding_service)
+        
+        assert isinstance(result, str)
+        mock_search.search.assert_called_once_with(query, top_k=3)
+        mock_openai_service.generate_answer.assert_called_once()
+
+def test_rag_query_error_handling(mock_book_data, mock_openai_service, mock_embedding_service):
+    query = "Test question"
+    mock_openai_service.generate_answer.side_effect = Exception("Test error")
+    
+    result = rag_query(query, mock_book_data, mock_openai_service, mock_embedding_service)
+    assert "Sorry, I encountered an error" in result
+
+@pytest.mark.integration
+def test_rag_query_integration(mock_book_data, mock_embedding_service):
+    openai_service = OpenAIService()
+    query = "What is the main topic?"
+    chunks = ["This is a test document about AI.", "AI is changing the world."]
+    mock_book_data.get_chunks.return_value = chunks
+    
+    result = rag_query(query, mock_book_data, openai_service, mock_embedding_service)
+    assert isinstance(result, str)
+    assert len(result) > 0

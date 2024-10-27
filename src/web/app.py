@@ -4,10 +4,8 @@ import os
 from src.cli import BookAssistant
 from src.logger import setup_logger
 from src.file_processor import FileProcessor
-from flask_socketio import SocketIO
-
 from src.config import FLASK_SECRET_KEY
-from .websocket import socketio, emit_progress
+from src.web.websocket import emit_progress, socketio
 from functools import wraps
 
 logger = setup_logger('web')
@@ -151,7 +149,10 @@ def create_app():
 
     return app
 
-def run_web_app(host='0.0.0.0', port=None):
+def run_web_app():
     app = create_app()
-    port = int(os.environ.get('PORT', 5001))
-    socketio.run(app, host=host, port=port, debug=False)
+    socketio.init_app(app)
+    socketio.run(app, debug=True)
+
+if __name__ == "__main__":
+    run_web_app()

@@ -5,7 +5,7 @@ import PyPDF2
 from docx import Document
 from odf import text, teletype
 from odf.opendocument import load
-from logger import setup_logger
+from src.logger import setup_logger
 
 logger = setup_logger()
 
