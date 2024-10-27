@@ -35,6 +35,11 @@ def create_app():
     def allowed_file(filename):
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+    ALLOWED_EXTENSIONS = {'txt', 'pdf', 'doc', 'docx', 'odt'}
+    
+    def allowed_file(filename):
+        return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
     # Конфигурация
     UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '..', '..', 'uploads')
     os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -76,6 +81,8 @@ def create_app():
                     except Exception as e:
                         emit_progress("Error", 0, 100, {'error': str(e)})
                         return jsonify({'status': 'error', 'message': str(e)})
+                else:
+                    return jsonify({'status': 'error', 'message': 'Invalid file type'})
             elif 'question' in request.form:
                 if not book_data:
                     return jsonify({'status': 'error', 'message': 'No book loaded'})

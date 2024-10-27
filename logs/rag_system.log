@@ -49,3 +49,5 @@ ModuleNotFoundError: No module named 'flask_socketio'
 2024-10-27 17:48:45,687 - root - INFO - cache_manager.py:78 - clear - Cache cleared
 2024-10-27 18:00:22,788 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
 2024-10-27 18:00:22,897 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 19:15:03,285 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-27 19:15:03,868 - root - INFO - cache_manager.py:78 - clear - Cache cleared

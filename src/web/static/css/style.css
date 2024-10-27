@@ -1,0 +1,151 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.2;
+    color: #333;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.input-group input[type="file"],
+.input-group input[type="text"] {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    font-size: 14px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+#uploadStatus, #answerStatus {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    font-family: monospace;
+}
+
+#questionForm {
+    margin-top: 30px;
+}
+
+/* Медиа-запросы */
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 5px;
+    }
+}
+
+/* Стили для контейнера ответа */
+.answer-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e1e4e8;
+    position: relative;
+}
+
+/* Стили для markdown-контента */
+.markdown-body {
+    font-size: 14px;
+    line-height: 1.2;
+    color: #1f2328;
+    padding: 10px;
+    margin: 0;
+}
+
+.markdown-body p {
+    margin: 0;
+    padding: 0;
+}
+
+.markdown-body h1, 
+.markdown-body h2, 
+.markdown-body h3 {
+    margin: 0.4em 0 0 0;  /* Только отступ сверху */
+    padding: 0;
+    color: #24292f;
+    font-weight: 600;
+}
+
+.markdown-body ul, 
+.markdown-body ol {
+    margin: 0;
+    padding-left: 1em;
+}
+
+.markdown-body li {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+/* Переопределяем стили marked.js */
+.markdown-body > *:first-child {
+    margin-top: 0 !important;
+}
+
+.markdown-body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Убираем лишние отступы между элементами */
+.markdown-body br {
+    display: none;
+}
+
+.markdown-body p + p,
+.markdown-body p + ul,
+.markdown-body ul + p {
+    margin-top: 0.3em;  /* Минимальный отступ между блоками */
+}
+
+/* Стили для выделенного текста */
+.markdown-body strong {
+    color: #1a73e8;
+}
+
+/* Стили для кнопки копирования */
+.copy-icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 16px;
+    color: #6e7681;
+    transition: color 0.2s;
+}
+
+.copy-icon:hover {
+    color: #1a73e8;
+}
+
+.copy-icon.copied {
+    color: #28a745;
+}

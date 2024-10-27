@@ -2,8 +2,11 @@ import os
 from openai import OpenAI
 from src.book_data_factory import BookDataFactory
 from src.file_processor import FileProcessor
+from src.book_data_factory import BookDataFactory
+from src.file_processor import FileProcessor
 from src.logger import setup_logger
 from src.text_processing import load_and_preprocess_text
+from src.embedding import EmbeddingService
 from src.embedding import EmbeddingService
 from src.rag import rag_query
 from src.book_data_interface import BookDataInterface
@@ -29,10 +32,13 @@ class BookAssistant:
     def __init__(self, progress_callback=progress_callback):
         """Initialize all necessary services."""
         # Базовые сервисы
+        # Базовые сервисы
         self.openai_client = OpenAI(api_key=OPENAI_API_KEY)
         self.vector_store = PineconeManager()
         self.cache_manager = CacheManager(FileSystemCache(CACHE_DIR))
         
+        # Сервисы для обработки данных
+        self.openai_service = OpenAIService()
         # Сервисы для обработки данных
         self.openai_service = OpenAIService()
         self.embedding_service = EmbeddingService(
@@ -48,11 +54,35 @@ class BookAssistant:
             vector_store_service=self.vector_store_service,
             progress_callback=progress_callback  # Добавляем callback
         )
+        self.vector_store_service = VectorStoreService(self.vector_store)
+        
+        # Фабрика для создания BookData
+        self.book_data_factory = BookDataFactory(
+            embedding_service=self.embedding_service,
+            vector_store_service=self.vector_store_service
+        )
         logger.info("Book Assistant initialized")
 
     def load_and_process_book(self, input_data: Union[str, TextIO]) -> BookDataInterface:
         """Load and process book from file path or text content."""
+    def load_and_process_book(self, input_data: Union[str, TextIO]) -> BookDataInterface:
+        """Load and process book from file path or text content."""
         try:
+            # Получаем текст
+            if isinstance(input_data, str):
+                if os.path.exists(input_data):
+                    file_processor = FileProcessor()
+                    text = file_processor.process_file(input_data)
+                else:
+                    text = input_data
+            else:
+                text = input_data.read()
+            
+            if not text:
+                raise ValueError("Empty text content")
+                
+            logger.info(f"Text content loaded, length: {len(text)}")
+            return self.book_data_factory.create_from_text(text)
             # Получаем текст
             if isinstance(input_data, str):
                 if os.path.exists(input_data):
@@ -76,6 +106,7 @@ class BookAssistant:
         """Generate answer for a question about the book."""
         logger.info(f"Processing query: {query}")
         try:
+            answer = rag_query(query, book_data, self.openai_service, self.embedding_service)
             answer = rag_query(query, book_data, self.openai_service, self.embedding_service)
             logger.info(f"Generated answer: {answer}")
             return answer
