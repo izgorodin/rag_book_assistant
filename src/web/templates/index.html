@@ -156,33 +156,34 @@
 
             $('#questionForm').submit(function(e) {
                 e.preventDefault();
-                var formData = $(this).serialize();
-                $('#answerStatus').html('<p>Processing question...</p>');
+                var question = $('#question').val();
+                
+                if (!question) {
+                    $('#answerStatus').html('<div class="error">Please enter a question</div>');
+                    return;
+                }
 
+                $('#answerStatus').html('<div>Processing question...</div>');
+                
                 $.ajax({
-                    url: '/',
-                    type: 'POST',
-                    data: formData,
-                    success: function(data) {
-                        var markdownAnswer = '**Answer:**\n\n' + data.answer;
-                        var htmlAnswer = marked.parse(markdownAnswer);
-                        $('#answerStatus').html('<div class="markdown-body">' + htmlAnswer + '<i class="fas fa-copy copy-icon" title="Copy to clipboard"></i></div>');
-                        
-                        // Add click event for copy icon
-                        $('.copy-icon').click(function() {
-                            var textToCopy = data.answer;
-                            navigator.clipboard.writeText(textToCopy).then(function() {
-                                $(this).addClass('copied');
-                                setTimeout(() => {
-                                    $(this).removeClass('copied');
-                                }, 1500);
-                            }.bind(this), function(err) {
-                                console.error('Could not copy text: ', err);
-                            });
-                        });
+                    url: '/ask',
+                    method: 'POST',
+                    data: { question: question },
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            var formattedAnswer = marked.parse(response.answer);
+                            $('#answerStatus').html(`
+                                <div class="answer-container markdown-body">
+                                    <div class="answer-text">${formattedAnswer}</div>
+                                    <i class="fas fa-copy copy-icon" title="Copy to clipboard"></i>
+                                </div>
+                            `);
+                        } else {
+                            $('#answerStatus').html(`<div class="error">${response.message}</div>`);
+                        }
                     },
-                    error: function(data) {
-                        $('#answerStatus').html('<p>Error: ' + data.responseJSON.message + '</p>');
+                    error: function() {
+                        $('#answerStatus').html('<div class="error">Error processing question</div>');
                     }
                 });
             });

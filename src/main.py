@@ -1,7 +1,7 @@
-from src.logger import setup_logger
+from logger import setup_logger
 import argparse
 import nltk
-from src.cli import BookAssistant
+from cli import BookAssistant
 
 logger = setup_logger('main.log')
 
@@ -21,8 +21,8 @@ def main():
     logger.info("Starting the RAG Book Assistant")
     
     parser = argparse.ArgumentParser(description="RAG Book Assistant")
-    parser.add_argument("mode", choices=["cli", "api"], 
-                       help="Mode to run the assistant (cli or api)")
+    parser.add_argument("mode", choices=["cli", "web", "api"], 
+                       help="Mode to run the assistant (cli, web, or api)")
     args = parser.parse_args()
 
     initialize_nltk()
@@ -31,6 +31,9 @@ def main():
         if args.mode == "cli":
             assistant = BookAssistant()
             assistant.run()
+        elif args.mode == "web":
+            from web.app import run_web_app
+            run_web_app()
         elif args.mode == "api":
             logger.info("API mode not implemented yet")
             print("API mode not implemented yet")
