@@ -148,7 +148,7 @@ def create_book_data(
         'key_phrases': preprocessed_data.get('key_phrases', [])
     }
     
-    return BookDataInterface(chunks, embeddings, processed_text)
+    return BookDataInterface(chunks, embeddings, processed_text, embedding_service)
 
 def cosine_similarity(a: List[float], b: List[float]) -> float:
     """Calculate cosine similarity between two vectors."""

@@ -146,7 +146,7 @@ class HybridSearch(BaseSearch):
             weighted_tokens.extend([lemma] * int(weight * 10))  # Multiply by 10 to keep it as integer
 
         weighted_query = ' '.join(weighted_tokens)
-        return self.data_source.get_embedding_service().create_embedding(weighted_query)
+        return self.data_source.create_embedding(weighted_query)
 
     @handle_rag_error
     def _combine_scores(self, bm25_scores: np.ndarray, embedding_scores: np.ndarray) -> np.ndarray:
@@ -177,7 +177,7 @@ class CosineSimilaritySearch(BaseSearch):
             List of dictionaries containing chunks and their similarity scores
         """
         try:
-            query_embedding = self.data_source.get_embedding_service().create_embedding(query)
+            query_embedding = self.data_source.create_embedding(query)
             scores = np.array([
                 cosine_similarity(query_embedding, chunk_embedding) 
                 for chunk_embedding in self.embeddings

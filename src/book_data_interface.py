@@ -4,11 +4,13 @@ import os
 from src.data_source import DataSource
 
 class BookDataInterface(DataSource):
-    def __init__(self, chunks: List[str], embeddings: List[List[float]], processed_text: Dict[str, Any]):
+    def __init__(self, chunks: List[str], embeddings: List[List[float]], 
+                 processed_text: Dict[str, Any], embedding_service: Any):
         self._chunks = chunks
         self._embeddings = embeddings
         self._processed_text = processed_text
-
+        self._embedding_service = embedding_service
+        
     @classmethod
     def from_file(cls, file_path: str):
         with open(file_path, 'rb') as f:
@@ -36,3 +38,6 @@ class BookDataInterface(DataSource):
 
     def get_processed_text(self) -> Dict[str, Any]:
         return self._processed_text
+
+    def create_embedding(self, text: str) -> List[float]:
+        return self._embedding_service.create_embedding(text)

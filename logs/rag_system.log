@@ -6,3 +6,5 @@
 2024-10-27 15:15:22,494 - root - INFO - cache_manager.py:78 - clear - Cache cleared
 2024-10-27 15:16:13,594 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/embedding.py
 2024-10-27 15:16:13,604 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-27 15:28:01,088 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/embedding.py
+2024-10-27 15:28:01,100 - root - INFO - cache_manager.py:78 - clear - Cache cleared
