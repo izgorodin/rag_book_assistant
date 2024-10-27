@@ -19,12 +19,13 @@ def web_progress_callback(status: str, current: int, total: int):
 def create_app():
     app = Flask(__name__, 
                 template_folder=os.path.join(os.path.dirname(__file__), 'templates'),
-                static_folder=os.path.join(os.path.dirname(__file__), 'static'))
+                static_folder=os.path.join(os.path.dirname(__file__), 'static'),
+                static_url_path='')
     
-    app.secret_key = FLASK_SECRET_KEY  # Замените на реальный секретный ключ
+    app.secret_key = os.environ.get('FLASK_SECRET_KEY', FLASK_SECRET_KEY)
     USERS = {
-        'admin': 'admin1q2w3e',
-        'user': 'user1q2w3e'   # Замените на реальные учетные данные
+        'admin': os.environ.get('ADMIN_PASSWORD', 'admin1q2w3e'),
+        'tester1': os.environ.get('TESTER_PASSWORD', '41dsf3qw7sDa')
     }
     
     socketio.init_app(app)
@@ -150,16 +151,7 @@ def create_app():
 
     return app
 
-def run_web_app(host='0.0.0.0', port=5001):
+def run_web_app(host='0.0.0.0', port=None):
     app = create_app()
-    while True:
-        try:
-            logger.info(f"Starting Flask app on port {port}")
-            app.run(debug=True, host=host, port=port)
-            break
-        except OSError as e:
-            if "Address already in use" in str(e):
-                logger.warning(f"Port {port} is in use, trying {port + 1}")
-                port += 1
-            else:
-                raise
+    port = int(os.environ.get('PORT', 5001))
+    socketio.run(app, host=host, port=port, debug=False)

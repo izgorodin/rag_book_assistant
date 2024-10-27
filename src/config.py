@@ -28,3 +28,5 @@ EMBEDDINGS_DIR = 'data/embeddings'
 BATCH_SIZE = 100
 
 FLASK_SECRET_KEY = os.environ.get('FLASK_SECRET_KEY') 
+ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD')
+TESTER_PASSWORD = os.environ.get('TESTER_PASSWORD')
