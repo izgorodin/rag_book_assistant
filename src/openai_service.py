@@ -32,13 +32,25 @@ class BaseOpenAIService(ABC):
 
 class OpenAIService(BaseOpenAIService):
     def generate_answer(self, query: str, context: str) -> str:
+        system_prompt = (
+            "You are an AI assistant specialized in accurately extracting information from the provided text. "
+            "Use only the information given in the context and avoid adding any external data. "
+            "Provide answers using Markdown formatting for better readability, including lists, headings, and text highlighting where appropriate."
+            "If the question requires detailed information, such as listing all relevant points or quoting specific passages, "
+            "adjust the length of your response accordingly to fully address the request. "
+            "If the required information is not available in the context, briefly explain what is known and mention that the specific information is missing. "
+            "For example, if asked to list all key events, provide a comprehensive list based on the context. If asked for a quote, include the exact text if it is present in the context."
+        )
+        user_prompt = (
+            f"Context:\n{context}\n\n"
+            f"Question:\n{query}\n\n"
+            "Please provide an answer based on the above context."
+        )
         messages = [
-            {"role": "system", "content": "You are a helpful assistant specialized in extracting precise information from texts. Focus on providing accurate information. If the exact information is not available, explain what is known and what is missing."},
-            {"role": "user", "content": f"Context: {context}\n\nQuestion: {query}\n\nProvide a concise answer based on the context. If specific information is not available, briefly explain what is known and what is missing."}
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}
         ]
-        
         logger.info(f"Generating answer for query: {query}")
-        
         try:
             response = self.client.chat.completions.create(
                 model=GPT_MODEL,

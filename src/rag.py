@@ -28,12 +28,10 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from src.openai_service import OpenAIService
-from src.embedding import create_embeddings
-from sklearn.metrics.pairwise import cosine_similarity
 from src.logger import setup_logger
 from src.book_data_interface import BookDataInterface
 from src.search import get_search_strategy
-from src.error_handler import handle_rag_error, format_error_message, RAGError
+from src.error_handler import handle_rag_error
 
 logger = setup_logger()
 
@@ -58,17 +56,14 @@ def preprocess_text(text: str) -> str:
     tokens = [lemmatizer.lemmatize(token) for token in tokens]
     return ' '.join(tokens)
 
-@handle_rag_error
-def generate_answer(query: str, context: str, openai_service: OpenAIService) -> str:
-    return openai_service.generate_answer(query, context)
 
 @handle_rag_error
-def rag_query(question: str, book_data: BookDataInterface, openai_service: OpenAIService, search_strategy: str = "simple") -> str:
-    logger.info(f"Processing query: {question}")
+def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAIService, search_strategy: str = "cosine") -> str:
+    logger.info(f"Processing query: {query}")
     search = get_search_strategy(search_strategy, book_data)
-    relevant_chunks = search.search(question)
+    relevant_chunks = search.search(query)
     context = " ".join(chunk['chunk'] for chunk in relevant_chunks)
-    return openai_service.generate_answer(question, context)
+    return openai_service.generate_answer(query, context)
 
 @handle_rag_error
 def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> float:
@@ -97,5 +92,9 @@ def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> flo
     return score
 
 @handle_rag_error
-def get_answer_from_system(question: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
-    return rag_query(question, book_data, openai_service)
+def get_answer_from_system(query: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
+    return rag_query(query, book_data, openai_service)
+
+def format_context(chunks: List[str]) -> str:
+    """Форматирует найденные чанки в контек��т для запроса."""
+    return "\n\n".join(f"[{i+1}] {chunk}" for i, chunk in enumerate(chunks))

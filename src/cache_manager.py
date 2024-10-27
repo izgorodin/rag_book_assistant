@@ -1,95 +1,157 @@
+from abc import ABC, abstractmethod
 import os
 import shutil
 import hashlib
 import pickle
+from typing import Any, Dict, Optional
+from src.config import CACHE_DIR
+from src.logger import setup_logger
 
-CACHE_DIR = 'data/cache'
-EMBEDDINGS_DIR = 'data/embeddings'
-WATCHED_FILES = ['src/cli.py', 'src/rag.py', 'src/embedding.py']
+logger = setup_logger()
 
-def get_file_hash(file_path):
-    with open(file_path, 'rb') as f:
-        return hashlib.md5(f.read()).hexdigest()
-
-def save_file_hashes():
-    hashes = {}
-    for file in WATCHED_FILES:
-        if os.path.exists(file):
-            hashes[file] = get_file_hash(file)
+class CacheInterface(ABC):
+    """Abstract base class for cache implementations."""
     
-    with open('file_hashes.txt', 'w') as f:
-        for file, hash_value in hashes.items():
-            f.write(f"{file}:{hash_value}\n")
-
-def check_for_changes():
-    if not os.path.exists('file_hashes.txt'):
-        return True
+    @abstractmethod
+    def save(self, key: str, data: Any) -> None:
+        """Save data to cache."""
+        pass
     
-    with open('file_hashes.txt', 'r') as f:
-        stored_hashes = dict(line.strip().split(':') for line in f)
+    @abstractmethod
+    def load(self, key: str) -> Optional[Any]:
+        """Load data from cache."""
+        pass
     
-    for file in WATCHED_FILES:
-        if os.path.exists(file):
-            current_hash = get_file_hash(file)
-            if file not in stored_hashes or stored_hashes[file] != current_hash:
-                return True
+    @abstractmethod
+    def clear(self) -> None:
+        """Clear all cached data."""
+        pass
     
-    return False
+    @abstractmethod
+    def exists(self, key: str) -> bool:
+        """Check if key exists in cache."""
+        pass
 
-def clear_cache():
-    if os.path.exists(CACHE_DIR):
-        shutil.rmtree(CACHE_DIR)
-        os.makedirs(CACHE_DIR)
-    if os.path.exists(EMBEDDINGS_DIR):
-        shutil.rmtree(EMBEDDINGS_DIR)
-        os.makedirs(EMBEDDINGS_DIR)
-    print("Cache cleared due to changes in key files.")
-
-def manage_cache():
-    if check_for_changes():
-        clear_cache()
-        save_file_hashes()
-
-# New functions
-
-def get_cache_key(text: str) -> str:
-    """
-    Generate a unique cache key for the given text.
+class FileSystemCache(CacheInterface):
+    """File system based cache implementation."""
     
-    Args:
-        text (str): The input text to generate a key for.
+    def __init__(self, cache_dir: str):
+        self.cache_dir = cache_dir
+        os.makedirs(cache_dir, exist_ok=True)
+        
+    def _get_file_path(self, key: str) -> str:
+        """Generate file path for cache key."""
+        hashed_key = hashlib.md5(key.encode()).hexdigest()
+        return os.path.join(self.cache_dir, f"{hashed_key}.pkl")
     
-    Returns:
-        str: A unique cache key.
-    """
-    return hashlib.md5(text.encode('utf-8')).hexdigest()
-
-def save_to_cache(key: str, data: any):
-    """
-    Save data to the cache using a hashed key.
-
-    Args:
-        key (str): The cache key.
-        data (any): The data to be cached.
-    """
-    os.makedirs(CACHE_DIR, exist_ok=True)
-    hashed_key = hashlib.md5(key.encode()).hexdigest()
-    file_path = os.path.join(CACHE_DIR, f"{hashed_key}.pkl")
-    with open(file_path, 'wb') as f:
-        pickle.dump(data, f)
-
-def load_from_cache(key: str) -> any:
-    """
-    Load data from the cache using the given key.
+    def save(self, key: str, data: Any) -> None:
+        """Save data to cache file."""
+        try:
+            file_path = self._get_file_path(key)
+            with open(file_path, 'wb') as f:
+                pickle.dump(data, f)
+            logger.debug(f"Saved data to cache: {key}")
+        except Exception as e:
+            logger.error(f"Error saving to cache: {str(e)}")
+            raise
     
-    Args:
-        key (str): The cache key.
+    def load(self, key: str) -> Optional[Any]:
+        """Load data from cache file."""
+        try:
+            file_path = self._get_file_path(key)
+            if os.path.exists(file_path):
+                with open(file_path, 'rb') as f:
+                    data = pickle.load(f)
+                logger.debug(f"Loaded data from cache: {key}")
+                return data
+            return None
+        except Exception as e:
+            logger.error(f"Error loading from cache: {str(e)}")
+            return None
     
-    Returns:
-        any: The cached data if found, None otherwise.
-    """
-    file_path = os.path.join(CACHE_DIR, f"{key}.pkl")
-    if os.path.exists(file_path):
+    def clear(self) -> None:
+        """Clear all cache files."""
+        try:
+            if os.path.exists(self.cache_dir):
+                shutil.rmtree(self.cache_dir)
+                os.makedirs(self.cache_dir)
+            logger.info("Cache cleared")
+        except Exception as e:
+            logger.error(f"Error clearing cache: {str(e)}")
+            raise
+    
+    def exists(self, key: str) -> bool:
+        """Check if key exists in cache."""
+        return os.path.exists(self._get_file_path(key))
+
+class CacheManager:
+    """Manages caching operations with file change detection."""
+    
+    WATCHED_FILES = [
+        'src/cli.py',
+        'src/rag.py',
+        'src/embedding.py'
+    ]
+    
+    def __init__(
+        self,
+        cache_implementation: CacheInterface,
+        hash_file: str = 'file_hashes.txt'
+    ):
+        self.cache = cache_implementation
+        self.hash_file = hash_file
+        self._check_for_changes()
+    
+    def _get_file_hash(self, file_path: str) -> str:
+        """Calculate MD5 hash of a file."""
         with open(file_path, 'rb') as f:
-            return pickle.load(f)
-    return None
+            return hashlib.md5(f.read()).hexdigest()
+    
+    def _save_file_hashes(self) -> None:
+        """Save current file hashes."""
+        hashes = {}
+        for file in self.WATCHED_FILES:
+            if os.path.exists(file):
+                hashes[file] = self._get_file_hash(file)
+        
+        with open(self.hash_file, 'w') as f:
+            for file, hash_value in hashes.items():
+                f.write(f"{file}:{hash_value}\n")
+    
+    def _check_for_changes(self) -> None:
+        """Check for changes in watched files and clear cache if needed."""
+        if not os.path.exists(self.hash_file):
+            self.cache.clear()
+            self._save_file_hashes()
+            return
+        
+        with open(self.hash_file, 'r') as f:
+            stored_hashes = dict(line.strip().split(':') for line in f)
+        
+        for file in self.WATCHED_FILES:
+            if os.path.exists(file):
+                current_hash = self._get_file_hash(file)
+                if file not in stored_hashes or stored_hashes[file] != current_hash:
+                    logger.info(f"Detected changes in {file}")
+                    self.cache.clear()
+                    self._save_file_hashes()
+                    return
+    
+    def save(self, key: str, data: Any) -> None:
+        """Save data to cache."""
+        self.cache.save(key, data)
+    
+    def load(self, key: str) -> Optional[Any]:
+        """Load data from cache."""
+        return self.cache.load(key)
+    
+    def clear(self) -> None:
+        """Clear cache."""
+        self.cache.clear()
+        
+    def exists(self, key: str) -> bool:
+        """Check if key exists in cache."""
+        return self.cache.exists(key)
+
+# Create default cache manager instance
+default_cache = CacheManager(FileSystemCache(CACHE_DIR))

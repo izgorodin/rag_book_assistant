@@ -1,7 +1,7 @@
 import numpy as np
 from typing import List, Dict, Any, Protocol
 from rank_bm25 import BM25Okapi
-from src.embedding import create_embeddings, cosine_similarity
+from src.embedding import cosine_similarity
 from nltk.corpus import wordnet
 from nltk import word_tokenize, pos_tag
 from nltk.stem import WordNetLemmatizer
@@ -44,14 +44,6 @@ class BaseSearch:
         top_indices = np.argsort(scores)[-top_k:][::-1]
         return [{'chunk': self.chunks[i], 'score': float(scores[i])} for i in top_indices]
 
-class SimpleSearch(BaseSearch):
-    @handle_rag_error
-    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
-        query_embedding = create_embeddings([query])[0]
-        if len(query_embedding) != EMBEDDING_DIMENSION:
-            raise ValueError(f"Query embedding has incorrect dimension: {len(query_embedding)}")
-        scores = np.array([cosine_similarity(query_embedding, chunk_embedding) for chunk_embedding in self.embeddings])
-        return self._get_top_chunks(scores, top_k)
 
 class HybridSearch(BaseSearch):
     @handle_rag_error
@@ -113,12 +105,30 @@ class HybridSearch(BaseSearch):
     @handle_rag_error
     def _get_embedding_scores(self, query: str) -> np.ndarray:
         query_embedding = self._create_weighted_query_embedding(query)
-        if query_embedding.shape != self.embeddings[0].shape:
-            raise ValueError(f"Query embedding shape {query_embedding.shape} does not match chunk embedding shape {self.embeddings[0].shape}")
+        if isinstance(query_embedding, np.ndarray):
+            query_shape = query_embedding.shape
+        else:
+            query_shape = (len(query_embedding),)
+        if isinstance(self.embeddings[0], np.ndarray):
+            emb_shape = self.embeddings[0].shape
+        else:
+            emb_shape = (len(self.embeddings[0]),)
+        
+        if query_shape != emb_shape:
+            raise ValueError(f"Query embedding shape {query_shape} does not match chunk embedding shape {emb_shape}")
         return np.array([cosine_similarity(query_embedding, chunk_embedding) for chunk_embedding in self.embeddings])
 
     @handle_rag_error
     def _create_weighted_query_embedding(self, query: str) -> List[float]:
+        """
+        Create weighted query embedding based on POS tags.
+        
+        Args:
+            query: Search query
+        
+        Returns:
+            Weighted query embedding
+        """
         tokens = word_tokenize(query)
         pos_tags = pos_tag(tokens)
         weighted_tokens = []
@@ -131,12 +141,12 @@ class HybridSearch(BaseSearch):
                 weight = 1.3  # Increase weight for verbs
             elif pos.startswith('JJ'):
                 weight = 1.2  # Increase weight for adjectives
-            
+        
             lemma = self.lemmatizer.lemmatize(token)
             weighted_tokens.extend([lemma] * int(weight * 10))  # Multiply by 10 to keep it as integer
 
         weighted_query = ' '.join(weighted_tokens)
-        return create_embeddings([weighted_query])[0]
+        return self.data_source.get_embedding_service().create_embedding(weighted_query)
 
     @handle_rag_error
     def _combine_scores(self, bm25_scores: np.ndarray, embedding_scores: np.ndarray) -> np.ndarray:
@@ -151,11 +161,63 @@ class HybridSearch(BaseSearch):
         top_indices = np.argsort(scores)[-top_k:][::-1]
         return [{'chunk': self.chunks[i], 'score': float(scores[i])} for i in top_indices]
 
+class CosineSimilaritySearch(BaseSearch):
+    """Search implementation using cosine similarity between embeddings."""
+    
+    @handle_rag_error
+    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+        """
+        Search for most relevant chunks using cosine similarity between embeddings.
+        
+        Args:
+            query: Search query
+            top_k: Number of top results to return
+            
+        Returns:
+            List of dictionaries containing chunks and their similarity scores
+        """
+        try:
+            query_embedding = self.data_source.get_embedding_service().create_embedding(query)
+            scores = np.array([
+                cosine_similarity(query_embedding, chunk_embedding) 
+                for chunk_embedding in self.embeddings
+            ])
+            return self._get_top_chunks(scores, top_k)
+        except Exception as e:
+            raise RAGError(f"Error in cosine similarity search: {str(e)}")
+
 @handle_rag_error
 def get_search_strategy(strategy: str, data_source: DataSource) -> BaseSearch:
-    if strategy == "simple":
-        return SimpleSearch(data_source)
-    elif strategy == "hybrid":
-        return HybridSearch(data_source)
-    else:
-        raise ValueError(f"Unknown search strategy: {strategy}")
+    """
+    Get search strategy based on name.
+    
+    Available strategies:
+    - cosine: Simple cosine similarity search using embeddings
+    - hybrid: Combined BM25 and embedding-based search with query expansion
+    - semantic: (planned) Pure semantic search with advanced NLP
+    - fuzzy: (planned) Fuzzy string matching for typo tolerance
+    - contextual: (planned) Context-aware search using document structure
+    
+    Args:
+        strategy: Name of the search strategy
+        data_source: Data source containing chunks and embeddings
+        
+    Returns:
+        Initialized search strategy
+    """
+    strategies = {
+        "cosine": CosineSimilaritySearch,
+        "hybrid": HybridSearch,
+        # Планируемые стратегии:
+        # "semantic": SemanticSearch,
+        # "fuzzy": FuzzySearch,
+        # "contextual": ContextualSearch,
+        # "index": IndexSearch,
+        # "graph": GraphSearch,
+    }
+    
+    if strategy not in strategies:
+        logger.warning(f"Unknown search strategy: {strategy}, using cosine similarity search")
+        strategy = "cosine"
+        
+    return strategies[strategy](data_source)

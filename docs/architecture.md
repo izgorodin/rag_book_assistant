@@ -137,3 +137,161 @@ rag_book_assistant/
 ├── setup.py
 ├── .gitignore
 └── README.md
+
+
+
+| Класс | Методы | Переменные | Зависимости |
+|-------|---------|------------|-------------|
+| BookDataInterface | - `__init__(chunks, embeddings, processed_text)`<br>- `from_file(file_path)`<br>- `save(file_path)`<br>- `get_chunks()`<br>- `get_embeddings()`<br>- `get_processed_text()`<br>- `__len__()` | - `_chunks`<br>- `_embeddings`<br>- `_processed_text` | - `DataSource`<br>- `pickle`<br>- `os` |
+| OpenAIService | - `generate_answer(query, context)`<br>- `create_embeddings(texts)`<br>- `_handle_openai_error(error)` | - `client` | - `BaseOpenAIService`<br>- `OpenAI`<br>- `GPT_MODEL`<br>- `MAX_TOKENS` |
+| PineconeManager | - `__init__(project_id)`<br>- `upsert_embeddings(chunks, embeddings)`<br>- `get_or_create_embeddings(chunks)` | - `index`<br>- `project_id` | - `pinecone`<br>- `numpy` |
+| SimpleSearch | - `__init__(data_source)`<br>- `search(query, top_k)` | - `data_source` | - `BookDataInterface`<br>- `cosine_similarity` |
+| HybridSearch | - `__init__(data_source)`<br>- `search(query, top_k)` | - `data_source` | - `BookDataInterface`<br>- `cosine_similarity`<br>- `nltk` |
+| BaseOpenAIService | - `__init__(api_key)`<br>- `generate_answer()`<br>- `create_embeddings()`<br>- `_handle_openai_error()` | - `client` | - `OpenAI`<br>- `OPENAI_API_KEY` |
+
+**Основные функции:**
+
+| Функция | Параметры | Возвращает | Зависимости |
+|---------|-----------|------------|-------------|
+| `rag_query` | - `query: str`<br>- `book_data: BookDataInterface`<br>- `openai_service: OpenAIService`<br>- `search_strategy: str` | `str` | - `get_search_strategy`<br>- `OpenAIService` |
+| `create_embeddings` | - `chunks: List[str]` | `List[List[float]]` | - `OpenAI`<br>- `PineconeManager`<br>- `cache_manager` |
+| `load_and_process_book` | - `text_content: str` | `BookDataInterface` | - `text_processing`<br>- `embedding`<br>- `hashlib` |
+| `answer_question` | - `query: str`<br>- `book_data: BookDataInterface`<br>- `openai_service: OpenAIService` | `str` | - `rag_query`<br>- `logger` |
+
+**Глобальные переменные и константы:**
+
+| Категория | Переменные | Используется в |
+|-----------|------------|----------------|
+| Конфигурация | - `OPENAI_API_KEY`<br>- `GPT_MODEL`<br>- `MAX_TOKENS`<br>- `EMBEDDING_MODEL`<br>- `EMBEDDING_DIMENSION` | - `OpenAIService`<br>- `embedding.py` |
+| Логгеры | - `logger`<br>- `results_logger` | Везде |
+| Пути | - `CACHE_DIR`<br>- `TEST_FILES_DIR`<br>- `PATH_CONFIG` | - `cache_manager.py`<br>- `tests`<br>- `cli.py` |
+
+Теперь структура кода более наглядна и легче увидеть взаимосвязи между компонентами.
+
+### Классы
+
+| Класс | Методы | Переменные | Зависимости |
+|-------|---------|------------|-------------|
+| BookDataInterface | • `__init__(chunks, embeddings, processed_text)`<br>• `from_file(file_path)`<br>• `save(file_path)`<br>• `get_chunks()`<br>• `get_embeddings()`<br>• `get_processed_text()`<br>• `__len__()` | • `_chunks`<br>• `_embeddings`<br>• `_processed_text` | • `DataSource`<br>• `pickle`<br>• `os` |
+| OpenAIService | • `generate_answer(query, context)`<br>• `create_embeddings(texts)`<br>• `_handle_openai_error(error)` | • `client` | • `BaseOpenAIService`<br>• `OpenAI`<br>• `GPT_MODEL`<br>• `MAX_TOKENS` |
+| PineconeManager | • `__init__(project_id)`<br>• `upsert_embeddings(chunks, embeddings)`<br>• `get_or_create_embeddings(chunks)` | • `index`<br>• `project_id` | • `pinecone`<br>• `numpy` |
+| SimpleSearch | • `__init__(data_source)`<br>• `search(query, top_k)` | • `data_source` | • `BookDataInterface`<br>• `cosine_similarity` |
+| HybridSearch | • `__init__(data_source)`<br>• `search(query, top_k)` | • `data_source` | • `BookDataInterface`<br>• `cosine_similarity`<br>• `nltk` |
+
+### Основные функции
+
+| Функция | Параметры | Возвращает | Зависимости |
+|---------|-----------|------------|-------------|
+| `rag_query` | • `query: str`<br>• `book_data: BookDataInterface`<br>• `openai_service: OpenAIService`<br>• `search_strategy: str` | `str` | • `get_search_strategy`<br>• `OpenAIService` |
+| `create_embeddings` | • `chunks: List[str]` | `List[List[float]]` | • `OpenAI`<br>• `PineconeManager`<br>• `cache_manager` |
+| `load_and_process_book` | • `text_content: str` | `BookDataInterface` | • `text_processing`<br>• `embedding`<br>• `hashlib` |
+
+### Глобальные переменные
+
+| Категория | Переменные | Используется в |
+|-----------|------------|----------------|
+| Конфигурация | • `OPENAI_API_KEY`<br>• `GPT_MODEL`<br>• `MAX_TOKENS`<br>• `EMBEDDING_MODEL` | • `OpenAIService`<br>• `embedding.py` |
+| Логгеры | • `logger`<br>• `results_logger` | Везде |
+| Пути | • `CACHE_DIR`<br>• `TEST_FILES_DIR`<br>• `PATH_CONFIG` | • `cache_manager.py`<br>• `tests`<br>• `cli.py` |
+
+
+Теперь структура проекта гораздо нагляднее! Видно:
+RAG Book Assistant
+├── Классы
+│   ├── BookDataInterface (наследует DataSource)
+│   │   ├── Методы
+│   │   │   ├── __init__(chunks, embeddings, processed_text)
+│   │   │   ├── from_file(file_path)
+│   │   │   ├── save(file_path)
+│   │   │   ├── get_chunks()
+│   │   │   ├── get_embeddings()
+│   │   │   └── get_processed_text()
+│   │   ├── Переменные
+│   │   │   ├── chunks
+│   │   │   ├── embeddings
+│   │   │   └── processed_text
+│   │   └── Зависимости
+│   │       ├── DataSource
+│   │       ├── pickle
+│   │       └── os
+│   │
+│   ├── OpenAIService (наследует BaseOpenAIService)
+│   │   ├── Методы
+│   │   │   ├── generate_answer(query, context)
+│   │   │   ├── create_embeddings(texts)
+│   │   │   └── _handle_openai_error(error)
+│   │   ├── Переменные
+│   │   │   └── client
+│   │   └── Зависимости
+│   │       ├── OpenAI
+│   │       ├── GPT_MODEL
+│   │       └── MAX_TOKENS
+│   │
+│   ├── PineconeManager
+│   │   ├── Методы
+│   │   │   ├── __init__(project_id)
+│   │   │   ├── upsert_embeddings(chunks, embeddings)
+│   │   │   └── get_or_create_embeddings(chunks)
+│   │   ├── Переменные
+│   │   │   ├── index
+│   │   │   └── project_id
+│   │   └── Зависимости
+│   │       ├── pinecone
+│   │       └── numpy
+│   │
+│   └── Search Стратегии
+│       ├── SimpleSearch
+│       │   ├── Методы
+│       │   │   ├── __init__(data_source)
+│       │   │   └── search(query, top_k)
+│       │   └── Зависимости
+│       │       ├── BookDataInterface
+│       │       └── cosine_similarity
+│       │
+│       └── HybridSearch
+│           ├── Методы
+│           │   ├── __init__(data_source)
+│           │   └── search(query, top_k)
+│           └── Зависимости
+│               ├── BookDataInterface
+│               ├── cosine_similarity
+│               └── nltk
+│
+├── Основные функции
+│   ├── rag_query(query, book_data, openai_service, search_strategy)
+│   │   ├── Параметры
+│   │   │   ├── query: str
+│   │   │   ├── book_data: BookDataInterface
+│   │   │   ├── openai_service: OpenAIService
+│   │   │   └── search_strategy: str
+│   │   └── Зависимости
+│   │       ├── get_search_strategy
+│   │       └── OpenAIService
+│   │
+│   ├── create_embeddings(chunks)
+│   │   └── Зависимости
+│   │       ├── OpenAI
+│   │       ├── PineconeManager
+│   │       └── cache_manager
+│   │
+│   └── load_and_process_book(text_content)
+│       └── Зависимости
+│           ├── text_processing
+│           ├── embedding
+│           └── hashlib
+│
+└── Глобальные переменные и константы
+    ├── Конфигурация
+    │   ├── OPENAI_API_KEY
+    │   ├── GPT_MODEL
+    │   ├── MAX_TOKENS
+    │   └── EMBEDDING_MODEL
+    │
+    ├── Логгеры
+    │   ├── logger
+    │   └── results_logger
+    │
+    └── Пути
+        ├── CACHE_DIR
+        ├── TEST_FILES_DIR
+        └── PATH_CONFIG
