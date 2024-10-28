@@ -33,7 +33,7 @@ from src.book_data_interface import BookDataInterface
 from src.search import CosineSearch, get_search_strategy
 from src.utils.error_handler import handle_rag_error
 from src.embedding import EmbeddingService
-
+from src.config import TOP_K_CHUNKS
 logger = setup_logger()
 
 @handle_rag_error
@@ -43,10 +43,10 @@ def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAISe
     try:
         # Создаем поисковую стратегию с embedding_service
         search_strategy = CosineSearch(book_data, embedding_service)
-        relevant_chunks = search_strategy.search(query, top_k=3)
+        relevant_chunks = search_strategy.search(query, top_k=TOP_K_CHUNKS)
         
         # Формируем контекст из найденных чанков
-        context = " ".join(chunk['chunk'] for chunk in relevant_chunks)
+        context = format_context(relevant_chunks)
         
         # Генерируем ответ
         return openai_service.generate_answer(query, context)

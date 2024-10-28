@@ -13,7 +13,7 @@ from src.book_data_interface import BookDataInterface
 from src.openai_service import OpenAIService
 from src.pinecone_manager import PineconeManager
 from src.cache_manager import CacheManager
-from src.config import OPENAI_API_KEY, CACHE_DIR, BATCH_SIZE
+from src.config import OPENAI_API_KEY, CACHE_DIR
 from typing import Union, TextIO
 from src.vector_store_service import VectorStoreService
 
@@ -79,7 +79,6 @@ class BookAssistant:
         """Generate answer for a question about the book."""
         logger.info(f"Processing query: {query}")
         try:
-            answer = rag_query(query, book_data, self.openai_service, self.embedding_service)
             answer = rag_query(query, book_data, self.openai_service, self.embedding_service)
             logger.info(f"Generated answer: {answer}")
             return answer
