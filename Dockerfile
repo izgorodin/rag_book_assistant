@@ -28,12 +28,19 @@ RUN pip install -e .
 RUN mkdir -p uploads logs
 
 # Устанавливаем NLTK данные
+# Загрузка NLTK данных
 RUN python -c "import nltk; \
     nltk.download('punkt'); \
+    nltk.download('punkt_tab'); \
     nltk.download('stopwords'); \
     nltk.download('wordnet'); \
+    nltk.download('words'); \
     nltk.download('averaged_perceptron_tagger'); \
-    nltk.download('punkt_tab')"
+    nltk.download('averaged_perceptron_tagger_eng'); \
+    nltk.download('omw-1.4'); \
+    nltk.download('tagsets'); \
+    nltk.download('maxent_ne_chunker_tab'); \
+    nltk.download('universal_tagset')"
 
 # Установка переменных окружения
 ENV FLASK_APP=src.web.app
@@ -42,8 +49,8 @@ ENV PYTHONPATH=/app
 # Открытие порта
 EXPOSE 8080
 
-# Копируем wsgi файл
-COPY src/web/wsgi.py .
+# Копируем WSGI файл
+COPY src/web/wsgi.py /app/src/web/wsgi.py
 
 # Меняем команду запуска
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--worker-class", "eventlet", "--timeout", "120", "wsgi:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--worker-class", "eventlet", "--timeout", "120", "src.web.wsgi:app"]
