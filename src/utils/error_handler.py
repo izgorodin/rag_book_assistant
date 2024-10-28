@@ -1,6 +1,6 @@
 from typing import Callable, Any
 from functools import wraps
-from src.logger import setup_logger
+from src.utils.logger import setup_logger
 
 logger = setup_logger()
 

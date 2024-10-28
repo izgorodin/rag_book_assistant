@@ -15,5 +15,6 @@ class DataSource(ABC):
         pass
 
     @abstractmethod
-    def create_embedding(self, text: str) -> List[float]:
+    def create_embeddings(self, text: str) -> List[float]:
+        """Create embedding using the associated embedding service."""
         pass

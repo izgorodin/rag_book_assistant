@@ -5,8 +5,8 @@ from src.config import (
     PINECONE_API_KEY, PINECONE_CLOUD, EMBEDDING_DIMENSION,
     PINECONE_INDEX_NAME, PINECONE_METRIC, PINECONE_REGION
 )
-from src.error_handler import RAGError
-from src.logger import setup_logger
+from src.utils.error_handler import RAGError
+from src.utils.logger import setup_logger
 
 logger = setup_logger()
 

@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify, session, redirect, u
 from werkzeug.utils import secure_filename
 import os
 from src.cli import BookAssistant
-from src.logger import setup_logger
+from src.utils.logger import setup_logger
 from src.file_processor import FileProcessor
 from src.config import FLASK_SECRET_KEY
 from src.web.websocket import emit_progress, socketio

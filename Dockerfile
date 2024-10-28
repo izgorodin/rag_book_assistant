@@ -1,6 +1,10 @@
 # Базовый образ
 FROM python:3.11-slim
 
+# Добавляем DNS настройки
+RUN echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+RUN echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+
 # Рабочая директория
 WORKDIR /app
 

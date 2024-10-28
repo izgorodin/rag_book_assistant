@@ -1,7 +1,7 @@
 from typing import List, Dict, Any
 import time
 import random
-from src.logger import setup_logger
+from src.utils.logger import setup_logger
 
 logger = setup_logger()
 

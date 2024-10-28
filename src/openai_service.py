@@ -2,9 +2,10 @@ from abc import ABC, abstractmethod
 from openai import OpenAI, RateLimitError, APIError, APITimeoutError, APIConnectionError
 from openai.types.chat import ChatCompletion
 from src.config import OPENAI_API_KEY, GPT_MODEL, MAX_TOKENS
-from typing import List, Dict, Union
+from typing import List, Union
 import httpx
-from src.logger import setup_logger
+from src.embedding import EmbeddingService
+from src.utils.logger import setup_logger
 
 logger = setup_logger()
 
@@ -31,6 +32,13 @@ class BaseOpenAIService(ABC):
         pass
 
 class OpenAIService(BaseOpenAIService):
+    def __init__(self, api_key: str = OPENAI_API_KEY):
+        super().__init__(api_key)
+        self.embedding_service = None  # Will be injected
+
+    def set_embedding_service(self, embedding_service: EmbeddingService):
+        self.embedding_service = embedding_service
+
     def generate_answer(self, query: str, context: str) -> str:
         system_prompt = (
             "You are an AI assistant specialized in accurately extracting information from the provided text. "
@@ -64,13 +72,9 @@ class OpenAIService(BaseOpenAIService):
             return f"Sorry, I encountered an error while generating the answer: {str(error)}"
 
     def create_embeddings(self, texts: List[str]) -> List[List[float]]:
-        try:
-            response = self.client.embeddings.create(input=texts, model="text-embedding-ada-002")
-            return [embedding.embedding for embedding in response.data]
-        except Exception as e:
-            error = self._handle_openai_error(e)
-            logger.error(f"Error in create_embeddings: {str(error)}")
-            raise ValueError(f"Failed to create embeddings: {str(error)}")
+        if not self.embedding_service:
+            raise ValueError("EmbeddingService not initialized")
+        return self.embedding_service.create_embeddings(texts)
 
     def _handle_openai_error(self, error: Exception) -> Union[RateLimitError, APIError, APITimeoutError, APIConnectionError, Exception]:
         if isinstance(error, (RateLimitError, APIError, APITimeoutError, APIConnectionError)):

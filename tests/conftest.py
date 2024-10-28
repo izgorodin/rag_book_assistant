@@ -3,7 +3,7 @@ from unittest.mock import Mock, patch
 from openai import OpenAI
 import os
 import time
-from src.logger import setup_logger
+from src.utils.logger import setup_logger
 
 logger = setup_logger()
 

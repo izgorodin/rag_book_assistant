@@ -5,7 +5,7 @@ import pypdf
 from docx import Document
 from odf import text, teletype
 from odf.opendocument import load
-from src.logger import setup_logger
+from src.utils.logger import setup_logger
 
 logger = setup_logger()
 

@@ -1,4 +1,4 @@
-from src.logger import setup_logger
+from src.utils.logger import setup_logger
 import argparse
 import nltk
 from src.cli import BookAssistant

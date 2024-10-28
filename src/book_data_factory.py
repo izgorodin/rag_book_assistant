@@ -1,10 +1,11 @@
-from typing import Dict, Any, Optional, Callable
-from src.logger import setup_logger
+from typing import Dict, Any, Optional, Callable, List, Union
+from src.utils.logger import setup_logger
 from src.book_data_interface import BookDataInterface
 from src.embedding import EmbeddingService
-from src.text_processing import load_and_preprocess_text
+from src.text_processing import load_and_preprocess_text, extract_dates, extract_named_entities, extract_key_phrases
 from src.vector_store_service import VectorStoreService
 from tqdm import tqdm
+import time
 
 logger = setup_logger()
 
@@ -17,35 +18,87 @@ class BookDataFactory:
         self.vector_store_service = vector_store_service
         self.progress_callback = progress_callback
 
-    def create_from_text(self, text: str) -> BookDataInterface:
-        """Create BookDataInterface from raw text."""
-        if self.progress_callback:
-            self.progress_callback("Starting text processing", 0, 3)
+    def create_from_text(self, input_data: Union[str, Dict[str, Any]]) -> BookDataInterface:
+        """Create BookDataInterface from raw text or preprocessed data."""
+        try:
+            logger.info(f"Starting create_from_text with input type: {type(input_data)}")
             
-        # Предобработка текста
-        preprocessed_data = load_and_preprocess_text(text)
-        chunks = preprocessed_data.get('chunks', [])
-        
-        if not chunks:
-            raise ValueError("No chunks found in preprocessed data")
-        
-        if self.progress_callback:
-            self.progress_callback("Creating embeddings", 1, 3)
+            if self.progress_callback:
+                self.progress_callback("Starting text processing", 0, 4)
             
-        # Создаем эмбеддинги
-        embeddings = self.embedding_service.create_embeddings(chunks)
-        
-        if self.progress_callback:
-            self.progress_callback("Storing vectors", 2, 3)
+            # Get preprocessed data
+            logger.info("Calling load_and_preprocess_text...")
+            preprocessed_data = load_and_preprocess_text(input_data)
+            logger.info(f"Preprocessed data type: {type(preprocessed_data)}")
+            logger.info(f"Preprocessed data keys: {preprocessed_data.keys()}")
             
-        # Сохраняем в vector store
-        self.vector_store_service.store_vectors(chunks, embeddings)
-        
-        if self.progress_callback:
-            self.progress_callback("Completed", 3, 3)
+            chunks = preprocessed_data['chunks']
+            logger.info(f"Chunks type: {type(chunks)}")
+            logger.info(f"First chunk type (if exists): {type(chunks[0]) if chunks else 'no chunks'}")
             
-        return BookDataInterface(
-            chunks=chunks,
-            embeddings=embeddings,
-            processed_text=preprocessed_data
-        )
+            if not chunks:
+                raise ValueError("No chunks found in preprocessed data")
+            
+            if self.progress_callback:
+                self.progress_callback("Extracting features", 1, 4)
+
+            # Convert chunks to text
+            logger.info("Converting chunks to text...")
+            text_chunks = [str(chunk) for chunk in chunks]
+            logger.info(f"Text chunks type: {type(text_chunks)}")
+            logger.info(f"First text chunk type: {type(text_chunks[0])}")
+            
+            # Extract features
+            logger.info("Extracting features...")
+            dates = extract_dates(text_chunks)
+            logger.info(f"Dates extracted: {len(dates)}")
+            entities = extract_named_entities(text_chunks)
+            logger.info(f"Entities extracted: {len(entities)}")
+            key_phrases = extract_key_phrases(text_chunks)
+            logger.info(f"Key phrases extracted: {len(key_phrases)}")
+            
+            if self.progress_callback:
+                self.progress_callback("Creating embeddings", 2, 4)
+            
+            # Create embeddings
+            logger.info("Creating embeddings...")
+            embeddings = self._create_embeddings_with_retry(text_chunks)
+            logger.info(f"Embeddings created: {len(embeddings)}")
+            
+            if self.progress_callback:
+                self.progress_callback("Storing vectors", 3, 4)
+            
+            # Store vectors
+            logger.info("Storing vectors...")
+            self.vector_store_service.store_vectors(text_chunks, embeddings)
+            logger.info("Vectors stored successfully")
+            
+            if self.progress_callback:
+                self.progress_callback("Completed", 4, 4)
+            
+            logger.info("Creating BookDataInterface instance...")
+            return BookDataInterface(
+                chunks=text_chunks,
+                embeddings=embeddings,
+                processed_text=preprocessed_data,
+                embedding_service=self.embedding_service,  # Pass the service
+                dates=dates,
+                entities=entities,
+                key_phrases=key_phrases
+            )
+        except Exception as e:
+            logger.error(f"Error in create_from_text: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            logger.error("Stack trace:", exc_info=True)
+            raise
+
+    def _create_embeddings_with_retry(self, chunks: List[str], max_retries: int = 3) -> List[List[float]]:
+        """Helper method to create embeddings with retry logic."""
+        for attempt in range(max_retries):
+            try:
+                return self.embedding_service.create_embeddings(chunks)
+            except Exception as e:
+                if attempt == max_retries - 1:
+                    raise
+                logger.warning(f"Attempt {attempt + 1} failed: {str(e)}. Retrying...")
+                time.sleep(2 ** attempt)

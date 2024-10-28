@@ -2,9 +2,9 @@ import pytest
 import numpy as np
 from unittest.mock import Mock, patch
 from src.data_source import DataSource
-from src.search import SimpleSearch, HybridSearch, get_search_strategy, BaseSearch
+from src.search import CosineSearch, HybridSearch, get_search_strategy, BaseSearch
 from src.book_data_interface import BookDataInterface
-from src.error_handler import format_error_message, RAGError
+from src.utils.error_handler import format_error_message, RAGError
 
 @pytest.fixture
 def mock_book_data():
@@ -44,7 +44,7 @@ def mock_data_source():
     return mock
 
 def test_simple_search(mock_data_source):
-    search = SimpleSearch(mock_data_source)
+    search = CosineSearch(mock_data_source)
     results = search.search("journey", top_k=2)
     assert len(results) == 2
     assert isinstance(results[0], dict)
@@ -59,7 +59,7 @@ def test_hybrid_search(mock_data_source):
 
 def test_get_search_strategy(mock_data_source):
     simple_strategy = get_search_strategy("simple", mock_data_source)
-    assert isinstance(simple_strategy, SimpleSearch)
+    assert isinstance(simple_strategy, CosineSearch)
 
     hybrid_strategy = get_search_strategy("hybrid", mock_data_source)
     assert isinstance(hybrid_strategy, HybridSearch)
@@ -86,7 +86,7 @@ def test_embedding_scores(mock_create_embeddings, mock_data_source):
     assert len(scores) == len(mock_data_source.get_chunks())
 
 def test_get_top_chunks(mock_data_source):
-    search = SimpleSearch(mock_data_source)
+    search = CosineSearch(mock_data_source)
     scores = np.array([0.9, 0.7, 0.8, 0.6])
     results = search._get_top_chunks(scores, top_k=2)
     assert len(results) == 2
@@ -95,7 +95,7 @@ def test_get_top_chunks(mock_data_source):
 @patch('src.search.create_embeddings')
 def test_simple_search_error_handling(mock_create_embeddings, mock_data_source):
     mock_create_embeddings.side_effect = Exception("Test error")
-    search = SimpleSearch(mock_data_source)
+    sssearch = CosineSearch(mock_data_source)
     
     with pytest.raises(RAGError) as exc_info:
         search.search("query")

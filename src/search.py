@@ -5,10 +5,10 @@ from src.embedding import EmbeddingService, cosine_similarity
 from nltk.corpus import wordnet
 from nltk import word_tokenize, pos_tag
 from nltk.stem import WordNetLemmatizer
-from src.logger import setup_logger
+from src.utils.logger import setup_logger
 from src.data_source import DataSource
 import nltk
-from src.error_handler import handle_rag_error, RAGError
+from src.utils.error_handler import handle_rag_error, RAGError
 from src.config import EMBEDDING_DIMENSION
 
 logger = setup_logger()

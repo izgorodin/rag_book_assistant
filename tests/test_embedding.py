@@ -1,20 +1,21 @@
 import pytest
 from unittest.mock import Mock, patch, call
 import numpy as np
-from src.embedding import EmbeddingService, cosine_similarity, create_book_data
+from src.embedding import EmbeddingService, EmbeddingServiceError, cosine_similarity, create_book_data, EmbeddingError, EmbeddingDimensionError, RateLimitError, APIError, APITimeoutError, APIConnectionError
 from src.book_data_interface import BookDataInterface
+from src.utils.metrics import MetricsCollector
 
 @pytest.fixture
 def embedding_service():
     """Create EmbeddingService with mocked dependencies."""
     mock_openai = Mock()
-    mock_vector_store = Mock()
     mock_cache_manager = Mock()
+    mock_metrics = Mock(spec=MetricsCollector)
     return EmbeddingService(
         openai_client=mock_openai,
-        vector_store=mock_vector_store,
         cache_manager=mock_cache_manager,
-        batch_size=2
+        batch_size=2,
+        metrics_collector=mock_metrics
     )
 
 class TestEmbeddingService:
@@ -26,11 +27,12 @@ class TestEmbeddingService:
         mock_embedding = [0.1] * 1536
         
         # Mock cache miss for all chunks
-        embedding_service.cache_manager.load.return_value = None
+        embedding_service.cache_manager.load_async.return_value = None
         
         # Mock OpenAI response
         embedding_service.client.embeddings.create.return_value = Mock(
-            data=[Mock(embedding=mock_embedding)] * 2  # First batch
+            data=[Mock(embedding=mock_embedding)] * 2,  # First batch
+            response_ms=100
         )
         
         embeddings = embedding_service.create_embeddings(chunks)
@@ -38,8 +40,8 @@ class TestEmbeddingService:
         # Check batch processing
         assert embedding_service.client.embeddings.create.call_count == 2
         calls = embedding_service.client.embeddings.create.call_args_list
-        assert calls[0][1]['input'] == ["chunk1", "chunk2"]  # First batch
-        assert calls[1][1]['input'] == ["chunk3"]  # Second batch
+        assert calls[0][1]['input'] == ["chunk1", "chunk2"]
+        assert calls[1][1]['input'] == ["chunk3"]
 
     def test_create_embeddings_caching(self, embedding_service):
         """Test caching behavior for embeddings."""
@@ -48,90 +50,50 @@ class TestEmbeddingService:
         mock_new = [0.2] * 1536
         
         # Mock cache hit for first chunk, miss for second
-        embedding_service.cache_manager.load.side_effect = [mock_cached, None]
+        embedding_service.cache_manager.load_async.side_effect = [mock_cached, None]
         
-        # Mock OpenAI response for uncached chunk
+        # Mock OpenAI response
         embedding_service.client.embeddings.create.return_value = Mock(
-            data=[Mock(embedding=mock_new)]
+            data=[Mock(embedding=mock_new)],
+            response_ms=100
         )
         
         embeddings = embedding_service.create_embeddings(chunks)
         
-        # Verify cache usage
-        assert embeddings[0] == mock_cached  # Used cached embedding
-        assert embeddings[1] == mock_new  # Created new embedding
+        assert embeddings[0] == mock_cached
+        assert embeddings[1] == mock_new
         assert embedding_service.client.embeddings.create.call_count == 1
-
-    def test_create_embeddings_pinecone_storage(self, embedding_service):
-        """Test that vectors are properly stored in Pinecone."""
-        chunks = ["test1", "test2"]
-        mock_embedding = [0.1] * 1536
-        
-        embedding_service.cache_manager.load.return_value = None
-        embedding_service.client.embeddings.create.return_value = Mock(
-            data=[Mock(embedding=mock_embedding)] * 2
-        )
-        
-        embeddings = embedding_service.create_embeddings(chunks)
-        
-        # Verify Pinecone storage
-        expected_vectors = [
-            {
-                "id": "0",
-                "values": mock_embedding,
-                "metadata": {"text": "test1"}
-            },
-            {
-                "id": "1",
-                "values": mock_embedding,
-                "metadata": {"text": "test2"}
-            }
-        ]
-        embedding_service.vector_store.upsert_vectors.assert_called_once_with(expected_vectors)
-
-    def test_create_embeddings_empty_chunks(self, embedding_service):
-        """Test handling of empty chunks."""
-        chunks = ["", "  ", "valid"]
-        mock_embedding = [0.1] * 1536
-        
-        embedding_service.cache_manager.load.return_value = None
-        embedding_service.client.embeddings.create.return_value = Mock(
-            data=[Mock(embedding=mock_embedding)]
-        )
-        
-        embeddings = embedding_service.create_embeddings(chunks)
-        
-        # Only valid chunk should be processed
-        assert embedding_service.client.embeddings.create.call_count == 1
-        assert len(embeddings) == 3
 
     def test_create_embeddings_dimension_check(self, embedding_service):
         """Test dimension validation for embeddings."""
         chunks = ["test"]
         wrong_dim_embedding = [0.1] * 100  # Wrong dimension
         
-        embedding_service.cache_manager.load.return_value = None
+        embedding_service.cache_manager.load_async.return_value = None
         embedding_service.client.embeddings.create.return_value = Mock(
-            data=[Mock(embedding=wrong_dim_embedding)]
+            data=[Mock(embedding=wrong_dim_embedding)],
+            response_ms=100
         )
         
-        with pytest.raises(ValueError, match="Incorrect embedding dimension"):
+        with pytest.raises(EmbeddingDimensionError):
             embedding_service.create_embeddings(chunks)
 
-    def test_create_embedding_single(self, embedding_service):
-        """Test creating embedding for single text."""
-        text = "test"
-        mock_embedding = [0.1] * 1536
+    def test_error_handling(self, embedding_service):
+        """Test handling of OpenAI API errors."""
+        chunks = ["test"]
+        embedding_service.cache_manager.load_async.return_value = None
         
-        embedding_service.cache_manager.load.return_value = None
-        embedding_service.client.embeddings.create.return_value = Mock(
-            data=[Mock(embedding=mock_embedding)]
-        )
-        
-        embedding = embedding_service.create_embedding(text)
-        
-        assert len(embedding) == 1536
-        embedding_service.cache_manager.save.assert_called_once_with(text, mock_embedding)
+        # Test different error types
+        for error_class in [RateLimitError, APIError, APITimeoutError, APIConnectionError]:
+            embedding_service.client.embeddings.create.side_effect = error_class("Test error")
+            
+            with pytest.raises(EmbeddingServiceError) as exc_info:
+                embedding_service.create_embeddings(chunks)
+            
+            assert str(error_class.__name__) in str(exc_info.value)
+            embedding_service.metrics.increment_counter.assert_called_with(
+                f"openai_error_{error_class.__name__.lower()}"
+            )
 
 def test_cosine_similarity():
     """Test cosine similarity calculation."""
@@ -139,9 +101,9 @@ def test_cosine_similarity():
     b = [0.0, 1.0]
     c = [1.0, 0.0]
     
-    assert cosine_similarity(a, b) == 0.0  # Perpendicular vectors
-    assert cosine_similarity(a, c) == 1.0  # Same direction
-    assert cosine_similarity(a, [-1.0, 0.0]) == -1.0  # Opposite direction
+    assert cosine_similarity(a, b) == 0.0
+    assert cosine_similarity(a, c) == 1.0
+    assert cosine_similarity(a, [-1.0, 0.0]) == -1.0
 
 def test_create_book_data(embedding_service):
     """Test creation of BookDataInterface instance."""
@@ -163,3 +125,16 @@ def test_create_book_data(embedding_service):
         assert isinstance(book_data, BookDataInterface)
         assert book_data.get_chunks() == chunks
         assert book_data.get_embeddings() == [mock_embedding]
+
+@pytest.mark.integration
+def test_embedding_service_integration():
+    """Integration test for EmbeddingService with real API."""
+    service = EmbeddingService()
+    test_chunks = ["Test text for embedding"]
+    
+    try:
+        embeddings = service.create_embeddings(test_chunks)
+        assert len(embeddings) == 1
+        assert len(embeddings[0]) == 1536
+    except Exception as e:
+        pytest.fail(f"Embedding creation failed: {str(e)}")

@@ -28,10 +28,10 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from src.openai_service import OpenAIService
-from src.logger import setup_logger
+from src.utils.logger import setup_logger
 from src.book_data_interface import BookDataInterface
 from src.search import CosineSearch, get_search_strategy
-from src.error_handler import handle_rag_error
+from src.utils.error_handler import handle_rag_error
 from src.embedding import EmbeddingService
 
 logger = setup_logger()

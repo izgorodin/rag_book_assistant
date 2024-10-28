@@ -1,7 +1,7 @@
 import pytest
 from src.pinecone_manager import PineconeManager
 from tests.mock_pinecone import MockPinecone
-from src.logger import setup_logger
+from src.utils.logger import setup_logger
 
 logger = setup_logger()
 

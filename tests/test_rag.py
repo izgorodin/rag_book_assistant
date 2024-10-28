@@ -5,7 +5,7 @@ from src.rag import generate_answer, rag_query, evaluate_answer_quality, preproc
 from src.search import HybridSearch, SimpleSearch, CosineSearch
 from src.book_data_interface import BookDataInterface
 from unittest.mock import patch, MagicMock, Mock
-from src.error_handler import format_error_message, RAGError
+from src.utils.error_handler import format_error_message, RAGError
 from src.embedding import EmbeddingService
 
 @pytest.fixture

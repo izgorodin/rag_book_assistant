@@ -1,6 +1,6 @@
 from typing import List, Dict, Any
-from src.logger import setup_logger
-from src.error_handler import handle_rag_error
+from src.utils.logger import setup_logger
+from src.utils.error_handler import handle_rag_error
 from src.pinecone_manager import PineconeManager
 
 logger = setup_logger()

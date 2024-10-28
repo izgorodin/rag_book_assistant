@@ -39,3 +39,14 @@ def test_create_test_exception():
             assert "Test error" in str(error)
         else:
             assert "Request timed out" in str(error)
+
+def test_openai_connectivity():
+    """Test direct connectivity to OpenAI API"""
+    service = OpenAIService()
+    try:
+        # Простой запрос для проверки соединения
+        result = service.create_embeddings(["Test connection"])
+        assert len(result) == 1
+        assert len(result[0]) == 1536
+    except Exception as e:
+        pytest.fail(f"OpenAI connection failed: {str(e)}")

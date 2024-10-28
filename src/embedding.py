@@ -1,137 +1,99 @@
-from typing import List, Dict, Any, Optional, Callable
+from typing import List, Dict, Any, Optional, Callable, Union
 import os
-import pickle
 import numpy as np
-from openai import OpenAI
-from tqdm import tqdm
+from openai import OpenAI, RateLimitError, APIError, APITimeoutError, APIConnectionError
+import httpx
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 from src.config import (
-    EMBEDDING_DIMENSION, 
+    EMBEDDING_DIMENSION,
     EMBEDDING_MODEL,
-    BATCH_SIZE  # Добавим в config.py: BATCH_SIZE = 100
+    BATCH_SIZE,
+    OPENAI_HTTP_CONFIG
 )
-from src.logger import setup_logger
-from src.text_processing import (
-    extract_dates, 
-    extract_named_entities, 
-    extract_key_phrases
-)
-from src.book_data_interface import BookDataInterface
-from src.pinecone_manager import PineconeManager
+from src.utils.logger import setup_logger
 from src.cache_manager import CacheManager
+from src.utils.metrics import MetricsCollector
+from src.text_processing import extract_dates, extract_named_entities, extract_key_phrases
 
 logger = setup_logger()
 
+class EmbeddingError(Exception):
+    """Base class for embedding-related errors."""
+    pass
+
+class EmbeddingDimensionError(EmbeddingError):
+    """Raised when embedding dimension is incorrect."""
+    pass
+
+class EmbeddingServiceError(EmbeddingError):
+    """Raised when there's an error in the embedding service."""
+    pass
+
 class EmbeddingService:
-    """Service for creating and managing embeddings."""
+    """Service for creating and managing embeddings with error handling and monitoring."""
     
     def __init__(
-        self, 
+        self,
         openai_client: OpenAI,
         cache_manager: CacheManager,
-        batch_size: int = BATCH_SIZE,
-        progress_callback: Optional[Callable[[str, int, int], None]] = None
+        progress_callback: Optional[Callable] = None
     ):
-        self.client = openai_client
+        self.openai_client = openai_client
         self.cache_manager = cache_manager
-        self.batch_size = batch_size
         self.progress_callback = progress_callback
-
-    def _get_cached_embeddings(self, texts: List[str]) -> Optional[List[List[float]]]:
-        """Get embeddings from cache if they exist."""
-        cached_embeddings = []
-        cache_hits = True
-        
-        for text in texts:
-            cached = self.cache_manager.load(text)
-            if cached is None:
-                cache_hits = False
-                break
-            cached_embeddings.append(cached)
-            
-        return cached_embeddings if cache_hits else None
-
-    def _cache_embeddings(self, texts: List[str], embeddings: List[List[float]]) -> None:
-        """Cache embeddings for given texts."""
-        for text, embedding in zip(texts, embeddings):
-            self.cache_manager.save(text, embedding)
-
-    def create_embeddings(self, chunks: List[str]) -> List[List[float]]:
-        """Create embeddings for chunks in batches."""
-        logger.info(f"Creating embeddings for {len(chunks)} chunks")
-        all_embeddings = []
-        total_chunks = len(chunks)
-        
-        if self.progress_callback:
-            self.progress_callback("Creating embeddings", 0, total_chunks)
-        
-        for i in tqdm(range(0, total_chunks, self.batch_size), desc="Creating embeddings"):
-            batch = chunks[i:i + self.batch_size]
-            
-            # Обновляем прогресс
-            if self.progress_callback:
-                self.progress_callback("Processing chunks", i, total_chunks)
-            
-            # Проверяем кэш и создаем эмбеддинги
-            cached_embeddings = self._get_cached_embeddings(batch)
-            if cached_embeddings:
-                all_embeddings.extend(cached_embeddings)
-                continue
-                
-            response = self.client.embeddings.create(
-                input=batch,
-                model=EMBEDDING_MODEL
-            )
-            batch_embeddings = [item.embedding for item in response.data]
-            self._cache_embeddings(batch, batch_embeddings)
-            all_embeddings.extend(batch_embeddings)
-        
-        if self.progress_callback:
-            self.progress_callback("Embeddings created", total_chunks, total_chunks)
-            
-        return all_embeddings
+        self.batch_size = BATCH_SIZE
+        logger.info("EmbeddingService initialized")
 
     def create_embedding(self, text: str) -> List[float]:
-        """Create embedding for a single text."""
-        if not text.strip():
-            return [0.0] * EMBEDDING_DIMENSION
-            
-        cached_embedding = self.cache_manager.load(text)
-        if cached_embedding:
-            return cached_embedding
+        """Create embedding for single text."""
+        return self.create_embeddings([text])[0]
 
-        response = self.client.embeddings.create(
-            input=[text], 
-            model=EMBEDDING_MODEL
-        )
-        embedding = response.data[0].embedding
-        
-        if len(embedding) != EMBEDDING_DIMENSION:
-            logger.error(f"Incorrect embedding dimension: {len(embedding)}")
-            raise ValueError(f"Incorrect embedding dimension: {len(embedding)}")
-            
-        self.cache_manager.save(text, embedding)
-        return embedding
+    def create_embeddings(self, texts: List[str]) -> List[List[float]]:
+        """Create embeddings for multiple texts."""
+        try:
+            all_embeddings = []
+            total_batches = (len(texts) + self.batch_size - 1) // self.batch_size
 
-def create_book_data(
-    preprocessed_data: Dict[str, Any],
-    embedding_service: EmbeddingService
-) -> BookDataInterface:
-    """Create BookDataInterface instance with embeddings and processed text."""
-    chunks = preprocessed_data.get('chunks', [])
-    if not chunks:
-        logger.error("No chunks found in preprocessed data")
-        raise ValueError("No chunks found in preprocessed data")
-        
-    logger.info(f"Creating embeddings for {len(chunks)} chunks")
-    embeddings = embedding_service.create_embeddings(chunks)
-    
-    processed_text = {
-        'dates': preprocessed_data.get('dates', []),
-        'entities': preprocessed_data.get('entities', {}),
-        'key_phrases': preprocessed_data.get('key_phrases', [])
-    }
-    
-    return BookDataInterface(chunks, embeddings, processed_text, embedding_service)
+            for i in range(0, len(texts), self.batch_size):
+                batch = texts[i:i + self.batch_size]
+                batch_embeddings = self._process_batch(batch)
+                all_embeddings.extend(batch_embeddings)
+
+                if self.progress_callback:
+                    current_batch = i // self.batch_size + 1
+                    self.progress_callback(f"Processing embeddings batch {current_batch}/{total_batches}", 
+                                        current_batch, total_batches)
+
+            return all_embeddings
+        except Exception as e:
+            logger.error(f"Error in create_embeddings: {str(e)}")
+            raise EmbeddingServiceError(f"Failed to create embeddings: {str(e)}")
+
+    def _process_batch(self, batch: List[str]) -> List[List[float]]:
+        """Process a batch of texts to create embeddings."""
+        try:
+            embeddings = []
+            for text in batch:
+                # Try to get from cache first
+                cached_embedding = self.cache_manager.get(text)
+                if cached_embedding is not None:
+                    embeddings.append(cached_embedding)
+                    continue
+
+                # If not in cache, create new embedding
+                response = self.openai_client.embeddings.create(
+                    input=text,
+                    model="text-embedding-ada-002"
+                )
+                
+                embedding = response.data[0].embedding
+                self.cache_manager.set(text, embedding)
+                embeddings.append(embedding)
+
+            return embeddings
+        except Exception as e:
+            logger.error(f"Error in _process_batch: {str(e)}")
+            raise EmbeddingServiceError(f"Failed to process batch: {str(e)}")
 
 def cosine_similarity(a: List[float], b: List[float]) -> float:
     """Calculate cosine similarity between two vectors."""
@@ -141,4 +103,10 @@ def cosine_similarity(a: List[float], b: List[float]) -> float:
     if a.shape != b.shape:
         raise ValueError(f"Vectors have different shapes: {a.shape} and {b.shape}")
     
-    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+    norm_a = np.linalg.norm(a)
+    norm_b = np.linalg.norm(b)
+    
+    if norm_a == 0 or norm_b == 0:
+        return 0.0
+        
+    return np.dot(a, b) / (norm_a * norm_b)

@@ -51,3 +51,96 @@ ModuleNotFoundError: No module named 'flask_socketio'
 2024-10-27 18:00:22,897 - root - INFO - cache_manager.py:78 - clear - Cache cleared
 2024-10-27 19:15:03,285 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
 2024-10-27 19:15:03,868 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-28 12:32:27,784 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:27,789 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:27,799 - root - INFO - openai_service.py:53 - generate_answer - Generating answer for query: Test query
+2024-10-28 12:32:27,800 - root - INFO - conftest.py:58 - timer - Test test_generate_answer took 0.02 seconds
+2024-10-28 12:32:27,800 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:27,801 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:27,808 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings took 0.01 seconds
+2024-10-28 12:32:27,808 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:27,809 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:27,816 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[RateLimitError-Rate limit exceeded] took 0.01 seconds
+2024-10-28 12:32:27,817 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:27,817 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:27,824 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APIError-API error] took 0.01 seconds
+2024-10-28 12:32:27,824 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:27,825 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:27,832 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APITimeoutError-Request timed out] took 0.01 seconds
+2024-10-28 12:32:27,833 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:27,833 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:27,839 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APIConnectionError-Connection error] took 0.01 seconds
+2024-10-28 12:32:27,840 - root - INFO - conftest.py:58 - timer - Test test_create_test_exception took 0.00 seconds
+2024-10-28 12:32:37,973 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:37,974 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:37,982 - root - INFO - openai_service.py:53 - generate_answer - Generating answer for query: Test query
+2024-10-28 12:32:37,982 - root - INFO - conftest.py:58 - timer - Test test_generate_answer took 0.01 seconds
+2024-10-28 12:32:37,983 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:37,983 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:37,990 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings took 0.01 seconds
+2024-10-28 12:32:37,991 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:37,991 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:37,998 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[RateLimitError-Rate limit exceeded] took 0.01 seconds
+2024-10-28 12:32:37,999 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:37,999 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:38,006 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APIError-API error] took 0.01 seconds
+2024-10-28 12:32:38,007 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:38,007 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:38,015 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APITimeoutError-Request timed out] took 0.01 seconds
+2024-10-28 12:32:38,015 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:38,016 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:38,022 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APIConnectionError-Connection error] took 0.01 seconds
+2024-10-28 12:32:38,023 - root - INFO - conftest.py:58 - timer - Test test_create_test_exception took 0.00 seconds
+2024-10-28 12:32:38,023 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-28 12:32:38,024 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-28 12:32:38,210 - openai._base_client - DEBUG - _base_client.py:452 - _build_request - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x1073df7e0>, 'json_data': {'input': ['Test connection'], 'model': 'text-embedding-ada-002', 'encoding_format': 'base64'}}
+2024-10-28 12:32:38,229 - openai._base_client - DEBUG - _base_client.py:987 - _request - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-10-28 12:32:38,230 - httpcore.connection - DEBUG - _trace.py:45 - trace - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-10-28 12:32:38,363 - httpcore.connection - DEBUG - _trace.py:45 - trace - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x107666480>
+2024-10-28 12:32:38,363 - httpcore.connection - DEBUG - _trace.py:45 - trace - start_tls.started ssl_context=<ssl.SSLContext object at 0x1073e2a50> server_hostname='api.openai.com' timeout=5.0
+2024-10-28 12:32:38,402 - httpcore.connection - DEBUG - _trace.py:45 - trace - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x107504ad0>
+2024-10-28 12:32:38,402 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.started request=<Request [b'POST']>
+2024-10-28 12:32:38,403 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_headers.complete
+2024-10-28 12:32:38,403 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.started request=<Request [b'POST']>
+2024-10-28 12:32:38,403 - httpcore.http11 - DEBUG - _trace.py:45 - trace - send_request_body.complete
+2024-10-28 12:32:38,403 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.started request=<Request [b'POST']>
+2024-10-28 12:32:38,690 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 28 Oct 2024 12:32:38 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-ada-002'), (b'openai-organization', b'uinside'), (b'openai-processing-ms', b'55'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'5000000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'4999996'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_e18a7a73e4df76c383612e72d131ee4b'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=gwIVo8F3Lb.zxU2Vx8BNuUFTEY4gDpjgYFwgjxP4rOw-1730118758-1.0.1.1-xUyUEu7PVifVbvJ6wG8NBt86bKb58uWUnfqLY6i5Fh8Xx5CKryZ9QPDoS3t2sloxxS52HDH2hN_HhRs3q.ZRQg; path=/; expires=Mon, 28-Oct-24 13:02:38 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=AyfdilLh6bpGBJ.1LUwhrCQ_Bf12AD.73xUnKQvQwVk-1730118758767-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d9af320aaea94fb-LIS'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-10-28 12:32:38,691 - httpx - INFO - _client.py:1038 - _send_single_request - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-28 12:32:38,691 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.started request=<Request [b'POST']>
+2024-10-28 12:32:38,691 - httpcore.http11 - DEBUG - _trace.py:45 - trace - receive_response_body.complete
+2024-10-28 12:32:38,691 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.started
+2024-10-28 12:32:38,691 - httpcore.http11 - DEBUG - _trace.py:45 - trace - response_closed.complete
+2024-10-28 12:32:38,691 - openai._base_client - DEBUG - _base_client.py:1026 - _request - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Mon, 28 Oct 2024 12:32:38 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-ada-002'), ('openai-organization', 'uinside'), ('openai-processing-ms', '55'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '5000000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '4999996'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '0s'), ('x-request-id', 'req_e18a7a73e4df76c383612e72d131ee4b'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=gwIVo8F3Lb.zxU2Vx8BNuUFTEY4gDpjgYFwgjxP4rOw-1730118758-1.0.1.1-xUyUEu7PVifVbvJ6wG8NBt86bKb58uWUnfqLY6i5Fh8Xx5CKryZ9QPDoS3t2sloxxS52HDH2hN_HhRs3q.ZRQg; path=/; expires=Mon, 28-Oct-24 13:02:38 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=AyfdilLh6bpGBJ.1LUwhrCQ_Bf12AD.73xUnKQvQwVk-1730118758767-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d9af320aaea94fb-LIS'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-10-28 12:32:38,692 - openai._base_client - DEBUG - _base_client.py:1034 - _request - request_id: req_e18a7a73e4df76c383612e72d131ee4b
+2024-10-28 12:32:38,694 - root - INFO - conftest.py:58 - timer - Test test_openai_connectivity took 0.67 seconds
+2024-10-28 12:32:38,714 - httpcore.connection - DEBUG - _trace.py:45 - trace - close.started
+2024-10-28 12:32:38,715 - httpcore.connection - DEBUG - _trace.py:45 - trace - close.complete
+2024-10-28 12:39:00,351 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/embedding.py
+2024-10-28 12:39:00,512 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-28 12:39:00,591 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_batch_processing took 0.07 seconds
+2024-10-28 12:39:00,595 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_caching took 0.00 seconds
+2024-10-28 12:39:00,599 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_pinecone_storage took 0.00 seconds
+2024-10-28 12:39:00,603 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_empty_chunks took 0.00 seconds
+2024-10-28 12:39:00,605 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_dimension_check took 0.00 seconds
+2024-10-28 12:39:00,608 - root - INFO - conftest.py:58 - timer - Test test_create_embedding_single took 0.00 seconds
+2024-10-28 12:39:00,609 - root - INFO - conftest.py:58 - timer - Test test_cosine_similarity took 0.00 seconds
+2024-10-28 12:39:00,612 - root - INFO - conftest.py:58 - timer - Test test_create_book_data took 0.00 seconds
+2024-10-28 12:53:13,342 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/embedding.py
+2024-10-28 12:53:13,344 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-28 13:28:44,147 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-28 13:28:44,148 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-28 14:12:49,972 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-28 14:12:49,973 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-28 14:18:54,308 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/cli.py
+2024-10-28 14:18:54,309 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-28 18:28:08,998 - root - INFO - cache_manager.py:135 - _check_for_changes - Detected changes in src/embedding.py
+2024-10-28 18:28:09,001 - root - INFO - cache_manager.py:78 - clear - Cache cleared
+2024-10-28 19:02:23,207 - root - INFO - cache_manager.py:47 - __init__ - FileSystemCache initialized at data/cache
+2024-10-28 19:03:45,260 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-28 19:04:43,415 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-28 19:04:44,855 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-28 19:15:29,196 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-28 19:16:04,714 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-28 19:16:12,908 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-28 19:25:03,886 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-28 19:25:05,244 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache

@@ -6,7 +6,6 @@ venv/
 rag_book_assistant_env/
 .DS_Store
 data/embeddings
-cache/
 logs/
 *.log
 rag_venv/

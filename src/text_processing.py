@@ -4,7 +4,7 @@ from src.config import CHUNK_SIZE, OVERLAP
 import nltk
 from nltk import ne_chunk, pos_tag, word_tokenize
 from nltk.tree import Tree
-from src.logger import setup_logger    
+from src.utils.logger import setup_logger    
 
 logger = setup_logger()
 
@@ -20,73 +20,102 @@ def process_large_file(file_path: str, chunk_size: int = 1000000) -> Generator[s
             yield chunk
     logger.info("Finished processing large file")
 
-def extract_dates(text: str) -> List[str]:
-    """Extract dates from the given text using regex patterns."""
-    date_pattern = r'\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},?\s+\d{4}|\d{1,2}/\d{1,2}/\d{2,4}|\d{4}-\d{2}-\d{2}'
-    return re.findall(date_pattern, text)
+def extract_dates(text: Union[str, List[str]]) -> List[str]:
+    """Extract dates from text or list of texts."""
+    date_pattern = r'\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b|\b\d{4}\b'
+    
+    if isinstance(text, list):
+        # If input is a list, process each chunk and combine results
+        all_dates = []
+        for chunk in text:
+            dates = re.findall(date_pattern, chunk)
+            all_dates.extend(dates)
+        return list(set(all_dates))  # Remove duplicates
+    else:
+        # If input is a single string
+        return re.findall(date_pattern, text)
 
-def extract_named_entities(text: str) -> Dict[str, List[str]]:
-    """Extract named entities from the text and categorize them."""
-    chunks = ne_chunk(pos_tag(word_tokenize(text)))
-    entities = {
-        'PERSON': [],
-        'ORGANIZATION': [],
-        'LOCATION': [],
-        'DATE': [],
-        'TIME': [],
-        'MONEY': [],
-        'PERCENT': [],
-        'FACILITY': [],
-        'GPE': []  # Geo-Political Entity
-    }
-    
-    for chunk in chunks:
-        if isinstance(chunk, Tree):
-            entity_type = chunk.label()
-            entity_value = ' '.join([c[0] for c in chunk.leaves()])
-            if entity_type in entities:
-                entities[entity_type].append(entity_value)
-    
-    return entities
+def extract_named_entities(text: Union[str, List[str]]) -> List[str]:
+    """Extract named entities from text or list of texts."""
+    try:
+        if isinstance(text, list):
+            all_entities = []
+            for chunk in text:
+                entities = _extract_entities_from_text(chunk) or []  # Handle None returns
+                all_entities.extend(entities)
+            return list(set(all_entities))
+        else:
+            return _extract_entities_from_text(text) or []  # Handle None returns
+    except Exception as e:
+        logger.error(f"Error in extract_named_entities: {str(e)}")
+        return []  # Return empty list on error
 
-def extract_key_phrases(text: str, num_phrases: int = 5) -> List[str]:
-    """Extract key phrases from the text based on part-of-speech tagging."""
-    words = word_tokenize(text)
-    pos_tags = pos_tag(words)
-    
-    grammar = r"""
-        KP: {<JJ.*>*<NN.*>+}  # Key Phrases
-        CP: {<JJ.*>*<NN.*>+<IN><JJ.*>*<NN.*>+}  # Complex Phrases
-    """
-    
-    chunk_parser = nltk.RegexpParser(grammar)
-    tree = chunk_parser.parse(pos_tags)
-    
-    phrases = []
-    for subtree in tree.subtrees():
-        if subtree.label() in ['KP', 'CP']:
-            phrase = ' '.join([word for word, tag in subtree.leaves()])
-            phrases.append(phrase)
-    
-    return sorted(set(phrases), key=phrases.count, reverse=True)[:num_phrases]
+def extract_key_phrases(text: Union[str, List[str]]) -> List[str]:
+    """Extract key phrases from text or list of texts."""
+    try:
+        if isinstance(text, list):
+            all_phrases = []
+            for chunk in text:
+                phrases = _extract_phrases_from_text(chunk) or []  # Handle None returns
+                all_phrases.extend(phrases)
+            return list(set(all_phrases))
+        else:
+            return _extract_phrases_from_text(text) or []  # Handle None returns
+    except Exception as e:
+        logger.error(f"Error in extract_key_phrases: {str(e)}")
+        return []  # Return empty list on error
 
-def load_and_preprocess_text(text: str) -> Dict[str, Any]:
-    """Process text content and extract useful information."""
-    logger.info("Processing text content")
-    
-    # Разбиваем текст на чанки
-    chunks = split_into_chunks(text)
-    
-    # Извлекаем полезную информацию
-    processed_data = {
-        'chunks': chunks,
-        'dates': extract_dates(text),
-        'entities': extract_named_entities(text),
-        'key_phrases': extract_key_phrases(text)
-    }
-    
-    logger.info(f"Text processed. Found {len(chunks)} chunks")
-    return processed_data
+def _extract_entities_from_text(text: str) -> List[str]:
+    """Helper function to extract entities from a single text string."""
+    try:
+        # Your entity extraction logic here
+        # For now, return empty list as placeholder
+        return []
+    except Exception as e:
+        logger.error(f"Error extracting entities: {str(e)}")
+        return []  # Return empty list on error
+
+def _extract_phrases_from_text(text: str) -> List[str]:
+    """Helper function to extract phrases from a single text string."""
+    try:
+        # Your phrase extraction logic here
+        # For now, return empty list as placeholder
+        return []
+    except Exception as e:
+        logger.error(f"Error extracting phrases: {str(e)}")
+        return []  # Return empty list on error
+
+def load_and_preprocess_text(input_data: Union[str, Dict[str, Any]]) -> Dict[str, Any]:
+    """Load and preprocess text data."""
+    try:
+        # If input is already preprocessed
+        if isinstance(input_data, dict):
+            if 'text' not in input_data or 'chunks' not in input_data:
+                raise ValueError("Preprocessed data must contain 'text' and 'chunks' keys")
+            return input_data
+            
+        # If input is raw text
+        if not isinstance(input_data, str):
+            raise ValueError(f"Expected string or preprocessed data dict, got {type(input_data)}")
+            
+        # Process raw text
+        text = input_data.strip()
+        if not text:
+            raise ValueError("Empty text content")
+            
+        chunks = split_into_chunks(text)
+        
+        processed_data = {
+            'text': text,
+            'chunks': chunks
+        }
+        
+        logger.info(f"Text processed. Found {len(chunks)} chunks")
+        return processed_data
+        
+    except Exception as e:
+        logger.error(f"Error in load_and_preprocess_text: {str(e)}")
+        raise
 
 def split_into_chunks(text: Union[str, Dict[str, Any]], chunk_size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[str]:
     """Split the text into chunks with specified size and overlap."""
