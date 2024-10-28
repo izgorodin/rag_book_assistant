@@ -104,12 +104,10 @@ class PineconeManager(VectorStore):
             return False
 
     def upsert_vectors(self, vectors: List[Dict[str, Any]]) -> None:
-        """
-        Store vectors in Pinecone.
+        """Store vectors in Pinecone."""
+        if not self.initialized:
+            self._init()  # Попытка инициализации, если еще не инициализирован
         
-        Args:
-            vectors: List of dictionaries containing vector data
-        """
         if not self.is_available():
             raise ValueError("Pinecone index not initialized")
             

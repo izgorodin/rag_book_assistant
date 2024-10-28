@@ -60,6 +60,3 @@ class BookDataInterface(DataSource):
 
     def get_key_phrases(self) -> List[str]:
         return self._key_phrases
-
-    def create_embeddings(self, texts: List[str]) -> List[List[float]]:
-        return self._embedding_service.create_embeddings(texts)

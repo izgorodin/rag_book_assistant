@@ -161,7 +161,7 @@ class HybridSearch(BaseSearch):
         top_indices = np.argsort(scores)[-top_k:][::-1]
         return [{'chunk': self.chunks[i], 'score': float(scores[i])} for i in top_indices]
 
-class CosineSimilaritySearch(BaseSearch):
+class CosineSearch(BaseSearch):
     """Search implementation using cosine similarity between embeddings."""
     
     @handle_rag_error
@@ -177,21 +177,8 @@ class CosineSimilaritySearch(BaseSearch):
             List of dictionaries containing chunks and their similarity scores
         """
         try:
-            query_embedding = self.data_source.create_embedding(query)
-            scores = np.array([
-                cosine_similarity(query_embedding, chunk_embedding) 
-                for chunk_embedding in self.embeddings
-            ])
-            return self._get_top_chunks(scores, top_k)
-        except Exception as e:
-            raise RAGError(f"Error in cosine similarity search: {str(e)}")
-
-class CosineSearch(BaseSearch):
-    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
-        """Search for most similar chunks using cosine similarity."""
-        try:
             # Создаем эмбеддинг для запроса через сервис
-            query_embedding = self.embedding_service.create_embedding(query)
+            query_embedding = self.embedding_service.create_embeddings([query])[0]
             
             # Вычисляем косинусное сходство
             scores = np.array([
@@ -224,7 +211,7 @@ def get_search_strategy(strategy: str, data_source: DataSource) -> BaseSearch:
         Initialized search strategy
     """
     strategies = {
-        "cosine": CosineSimilaritySearch,
+        "cosine": CosineSearch,
         "hybrid": HybridSearch,
         # Планируемые стратегии:
         # "semantic": SemanticSearch,

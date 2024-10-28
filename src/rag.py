@@ -37,28 +37,6 @@ from src.embedding import EmbeddingService
 logger = setup_logger()
 
 @handle_rag_error
-def preprocess_text(text: str) -> str:
-    """
-    Preprocess the input text by converting to lowercase, removing punctuation,
-    tokenizing, removing stop words, and lemmatizing.
-
-    Args:
-        text (str): The input text to preprocess.
-
-    Returns:
-        str: The preprocessed text.
-    """
-    text = text.lower()
-    text = re.sub(r'[^\w\s]', '', text)
-    tokens = word_tokenize(text)
-    stop_words = set(stopwords.words('english'))
-    tokens = [token for token in tokens if token not in stop_words]
-    lemmatizer = WordNetLemmatizer()
-    tokens = [lemmatizer.lemmatize(token) for token in tokens]
-    return ' '.join(tokens)
-
-
-@handle_rag_error
 def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAIService, 
              embedding_service: EmbeddingService) -> str:
     """Process query using RAG approach."""

@@ -33,7 +33,7 @@ class BookAssistant:
         """Initialize all necessary services."""
         # Initialize base services
         self.openai_client = OpenAI(api_key=OPENAI_API_KEY)
-        self.vector_store = PineconeManager()
+        self.vector_store = PineconeManager(lazy_init=False)  # Явная инициализация
         self.cache_manager = CacheManager(CACHE_DIR)
         
         # Initialize processing services

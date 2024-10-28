@@ -63,27 +63,32 @@ input[type="submit"]:hover {
 
 /* Стили для контейнера ответа */
 .answer-container {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 12px;
-    margin-top: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e1e4e8;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
     position: relative;
+}
+
+.answer-text {
+    margin-bottom: 0;       /* Убираем лишние отступы */
 }
 
 /* Стили для markdown-контента */
 .markdown-body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     font-size: 14px;
-    line-height: 1.2;
-    color: #1f2328;
-    padding: 10px;
-    margin: 0;
+    line-height: 1.5;
+    word-wrap: break-word;
 }
 
 .markdown-body p {
-    margin: 0;
-    padding: 0;
+    margin-bottom: 14px;
+    margin-top: 0;
+}
+
+.markdown-body p:last-child {
+    margin-bottom: 0;
 }
 
 .markdown-body h1, 

@@ -107,13 +107,19 @@
                     data: { question: question },
                     success: function(response) {
                         if (response.status === 'success') {
-                            var formattedAnswer = marked.parse(response.answer);
+                            // Предварительная обработка текста для улучшения форматирования
+                            var cleanAnswer = response.answer
+                                .replace(/\n{3,}/g, '\n\n')  // Заменяем множественные переносы на двойной
+                                .trim();  // Убираем лишние пробелы в начале и конце
+                            
+                            var formattedAnswer = marked.parse(cleanAnswer);
+                            
                             $('#answerStatus').html(`
                                 <div class="answer-container markdown-body">
                                     <div class="answer-text">${formattedAnswer}</div>
                                     <i class="fas fa-copy copy-icon" title="Copy to clipboard"></i>
                                 </div>
-                            `);
+                            `.trim());  // trim() убирает лишние пробелы в HTML
                         } else {
                             $('#answerStatus').html(`<div class="error">${response.message}</div>`);
                         }
