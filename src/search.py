@@ -9,12 +9,12 @@ from src.utils.logger import setup_logger
 from src.data_source import DataSource
 import nltk
 from src.utils.error_handler import handle_rag_error, RAGError
-from src.config import EMBEDDING_DIMENSION
+from src.config import EMBEDDING_DIMENSION, TOP_K_CHUNKS
 
 logger = setup_logger()
 
 class SearchStrategy(Protocol):
-    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+    def search(self, query: str, top_k: int = TOP_K_CHUNKS) -> List[Dict[str, Any]]:
         ...
 
 class BaseSearch:
@@ -165,7 +165,7 @@ class CosineSearch(BaseSearch):
     """Search implementation using cosine similarity between embeddings."""
     
     @handle_rag_error
-    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+    def search(self, query: str, top_k: int = TOP_K_CHUNKS) -> List[Dict[str, Any]]:
         """
         Search for most relevant chunks using cosine similarity between embeddings.
         

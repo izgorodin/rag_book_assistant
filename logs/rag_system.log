@@ -190,3 +190,173 @@ ModuleNotFoundError: No module named 'flask_socketio'
 2024-10-29 12:22:54,467 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
 2024-10-29 12:22:57,338 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
 2024-10-29 12:54:20,936 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-29 14:06:01,731 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-29 14:06:33,870 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-29 14:06:59,625 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-29 14:11:03,771 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-29 14:11:03,773 - root - INFO - embedding.py:42 - __init__ - EmbeddingService initialized
+2024-10-29 14:11:03,774 - root - ERROR - embedding.py:69 - create_embeddings - Error in create_embeddings: list index out of range
+2024-10-29 14:11:03,805 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_batch_processing took 0.03 seconds
+2024-10-29 14:11:03,806 - root - INFO - embedding.py:42 - __init__ - EmbeddingService initialized
+2024-10-29 14:11:03,806 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_caching took 0.00 seconds
+2024-10-29 14:11:03,806 - root - INFO - embedding.py:42 - __init__ - EmbeddingService initialized
+2024-10-29 14:11:03,809 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings_dimension_check took 0.00 seconds
+2024-10-29 14:11:03,809 - root - INFO - embedding.py:42 - __init__ - EmbeddingService initialized
+2024-10-29 14:11:03,811 - root - INFO - conftest.py:58 - timer - Test test_error_handling took 0.00 seconds
+2024-10-29 14:11:03,813 - root - INFO - conftest.py:58 - timer - Test test_cosine_similarity took 0.00 seconds
+2024-10-29 14:11:03,813 - root - INFO - embedding.py:42 - __init__ - EmbeddingService initialized
+2024-10-29 14:11:03,842 - root - INFO - conftest.py:58 - timer - Test test_create_book_data took 0.03 seconds
+2024-10-29 14:11:03,844 - root - INFO - conftest.py:58 - timer - Test test_embedding_service_integration took 0.00 seconds
+2024-10-29 14:11:41,323 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-29 14:11:41,330 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-29 14:11:41,334 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-29 14:11:41,344 - root - INFO - openai_service.py:61 - generate_answer - Generating answer for query: Test query
+2024-10-29 14:11:41,344 - root - INFO - conftest.py:58 - timer - Test test_generate_answer took 0.02 seconds
+2024-10-29 14:11:41,345 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-29 14:11:41,345 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-29 14:11:41,382 - root - INFO - conftest.py:58 - timer - Test test_create_embeddings took 0.04 seconds
+2024-10-29 14:11:41,382 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-29 14:11:41,382 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-29 14:11:41,389 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[RateLimitError-Rate limit exceeded] took 0.01 seconds
+2024-10-29 14:11:41,390 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-29 14:11:41,390 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-29 14:11:41,398 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APIError-API error] took 0.01 seconds
+2024-10-29 14:11:41,398 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-29 14:11:41,398 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-29 14:11:41,404 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APITimeoutError-Request timed out] took 0.01 seconds
+2024-10-29 14:11:41,405 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-29 14:11:41,405 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-29 14:11:41,412 - root - INFO - conftest.py:58 - timer - Test test_handle_openai_error[APIConnectionError-Connection error] took 0.01 seconds
+2024-10-29 14:11:41,413 - root - INFO - conftest.py:58 - timer - Test test_create_test_exception took 0.00 seconds
+2024-10-29 14:11:41,414 - httpx - DEBUG - _config.py:82 - load_ssl_context - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-10-29 14:11:41,414 - httpx - DEBUG - _config.py:148 - load_ssl_context_verify - load_verify_locations cafile='/Users/eduardizgorodin/Projects/rag_book_assistant/rag_venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-10-29 14:11:41,426 - root - INFO - conftest.py:58 - timer - Test test_openai_connectivity took 0.01 seconds
+2024-10-29 14:12:05,516 - root - INFO - text_processing.py:122 - split_into_chunks - Input text type: <class 'str'>
+2024-10-29 14:12:05,516 - root - INFO - text_processing.py:123 - split_into_chunks - Input text size: 107 characters
+2024-10-29 14:12:05,516 - root - INFO - text_processing.py:133 - split_into_chunks - Word count: 17
+2024-10-29 14:12:05,516 - root - INFO - text_processing.py:134 - split_into_chunks - Chunk size: 1000, overlap: 150
+2024-10-29 14:12:05,516 - root - INFO - text_processing.py:141 - split_into_chunks - Created 1 chunks
+2024-10-29 14:12:05,516 - root - INFO - text_processing.py:142 - split_into_chunks - Average chunk size: 107.0 characters
+2024-10-29 14:12:05,516 - root - INFO - text_processing.py:113 - load_and_preprocess_text - Text processed. Found 1 chunks
+2024-10-29 14:12:05,516 - root - INFO - conftest.py:58 - timer - Test test_load_and_preprocess_text took 0.00 seconds
+2024-10-29 14:12:05,517 - root - INFO - text_processing.py:122 - split_into_chunks - Input text type: <class 'str'>
+2024-10-29 14:12:05,517 - root - INFO - text_processing.py:123 - split_into_chunks - Input text size: 4999 characters
+2024-10-29 14:12:05,517 - root - INFO - text_processing.py:133 - split_into_chunks - Word count: 1000
+2024-10-29 14:12:05,517 - root - INFO - text_processing.py:134 - split_into_chunks - Chunk size: 100, overlap: 20
+2024-10-29 14:12:05,517 - root - INFO - text_processing.py:141 - split_into_chunks - Created 13 chunks
+2024-10-29 14:12:05,517 - root - INFO - text_processing.py:142 - split_into_chunks - Average chunk size: 475.9230769230769 characters
+2024-10-29 14:12:05,517 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks[100-20] took 0.00 seconds
+2024-10-29 14:12:05,518 - root - INFO - text_processing.py:122 - split_into_chunks - Input text type: <class 'str'>
+2024-10-29 14:12:05,518 - root - INFO - text_processing.py:123 - split_into_chunks - Input text size: 4999 characters
+2024-10-29 14:12:05,518 - root - INFO - text_processing.py:133 - split_into_chunks - Word count: 1000
+2024-10-29 14:12:05,518 - root - INFO - text_processing.py:134 - split_into_chunks - Chunk size: 200, overlap: 50
+2024-10-29 14:12:05,518 - root - INFO - text_processing.py:141 - split_into_chunks - Created 7 chunks
+2024-10-29 14:12:05,518 - root - INFO - text_processing.py:142 - split_into_chunks - Average chunk size: 927.5714285714286 characters
+2024-10-29 14:12:05,518 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks[200-50] took 0.00 seconds
+2024-10-29 14:12:05,518 - root - INFO - text_processing.py:122 - split_into_chunks - Input text type: <class 'str'>
+2024-10-29 14:12:05,518 - root - INFO - text_processing.py:123 - split_into_chunks - Input text size: 4999 characters
+2024-10-29 14:12:05,518 - root - INFO - text_processing.py:133 - split_into_chunks - Word count: 1000
+2024-10-29 14:12:05,518 - root - INFO - text_processing.py:134 - split_into_chunks - Chunk size: 500, overlap: 100
+2024-10-29 14:12:05,519 - root - INFO - text_processing.py:141 - split_into_chunks - Created 3 chunks
+2024-10-29 14:12:05,519 - root - INFO - text_processing.py:142 - split_into_chunks - Average chunk size: 1999.0 characters
+2024-10-29 14:12:05,519 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks[500-100] took 0.00 seconds
+2024-10-29 14:12:05,519 - root - INFO - text_processing.py:122 - split_into_chunks - Input text type: <class 'dict'>
+2024-10-29 14:12:05,519 - root - INFO - text_processing.py:123 - split_into_chunks - Input text size: 1 characters
+2024-10-29 14:12:05,519 - root - INFO - text_processing.py:126 - split_into_chunks - Text is dictionary, extracting 'text' key
+2024-10-29 14:12:05,519 - root - INFO - text_processing.py:133 - split_into_chunks - Word count: 1000
+2024-10-29 14:12:05,519 - root - INFO - text_processing.py:134 - split_into_chunks - Chunk size: 100, overlap: 20
+2024-10-29 14:12:05,519 - root - INFO - text_processing.py:141 - split_into_chunks - Created 13 chunks
+2024-10-29 14:12:05,519 - root - INFO - text_processing.py:142 - split_into_chunks - Average chunk size: 475.9230769230769 characters
+2024-10-29 14:12:05,519 - root - INFO - conftest.py:58 - timer - Test test_split_into_chunks_with_dict_input took 0.00 seconds
+2024-10-29 14:12:54,922 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:24 - create_from_text - Starting create_from_text with input type: <class 'str'>
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:30 - create_from_text - Calling load_and_preprocess_text...
+2024-10-29 14:12:55,749 - root - INFO - text_processing.py:122 - split_into_chunks - Input text type: <class 'str'>
+2024-10-29 14:12:55,749 - root - INFO - text_processing.py:123 - split_into_chunks - Input text size: 12 characters
+2024-10-29 14:12:55,749 - root - INFO - text_processing.py:133 - split_into_chunks - Word count: 2
+2024-10-29 14:12:55,749 - root - INFO - text_processing.py:134 - split_into_chunks - Chunk size: 1000, overlap: 150
+2024-10-29 14:12:55,749 - root - INFO - text_processing.py:141 - split_into_chunks - Created 1 chunks
+2024-10-29 14:12:55,749 - root - INFO - text_processing.py:142 - split_into_chunks - Average chunk size: 12.0 characters
+2024-10-29 14:12:55,749 - root - INFO - text_processing.py:113 - load_and_preprocess_text - Text processed. Found 1 chunks
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:32 - create_from_text - Preprocessed data type: <class 'dict'>
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:33 - create_from_text - Preprocessed data keys: dict_keys(['text', 'chunks'])
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:36 - create_from_text - Chunks type: <class 'list'>
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:37 - create_from_text - First chunk type (if exists): <class 'str'>
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:46 - create_from_text - Converting chunks to text...
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:48 - create_from_text - Text chunks type: <class 'list'>
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:49 - create_from_text - First text chunk type: <class 'str'>
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:52 - create_from_text - Extracting features...
+2024-10-29 14:12:55,749 - root - INFO - book_data_factory.py:54 - create_from_text - Dates extracted: 0
+2024-10-29 14:12:55,750 - root - INFO - book_data_factory.py:56 - create_from_text - Entities extracted: 0
+2024-10-29 14:12:55,750 - root - INFO - book_data_factory.py:58 - create_from_text - Key phrases extracted: 0
+2024-10-29 14:12:55,750 - root - INFO - book_data_factory.py:64 - create_from_text - Creating embeddings...
+2024-10-29 14:12:55,750 - root - INFO - book_data_factory.py:66 - create_from_text - Embeddings created: 1
+2024-10-29 14:12:55,750 - root - INFO - book_data_factory.py:72 - create_from_text - Storing vectors...
+2024-10-29 14:12:55,750 - root - INFO - book_data_factory.py:74 - create_from_text - Vectors stored successfully
+2024-10-29 14:12:55,750 - root - INFO - book_data_factory.py:79 - create_from_text - Creating BookDataInterface instance...
+2024-10-29 14:12:55,750 - root - INFO - conftest.py:58 - timer - Test test_create_from_text_success took 0.00 seconds
+2024-10-29 14:12:55,751 - root - INFO - book_data_factory.py:24 - create_from_text - Starting create_from_text with input type: <class 'str'>
+2024-10-29 14:12:55,751 - root - INFO - book_data_factory.py:30 - create_from_text - Calling load_and_preprocess_text...
+2024-10-29 14:12:55,751 - root - INFO - text_processing.py:122 - split_into_chunks - Input text type: <class 'str'>
+2024-10-29 14:12:55,751 - root - INFO - text_processing.py:123 - split_into_chunks - Input text size: 12 characters
+2024-10-29 14:12:55,751 - root - INFO - text_processing.py:133 - split_into_chunks - Word count: 2
+2024-10-29 14:12:55,751 - root - INFO - text_processing.py:134 - split_into_chunks - Chunk size: 1000, overlap: 150
+2024-10-29 14:12:55,751 - root - INFO - text_processing.py:141 - split_into_chunks - Created 1 chunks
+2024-10-29 14:12:55,751 - root - INFO - text_processing.py:142 - split_into_chunks - Average chunk size: 12.0 characters
+2024-10-29 14:12:55,751 - root - INFO - text_processing.py:113 - load_and_preprocess_text - Text processed. Found 1 chunks
+2024-10-29 14:12:55,751 - root - INFO - book_data_factory.py:32 - create_from_text - Preprocessed data type: <class 'dict'>
+2024-10-29 14:12:55,751 - root - INFO - book_data_factory.py:33 - create_from_text - Preprocessed data keys: dict_keys(['text', 'chunks'])
+2024-10-29 14:12:55,751 - root - INFO - book_data_factory.py:36 - create_from_text - Chunks type: <class 'list'>
+2024-10-29 14:12:55,751 - root - INFO - book_data_factory.py:37 - create_from_text - First chunk type (if exists): <class 'str'>
+2024-10-29 14:12:55,751 - root - INFO - book_data_factory.py:46 - create_from_text - Converting chunks to text...
+2024-10-29 14:12:55,751 - root - INFO - book_data_factory.py:48 - create_from_text - Text chunks type: <class 'list'>
+2024-10-29 14:12:55,751 - root - INFO - book_data_factory.py:49 - create_from_text - First text chunk type: <class 'str'>
+2024-10-29 14:12:55,752 - root - INFO - book_data_factory.py:52 - create_from_text - Extracting features...
+2024-10-29 14:12:55,752 - root - INFO - book_data_factory.py:54 - create_from_text - Dates extracted: 0
+2024-10-29 14:12:55,752 - root - INFO - book_data_factory.py:56 - create_from_text - Entities extracted: 0
+2024-10-29 14:12:55,752 - root - INFO - book_data_factory.py:58 - create_from_text - Key phrases extracted: 0
+2024-10-29 14:12:55,752 - root - INFO - book_data_factory.py:64 - create_from_text - Creating embeddings...
+2024-10-29 14:12:55,752 - root - INFO - book_data_factory.py:66 - create_from_text - Embeddings created: 1
+2024-10-29 14:12:55,752 - root - INFO - book_data_factory.py:72 - create_from_text - Storing vectors...
+2024-10-29 14:12:55,752 - root - INFO - book_data_factory.py:74 - create_from_text - Vectors stored successfully
+2024-10-29 14:12:55,752 - root - INFO - book_data_factory.py:79 - create_from_text - Creating BookDataInterface instance...
+2024-10-29 14:12:55,752 - root - INFO - conftest.py:58 - timer - Test test_create_from_text_with_progress took 0.00 seconds
+2024-10-29 14:12:55,753 - root - INFO - book_data_factory.py:24 - create_from_text - Starting create_from_text with input type: <class 'str'>
+2024-10-29 14:12:55,753 - root - INFO - book_data_factory.py:30 - create_from_text - Calling load_and_preprocess_text...
+2024-10-29 14:12:55,753 - root - INFO - text_processing.py:122 - split_into_chunks - Input text type: <class 'str'>
+2024-10-29 14:12:55,753 - root - INFO - text_processing.py:123 - split_into_chunks - Input text size: 12 characters
+2024-10-29 14:12:55,753 - root - INFO - text_processing.py:133 - split_into_chunks - Word count: 2
+2024-10-29 14:12:55,753 - root - INFO - text_processing.py:134 - split_into_chunks - Chunk size: 1000, overlap: 150
+2024-10-29 14:12:55,753 - root - INFO - text_processing.py:141 - split_into_chunks - Created 1 chunks
+2024-10-29 14:12:55,753 - root - INFO - text_processing.py:142 - split_into_chunks - Average chunk size: 12.0 characters
+2024-10-29 14:12:55,754 - root - INFO - text_processing.py:113 - load_and_preprocess_text - Text processed. Found 1 chunks
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:32 - create_from_text - Preprocessed data type: <class 'dict'>
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:33 - create_from_text - Preprocessed data keys: dict_keys(['text', 'chunks'])
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:36 - create_from_text - Chunks type: <class 'list'>
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:37 - create_from_text - First chunk type (if exists): <class 'str'>
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:46 - create_from_text - Converting chunks to text...
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:48 - create_from_text - Text chunks type: <class 'list'>
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:49 - create_from_text - First text chunk type: <class 'str'>
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:52 - create_from_text - Extracting features...
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:54 - create_from_text - Dates extracted: 0
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:56 - create_from_text - Entities extracted: 0
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:58 - create_from_text - Key phrases extracted: 0
+2024-10-29 14:12:55,754 - root - INFO - book_data_factory.py:64 - create_from_text - Creating embeddings...
+2024-10-29 14:12:55,754 - root - WARNING - book_data_factory.py:103 - _create_embeddings_with_retry - Attempt 1 failed: First attempt failed. Retrying...
+2024-10-29 14:12:56,759 - root - INFO - book_data_factory.py:66 - create_from_text - Embeddings created: 1
+2024-10-29 14:12:56,760 - root - INFO - book_data_factory.py:72 - create_from_text - Storing vectors...
+2024-10-29 14:12:56,761 - root - INFO - book_data_factory.py:74 - create_from_text - Vectors stored successfully
+2024-10-29 14:12:56,761 - root - INFO - book_data_factory.py:79 - create_from_text - Creating BookDataInterface instance...
+2024-10-29 14:12:56,762 - root - INFO - conftest.py:58 - timer - Test test_retry_mechanism took 1.01 seconds
+2024-10-29 14:13:21,077 - root - INFO - conftest.py:58 - timer - Test test_pinecone_manager_initialization took 0.03 seconds
+2024-10-29 14:13:21,079 - root - INFO - conftest.py:58 - timer - Test test_upsert_and_search[chunks0-embeddings0] took 0.00 seconds
+2024-10-29 14:13:21,081 - root - INFO - conftest.py:58 - timer - Test test_upsert_and_search[chunks1-embeddings1] took 0.00 seconds
+2024-10-29 14:13:21,083 - root - INFO - conftest.py:58 - timer - Test test_upsert_and_search[chunks2-embeddings2] took 0.00 seconds
+2024-10-29 14:13:21,084 - root - INFO - conftest.py:58 - timer - Test test_get_or_create_embeddings took 0.00 seconds
+2024-10-29 14:13:21,086 - root - INFO - conftest.py:58 - timer - Test test_clear_index took 0.00 seconds
+2024-10-29 14:13:21,088 - root - INFO - conftest.py:58 - timer - Test test_error_handling took 0.00 seconds
+2024-10-29 14:13:21,090 - root - INFO - conftest.py:58 - timer - Test test_batch_operation[1] took 0.00 seconds
+2024-10-29 14:13:21,092 - root - INFO - conftest.py:58 - timer - Test test_batch_operation[10] took 0.00 seconds
+2024-10-29 14:13:21,094 - root - INFO - conftest.py:58 - timer - Test test_batch_operation[100] took 0.00 seconds
+2024-10-29 14:22:51,852 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
+2024-10-29 14:22:55,681 - root - INFO - cache_manager.py:47 - __init__ - CacheManager initialized at data/cache
