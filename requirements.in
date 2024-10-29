@@ -22,3 +22,6 @@ pypdf
 tenacity
 flask-socketio
 gunicorn
+flask-wtf 
+flask-login 
+flask-socketio

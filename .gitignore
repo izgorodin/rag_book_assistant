@@ -1,3 +1,7 @@
+# Logs
+logs/
+*.log
+
 # Python
 __pycache__/
 *.py[cod]
@@ -21,25 +25,20 @@ wheels/
 *.egg
 
 # Virtual Environment
-rag_venv/
+venv/
 ENV/
-env/
-.venv/
+rag_venv/
+.env
 
 # IDE
 .idea/
 .vscode/
-swp
-.swo
-Logs
-.log
-Environment variables
-.env
-Cache
-.cache/
-.egg-info/
-uploads/
-logs/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+
+# Data  
 data/
-logs/rag_system.log
-logs/rag_results.log
+uploads/

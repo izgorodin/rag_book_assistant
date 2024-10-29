@@ -6,9 +6,10 @@ from src.config import (
     PINECONE_INDEX_NAME, PINECONE_METRIC, PINECONE_REGION
 )
 from src.utils.error_handler import RAGError
-from src.utils.logger import setup_logger
+from src.utils.logger import get_main_logger, get_rag_logger
 
-logger = setup_logger()
+logger = get_main_logger()
+rag_logger = get_rag_logger()
 
 class VectorStore(ABC):
     """Abstract base class for vector storage implementations."""
@@ -50,8 +51,11 @@ class PineconeManager(VectorStore):
             self._initialize_index()
             self.initialized = True
             logger.info("Pinecone manager initialized successfully")
+            rag_logger.info("\nPinecone Initialization:\nStatus: Success\n" + "-"*50)
         except Exception as e:
-            logger.error(f"Pinecone initialization error: {str(e)}")
+            error_msg = f"Pinecone initialization error: {str(e)}"
+            logger.error(error_msg)
+            rag_logger.error(f"\nPinecone Error:\n{error_msg}\n{'-'*50}")
             raise
 
     def _initialize_index(self):
@@ -114,8 +118,11 @@ class PineconeManager(VectorStore):
         try:
             self.index.upsert(vectors=vectors)
             logger.info(f"Successfully upserted {len(vectors)} vectors")
+            rag_logger.info(f"\nVector Update:\nUpserted vectors: {len(vectors)}\n{'-'*50}")
         except Exception as e:
-            logger.error(f"Error upserting vectors: {str(e)}")
+            error_msg = f"Error upserting vectors: {str(e)}"
+            logger.error(error_msg)
+            rag_logger.error(f"\nUpsert Error:\n{error_msg}\n{'-'*50}")
             raise
 
     def search_vectors(self, query_vector: List[float], top_k: int = 5) -> List[Dict[str, Any]]:

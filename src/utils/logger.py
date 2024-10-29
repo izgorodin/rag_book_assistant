@@ -1,62 +1,78 @@
 import logging
 import colorlog
 import os
+from datetime import datetime
 
-def setup_logger(log_file='rag_system.log'):
-    log_dir = 'logs'
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
+class LoggerManager:
+    _instance = None
+    _loggers = {}
     
-    log_file_path = os.path.join(log_dir, log_file)
-
-    logger = logging.getLogger()
-    logger.setLevel(logging.DEBUG)
-
-    # Clear existing handlers
-    logger.handlers.clear()
-
-    file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(filename)s:%(lineno)d - %(funcName)s - %(message)s')
-    file_handler = logging.FileHandler(log_file_path)
-    file_handler.setLevel(logging.DEBUG)
-    file_handler.setFormatter(file_formatter)
-    logger.addHandler(file_handler)
-
-    console_formatter = colorlog.ColoredFormatter(
-        '%(log_color)s%(asctime)s - %(levelname)s - %(message)s',
-        log_colors={
-            'DEBUG': 'cyan',
-            'INFO': 'green',
-            'WARNING': 'yellow',
-            'ERROR': 'red',
-            'CRITICAL': 'red,bg_white',
-        }
-    )
-    console_handler = colorlog.StreamHandler()
-    console_handler.setLevel(logging.INFO)
-    console_handler.setFormatter(console_formatter)
-    logger.addHandler(console_handler)
-
-    return logger
-
-def setup_results_logger():
-    # Создаем директорию для логов, если её нет
-    log_dir = 'logs'
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
-    
-    log_file_path = os.path.join(log_dir, 'rag_results.log')
-    
-    logger = logging.getLogger('rag_results')
-    logger.setLevel(logging.INFO)
-    
-    # Проверяем, нет ли уже обработчиков у логгера
-    if not logger.handlers:
-        file_handler = logging.FileHandler(log_file_path)
-        file_handler.setLevel(logging.INFO)
+    def __init__(self):
+        self.log_dir = 'logs'
+        os.makedirs(self.log_dir, exist_ok=True)
         
-        formatter = logging.Formatter('%(message)s')
-        file_handler.setFormatter(formatter)
+        # Основной лог файл для приложения
+        self.setup_main_logger()
         
-        logger.addHandler(file_handler)
+        # Лог файл для результатов RAG
+        self.setup_rag_logger()
     
-    return logger
+    def setup_main_logger(self):
+        logger = logging.getLogger('main')
+        if not logger.handlers:
+            logger.setLevel(logging.DEBUG)
+            
+            # Файловый хендлер
+            file_handler = logging.FileHandler(
+                os.path.join(self.log_dir, 'app.log')
+            )
+            file_handler.setLevel(logging.DEBUG)
+            file_handler.setFormatter(logging.Formatter(
+                '%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s'
+            ))
+            
+            # Консольный хендлер с цветами
+            console_handler = colorlog.StreamHandler()
+            console_handler.setLevel(logging.INFO)
+            console_handler.setFormatter(colorlog.ColoredFormatter(
+                '%(log_color)s%(levelname)s - %(message)s',
+                log_colors={
+                    'DEBUG': 'cyan',
+                    'INFO': 'green',
+                    'WARNING': 'yellow',
+                    'ERROR': 'red',
+                    'CRITICAL': 'red,bg_white',
+                }
+            ))
+            
+            logger.addHandler(file_handler)
+            logger.addHandler(console_handler)
+            
+        self._loggers['main'] = logger
+    
+    def setup_rag_logger(self):
+        logger = logging.getLogger('rag')
+        if not logger.handlers:
+            logger.setLevel(logging.INFO)
+            
+            file_handler = logging.FileHandler(
+                os.path.join(self.log_dir, 'rag_results.log')
+            )
+            file_handler.setLevel(logging.INFO)
+            file_handler.setFormatter(logging.Formatter('%(message)s'))
+            
+            logger.addHandler(file_handler)
+            
+        self._loggers['rag'] = logger
+    
+    @classmethod
+    def get_logger(cls, name='main'):
+        if cls._instance is None:
+            cls._instance = LoggerManager()
+        return cls._instance._loggers.get(name)
+
+def get_main_logger():
+    return LoggerManager.get_logger('main')
+
+def get_rag_logger():
+    return LoggerManager.get_logger('rag')

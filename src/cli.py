@@ -1,38 +1,39 @@
-import os
-from openai import OpenAI
-from src.book_data_factory import BookDataFactory
-from src.file_processor import FileProcessor
-from src.utils.logger import setup_logger
-from src.embedding import EmbeddingService
-from src.rag import rag_query
-from src.book_data_interface import BookDataInterface
-from src.openai_service import OpenAIService
-from src.pinecone_manager import PineconeManager
-from src.cache_manager import CacheManager
-from src.config import OPENAI_API_KEY, CACHE_DIR
-from typing import Union, TextIO
-from src.vector_store_service import VectorStoreService
-from tqdm import tqdm
-import sys
+import os  # Importing os module for file path operations
+from openai import OpenAI  # Importing OpenAI client for API interactions
+from src.book_data_factory import BookDataFactory  # Importing factory for creating book data
+from src.file_processor import FileProcessor  # Importing file processor for handling book files
+from src.utils.logger import get_main_logger, get_rag_logger  # Importing logging utilities
+from src.embedding import EmbeddingService  # Importing embedding service for generating embeddings
+from src.rag import rag_query  # Importing function for querying the RAG system
+from src.book_data_interface import BookDataInterface  # Importing interface for book data handling
+from src.openai_service import OpenAIService  # Importing OpenAI service for API interactions
+from src.pinecone_manager import PineconeManager  # Importing Pinecone manager for vector storage
+from src.cache_manager import CacheManager  # Importing cache manager for caching functionalities
+from src.config import OPENAI_API_KEY, CACHE_DIR  # Importing configuration constants
+from typing import Union, TextIO  # Importing types for type hinting
+from src.vector_store_service import VectorStoreService  # Importing vector store service for managing embeddings
+from tqdm import tqdm  # Importing tqdm for progress bar functionality
+import sys  # Importing sys for system-specific parameters and functions
 
-logger = setup_logger()
+logger = get_main_logger()  # Initializing the main logger
+rag_logger = get_rag_logger()  # Initializing the RAG logger
 
 def create_progress_bar(desc: str, total: int) -> tqdm:
     """Create a progress bar with consistent styling."""
     return tqdm(
-        total=total,
-        desc=desc,
-        bar_format='{desc}: {percentage:3.0f}%|{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]',
-        file=sys.stdout,
-        ncols=80
+        total=total,  # Total number of iterations for the progress bar
+        desc=desc,  # Description to display on the progress bar
+        bar_format='{desc}: {percentage:3.0f}%|{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]',  # Format of the progress bar
+        file=sys.stdout,  # Output to standard output
+        ncols=80  # Width of the progress bar
     )
 
 def progress_callback(status: str, current: int, total: int):
-    """Callback для отображения прогресса в консоли."""
-    progress = (current / total) * 100 if total > 0 else 0
-    print(f"\r{status}: [{current}/{total}] {progress:.1f}%", end="", flush=True)
+    """Callback for displaying progress in the console."""
+    progress = (current / total) * 100 if total > 0 else 0  # Calculate progress percentage
+    print(f"\r{status}: [{current}/{total}] {progress:.1f}%", end="", flush=True)  # Print progress status
     if current == total:
-        print()  # Новая строка после завершения
+        print()  # New line after completion
 
 class BookAssistant:
     """Main class for handling book processing and question answering."""
@@ -40,111 +41,131 @@ class BookAssistant:
     def __init__(self, progress_callback=progress_callback):
         """Initialize all necessary services."""
         # Initialize base services
-        self.openai_client = OpenAI(api_key=OPENAI_API_KEY)
-        self.vector_store = PineconeManager(lazy_init=False)  # Явная инициализация
-        self.cache_manager = CacheManager(CACHE_DIR)
+        self.openai_client = OpenAI(api_key=OPENAI_API_KEY)  # Initialize OpenAI client with API key
+        self.vector_store = PineconeManager(lazy_init=False)  # Initialize Pinecone manager
+        self.cache_manager = CacheManager(CACHE_DIR)  # Initialize cache manager with cache directory
         
         # Initialize processing services
-        self.openai_service = OpenAIService()
+        self.openai_service = OpenAIService()  # Initialize OpenAI service
         self.embedding_service = EmbeddingService(
-            openai_client=self.openai_client,
-            cache_manager=self.cache_manager,
-            progress_callback=self.update_progress
+            openai_client=self.openai_client,  # Pass OpenAI client to embedding service
+            cache_manager=self.cache_manager,  # Pass cache manager to embedding service
+            progress_callback=self.update_progress  # Set progress callback for embedding service
         )
-        self.vector_store_service = VectorStoreService(vector_store=self.vector_store)
+        self.vector_store_service = VectorStoreService(vector_store=self.vector_store)  # Initialize vector store service
         
         # Initialize factory
         self.book_data_factory = BookDataFactory(
-            embedding_service=self.embedding_service,
-            vector_store_service=self.vector_store_service,
-            progress_callback=progress_callback
+            embedding_service=self.embedding_service,  # Pass embedding service to factory
+            vector_store_service=self.vector_store_service,  # Pass vector store service to factory
+            progress_callback=progress_callback  # Set progress callback for factory
         )
-        logger.info("Book Assistant initialized")
+        logger.info("Book Assistant initialized")  # Log initialization of Book Assistant
+        rag_logger.info("\nSystem Initialization:\nStatus: Ready\n" + "-"*50)  # Log system status
 
     def load_and_process_book(self, input_data: Union[str, TextIO]) -> BookDataInterface:
         """Load and process book from file path or text content."""
         try:
-            # Получаем текст
+            # Get text content from input data
             if isinstance(input_data, str):
-                if os.path.exists(input_data):
-                    file_processor = FileProcessor()
-                    text = file_processor.process_file(input_data)
+                if os.path.exists(input_data):  # Check if input is a valid file path
+                    file_processor = FileProcessor()  # Initialize file processor
+                    text = file_processor.process_file(input_data)  # Process the file to get text
                 else:
-                    text = input_data
+                    text = input_data  # Use the input string as text
             else:
-                text = input_data.read()
+                text = input_data.read()  # Read text from TextIO object
             
-            if not text:
-                raise ValueError("Empty text content")
+            if not text:  # Check if text is empty
+                raise ValueError("Empty text content")  # Raise error for empty content
                 
-            logger.info(f"Text content loaded, length: {len(text)}")
-            return self.book_data_factory.create_from_text(text)
+            logger.info(f"Text content loaded, length: {len(text)}")  # Log length of loaded text
+            rag_logger.info(
+                f"\nBook Loading:\n"
+                f"Content length: {len(text)} chars\n"
+                f"{'-'*50}"
+            )
+            return self.book_data_factory.create_from_text(text)  # Create and return BookDataInterface from text
         except Exception as e:
-            logger.error(f"Error processing book: {str(e)}")
-            raise
+            error_msg = f"Error processing book: {str(e)}"  # Prepare error message
+            logger.error(error_msg)  # Log error
+            rag_logger.error(f"\nProcessing Error:\n{error_msg}\n{'-'*50}")  # Log processing error
+            raise  # Raise the exception
 
     def answer_question(self, query: str, book_data: BookDataInterface) -> str:
         """Generate answer for a question about the book."""
-        logger.info(f"Processing query: {query}")
+        logger.info(f"Processing query: {query}")  # Log the query being processed
+        rag_logger.info(
+            f"\nQuery Processing:\n"
+            f"Query: {query}\n"
+            f"{'-'*50}"
+        )
         try:
-            answer = rag_query(query, book_data, self.openai_service, self.embedding_service)
-            logger.info(f"Generated answer: {answer}")
-            return answer
+            answer = rag_query(query, book_data, self.openai_service, self.embedding_service)  # Generate answer using RAG query
+            logger.info("Answer generated successfully")  # Log successful answer generation
+            rag_logger.info(
+                f"\nAnswer Generated:\n"
+                f"Length: {len(answer)} chars\n"
+                f"{'-'*50}"
+            )
+            return answer  # Return the generated answer
         except Exception as e:
-            logger.error(f"Error generating answer: {str(e)}", exc_info=True)
-            return f"An error occurred: {str(e)}"
+            error_msg = f"Error generating answer: {str(e)}"  # Prepare error message
+            logger.error(error_msg, exc_info=True)  # Log error with traceback
+            rag_logger.error(f"\nAnswer Generation Error:\n{error_msg}\n{'-'*50}")  # Log answer generation error
+            return f"An error occurred: {str(e)}"  # Return error message
 
     def run(self):
         """Run the interactive CLI session."""
-        logger.info("Starting CLI session")
+        logger.info("Starting CLI session")  # Log the start of the CLI session
         
         try:
             # Load and process book
             while True:
-                book_path = input("Enter the path to the book file: ").strip()
-                if not book_path:
-                    print("Please enter a valid path")
+                book_path = input("Enter the path to the book file: ").strip()  # Prompt for book file path
+                if not book_path:  # Check if path is empty
+                    print("Please enter a valid path")  # Prompt for valid path
                     continue
                     
-                if not os.path.exists(book_path):
-                    print(f"File not found: {book_path}")
+                if not os.path.exists(book_path):  # Check if file exists
+                    print(f"File not found: {book_path}")  # Notify user if file not found
                     continue
                     
-                break
+                break  # Exit loop if valid path is provided
 
-            book_data = self.load_and_process_book(book_path)
-            print("\nBook successfully loaded and processed. You can start asking questions!")
+            book_data = self.load_and_process_book(book_path)  # Load and process the book
+            print("\nBook successfully loaded and processed. You can start asking questions!")  # Notify user of successful loading
             
             # Question-answer loop
             while True:
-                query = input("\nAsk a question (or type 'exit' to quit): ").strip()
-                if query.lower() == 'exit':
-                    break
-                if not query:
-                    continue
+                query = input("\nAsk a question (or type 'exit' to quit): ").strip()  # Prompt for user query
+                if query.lower() == 'exit':  # Check for exit command
+                    break  # Exit loop if user types 'exit'
+                if not query:  # Check if query is empty
+                    continue  # Skip to next iteration if empty
                     
-                answer = self.answer_question(query, book_data)
-                print(f"\nAnswer: {answer}")
+                answer = self.answer_question(query, book_data)  # Generate answer for the query
+                print(f"\nAnswer: {answer}")  # Display the answer
 
         except Exception as e:
-            logger.error(f"Session error: {str(e)}", exc_info=True)
-            print(f"An error occurred: {str(e)}")
+            logger.error(f"Session error: {str(e)}", exc_info=True)  # Log session error with traceback
+            print(f"An error occurred: {str(e)}")  # Notify user of the error
         
-        logger.info("CLI session ended")
+        logger.info("CLI session ended")  # Log the end of the CLI session
 
     def update_progress(self, desc: str, current: int, total: int, pbar=None):
         """Update progress bar with current status."""
-        if not hasattr(self, '_pbar') or self._pbar is None:
-            self._pbar = create_progress_bar(desc, total)
+        if not hasattr(self, '_pbar') or self._pbar is None:  # Check if progress bar is initialized
+            self._pbar = create_progress_bar(desc, total)  # Create a new progress bar
         
-        # Обновляем описание если оно изменилось
+        # Update description if it has changed
         if self._pbar.desc != desc:
-            self._pbar.set_description(desc)
+            self._pbar.set_description(desc)  # Set new description for the progress bar
         
-        # Обновляем прогресс
-        self._pbar.update(current - self._pbar.n)
+        # Update progress
+        self._pbar.update(current - self._pbar.n)  # Update the progress bar with the current progress
         
-        # Закрываем если завершено
-        if current >= total:
-            self._pbar.close()
-            self._pbar = None
+        # Close if completed
+        if current >= total:  # Check if progress is complete
+            self._pbar.close()  # Close the progress bar
+            self._pbar = None  # Reset progress bar attribute

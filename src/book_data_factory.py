@@ -1,13 +1,14 @@
 from typing import Dict, Any, Optional, Callable, List, Union
-from src.utils.logger import setup_logger
+from src.utils.logger import get_main_logger, get_rag_logger
 from src.book_data_interface import BookDataInterface
 from src.embedding import EmbeddingService
-from src.text_processing import load_and_preprocess_text, extract_dates, extract_named_entities, extract_key_phrases
+from src.text_processor import load_and_preprocess_text, extract_dates, extract_named_entities, extract_key_phrases
 from src.vector_store_service import VectorStoreService
 from tqdm import tqdm
 import time
 
-logger = setup_logger()
+logger = get_main_logger()
+rag_logger = get_rag_logger()
 
 class BookDataFactory:
     def __init__(self, 
@@ -22,6 +23,11 @@ class BookDataFactory:
         """Create BookDataInterface from raw text or preprocessed data."""
         try:
             logger.info(f"Starting create_from_text with input type: {type(input_data)}")
+            rag_logger.info(
+                f"\nBook Processing Start:\n"
+                f"Input type: {type(input_data)}\n"
+                f"{'-'*50}"
+            )
             
             if self.progress_callback:
                 self.progress_callback("Starting text processing", 0, 4)
@@ -57,6 +63,16 @@ class BookDataFactory:
             key_phrases = extract_key_phrases(text_chunks)
             logger.info(f"Key phrases extracted: {len(key_phrases)}")
             
+            logger.info("Features extracted successfully")
+            rag_logger.info(
+                f"\nFeature Extraction:\n"
+                f"Chunks: {len(chunks)}\n"
+                f"Dates: {len(dates)}\n"
+                f"Entities: {len(entities)}\n"
+                f"Key phrases: {len(key_phrases)}\n"
+                f"{'-'*50}"
+            )
+            
             if self.progress_callback:
                 self.progress_callback("Creating embeddings", 2, 4)
             
@@ -87,9 +103,9 @@ class BookDataFactory:
                 key_phrases=key_phrases
             )
         except Exception as e:
-            logger.error(f"Error in create_from_text: {str(e)}")
-            logger.error(f"Error type: {type(e)}")
-            logger.error("Stack trace:", exc_info=True)
+            error_msg = f"Error in create_from_text: {str(e)}"
+            logger.error(error_msg, exc_info=True)
+            rag_logger.error(f"\nBook Processing Error:\n{error_msg}\n{'-'*50}")
             raise
 
     def _create_embeddings_with_retry(self, chunks: List[str], max_retries: int = 3) -> List[List[float]]:
