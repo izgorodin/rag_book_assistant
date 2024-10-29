@@ -2,14 +2,14 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    image: ${DOCKER_HUB_USERNAME}/rag-book-assistant:latest
+    restart: always
     ports:
       - "8080:8080"
-    volumes:
-      - ./uploads:/app/uploads
-      - ./logs:/app/logs
-    env_file:
-      - .env
     environment:
-      - PYTHONUNBUFFERED=1
-    restart: unless-stopped
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
+    volumes:
+      - ./data:/app/data
+      - ./uploads:/app/uploads

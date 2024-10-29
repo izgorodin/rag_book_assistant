@@ -2,8 +2,8 @@
 FROM python:3.11-slim
 
 # Добавляем DNS настройки
-RUN echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-RUN echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf && \
+    echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 
 # Рабочая директория
 WORKDIR /app
@@ -28,12 +28,9 @@ COPY . .
 # Установка пакета в режиме разработки
 RUN pip install -e .
 
-# Создание необходимых директорий
-RUN mkdir -p uploads logs
-
-# Устанавливаем NLTK данные
-# Загрузка NLTK данных
-RUN python -c "import nltk; \
+# Создание необходимых директорий и установка NLTK данных
+RUN mkdir -p uploads logs && \
+    python -c "import nltk; \
     nltk.download('punkt'); \
     nltk.download('punkt_tab'); \
     nltk.download('stopwords'); \
@@ -47,14 +44,20 @@ RUN python -c "import nltk; \
     nltk.download('universal_tagset')"
 
 # Установка переменных окружения
-ENV FLASK_APP=src.web.app
-ENV PYTHONPATH=/app
+ENV FLASK_APP=src.web.app \
+    PYTHONPATH=/app \
+    PYTHONUNBUFFERED=1
 
 # Открытие порта
 EXPOSE 8080
 
-# Копируем WSGI файл
-COPY src/web/wsgi.py /app/src/web/wsgi.py
-
-# Меняем команду запуска
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--worker-class", "eventlet", "--timeout", "120", "src.web.wsgi:app"]
+# Запуск приложения через gunicorn
+CMD ["gunicorn", \
+     "--bind", "0.0.0.0:8080", \
+     "--worker-class", "eventlet", \
+     "--timeout", "120", \
+     "--workers", "4", \
+     "--log-level", "info", \
+     "--access-logfile", "-", \
+     "--error-logfile", "-", \
+     "src.web.wsgi:app"]
