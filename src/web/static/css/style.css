@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.2;
     color: #333;
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -14,7 +14,9 @@ h1, h2 {
 
 .input-group {
     display: flex;
-    margin-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
 }
 
 .input-group input[type="file"],
@@ -42,16 +44,15 @@ input[type="submit"]:hover {
 }
 
 #uploadStatus, #answerStatus {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    white-space: pre-wrap;
-    font-family: monospace;
+    border-radius: 4px;
 }
 
 #questionForm {
-    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
 /* Медиа-запросы */
@@ -293,4 +294,139 @@ input[type="submit"]:hover {
     );
     background-size: 30px 30px;
     animation: progress-animation 1s linear infinite;
+}
+
+#questionSection {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#questionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#question {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: vertical;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+#question:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+}
+
+#questionForm button {
+    align-self: flex-end;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#questionForm button:hover {
+    background-color: #45a049;
+}
+
+#answerStatus {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid #ddd;
+    min-height: 50px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+/* Добавим стили для состояния загрузки ответа */
+#answerStatus.loading {
+    color: #666;
+    font-style: italic;
+}
+
+/* Стили для успешного ответа */
+#answerStatus.success {
+    color: #333;
+    background-color: #f8f8f8;
+}
+
+/* Стили для ошибки */
+#answerStatus.error {
+    color: #d32f2f;
+    background-color: #fde8e8;
+}
+
+/* Общие стили для форм */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+/* Стили для полей ввода */
+input[type="file"],
+#question {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Общие стили для кнопок */
+input[type="submit"],
+button[type="submit"] {
+    background-color: #3498db;  /* Сини�� цвет как у Upload */
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Стили для секций */
+#uploadSection,
+#questionSection {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Стили для заголовков */
+h1, h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Стили для статусов */
+#uploadStatus,
+#answerStatus {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
 }

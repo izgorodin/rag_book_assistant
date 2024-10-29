@@ -1,38 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAG Book QA System</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Book Assistant</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script>
-        function copyAnswer(button) {
-            const container = button.closest('.answer-container');
-            const textToCopy = container.querySelector('.answer-text').innerText;
-            
-            const textarea = document.createElement('textarea');
-            textarea.value = textToCopy;
-            document.body.appendChild(textarea);
-            textarea.select();
-            
-            try {
-                document.execCommand('copy');
-                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                setTimeout(() => {
-                    button.innerHTML = '<i class="fas fa-copy"></i> Copy';
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy:', err);
-                button.innerHTML = '<i class="fas fa-times"></i> Error!';
-            }
-            
-            document.body.removeChild(textarea);
-        }
-    </script>
 </head>
 <body>
     <h1>RAG Book QA System</h1>
@@ -52,8 +24,14 @@
         <h2>Ask a Question</h2>
         <form id="questionForm">
             <div class="input-group">
-                <input type="text" id="question" placeholder="Ask a question about the book">
-                <input type="submit" value="Ask" id="askButton">
+                <input 
+                    type="text" 
+                    id="question" 
+                    name="question" 
+                    placeholder="Enter your question about the book..."
+                    required
+                >
+                <button type="submit">Ask Question</button>
             </div>
         </form>
         <div id="answerStatus"></div>
@@ -67,125 +45,5 @@
         </div>
     </div>
     <div id="progress-status" class="text-center mb-3" style="display: none;"></div>
-
-    <script>
-        $(document).ready(function() {
-            let uploadInProgress = false;
-
-            function checkBookLoaded() {
-                $.get('/check_book_loaded', function(data) {
-                    if (data.book_loaded) {
-                        $('#questionForm').show();
-                    } else {
-                        $('#questionForm').hide();
-                    }
-                });
-            }
-
-            checkBookLoaded();
-
-            // Функции для управления прогресс-баром
-            function showProgress(label) {
-                $('.progress-container').show();
-                $('.progress-label').text(label);
-                $('.progress-fill').css('width', '0%');
-                $('.progress-text').text('0%');
-            }
-
-            function updateProgress(current, total) {
-                const percentage = Math.round((current / total) * 100);
-                $('.progress-fill').css('width', percentage + '%');
-                $('.progress-text').text(percentage + '%');
-            }
-
-            function hideProgress() {
-                $('.progress-container').fadeOut();
-            }
-
-            // Обновляем обработчик загрузки файла
-            $('#uploadForm').submit(function(e) {
-                e.preventDefault();
-                if (uploadInProgress) return;
-
-                var formData = new FormData(this);
-                uploadInProgress = true;
-                showProgress('Uploading and processing file...');
-
-                fetch('/', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        hideProgress();
-                        $('#uploadStatus').text(data.message);
-                        $('#questionForm').show();
-                    } else {
-                        hideProgress();
-                        $('#uploadStatus').text('Error: ' + data.message);
-                    }
-                    uploadInProgress = false;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    hideProgress();
-                    $('#uploadStatus').text('An error occurred during file upload.');
-                    uploadInProgress = false;
-                });
-            });
-
-            // Обновляем обработчик вопросов
-            $('#questionForm').submit(function(e) {
-                e.preventDefault();
-                var question = $('#question').val();
-                
-                if (!question) {
-                    $('#answerStatus').html('<div class="error">Please enter a question</div>');
-                    return;
-                }
-
-                showProgress('Processing question...');
-                
-                $.ajax({
-                    url: '/ask',
-                    method: 'POST',
-                    data: { question: question },
-                    success: function(response) {
-                        hideProgress();
-                        if (response.status === 'success') {
-                            var cleanAnswer = response.answer
-                                .replace(/\n{3,}/g, '\n\n')
-                                .trim();
-                            
-                            var formattedAnswer = marked.parse(cleanAnswer);
-                            
-                            $('#answerStatus').html(`
-                                <div class="answer-container">
-                                    <button onclick="copyAnswer(this)" class="copy-btn">
-                                        <i class="fas fa-copy"></i> Copy
-                                    </button>
-                                    <div class="answer-text markdown-body">${formattedAnswer}</div>
-                                </div>
-                            `);
-                        } else {
-                            $('#answerStatus').html(`<div class="error">${response.message}</div>`);
-                        }
-                    },
-                    error: function() {
-                        hideProgress();
-                        $('#answerStatus').html('<div class="error">Error processing question</div>');
-                    }
-                });
-            });
-
-            // Добавляем обработчик для Server-Sent Events
-            const evtSource = new EventSource("/progress");
-            evtSource.onmessage = function(event) {
-                const data = JSON.parse(event.data);
-                updateProgress(data.current, data.total);
-            };
-        });
-    </script>
 </body>
 </html>

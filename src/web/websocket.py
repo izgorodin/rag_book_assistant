@@ -1,16 +1,34 @@
-from flask_socketio import SocketIO
-from typing import Dict, Any
+from fastapi import WebSocket
+from typing import List, Dict, Any
+import logging
 
-socketio = SocketIO()
+logger = logging.getLogger(__name__)
 
-def emit_progress(status: str, current: int, total: int, additional_info: Dict[str, Any] = None):
-    """Emit progress update through WebSocket."""
-    data = {
-        'status': status,
-        'current': current,
-        'total': total,
-        'progress': (current / total * 100) if total > 0 else 0
-    }
-    if additional_info:
-        data.update(additional_info)
-    socketio.emit('progress_update', data)
+class WebSocketManager:
+    def __init__(self):
+        self.active_connections: List[WebSocket] = []
+
+    async def connect(self, websocket: WebSocket):
+        await websocket.accept()
+        self.active_connections.append(websocket)
+        logger.info(f"New WebSocket connection. Total connections: {len(self.active_connections)}")
+
+    async def disconnect(self, websocket: WebSocket):
+        self.active_connections.remove(websocket)
+        logger.info(f"WebSocket disconnected. Remaining connections: {len(self.active_connections)}")
+
+    async def emit_progress(self, status: str, current: int, total: int, additional_data: Dict[str, Any] = None):
+        data = {
+            "status": status,
+            "current": current,
+            "total": total
+        }
+        if additional_data:
+            data.update(additional_data)
+            
+        for connection in self.active_connections:
+            try:
+                await connection.send_json(data)
+            except Exception as e:
+                logger.error(f"Error sending WebSocket message: {str(e)}")
+                await self.disconnect(connection)
