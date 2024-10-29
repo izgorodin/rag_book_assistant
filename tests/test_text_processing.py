@@ -1,9 +1,9 @@
 import pytest
 import os
-from src.text_processing import load_and_preprocess_text, split_into_chunks
+from src.text_processor import load_and_preprocess_text, split_into_chunks
 
 def test_load_and_preprocess_text():
-    test_file_path = os.path.join(os.path.dirname(__file__), 'data', 'test_book.txt')
+    test_file_path = os.path.join(os.path.dirname(__file__), 'test_data', 'test_book.txt')
     with open(test_file_path, 'r', encoding='utf-8') as file:
         text_content = file.read()
     

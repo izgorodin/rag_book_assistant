@@ -1,0 +1,157 @@
+In September 2024, our primary objective was to establish the foundation of the project. We successfully designed the architecture with a strong focus on the key feature—a decision-making engine—and ensured the scalability of the entire system. Once the main part of the architectural plan was finalized, we proceeded to work on both the client and server applications, laying the groundwork for further development.
+
+### Project Design Report
+
+# **Architecture**
+
+### 1. **System Architecture Design**
+
+**Key achievements:**
+
+- An architectural plan of the system was developed with separation into client and server parts.
+- A multi-layered architecture was introduced, ensuring the isolation of data logic, user interface, and business logic. This simplified modular testing and improved code maintainability.
+- Various data layers were designed and implemented to work with local and remote repositories (DAO), ensuring reliable interaction with Firebase and Firestore.
+- An approach to data serialization and deserialization was developed, including handling user data and project data with support for various formats.
+
+### 2. **Data and Model Design**
+
+**Key achievements:**
+
+- The main data models for the system were developed and implemented, including models for projects, users, messages, and chats.
+- Structures of tables and classes were designed and implemented to work with local and remote data (e.g., chat tables, documents, messages, and projects).
+- Data converters were implemented to ensure compatibility between different system layers, as well as between the client and server parts.
+
+### 3. **Business Logic Design**
+
+**Key achievements:**
+
+- Business logic was designed and implemented for managing projects, including functionality for creating, editing, and displaying projects on both the client and server sides.
+- BLoC (Business Logic Component) blocks were developed to manage the state of projects and chats, allowing the isolation of data processing logic and events.
+- CRUD operations were implemented to manage user, project, and message data. These operations provided the ability to perform all necessary actions on both the client and server sides.
+- Real-time event processing logic was developed, such as updating the message list and project status using remote events.
+
+### 4. **Integration with External Services**
+
+**Key achievements:**
+
+- A system for integrating with Firebase was developed during the design phase, including working with Firebase Authentication, Firebase Messaging, and Firestore. This ensured reliable user authentication, real-time data exchange, and notification delivery.
+- Methods for working with Firebase storage were designed to upload and store images and other data, enabling the functionality of sending and receiving multimedia data.
+- A mechanism for working with Firebase Functions was developed and integrated, allowing the processing of server events and transmitting them to the client in real-time.
+
+### 5. **User Interface (UI/UX) Design**
+
+**Key achievements:**
+
+- Basic layouts and designs for key screens were created, including project screens, authentication, settings, and chats.
+- A component-based approach was used in the interface design, ensuring a modular and easily expandable structure for the user interface.
+- Adaptive design elements were implemented to support different screen resolutions, including setting breakpoints based on window size.
+- Key UX principles were considered, ensuring ease of use when interacting with the project, chat, and account settings.
+
+### 6. **Security Systems Design**
+
+**Key achievements:**
+
+- During the design phase, special attention was given to user and project data security.
+- Authentication mechanisms were designed and implemented via Firebase Authentication, including OAuth support for Google login.
+- Secure methods of working with data were developed, including the protection of messages and projects, ensuring their confidentiality and integrity.
+
+### 7. **Notification System Design**
+
+**Key achievements:**
+
+- A solution for sending and receiving notifications via Firebase Cloud Messaging (FCM) was designed and implemented, enabling push notifications for new messages and project events.
+- Local and remote notification providers were implemented, allowing users to receive timely notifications on both web and mobile platforms.
+
+### 8. **Testing and Debugging Processes Design**
+
+**Key achievements:**
+
+- The main testing processes were defined during the design phase, including unit tests to verify key elements of business logic and data serialization.
+- A system of integrated tests at the user interface and server levels was designed, reducing debugging time and minimizing the chance of errors in the release version of the application.
+
+### 9. **User Request Processing Module Design**
+
+**Key achievements:**
+
+- **Designed the architecture for the user request processing module**, ensuring seamless integration with the existing system architecture.
+- **Developed the Decision Making Module (DMM)** to intelligently route user requests to appropriate AI services based on content analysis.
+- **Planned the integration with external AI services** such as OpenAI and Anthropic APIs, outlining communication protocols, authentication methods, and data handling mechanisms.
+- **Documented the module's architecture, interfaces, and expected behaviors**, providing clear guidelines for implementation and future maintenance.
+
+# **Development**
+
+### 1. **User Interface (UI/UX) Development**
+
+**Key achievements:**
+
+- Key elements of the user interface for managing projects, authentication, and chat interactions were implemented.
+- Screens for settings, profiles, and navigation panels were added. In particular, tabs were created for theme selection, account management, and localization.
+- Widgets for displaying messages, notifications, and cookie warnings were implemented.
+- Authentication dialog windows were created.
+- Animations were added to menu elements and widgets to enhance interaction with the interface.
+- A navigation structure was created, with buttons and other interface components such as “project list” and “side panel” added.
+
+### 2. **Authentication and Authorization Functionality**
+
+**Key achievements:**
+
+- Authentication functionality through Google, email, and anonymous accounts was added.
+- A pop-up interface for authentication was implemented, including UI solutions for displaying errors and notifications.
+- Features for displaying and selecting accounts with localization support were added.
+
+### 3. **Working with Projects**
+
+**Key achievements:**
+
+- Functionality for creating and managing projects was implemented. Screens were added for viewing the project list and subscribing to project data.
+- Business logic for creating, editing, and displaying projects was added.
+- CRUD methods for working with projects on both the server and client sides were implemented.
+- Data models for projects and their connection to the user profile were introduced, along with extended support for local and remote project data.
+
+### 4. **Chat Functionality**
+
+**Key achievements:**
+
+- Real-time message sending and receiving functionality with the server was added.
+- Chat logic was added, including event handling and subscribing to the data stream.
+- Data layers for managing messages were added, with improved duplicate checking and local data support.
+- A function for interacting with messages during events was implemented.
+
+### 5. **Server Logic and Integrations**
+
+**Key achievements:**
+
+- Firebase functions were implemented, including emulators and functions for working with storage, the database, and server events.
+- Integration with Firebase was set up to handle remote notifications, as well as work with messages on the server.
+- Processing of remote events, their broadcasting to the client, and the implementation of subscriptions to server data streams were added.
+- Tests for data serialization were added, and work with user and project data classes was improved.
+
+### 6. **User Request Processing Module Development**
+
+**Key achievements:**
+
+- **Implemented the user request processing module**, including API endpoints to handle incoming user requests.
+- **Integrated with OpenAI and Anthropic APIs**, enabling the system to process user inputs using external AI services.
+- **Developed the Decision Making Module (DMM)** that analyzes incoming prompts and routes them to the appropriate AI service based on content keywords.
+- **Set up comprehensive logging** throughout the module to facilitate debugging and monitoring, including error handling and performance metrics.
+- **Created unit and integration tests** to ensure the reliability and correctness of the module's functionality, covering various scenarios and edge cases.
+- **Handled exceptions and errors gracefully**, ensuring the system manages failures in external service calls without crashing.
+- **Documented the development process**, providing clear instructions and guidelines for future developers and stakeholders.
+
+### 7. **Testing and Refactoring**
+
+**Key achievements:**
+
+- Refactoring of key elements of business logic related to chat, projects, and user data was conducted.
+- Tests for verifying data serialization and type conversion in the project were improved.
+- Dependencies and project settings for Android and other platforms were updated.
+- **Refactored the user request processing module**, improving code readability and maintainability.
+- **Enhanced test coverage** for the new module, ensuring robust functionality and identifying potential issues early in the development cycle.
+
+### Conclusion
+
+The system design includes developing a multi-layered architecture, implementing reliable business logic, integrating with external services (Firebase, OpenAI, Anthropic), creating an adaptive and user-friendly interface, and designing data security systems. These steps laid a strong foundation for the future development and scalability of the project.
+
+During September 2024, the main focus was on creating the user interface, building the data layer, and integrating with server components and Firebase. Additionally, significant progress was made in developing the user request processing module, integrating advanced AI capabilities into the system. New features were implemented, and key modules of the application were refactored and tested.
+
+---

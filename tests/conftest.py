@@ -3,9 +3,17 @@ from unittest.mock import Mock, patch
 from openai import OpenAI
 import os
 import time
-from src.utils.logger import setup_logger
+from src.utils.logger import get_main_logger
+from tests.utils.mock_factory import MockFactory
+from tests.test_data.constants import (
+    TEST_EMBEDDING_DIM,
+    TEST_EMBEDDING_VALUES,
+    TEST_TEXTS,
+    TEST_API_RESPONSES
+)
 
-logger = setup_logger()
+logger = get_main_logger()
+
 
 def pytest_addoption(parser):
     parser.addoption(
@@ -30,10 +38,23 @@ def use_real_api(request):
 
 @pytest.fixture
 def mock_openai_client():
-    mock_client = Mock()
-    mock_client.embeddings.create.return_value = Mock(data=[Mock(embedding=[0.1] * 1536)])
-    mock_client.chat.completions.create.return_value = Mock(choices=[Mock(message=Mock(content="Mocked response about fiction with wizards and magic"))])
-    return mock_client
+    """Фикстура для мок клиента OpenAI."""
+    return MockFactory.create_openai_client()
+
+@pytest.fixture
+def mock_embedding_service():
+    """Фикстура для мок сервиса эмбеддингов."""
+    return MockFactory.create_embedding_service(
+        embedding_dimensions=TEST_EMBEDDING_DIM,
+        embedding_values=TEST_EMBEDDING_VALUES
+    )
+
+@pytest.fixture
+def mock_cache():
+    """Фикстура для мок кэша с тестовыми эмбеддингами."""
+    return MockFactory.create_cache_mock(
+        embedding_dimensions=TEST_EMBEDDING_DIM
+    )
 
 @pytest.fixture
 def openai_client(use_real_api, mock_openai_client):

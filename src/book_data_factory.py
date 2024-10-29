@@ -2,7 +2,7 @@ from typing import Dict, Any, Optional, Callable, List, Union
 from src.utils.logger import get_main_logger, get_rag_logger
 from src.book_data_interface import BookDataInterface
 from src.embedding import EmbeddingService
-from src.text_processing import load_and_preprocess_text, extract_dates, extract_named_entities, extract_key_phrases
+from src.text_processor import load_and_preprocess_text, extract_dates, extract_named_entities, extract_key_phrases
 from src.vector_store_service import VectorStoreService
 from tqdm import tqdm
 import time

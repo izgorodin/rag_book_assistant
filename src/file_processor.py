@@ -6,20 +6,15 @@ from docx import Document
 from odf import text, teletype
 from odf.opendocument import load
 from src.utils.logger import get_main_logger, get_rag_logger
+from src.utils.error_handler import FileProcessingError, handle_rag_error
 
 # Initialize loggers for main application and RAG processing
 logger = get_main_logger()
 rag_logger = get_rag_logger()
 
 class FileProcessor:
-    def process_file(self, file_path: str) -> Optional[str]:
-        """Process different file types and return text content."""
-        # Extract the file extension from the file path
-        _, ext = os.path.splitext(file_path)
-        ext = ext.lower()
-
-        # Mapping of file extensions to their respective processing methods
-        processors = {
+    def __init__(self):
+        self.supported_formats = {
             '.txt': self._process_txt,
             '.pdf': self._process_pdf,
             '.doc': self._process_doc,
@@ -27,34 +22,23 @@ class FileProcessor:
             '.odt': self._process_odt
         }
 
-        # Get the appropriate processor based on the file extension
-        processor = processors.get(ext)
-        if not processor:
-            # Log and raise an error if the file type is unsupported
-            error_msg = f"Unsupported file type: {ext}"
-            logger.error(error_msg)
-            rag_logger.error(f"\nFile Processing Error:\n{error_msg}\n{'-'*50}")
-            raise ValueError(error_msg)
+    @handle_rag_error
+    def process_file(self, file_path: str) -> Optional[str]:
+        """Process different file types and return text content."""
+        _, ext = os.path.splitext(file_path)
+        ext = ext.lower()
 
-        try:
-            # Log the start of file processing
-            logger.info(f"Processing {ext} file: {file_path}")
-            content = processor(file_path)  # Call the appropriate processing method
-            logger.info(f"Successfully processed file, content length: {len(content)}")
-            rag_logger.info(
-                f"\nFile Processing:\n"
-                f"File: {file_path}\n"
-                f"Type: {ext}\n"
-                f"Content length: {len(content)} chars\n"
-                f"{'-'*50}"
+        processor = self.supported_formats.get(ext)
+        if not processor:
+            raise FileProcessingError(
+                file_path=file_path,
+                error_type="unsupported_format",
+                details={
+                    'extension': ext,
+                    'supported_formats': list(self.supported_formats.keys())
+                }
             )
-            return content  # Return the processed content
-        except Exception as e:
-            # Log and raise an error if processing fails
-            error_msg = f"Error processing {ext} file: {str(e)}"
-            logger.error(error_msg)
-            rag_logger.error(f"\nFile Processing Error:\n{error_msg}\n{'-'*50}")
-            raise
+        return processor(file_path)
 
     def _process_txt(self, file_path: str) -> str:
         """Process a .txt file and return its content as a string."""

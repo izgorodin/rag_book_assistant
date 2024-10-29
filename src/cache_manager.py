@@ -40,20 +40,35 @@ class CacheInterface(ABC):
 class CacheManager(CacheInterface):
     """File system based cache implementation with statistics."""
     
+    _instance = None  # Singleton instance
+    
+    def __new__(cls, cache_dir: str):
+        """Implement singleton pattern."""
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance._initialized = False
+        return cls._instance
+    
     def __init__(self, cache_dir: str):
         """Initialize CacheManager with a specified cache directory."""
-        self.cache_dir = cache_dir  # Set the cache directory
-        self.hits = 0  # Initialize cache hits counter
-        self.misses = 0  # Initialize cache misses counter
-        os.makedirs(cache_dir, exist_ok=True)  # Create cache directory if it doesn't exist
-        logger.info(f"CacheManager initialized at {cache_dir}")  # Log initialization
+        if not self._initialized:
+            self.cache_dir = cache_dir
+            self.hits = 0
+            self.misses = 0
+            os.makedirs(cache_dir, exist_ok=True)
+            logger.info(f"CacheManager initialized at {cache_dir}")
+            self._initialized = True
+            self._log_initialization()
+    
+    def _log_initialization(self):
+        """Log initialization details."""
         rag_logger.info(
             f"\nCache Initialization:\n"
-            f"Directory: {cache_dir}\n"
+            f"Directory: {self.cache_dir}\n"
             f"Status: Ready\n"
             f"{'-'*50}"
         )
-
+    
     def _get_path(self, key: str) -> str:
         """Generate file path for cache key based on its hash."""
         hashed = hashlib.sha256(key.encode()).hexdigest()  # Create a hash of the key
@@ -121,5 +136,5 @@ class CacheManager(CacheInterface):
             "hit_ratio": self.hits / total_ops if total_ops > 0 else 0  # Calculate and return hit ratio
         }
 
-# Create default cache instance
-default_cache = CacheManager(CACHE_DIR)  # Instantiate CacheManager with the configured cache directory
+# Create default cache instance using singleton pattern
+default_cache = CacheManager(CACHE_DIR)
