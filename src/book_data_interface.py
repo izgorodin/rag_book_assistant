@@ -1,62 +1,74 @@
-from typing import List, Dict, Any, Optional
-import pickle
-import os
+from typing import List, Dict, Any, Optional  # Import necessary types for type hinting
+import pickle  # Import pickle for object serialization
+import os  # Import os for file and directory operations
 from src.data_source import DataSource
-from src.embedding import EmbeddingService
+from src.embedding import EmbeddingService  # Import the EmbeddingService for embedding functionalities
+
 
 class BookDataInterface(DataSource):
     def __init__(self, 
-                 chunks: List[str], 
-                 embeddings: List[List[float]], 
-                 processed_text: Dict[str, Any],
-                 embedding_service: EmbeddingService,
-                 dates: Optional[List[str]] = None,
-                 entities: Optional[List[Dict[str, Any]]] = None,
-                 key_phrases: Optional[List[str]] = None):
-        self._chunks = chunks
-        self._embeddings = embeddings
-        self._processed_text = processed_text
-        self._embedding_service = embedding_service
-        self._dates = dates or []
-        self._entities = entities or []
-        self._key_phrases = key_phrases or []
+                 chunks: List[str],  # List of text chunks
+                 embeddings: List[List[float]],  # List of embeddings for the chunks
+                 processed_text: Dict[str, Any],  # Dictionary containing processed text data
+                 embedding_service: EmbeddingService,  # Instance of EmbeddingService for embedding operations
+                 dates: Optional[List[str]] = None,  # Optional list of dates associated with the chunks
+                 entities: Optional[List[Dict[str, Any]]] = None,  # Optional list of entities found in the text
+                 key_phrases: Optional[List[str]] = None):  # Optional list of key phrases extracted from the text
+        self._chunks = chunks  # Initialize the chunks
+        self._embeddings = embeddings  # Initialize the embeddings
+        self._processed_text = processed_text  # Initialize the processed text
+        self._embedding_service = embedding_service  # Initialize the embedding service
+        self._dates = dates or []  # Initialize dates, default to empty list if None
+        self._entities = entities or []  # Initialize entities, default to empty list if None
+        self._key_phrases = key_phrases or []  # Initialize key phrases, default to empty list if None
         
     @classmethod
     def from_file(cls, file_path: str):
-        with open(file_path, 'rb') as f:
-            data = pickle.load(f)
-        return cls(data['chunks'], data['embeddings'], data.get('processed_text', {}), data.get('embedding_service', {}), data.get('dates', []), data.get('entities', []), data.get('key_phrases', []))
+        """Create an instance of BookDataInterface from a file."""
+        with open(file_path, 'rb') as f:  # Open the file in binary read mode
+            data = pickle.load(f)  # Load the data from the file
+        return cls(data['chunks'], data['embeddings'], data.get('processed_text', {}), 
+                   data.get('embedding_service', {}), data.get('dates', []), 
+                   data.get('entities', []), data.get('key_phrases', []))  # Return an instance with loaded data
 
     def save(self, file_path: str):
+        """Save the current instance data to a file."""
         data = {
-            'chunks': self._chunks,
-            'embeddings': self._embeddings,
-            'processed_text': self._processed_text,
-            'dates': self._dates,
-            'entities': self._entities,
-            'key_phrases': self._key_phrases
+            'chunks': self._chunks,  # Store chunks
+            'embeddings': self._embeddings,  # Store embeddings
+            'processed_text': self._processed_text,  # Store processed text
+            'dates': self._dates,  # Store dates
+            'entities': self._entities,  # Store entities
+            'key_phrases': self._key_phrases  # Store key phrases
         }
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        with open(file_path, 'wb') as f:
-            pickle.dump(data, f)
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Create directory if it doesn't exist
+        with open(file_path, 'wb') as f:  # Open the file in binary write mode
+            pickle.dump(data, f)  # Serialize and save the data
 
     def __len__(self):
-        return len(self._chunks)
+        """Return the number of chunks."""
+        return len(self._chunks)  # Return the length of the chunks list
 
     def get_chunks(self) -> List[str]:
-        return self._chunks
+        """Return the list of text chunks."""
+        return self._chunks  # Return the stored chunks
 
     def get_embeddings(self) -> List[List[float]]:
-        return self._embeddings
+        """Return the list of embeddings."""
+        return self._embeddings  # Return the stored embeddings
 
     def get_processed_text(self) -> Dict[str, Any]:
-        return self._processed_text
+        """Return the processed text data."""
+        return self._processed_text  # Return the processed text
 
     def get_dates(self) -> List[str]:
-        return self._dates
+        """Return the list of dates associated with the chunks."""
+        return self._dates  # Return the stored dates
 
     def get_entities(self) -> List[Dict[str, Any]]:
-        return self._entities
+        """Return the list of entities found in the text."""
+        return self._entities  # Return the stored entities
 
     def get_key_phrases(self) -> List[str]:
-        return self._key_phrases
+        """Return the list of key phrases extracted from the text."""
+        return self._key_phrases  # Return the stored key phrases

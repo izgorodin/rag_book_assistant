@@ -1,8 +1,9 @@
 from typing import Callable, Any
 from functools import wraps
-from src.utils.logger import setup_logger
+from src.utils.logger import get_main_logger, get_rag_logger
 
-logger = setup_logger()
+logger = get_main_logger()
+rag_logger = get_rag_logger()
 
 class RAGError(Exception):
     """Base exception class for RAG-related errors."""
@@ -14,7 +15,9 @@ def handle_rag_error(func: Callable) -> Callable:
         try:
             return func(*args, **kwargs)
         except Exception as e:
-            logger.error(f"Error in {func.__name__}: {str(e)}", exc_info=True)
+            error_msg = f"Error in {func.__name__}: {str(e)}"
+            logger.error(error_msg, exc_info=True)
+            rag_logger.error(f"\nFunction: {func.__name__}\nError: {str(e)}\n{'='*50}")
             if isinstance(e, RAGError):
                 return str(e)
             return f"Sorry, I encountered an error while processing your request: {str(e)}"

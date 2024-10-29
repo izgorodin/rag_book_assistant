@@ -28,29 +28,45 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from src.openai_service import OpenAIService
-from src.utils.logger import setup_logger
+from src.utils.logger import get_main_logger, get_rag_logger
 from src.book_data_interface import BookDataInterface
 from src.search import CosineSearch, get_search_strategy
 from src.utils.error_handler import handle_rag_error
 from src.embedding import EmbeddingService
 from src.config import TOP_K_CHUNKS
-logger = setup_logger()
+
+# Initialize main and RAG-specific loggers
+logger = get_main_logger()
+rag_logger = get_rag_logger()
 
 @handle_rag_error
 def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAIService, 
              embedding_service: EmbeddingService) -> str:
     """Process query using RAG approach."""
     try:
-        # Создаем поисковую стратегию с embedding_service
+        # Create a search strategy using cosine similarity
         search_strategy = CosineSearch(book_data, embedding_service)
+        
+        # Retrieve relevant chunks based on the query
         relevant_chunks = search_strategy.search(query, top_k=TOP_K_CHUNKS)
         
-        # Формируем контекст из найденных чанков
+        # Format the context from the relevant chunks
         context = format_context(relevant_chunks)
         
-        # Генерируем ответ
-        return openai_service.generate_answer(query, context)
+        # Generate an answer using the OpenAI service
+        answer = openai_service.generate_answer(query, context)
+        
+        # Log the result of the RAG query
+        rag_logger.info(
+            f"\nQuery: {query}\n"
+            f"Context chunks: {len(relevant_chunks)}\n"
+            f"Answer: {answer}\n"
+            f"{'='*50}"
+        )
+        
+        return answer
     except Exception as e:
+        # Log any errors that occur during the query processing
         logger.error(f"Error in rag_query: {str(e)}")
         return f"Sorry, I encountered an error while processing your request: {str(e)}"
 
@@ -82,8 +98,9 @@ def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> flo
 
 @handle_rag_error
 def get_answer_from_system(query: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
+    """Retrieve an answer from the RAG system based on the provided query."""
     return rag_query(query, book_data, openai_service)
 
 def format_context(chunks: List[str]) -> str:
-    """Форматирует найденные чанки в контект для запроса."""
+    """Format the found chunks into context for the query."""
     return "\n\n".join(f"[{i+1}] {chunk}" for i, chunk in enumerate(chunks))

@@ -9,6 +9,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        function copyAnswer(button) {
+            const container = button.closest('.answer-container');
+            const textToCopy = container.querySelector('.answer-text').innerText;
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                button.innerHTML = '<i class="fas fa-times"></i> Error!';
+            }
+            
+            document.body.removeChild(textarea);
+        }
+    </script>
 </head>
 <body>
     <h1>RAG Book QA System</h1>
@@ -137,11 +161,13 @@
                             var formattedAnswer = marked.parse(cleanAnswer);
                             
                             $('#answerStatus').html(`
-                                <div class="answer-container markdown-body">
-                                    <div class="answer-text">${formattedAnswer}</div>
-                                    <i class="fas fa-copy copy-icon" title="Copy to clipboard"></i>
+                                <div class="answer-container">
+                                    <button onclick="copyAnswer(this)" class="copy-btn">
+                                        <i class="fas fa-copy"></i> Copy
+                                    </button>
+                                    <div class="answer-text markdown-body">${formattedAnswer}</div>
                                 </div>
-                            `.trim());
+                            `);
                         } else {
                             $('#answerStatus').html(`<div class="error">${response.message}</div>`);
                         }
