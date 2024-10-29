@@ -41,4 +41,5 @@ Cache
 uploads/
 logs/
 data/
-
+logs/rag_system.log
+logs/rag_results.log
