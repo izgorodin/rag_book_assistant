@@ -1,10 +1,6 @@
 # Базовый образ
 FROM python:3.11-slim
 
-# Добавляем DNS настройки
-RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf && \
-    echo "nameserver 8.8.4.4" >> /etc/resolv.conf
-
 # Рабочая директория
 WORKDIR /app
 
@@ -12,6 +8,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     build-essential \
     python3-dev \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Создание и активация виртуального окружения
@@ -28,9 +25,11 @@ COPY . .
 # Установка пакета в режиме разработки
 RUN pip install -e .
 
-# Создание необходимых директорий и установка NLTK данных
-RUN mkdir -p uploads logs && \
-    python -c "import nltk; \
+# Создание необходимых директорий
+RUN mkdir -p uploads logs data
+
+# Установка NLTK данных
+RUN python -c "import nltk; \
     nltk.download('punkt'); \
     nltk.download('punkt_tab'); \
     nltk.download('stopwords'); \

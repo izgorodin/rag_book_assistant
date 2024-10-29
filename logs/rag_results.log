@@ -7463,3 +7463,304 @@ Status: Initialized
 System Initialization:
 Status: Ready
 --------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 12.00 chars
+Sample chunk: Test content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 12.00 chars
+Sample chunk: Test content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 12.00 chars
+Sample chunk: Test content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Function: process_file
+Error: Unsupported file format (Details: {'file_path': '/private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-47/test_unsupported_file_format0/test.unsupported', 'error_type': 'unsupported_format', 'extension': '.unsupported', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+==================================================
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics Reset:
+Status: Completed
+--------------------------------------------------
+
+Query Processing:
+Query: Test query
+Context length: 12 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 13 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query Processing:
+Query: Test query
+Context length: 12 chars
+--------------------------------------------------
+
+OpenAI Error:
+Error in generate_answer: Request timed out.
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 107.00 chars
+Sample chunk: This is a test book. It contains some text about various topics including science, history, and lite...
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Application Start
+==================================================
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Application Start
+==================================================
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Подробно опиши судебное противостояние
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Подробно опиши судебное противостояние
+Top 10 results:
+Score: 0.3730 | Chunk: by January 1, 1973. The report states in part: "The 20 and 30 mph rear fixed barrier crashes will pr...
+Score: 0.3720 | Chunk: the fact that Ford had doctored its records to show compliance with federal emission standards, a su...
+Score: 0.3604 | Chunk: by the evidence, exaggerating, mischaracterizing experts' testimony, arguing evidence which had been...
+Score: 0.3585 | Chunk: 859-860 [139 Cal. Rptr. 888, 93 A.L.R.3d 537].) (2) Exhibits Nos. 95 and 122: Ford urges that a repo...
+Score: 0.3447 | Chunk: the court outside the presence of defense counsel. The judge conducted an unreported in camera inqui...
+Score: 0.3395 | Chunk: [169 Cal. Rptr. 691, 620 P.2d 141] cert. den. and app. dismd.Mutual of Omaha Ins. Co. v. Egan (1980)...
+Score: 0.3379 | Chunk: [1a] The trial court found that plaintiffs' responses to Ford's demand for a list of the expert witn...
+Score: 0.3378 | Chunk: interpreted as including a conscious disregard of the probability that the actor's conduct will resu...
+Score: 0.3375 | Chunk: or bystanders. (See Foglio v. Western Auto Supply, supra, 56 Cal. App. 3d 470, 477.)" (Barker v. Lul...
+Score: 0.3363 | Chunk: 152 F.2d 941, 943,revd. on other grounds (1946)329 U.S. 187 [91 L. Ed. 181, 67 S. Ct. 261].) "An att...
+--------------------------------------------------
+
+Query Processing:
+Query: Подробно опиши судебное противостояние
+Context length: 60765 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 3007 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Подробно опиши судебное противостояние
+Context chunks: 10
+Answer: Судебное противостояние описывает процесс судебного разбирательства между истцами и компанией Ford, касающееся дефектов автомобиля Pinto, особенно относительно расположения и защиты топливного бака. Приведем основные моменты:
+
+### Суть дела
+- **Истцы**: Гримшау (через его законного представителя) и семья Греев подали иск против Ford и других ответчиков.
+- **Причина иска**: Доказательства неэффективного дизайна топлива и конструктивных недостатков автомобиля Pinto, который подвергся серьезным авариям.
+
+### Основные аспекты
+1. **Тесты на столкновение**: 
+   - В отчете говорилось, что столкновения на скорости 20 и 30 миль в час показывают необходимость изменения конструкции топливного бака, поместив его в защищенное место, например, над задним мостом.
+   - Выводы о том, что топливный бак Pinto был расположен ненадлежащим образом, стали центральной частью дела.
+
+2. **Свидетельские показания**: 
+   - **Гарли Копп**, бывший инженер Ford, стал ключевым свидетелем, утверждая, что руководство знало о проблемах с топливным баком, но предпочло не вносить изменения из-за стоимости.
+   - Копп указал на манипуляции с записями компании о соответствии стандартам выбросов, что также ставило под сомнение добросовестность Ford.
+
+3. **Теории ответственности**: 
+   - Дела рассматривались по двум теориям: **небрежность** и **строгая ответственность**. Дело Гримшау охватывало обе, а дело Греев - только строгую ответственность.
+
+### Апелляции и юридические аргументы
+- **Ford обжаловал** приговор, ссылаясь на:
+  - **Ошибки в разрешениях** на показания Коппа.
+  - **Ошибки в инструкциях жюри** и предположительную предвзятость со стороны юристов истцов.
+  - Дискредитацию своей экспертизы и нежелание предоставить данные, которые, по мнению Ford, были неправомерно использованы против них.
+
+- **Предварительные решения суда**: 
+  - Суд отклонил многие жалобы Ford на том основании, что не было доказано, что произошли ошибки, которые бы помешали справедливому судебному разбирательству.
+
+### Пункты защиты и зашиты
+- **Изучение защищенности**: Ford настаивал, что их структура не должна была быть усилена значительным образом, чтобы противостоять авариям, и что базовые проектные решения не должны подвергаться сомнению.
+- **Потенциальная чрезмерная компенсация**: Ford также оспаривал размер присужденных штрафных убытков, заявляя, что они были несоразмерными.
+
+### Результаты
+Суд в конечном итоге пришел к выводу, что Ford не сумел продемонстрировать никакие ошибки или неправильности в ходе суда, которые привели бы к несправедливости. В результате иск был в значительной степени признан обоснованным, и Ford несет ответственность за дефекты, вызвавшие травмы и ущерб.
+
+### Заключение
+Судебное разбирательство по делу Pinto иллюстрирует напряженные отношения между юридической ответственностью производителей и безопасностью автомобилей. Основные притязания заключались в недостатках конструкции, отрицательных последствиях выбора дизайна, а также в наличии явной предвзятости со стороны управления Ford.
+==================================================
+
+Answer Generated:
+Length: 3007 chars
+--------------------------------------------------

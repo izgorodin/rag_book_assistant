@@ -3,6 +3,9 @@ version: '3.8'
 services:
   web:
     image: ${DOCKER_HUB_USERNAME}/rag-book-assistant:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "8080:8080"
@@ -13,3 +16,12 @@ services:
     volumes:
       - ./data:/app/data
       - ./uploads:/app/uploads
+      - ./logs:/app/logs
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
