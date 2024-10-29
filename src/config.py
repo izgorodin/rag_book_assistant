@@ -31,7 +31,7 @@ CACHE_DIR = 'data/cache'
 EMBEDDINGS_DIR = 'data/embeddings'
 
 # Batch Size Configuration
-BATCH_SIZE = 100
+PINECONE_BATCH_SIZE = 100
 
 # Flask Secret Key Configuration
 FLASK_SECRET_KEY = os.environ.get('FLASK_SECRET_KEY') 

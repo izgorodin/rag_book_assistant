@@ -16,8 +16,20 @@ from src.cache_manager import CacheManager
 from src.config import OPENAI_API_KEY, CACHE_DIR
 from typing import Union, TextIO
 from src.vector_store_service import VectorStoreService
+from tqdm import tqdm
+import sys
 
 logger = setup_logger()
+
+def create_progress_bar(desc: str, total: int) -> tqdm:
+    """Create a progress bar with consistent styling."""
+    return tqdm(
+        total=total,
+        desc=desc,
+        bar_format='{desc}: {percentage:3.0f}%|{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]',
+        file=sys.stdout,
+        ncols=80
+    )
 
 def progress_callback(status: str, current: int, total: int):
     """Callback для отображения прогресса в консоли."""
@@ -41,7 +53,7 @@ class BookAssistant:
         self.embedding_service = EmbeddingService(
             openai_client=self.openai_client,
             cache_manager=self.cache_manager,
-            progress_callback=progress_callback
+            progress_callback=self.update_progress
         )
         self.vector_store_service = VectorStoreService(vector_store=self.vector_store)
         
@@ -123,3 +135,20 @@ class BookAssistant:
             print(f"An error occurred: {str(e)}")
         
         logger.info("CLI session ended")
+
+    def update_progress(self, desc: str, current: int, total: int, pbar=None):
+        """Update progress bar with current status."""
+        if not hasattr(self, '_pbar') or self._pbar is None:
+            self._pbar = create_progress_bar(desc, total)
+        
+        # Обновляем описание если оно изменилось
+        if self._pbar.desc != desc:
+            self._pbar.set_description(desc)
+        
+        # Обновляем прогресс
+        self._pbar.update(current - self._pbar.n)
+        
+        # Закрываем если завершено
+        if current >= total:
+            self._pbar.close()
+            self._pbar = None

@@ -35,14 +35,11 @@
         <div id="answerStatus"></div>
     </div>
 
-    <div class="progress mb-3" style="display: none;">
-        <div id="progress-bar" 
-             class="progress-bar progress-bar-striped progress-bar-animated" 
-             role="progressbar" 
-             style="width: 0%" 
-             aria-valuenow="0" 
-             aria-valuemin="0" 
-             aria-valuemax="100">
+    <div class="progress-container" style="display: none;">
+        <div class="progress-label"></div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+            <div class="progress-text">0%</div>
         </div>
     </div>
     <div id="progress-status" class="text-center mb-3" style="display: none;"></div>
@@ -63,13 +60,32 @@
 
             checkBookLoaded();
 
+            // Функции для управления прогресс-баром
+            function showProgress(label) {
+                $('.progress-container').show();
+                $('.progress-label').text(label);
+                $('.progress-fill').css('width', '0%');
+                $('.progress-text').text('0%');
+            }
+
+            function updateProgress(current, total) {
+                const percentage = Math.round((current / total) * 100);
+                $('.progress-fill').css('width', percentage + '%');
+                $('.progress-text').text(percentage + '%');
+            }
+
+            function hideProgress() {
+                $('.progress-container').fadeOut();
+            }
+
+            // Обновляем обработчик загрузки файла
             $('#uploadForm').submit(function(e) {
                 e.preventDefault();
                 if (uploadInProgress) return;
 
                 var formData = new FormData(this);
                 uploadInProgress = true;
-                $('#uploadStatus').text('Uploading file...');
+                showProgress('Uploading and processing file...');
 
                 fetch('/', {
                     method: 'POST',
@@ -78,18 +94,24 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === 'success') {
-                        document.getElementById('uploadStatus').textContent = data.message;
-                        document.getElementById('questionForm').style.display = 'block';
+                        hideProgress();
+                        $('#uploadStatus').text(data.message);
+                        $('#questionForm').show();
                     } else {
-                        document.getElementById('uploadStatus').textContent = 'Error: ' + data.message;
+                        hideProgress();
+                        $('#uploadStatus').text('Error: ' + data.message);
                     }
+                    uploadInProgress = false;
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    document.getElementById('uploadStatus').textContent = 'An error occurred during file upload.';
+                    hideProgress();
+                    $('#uploadStatus').text('An error occurred during file upload.');
+                    uploadInProgress = false;
                 });
             });
 
+            // Обновляем обработчик вопросов
             $('#questionForm').submit(function(e) {
                 e.preventDefault();
                 var question = $('#question').val();
@@ -99,18 +121,18 @@
                     return;
                 }
 
-                $('#answerStatus').html('<div>Processing question...</div>');
+                showProgress('Processing question...');
                 
                 $.ajax({
                     url: '/ask',
                     method: 'POST',
                     data: { question: question },
                     success: function(response) {
+                        hideProgress();
                         if (response.status === 'success') {
-                            // Предварительная обработка текста для улучшения форматирования
                             var cleanAnswer = response.answer
-                                .replace(/\n{3,}/g, '\n\n')  // Заменяем множественные переносы на двойной
-                                .trim();  // Убираем лишние пробелы в начале и конце
+                                .replace(/\n{3,}/g, '\n\n')
+                                .trim();
                             
                             var formattedAnswer = marked.parse(cleanAnswer);
                             
@@ -119,16 +141,24 @@
                                     <div class="answer-text">${formattedAnswer}</div>
                                     <i class="fas fa-copy copy-icon" title="Copy to clipboard"></i>
                                 </div>
-                            `.trim());  // trim() убирает лишние пробелы в HTML
+                            `.trim());
                         } else {
                             $('#answerStatus').html(`<div class="error">${response.message}</div>`);
                         }
                     },
                     error: function() {
+                        hideProgress();
                         $('#answerStatus').html('<div class="error">Error processing question</div>');
                     }
                 });
             });
+
+            // Добавляем обработчик для Server-Sent Events
+            const evtSource = new EventSource("/progress");
+            evtSource.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                updateProgress(data.current, data.total);
+            };
         });
     </script>
 </body>
