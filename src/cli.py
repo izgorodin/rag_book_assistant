@@ -2,11 +2,7 @@ import os
 from openai import OpenAI
 from src.book_data_factory import BookDataFactory
 from src.file_processor import FileProcessor
-from src.book_data_factory import BookDataFactory
-from src.file_processor import FileProcessor
 from src.utils.logger import setup_logger
-from src.text_processing import load_and_preprocess_text
-from src.embedding import EmbeddingService
 from src.embedding import EmbeddingService
 from src.rag import rag_query
 from src.book_data_interface import BookDataInterface
