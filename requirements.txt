@@ -4,6 +4,8 @@
 #
 #    pip-compile --output-file=requirements.txt requirements.in
 #
+aiofiles==24.1.0
+    # via -r requirements.in
 annotated-types==0.7.0
     # via pydantic
 anyio==4.6.2.post1

@@ -23,7 +23,7 @@ RUN apt-get update \
 
 # Установка зависимостей
 WORKDIR $PYSETUP_PATH
-COPY deploy/requirements/base.txt ./requirements.txt
+COPY requirements.txt ./requirements.txt
 RUN python -m venv $VENV_PATH \
     && . $VENV_PATH/bin/activate \
     && pip install --no-cache-dir -r requirements.txt
@@ -37,4 +37,4 @@ WORKDIR /app
 COPY src/ ./src/
 
 # Запуск
-CMD ["uvicorn", "src.web.app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn src.web.app:app --host 0.0.0.0 --port ${PORT:-8000}"]

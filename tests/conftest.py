@@ -4,7 +4,7 @@ from openai import OpenAI
 import os
 import time
 from src.utils.logger import get_main_logger
-from tests.utils.mock_factory import MockFactory
+from tests.utils.mock_factory import MockFactory, MockFirebaseStorage
 from tests.test_data.constants import (
     TEST_EMBEDDING_DIM,
     TEST_EMBEDDING_VALUES,
@@ -13,6 +13,8 @@ from tests.test_data.constants import (
 )
 import sys
 import asyncio
+from fastapi.testclient import TestClient
+from src.web.app import app, get_storage_service
 
 # Добавляем корневую директорию проекта в PYTHONPATH
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -105,3 +107,14 @@ def event_loop():
     loop = asyncio.get_event_loop_policy().new_event_loop()
     yield loop
     loop.close()
+
+@pytest.fixture
+def storage_service():
+    mock_storage = MockFirebaseStorage()
+    # Важно: переопределяем глобальный storage_service
+    app.dependency_overrides[get_storage_service] = lambda: mock_storage
+    return mock_storage
+
+@pytest.fixture
+def client():
+    return TestClient(app)

@@ -8,6 +8,8 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse
 import os
 from typing import Optional
+
+import uvicorn
 from src.cli import BookAssistant
 from src.utils.logger import get_main_logger, get_rag_logger
 from src.file_processor import FileProcessor
@@ -19,6 +21,10 @@ from fastapi import Depends, status
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.middleware.cors import CORSMiddleware
 from .auth.middleware import AuthMiddleware
+import aiofiles
+import traceback
+import uuid
+from src.services.firebase_storage import FirebaseStorageService
 
 # Initialize loggers
 logger = get_main_logger()
@@ -52,6 +58,9 @@ assistant = BookAssistant(progress_callback=ws_manager.emit_progress)
 file_processor = FileProcessor()
 book_data = None
 
+# Инициализируем сервис
+storage_service = FirebaseStorageService()
+
 async def get_current_user(credentials: HTTPBasicCredentials = Depends(security)):
     if credentials.username in USERS and USERS[credentials.username] == credentials.password:
         return credentials.username
@@ -78,75 +87,126 @@ async def index(request: Request, user: str = Depends(get_current_user)):
         }
     )
 
+def get_storage_service():
+    return storage_service
+
 @app.post("/upload")
 async def upload_file(
     file: UploadFile = File(...),
-    user: str = Depends(get_current_user)
+    user: str = Depends(get_current_user),
+    storage_service: FirebaseStorageService = Depends(get_storage_service)
 ):
-    global book_data
-    
+    temp_files = []
     try:
+        logger.info("Upload started", extra={
+            "user": user,
+            "uploaded_file": file.filename,
+            "content_type": file.content_type,
+            "file_size": file.size
+        })
+        
+        if not allowed_file(file.filename):
+            logger.warning("Invalid file type rejected", extra={
+                "user": user,
+                "uploaded_file": file.filename,
+                "allowed_extensions": list(ALLOWED_EXTENSIONS)
+            })
+            raise HTTPException(
+                status_code=400,
+                detail=f"Invalid file type. Allowed extensions: {', '.join(ALLOWED_EXTENSIONS)}"
+            )
+        
+        # Сохраняем временный файл
         filename = file.filename
         file_path = os.path.join(UPLOAD_FOLDER, filename)
+        temp_files.append(file_path)
         
-        # Начало загрузки
-        await ws_manager.emit_progress("Starting upload", 0, 100)
-        
-        # Сохраняем файл
-        with open(file_path, "wb") as buffer:
+        async with aiofiles.open(file_path, 'wb') as out_file:
             content = await file.read()
-            buffer.write(content)
+            await out_file.write(content)
+            
+        logger.info("File saved", extra={
+            "user": user,
+            "file_location": file_path,
+            "file_size": len(content)
+        })
         
-        # Файл загружен
-        await ws_manager.emit_progress("File uploaded", 25, 100)
+        # Загружаем файл в Firebase Storage
+        try:
+            storage_url = await storage_service.upload_file(file_path, user)
+        except Exception as e:
+            logger.error("Firebase upload error", extra={
+                "user": user,
+                "error": str(e)
+            })
+            raise HTTPException(
+                status_code=500,
+                detail=f"Firebase upload error: {str(e)}"
+            )
         
         # Обработка книги
-        await ws_manager.emit_progress("Processing book", 50, 100)
-        book_data = assistant.load_and_process_book(file_path)
-        
-        # Завершение
-        chunks_count = len(book_data.get_chunks())
-        await ws_manager.emit_progress("Complete", 100, 100, {
-            "chunks_count": chunks_count
-        })
-        
-        return JSONResponse({
-            "status": "success",
-            "message": "File processed successfully",
-            "chunks_count": chunks_count
-        })
-        
+        try:
+            book_data = assistant.load_and_process_book(file_path)
+            app.state.book_data = book_data
+            
+            chunks_count = len(book_data.get_chunks())
+            logger.info("Book processed", extra={
+                "user": user,
+                "chunks_count": chunks_count,
+                "storage_url": storage_url
+            })
+            
+            return JSONResponse({
+                "status": "success",
+                "message": "File processed successfully",
+                "chunks_count": chunks_count,
+                "storage_url": storage_url
+            })
+            
+        except Exception as e:
+            logger.error("Book processing error", extra={
+                "user": user,
+                "error": str(e)
+            })
+            app.state.book_data = None
+            raise
+            
     except Exception as e:
-        logger.error(f"Error processing file: {str(e)}")
-        await ws_manager.emit_progress("Error", 0, 100, {"error": str(e)})
-        raise HTTPException(status_code=500, detail=str(e))
+        # В случае ошибки тоже удаляем временный файл
+        if temp_files and os.path.exists(temp_files[0]):
+            os.remove(temp_files[0])
+            logger.info("Temporary file removed after error", extra={
+                "file_location": temp_files[0]
+            })
+        raise
 
 @app.get("/ask")
-async def ask_question(question: str = Query(...), user: str = Depends(get_current_user)):
+async def ask_question(
+    question: str,
+    user: str = Depends(get_current_user)
+):
+    # Получаем book_data из состояния приложения
+    book_data = getattr(app.state, 'book_data', None)
+    
+    if not book_data:
+        logger.error("No book data loaded")
+        raise HTTPException(
+            status_code=400,
+            detail="No book data loaded"
+        )
+    
     try:
-        if not book_data:
-            raise HTTPException(status_code=400, detail="No book data loaded")
-            
-        # Отправляем статус через WebSocket
-        await ws_manager.emit_progress("Processing question", 0, 100)
-        
-        # Получаем ответ (исправлено имя метода)
+        logger.info(f"Processing question: {question}")
         answer = assistant.answer_question(question, book_data)
-        
-        # Отправляем завершение через WebSocket
-        await ws_manager.emit_progress("Complete", 100, 100, {
-            "answer": answer
-        })
-        
         return {"answer": answer}
         
     except Exception as e:
         logger.error(f"Error processing question: {str(e)}")
-        await ws_manager.emit_progress("Error", 0, 100, {"error": str(e)})
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/check_book_loaded")
 async def check_book_loaded(user: str = Depends(get_current_user)):
+    book_data = getattr(app.state, 'book_data', None)
     return JSONResponse({'book_loaded': book_data is not None})
 
 # WebSocket endpoint
@@ -190,20 +250,21 @@ async def login(
         status_code=401
     )
 
-# Добавляем сессии (перед auth middleware!)
+# Добавляем сессии (пере auth middleware!)
 app.add_middleware(
     SessionMiddleware,
-    secret_key="your-secret-key",  # Используйте безопасный ключ из конфига
-    session_cookie="session"
+    secret_key=os.environ.get('SESSION_SECRET_KEY', FLASK_SECRET_KEY),
+    session_cookie="session",
+    max_age=3600  # 1 hour
 )
 
 # Конфигурация CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[os.environ.get('ALLOWED_ORIGINS', 'http://localhost:8080').split(',')],
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 # Добавляем middleware аутентификации с публичными путями
@@ -227,3 +288,9 @@ async def home():
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
+
+if __name__ == "__main__":
+    # Получаем порт из переменной окружения или используем значение по умолчанию
+    PORT = int(os.getenv("PORT", 8080))
+    logger.info(f"Starting server on port {PORT}")
+    uvicorn.run("app:app", host="0.0.0.0", port=PORT, reload=True)

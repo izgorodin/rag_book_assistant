@@ -1,7 +1,9 @@
 import logging
+import traceback
 import colorlog
 import os
 from datetime import datetime
+import json
 
 class LoggerManager:
     _instance = None
@@ -22,20 +24,18 @@ class LoggerManager:
         if not logger.handlers:
             logger.setLevel(logging.DEBUG)
             
-            # Файловый хендлер
+            # Файловый хендлер с JSON форматированием
             file_handler = logging.FileHandler(
                 os.path.join(self.log_dir, 'app.log')
             )
             file_handler.setLevel(logging.DEBUG)
-            file_handler.setFormatter(logging.Formatter(
-                '%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s'
-            ))
+            file_handler.setFormatter(JSONFormatter())
             
-            # Консольный хендлер с цветами
+            # Консольный хендлер остается читаемым для человека
             console_handler = colorlog.StreamHandler()
             console_handler.setLevel(logging.INFO)
             console_handler.setFormatter(colorlog.ColoredFormatter(
-                '%(log_color)s%(levelname)s - %(message)s',
+                '%(log_color)s%(levelname)s [%(name)s] %(message)s',
                 log_colors={
                     'DEBUG': 'cyan',
                     'INFO': 'green',
@@ -76,3 +76,44 @@ def get_main_logger():
 
 def get_rag_logger():
     return LoggerManager.get_logger('rag')
+
+def get_structured_logger(name: str):
+    logger = logging.getLogger(name)
+    
+    def structured_log(msg, **kwargs):
+        log_data = {
+            "timestamp": datetime.now().isoformat(),
+            "service": name,
+            **kwargs
+        }
+        return json.dumps(log_data)
+        
+    return logger
+
+class JSONFormatter(logging.Formatter):
+    def format(self, record):
+        log_data = {
+            "timestamp": datetime.now().isoformat(),
+            "level": record.levelname,
+            "message": record.getMessage(),
+            "module": record.module,
+            "function": record.funcName,
+        }
+        
+        if hasattr(record, 'extra'):
+            log_data.update(record.extra)
+            
+        if record.exc_info:
+            log_data['traceback'] = traceback.format_exception(*record.exc_info)
+            
+        return json.dumps(log_data)
+
+def setup_structured_logger(name: str, level=logging.INFO):
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
+    
+    handler = logging.StreamHandler()
+    handler.setFormatter(JSONFormatter())
+    logger.addHandler(handler)
+    
+    return logger
