@@ -10465,3 +10465,370 @@ Total chunks: 1
 Average chunk size: 107.00 chars
 Sample chunk: This is a test book. It contains some text about various topics including science, history, and lite...
 --------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Rnj fdnjh&
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Rnj fdnjh&
+Top 10 results:
+Score: 0.1449 | Chunk: helps with body recomposition. The benefits are summarized nicely in the title of one study: “Ursoli...
+Score: 0.1415 | Chunk: the slower time passes, the longer you live. Law 17: The best way to predict the future is to create...
+Score: 0.1364 | Chunk: that there’s a ceiling on yoga, and the ceiling is: You have all this amazing knowledge and all this...
+Score: 0.1346 | Chunk: but attributed it to a bumper sticker. By the end of this profile, you’ll see how BJ loves this type...
+Score: 0.1299 | Chunk: to impact my neighbor?’ No, this is your time. You’re stealing the time. And the act of creation is ...
+Score: 0.1227 | Chunk: The 4-Hour Workweek, The 4-Hour Body, and The 4-Hour Chef. The Observer and other media have called ...
+Score: 0.1214 | Chunk: of the mouse itself. So a lion that spent its day hunting and eating field mice would slowly starve ...
+Score: 0.1170 | Chunk: heard that the wholesome Full House star was, in fact, a really filthy standup comic. But how could ...
+Score: 0.1097 | Chunk: making it hard for them to navigate.’ Sits down. “My grandmother raised those people at church. [She...
+Score: 0.1079 | Chunk: us to get ready for your deal.’ And he’s like, ‘Man, you don’t gotta take off. You can sit down. I’m...
+--------------------------------------------------
+
+Query Processing:
+Query: Rnj fdnjh&
+Context length: 51251 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 321 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Rnj fdnjh&
+Context chunks: 10
+Answer: It seems that the question "Rnj fdnjh&" does not appear to be related to the content provided in the context. As such, I am unable to provide a relevant answer based on the information given.
+
+If you have a specific question or need information related to the context provided, please clarify, and I'd be happy to assist!
+==================================================
+
+Answer Generated:
+Length: 321 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Rnj 'nj&
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Rnj 'nj&
+Top 10 results:
+Score: 0.1732 | Chunk: the slower time passes, the longer you live. Law 17: The best way to predict the future is to create...
+Score: 0.1527 | Chunk: but attributed it to a bumper sticker. By the end of this profile, you’ll see how BJ loves this type...
+Score: 0.1404 | Chunk: of the mouse itself. So a lion that spent its day hunting and eating field mice would slowly starve ...
+Score: 0.1376 | Chunk: helps with body recomposition. The benefits are summarized nicely in the title of one study: “Ursoli...
+Score: 0.1315 | Chunk: heard that the wholesome Full House star was, in fact, a really filthy standup comic. But how could ...
+Score: 0.1262 | Chunk: to impact my neighbor?’ No, this is your time. You’re stealing the time. And the act of creation is ...
+Score: 0.1234 | Chunk: it that are sort of opposite. The man will be trying to access his bravery, and the woman will be ac...
+Score: 0.1184 | Chunk: that both Naval Ravikant (page 546, who introduced us) and I do on a near-daily basis. Jerzy conside...
+Score: 0.1161 | Chunk: will experience a sharp increase in the max number of push-ups, even though their lungs are empty. C...
+Score: 0.1155 | Chunk: Dan: “‘Be curious.’” Fadiman, James: “‘Awareness Cures.’” Foxx, Jamie: “It would be the billboard sa...
+--------------------------------------------------
+
+Query Processing:
+Query: Rnj 'nj&
+Context length: 56989 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 198 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Rnj 'nj&
+Context chunks: 10
+Answer: It seems that your question is unclear or possibly contains a typographical error. If you could clarify or rephrase your question, I'd be more than happy to assist you based on the context provided!
+==================================================
+
+Answer Generated:
+Length: 198 chars
+--------------------------------------------------

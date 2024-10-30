@@ -17,6 +17,8 @@ from fastapi import WebSocket
 from fastapi import WebSocketDisconnect
 from fastapi import Depends, status
 from fastapi.security import OAuth2PasswordBearer
+from fastapi.middleware.cors import CORSMiddleware
+from .auth.middleware import AuthMiddleware
 
 # Initialize loggers
 logger = get_main_logger()
@@ -178,9 +180,9 @@ async def login(
     password: str = Form(...)
 ):
     if username in USERS and USERS[username] == password:
-        response = RedirectResponse(url="/", status_code=302)
-        # Здесь можно добавить установку cookie или сессии
-        return response
+        # Устанавливаем сессию
+        request.session["user"] = username
+        return RedirectResponse(url="/", status_code=302)
     
     return templates.TemplateResponse(
         "login.html",
@@ -188,19 +190,40 @@ async def login(
         status_code=401
     )
 
-# Middleware для проверки аутентификации
-@app.middleware("http")
-async def auth_middleware(request, call_next):
-    if app.auth_required:
-        # Проверка аутентификации
-        if not is_authenticated(request):
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Not authenticated"
-            )
-    response = await call_next(request)
-    return response
+# Добавляем сессии (перед auth middleware!)
+app.add_middleware(
+    SessionMiddleware,
+    secret_key="your-secret-key",  # Используйте безопасный ключ из конфига
+    session_cookie="session"
+)
 
-def is_authenticated(request):
-    # Логика проверки аутентификации
-    return True if not app.auth_required else False  # Для тестов всегда True если auth_required=False
+# Конфигурация CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Добавляем middleware аутентификации с публичными путями
+app.add_middleware(
+    AuthMiddleware,
+    public_paths=[
+        "/login",
+        "/static",
+        "/docs",
+        "/openapi.json",
+        "/health",
+        "/",  # Временно оставляем корневой путь публичным
+        "/ws"  # WebSocket тоже публичный
+    ]
+)
+
+@app.get("/")
+async def home():
+    return {"message": "Welcome to RAG Book Assistant"}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
