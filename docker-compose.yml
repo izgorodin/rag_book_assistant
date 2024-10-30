@@ -12,7 +12,6 @@ services:
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - PINECONE_API_KEY=${PINECONE_API_KEY}
-      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
       - FIREBASE_CREDENTIALS_PATH=${FIREBASE_CREDENTIALS_PATH}
     volumes:
       - ./data:/app/data

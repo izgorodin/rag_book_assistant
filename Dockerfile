@@ -32,14 +32,16 @@ RUN python -m venv $VENV_PATH \
 FROM python-base as production
 COPY --from=builder $VENV_PATH $VENV_PATH
 
-# Копирование кода
+# Создаем директории
 WORKDIR /app
+RUN mkdir -p /app/credentials /app/data /app/uploads /app/logs
+
+# Копирование файла учетных данных Firebase (используем абсолютный путь)
+COPY firebase-credentials.json /app/credentials/firebase-credentials.json
+ENV FIREBASE_CREDENTIALS_PATH=/app/credentials/firebase-credentials.json
+
+# Копирование кода
 COPY src/ ./src/
-
-# Копирование файла учетных данных Firebase
-COPY firebase-credentials.json /app/firebase-credentials.json
-ENV FIREBASE_CREDENTIALS_PATH=firebase-credentials.json
-
 
 # Запуск
 CMD ["sh", "-c", "uvicorn src.web.app:app --host 0.0.0.0 --port ${PORT:-8080}"]

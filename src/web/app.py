@@ -30,6 +30,12 @@ from src.services.firebase_storage import FirebaseStorageService
 logger = get_main_logger()
 rag_logger = get_rag_logger()
 
+# Check for credentials file
+credentials_path = os.getenv('FIREBASE_CREDENTIALS_PATH')
+if not credentials_path or not os.path.exists(credentials_path):
+    logger.error(f"Firebase credentials file not found at {credentials_path}")
+    raise FileNotFoundError(f"Firebase credentials file not found at {credentials_path}")
+
 # Initialize FastAPI app
 app = FastAPI(title="Book Assistant API")
 app.auth_required = True  # Флаг для управления аутентификацией
@@ -60,6 +66,12 @@ book_data = None
 
 # Инициализируем сервис
 storage_service = FirebaseStorageService()
+
+# Проверка наличия файла credentials
+credentials_path = os.getenv('FIREBASE_CREDENTIALS_PATH')
+if not credentials_path or not os.path.exists(credentials_path):
+    logger.error(f"Firebase credentials file not found at {credentials_path}")
+    raise FileNotFoundError(f"Firebase credentials file not found at {credentials_path}")
 
 async def get_current_user(credentials: HTTPBasicCredentials = Depends(security)):
     if credentials.username in USERS and USERS[credentials.username] == credentials.password:
@@ -290,7 +302,7 @@ async def health_check():
     return {"status": "healthy"}
 
 if __name__ == "__main__":
-    # Получаем порт из переменной окружения или используем значение по умолчанию
+    # Получаем порт из переменной окружения или используем значение по у��олчанию
     PORT = int(os.getenv("PORT", 8080))
     logger.info(f"Starting server on port {PORT}")
     uvicorn.run("app:app", host="0.0.0.0", port=PORT, reload=True)
