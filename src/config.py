@@ -47,3 +47,11 @@ OPENAI_HTTP_CONFIG = {
     'backoff_factor': 0.5,  # Exponential backoff factor for retries
     'retry_statuses': [408, 429, 500, 502, 503, 504]  # HTTP status codes to retry on
 }
+
+# Configuration for file uploads
+UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'uploads')
+MAX_CONTENT_LENGTH = 10 * 1024 * 1024  # 10MB
+
+# Create necessary directories
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs('logs', exist_ok=True)

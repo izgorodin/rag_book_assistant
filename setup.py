@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="rag-book-qa",
+    name="rag_book_assistant",
     version="0.1.0",
     packages=find_packages(),
     install_requires=[
@@ -26,11 +26,11 @@ setup(
     python_requires='>=3.10',
     entry_points={
         'console_scripts': [
-            'rag-book-qa=src.cli:main',
+            'rag_book_assistant=src.cli:main',
         ],
     },
-    author="Your Name",
-    author_email="your.email@example.com",
+    author="Eduard Izgorodin",
+    author_email="helloworld@uinside.org",
     description="A RAG-based book question answering system",
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",

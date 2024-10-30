@@ -29,3 +29,4 @@ fastapi
 uvicorn
 python-multipart  # для работы с файлами
 pydantic
+aiofiles

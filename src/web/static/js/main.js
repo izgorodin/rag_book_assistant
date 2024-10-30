@@ -123,6 +123,18 @@ document.addEventListener('DOMContentLoaded', function() {
     uploadForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
+        const fileInput = document.querySelector('input[type="file"]');
+        if (!fileInput.files.length) {
+            uploadStatus.textContent = 'Please select a file';
+            return;
+        }
+        
+        const file = fileInput.files[0];
+        if (file.size > 10 * 1024 * 1024) { // 10MB limit
+            uploadStatus.textContent = 'File size too large (max 10MB)';
+            return;
+        }
+        
         progressContainer.style.display = 'block';
         progressFill.style.width = '0%';
         progressText.textContent = '0%';
@@ -137,17 +149,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: formData
             });
             
-            const result = await response.json();
-            
-            if (response.ok) {
-                uploadStatus.textContent = result.message;
-            } else {
-                uploadStatus.textContent = `Error: ${result.detail || 'Upload failed'}`;
-                resetProgress();
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
+            
+            const result = await response.json();
+            uploadStatus.textContent = result.message;
+            
         } catch (error) {
             uploadStatus.textContent = `Error: ${error.message}`;
             resetProgress();
+            console.error('Upload error:', error);
         }
     });
 

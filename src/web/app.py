@@ -8,6 +8,8 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse
 import os
 from typing import Optional
+
+import uvicorn
 from src.cli import BookAssistant
 from src.utils.logger import get_main_logger, get_rag_logger
 from src.file_processor import FileProcessor
@@ -19,6 +21,7 @@ from fastapi import Depends, status
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.middleware.cors import CORSMiddleware
 from .auth.middleware import AuthMiddleware
+import aiofiles
 
 # Initialize loggers
 logger = get_main_logger()
@@ -83,29 +86,38 @@ async def upload_file(
     file: UploadFile = File(...),
     user: str = Depends(get_current_user)
 ):
-    global book_data
-    
     try:
-        filename = file.filename
-        file_path = os.path.join(UPLOAD_FOLDER, filename)
+        # Логируем начало загрузки
+        logger.info(f"Starting upload of file: {file.filename}")
+        
+        # Проверяем директорию uploads
+        upload_dir = os.path.join('uploads', user)
+        os.makedirs(upload_dir, exist_ok=True)
+        
+        file_path = os.path.join(upload_dir, file.filename)
         
         # Начало загрузки
         await ws_manager.emit_progress("Starting upload", 0, 100)
         
-        # Сохраняем файл
-        with open(file_path, "wb") as buffer:
+        # Асинхронно сохраняем файл
+        async with aiofiles.open(file_path, 'wb') as out_file:
             content = await file.read()
-            buffer.write(content)
+            await out_file.write(content)
+            
+        logger.info(f"File saved: {file_path}")
         
         # Файл загружен
         await ws_manager.emit_progress("File uploaded", 25, 100)
         
         # Обработка книги
+        logger.info("Processing book...")
         await ws_manager.emit_progress("Processing book", 50, 100)
         book_data = assistant.load_and_process_book(file_path)
         
         # Завершение
         chunks_count = len(book_data.get_chunks())
+        logger.info(f"Book processed. Chunks: {chunks_count}")
+        
         await ws_manager.emit_progress("Complete", 100, 100, {
             "chunks_count": chunks_count
         })
@@ -227,3 +239,9 @@ async def home():
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
+
+if __name__ == "__main__":
+    # Получаем порт из переменной окружения или используем значение по умолчанию
+    PORT = int(os.getenv("PORT", 8000))
+    logger.info(f"Starting server on port {PORT}")
+    uvicorn.run("app:app", host="0.0.0.0", port=PORT, reload=True)
