@@ -1,72 +1,135 @@
 document.addEventListener('DOMContentLoaded', function() {
     const uploadForm = document.getElementById('uploadForm');
-    const questionForm = document.getElementById('questionForm');
     const uploadStatus = document.getElementById('uploadStatus');
-    const answerStatus = document.getElementById('answerStatus');
     const progressContainer = document.querySelector('.progress-container');
     const progressFill = document.querySelector('.progress-fill');
     const progressText = document.querySelector('.progress-text');
     const progressLabel = document.querySelector('.progress-label');
-    const progressStatus = document.getElementById('progress-status');
 
-    // Функция для сброса прогресс-бара
-    function resetProgress() {
-        progressContainer.style.display = 'none';
-        progressFill.style.width = '0%';
-        progressText.textContent = '0%';
-        progressLabel.textContent = '';
-        progressStatus.style.display = 'none';
-        progressStatus.textContent = '';
+    const questionForm = document.getElementById('questionForm');
+    const answerStatus = document.getElementById('answerStatus');
+
+    let ws = null;
+    let reconnectAttempts = 0;
+    const maxReconnectAttempts = 5;
+
+    let currentAnswer = '';
+    const copyButton = document.getElementById('copyAnswer');
+
+    function connectWebSocket() {
+        if (reconnectAttempts >= maxReconnectAttempts) {
+            console.log('Max reconnection attempts reached');
+            return;
+        }
+
+        ws = new WebSocket(`ws://${window.location.host}/ws`);
+        
+        ws.onopen = () => {
+            console.log('WebSocket connected');
+            reconnectAttempts = 0;
+        };
+        
+        ws.onmessage = (event) => {
+            try {
+                const data = JSON.parse(event.data);
+                if (data.type === 'progress') {
+                    updateProgress(data);
+                    
+                    if (data.answer) {
+                        currentAnswer = data.answer;
+                        answerStatus.innerHTML = marked.parse(data.answer);
+                        copyButton.style.display = 'block';
+                        progressContainer.style.display = 'none';
+                    }
+                    
+                    if (data.error) {
+                        answerStatus.textContent = `Error: ${data.error}`;
+                        copyButton.style.display = 'none';
+                        progressContainer.style.display = 'none';
+                    }
+                }
+            } catch (error) {
+                console.error('Error processing WebSocket message:', error);
+            }
+        };
+        
+        ws.onclose = () => {
+            console.log('WebSocket closed');
+            reconnectAttempts++;
+            setTimeout(connectWebSocket, 1000);
+        };
+        
+        ws.onerror = (error) => {
+            console.error('WebSocket error:', error);
+        };
     }
 
-    // WebSocket connection
-    const ws = new WebSocket(`ws://${window.location.host}/ws`);
-    
-    ws.onmessage = function(event) {
-        const data = JSON.parse(event.data);
-        updateProgress(data);
-    };
-
-    ws.onerror = function(error) {
-        console.error('WebSocket error:', error);
-        progressStatus.style.display = 'block';
-        progressStatus.textContent = 'WebSocket connection error';
-        setTimeout(resetProgress, 3000);
-    };
-
-    // Обновленная функция updateProgress
     function updateProgress(data) {
-        if (data.status && data.current !== undefined && data.total !== undefined) {
-            const percent = (data.current / data.total) * 100;
-            progressContainer.style.display = 'block';
-            progressFill.style.width = `${percent}%`;
-            progressText.textContent = `${Math.round(percent)}%`;
-            progressLabel.textContent = data.status;
-            
-            if (data.chunks_count !== undefined) {
-                progressStatus.style.display = 'block';
-                progressStatus.textContent = `Processed ${data.chunks_count} chunks`;
-                setTimeout(resetProgress, 2000);
-            }
-            
-            if (data.error) {
-                progressStatus.style.display = 'block';
-                progressStatus.textContent = `Error: ${data.error}`;
-                setTimeout(resetProgress, 3000);
-            }
+        if (!progressContainer) return;
+        
+        progressContainer.style.display = 'block';
+        const percent = (data.current / data.total) * 100;
+        
+        progressFill.style.width = `${percent}%`;
+        progressText.textContent = `${Math.round(percent)}%`;
+        progressLabel.textContent = data.status;
+        
+        if (percent >= 100) {
+            setTimeout(() => {
+                progressContainer.style.display = 'none';
+            }, 2000);
         }
     }
 
-    // File upload handling
+    function showNotification(message) {
+        let notification = document.querySelector('.notification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.className = 'notification';
+            document.body.appendChild(notification);
+        }
+        
+        notification.textContent = message;
+        notification.classList.add('show');
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 2000);
+    }
+
+    // Обработчик копирования ответа
+    copyButton.addEventListener('click', () => {
+        if (!currentAnswer) return;
+        
+        const textarea = document.createElement('textarea');
+        textarea.value = currentAnswer;
+        document.body.appendChild(textarea);
+        textarea.select();
+        
+        try {
+            document.execCommand('copy');
+            showNotification('Copied to clipboard!');
+        } catch (err) {
+            console.error('Failed to copy:', err);
+        }
+        
+        document.body.removeChild(textarea);
+    });
+
+    // Инициализация WebSocket
+    connectWebSocket();
+
+    // Обработка формы загрузки
     uploadForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        const formData = new FormData(uploadForm);
-        uploadStatus.textContent = 'Uploading...';
         progressContainer.style.display = 'block';
         progressFill.style.width = '0%';
         progressText.textContent = '0%';
         progressLabel.textContent = 'Starting upload...';
+        
+        const formData = new FormData(uploadForm);
+        uploadStatus.textContent = 'Uploading...';
         
         try {
             const response = await fetch('/upload', {
@@ -78,51 +141,45 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (response.ok) {
                 uploadStatus.textContent = result.message;
-                // Если нет WebSocket обновлений, скрыть прогресс-бар
-                if (!result.processing) {
-                    setTimeout(resetProgress, 2000);
-                }
             } else {
                 uploadStatus.textContent = `Error: ${result.detail || 'Upload failed'}`;
-                setTimeout(resetProgress, 3000);
+                resetProgress();
             }
         } catch (error) {
             uploadStatus.textContent = `Error: ${error.message}`;
-            setTimeout(resetProgress, 3000);
+            resetProgress();
         }
     });
 
-    // Question handling
-    questionForm.addEventListener('submit', async function(e) {
+    // Обработка формы вопроса
+    questionForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const question = document.getElementById('question').value;
-        const answerStatus = document.getElementById('answerStatus');
+        const formData = new FormData(questionForm);
+        const question = formData.get('question');
+        if (!question) return;
         
-        answerStatus.className = 'loading';
-        answerStatus.textContent = 'Processing your question...';
+        answerStatus.textContent = 'Thinking...';
+        copyButton.style.display = 'none';
         
         try {
-            const response = await fetch('/ask', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `question=${encodeURIComponent(question)}`
+            const response = await fetch(`/ask?question=${encodeURIComponent(question)}`, {
+                method: 'GET'
             });
             
             const result = await response.json();
             
             if (response.ok) {
-                answerStatus.className = 'answer-container markdown-body';
+                currentAnswer = result.answer;
                 answerStatus.innerHTML = marked.parse(result.answer);
+                copyButton.style.display = 'block';
             } else {
-                answerStatus.className = 'error';
                 answerStatus.textContent = `Error: ${result.detail || 'Failed to get answer'}`;
+                copyButton.style.display = 'none';
             }
         } catch (error) {
-            answerStatus.className = 'error';
             answerStatus.textContent = `Error: ${error.message}`;
+            copyButton.style.display = 'none';
         }
     });
 });

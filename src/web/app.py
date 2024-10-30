@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, Form
+from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, Form, Query
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -13,6 +13,10 @@ from src.utils.logger import get_main_logger, get_rag_logger
 from src.file_processor import FileProcessor
 from src.config import FLASK_SECRET_KEY
 from src.web.websocket import WebSocketManager
+from fastapi import WebSocket
+from fastapi import WebSocketDisconnect
+from fastapi import Depends, status
+from fastapi.security import OAuth2PasswordBearer
 
 # Initialize loggers
 logger = get_main_logger()
@@ -20,6 +24,7 @@ rag_logger = get_rag_logger()
 
 # Initialize FastAPI app
 app = FastAPI(title="Book Assistant API")
+app.auth_required = True  # Флаг для управления аутентификацией
 
 # Configure static files and templates
 app.mount("/static", StaticFiles(directory="src/web/static"), name="static")
@@ -78,61 +83,64 @@ async def upload_file(
 ):
     global book_data
     
-    if not file:
-        raise HTTPException(status_code=400, detail="No file provided")
-    
-    if not allowed_file(file.filename):
-        raise HTTPException(status_code=400, detail="Invalid file type")
-    
     try:
         filename = file.filename
         file_path = os.path.join(UPLOAD_FOLDER, filename)
         
-        # Save uploaded file
+        # Начало загрузки
+        await ws_manager.emit_progress("Starting upload", 0, 100)
+        
+        # Сохраняем файл
         with open(file_path, "wb") as buffer:
             content = await file.read()
             buffer.write(content)
         
-        # Process book
-        await ws_manager.emit_progress("Starting file processing", 0, 100)
+        # Файл загружен
+        await ws_manager.emit_progress("File uploaded", 25, 100)
+        
+        # Обработка книги
+        await ws_manager.emit_progress("Processing book", 50, 100)
         book_data = assistant.load_and_process_book(file_path)
         
+        # Завершение
         chunks_count = len(book_data.get_chunks())
-        await ws_manager.emit_progress("Processing complete", 100, 100, {
-            'chunks_count': chunks_count
+        await ws_manager.emit_progress("Complete", 100, 100, {
+            "chunks_count": chunks_count
         })
         
         return JSONResponse({
-            'status': 'success',
-            'message': 'File processed successfully',
-            'chunks_count': chunks_count
+            "status": "success",
+            "message": "File processed successfully",
+            "chunks_count": chunks_count
         })
         
     except Exception as e:
         logger.error(f"Error processing file: {str(e)}")
-        await ws_manager.emit_progress("Error", 0, 100, {'error': str(e)})
+        await ws_manager.emit_progress("Error", 0, 100, {"error": str(e)})
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/ask")
-async def ask_question(
-    question: str = Form(...),
-    user: str = Depends(get_current_user)
-):
-    global book_data
-    
-    if not book_data:
-        raise HTTPException(status_code=400, detail="No book loaded")
-    
+@app.get("/ask")
+async def ask_question(question: str = Query(...), user: str = Depends(get_current_user)):
     try:
-        logger.info(f"Processing question: {question}")
+        if not book_data:
+            raise HTTPException(status_code=400, detail="No book data loaded")
+            
+        # Отправляем статус через WebSocket
+        await ws_manager.emit_progress("Processing question", 0, 100)
+        
+        # Получаем ответ (исправлено имя метода)
         answer = assistant.answer_question(question, book_data)
-        logger.info("Answer generated successfully")
-        return JSONResponse({
-            'status': 'success',
-            'answer': answer
+        
+        # Отправляем завершение через WebSocket
+        await ws_manager.emit_progress("Complete", 100, 100, {
+            "answer": answer
         })
+        
+        return {"answer": answer}
+        
     except Exception as e:
-        logger.error(f"Error answering question: {str(e)}")
+        logger.error(f"Error processing question: {str(e)}")
+        await ws_manager.emit_progress("Error", 0, 100, {"error": str(e)})
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/check_book_loaded")
@@ -141,13 +149,58 @@ async def check_book_loaded(user: str = Depends(get_current_user)):
 
 # WebSocket endpoint
 @app.websocket("/ws")
-async def websocket_endpoint(websocket):
-    await ws_manager.connect(websocket)
+async def websocket_endpoint(websocket: WebSocket):
     try:
+        await ws_manager.connect(websocket)
+        
         while True:
-            data = await websocket.receive_text()
-            # Handle WebSocket messages if needed
+            try:
+                data = await websocket.receive_text()
+                # Можно добавить обработку входящих сообщений если нужно
+            except WebSocketDisconnect:
+                await ws_manager.disconnect(websocket)
+                break
+            except Exception as e:
+                logger.error(f"WebSocket error: {str(e)}")
+                await ws_manager.disconnect(websocket)
+                break
     except Exception as e:
-        logger.error(f"WebSocket error: {str(e)}")
-    finally:
-        await ws_manager.disconnect(websocket)
+        logger.error(f"WebSocket connection error: {str(e)}")
+
+@app.get("/login")
+async def login_page(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@app.post("/login")
+async def login(
+    request: Request,
+    username: str = Form(...),
+    password: str = Form(...)
+):
+    if username in USERS and USERS[username] == password:
+        response = RedirectResponse(url="/", status_code=302)
+        # Здесь можно добавить установку cookie или сессии
+        return response
+    
+    return templates.TemplateResponse(
+        "login.html",
+        {"request": request, "error": "Invalid credentials"},
+        status_code=401
+    )
+
+# Middleware для проверки аутентификации
+@app.middleware("http")
+async def auth_middleware(request, call_next):
+    if app.auth_required:
+        # Проверка аутентификации
+        if not is_authenticated(request):
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Not authenticated"
+            )
+    response = await call_next(request)
+    return response
+
+def is_authenticated(request):
+    # Логика проверки аутентификации
+    return True if not app.auth_required else False  # Для тестов всегда True если auth_required=False

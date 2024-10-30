@@ -1,34 +1,36 @@
 from fastapi import WebSocket
-from typing import List, Dict, Any
 import logging
-
-logger = logging.getLogger(__name__)
+from typing import List, Dict, Any
 
 class WebSocketManager:
     def __init__(self):
         self.active_connections: List[WebSocket] = []
+        self.logger = logging.getLogger(__name__)
 
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
         self.active_connections.append(websocket)
-        logger.info(f"New WebSocket connection. Total connections: {len(self.active_connections)}")
 
     async def disconnect(self, websocket: WebSocket):
-        self.active_connections.remove(websocket)
-        logger.info(f"WebSocket disconnected. Remaining connections: {len(self.active_connections)}")
+        if websocket in self.active_connections:
+            self.active_connections.remove(websocket)
 
     async def emit_progress(self, status: str, current: int, total: int, additional_data: Dict[str, Any] = None):
-        data = {
+        if not self.active_connections:
+            return
+            
+        message = {
+            "type": "progress",
             "status": status,
             "current": current,
             "total": total
         }
         if additional_data:
-            data.update(additional_data)
-            
-        for connection in self.active_connections:
+            message.update(additional_data)
+        
+        for connection in self.active_connections.copy():  # Используем copy() для безопасной итерации
             try:
-                await connection.send_json(data)
+                await connection.send_json(message)
             except Exception as e:
-                logger.error(f"Error sending WebSocket message: {str(e)}")
+                self.logger.error(f"Error sending WebSocket message: {str(e)}")
                 await self.disconnect(connection)

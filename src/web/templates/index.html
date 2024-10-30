@@ -11,30 +11,28 @@
     
     <div id="uploadSection">
         <h2>Upload a Book</h2>
-        <form id="uploadForm" enctype="multipart/form-data">
-            <div class="input-group">
-                <input type="file" name="file" accept=".txt,.pdf,.doc,.docx,.odt" id="fileInput">
-                <input type="submit" value="Upload" id="uploadButton">
-            </div>
+        <form id="uploadForm" class="input-group">
+            <input type="file" name="file" accept=".txt,.pdf" required>
+            <input type="submit" value="Upload">
         </form>
         <div id="uploadStatus"></div>
     </div>
 
     <div id="questionSection">
         <h2>Ask a Question</h2>
-        <form id="questionForm">
-            <div class="input-group">
-                <input 
-                    type="text" 
-                    id="question" 
-                    name="question" 
-                    placeholder="Enter your question about the book..."
-                    required
-                >
-                <button type="submit">Ask Question</button>
-            </div>
+        <form id="questionForm" class="input-group">
+            <input type="text" name="question" placeholder="Enter your question..." required>
+            <input type="submit" value="Ask">
         </form>
-        <div id="answerStatus"></div>
+        <div class="answer-container">
+            <div id="answerStatus"></div>
+            <button id="copyAnswer" class="icon-button copy-icon" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </button>
+        </div>
     </div>
 
     <div class="progress-container" style="display: none;">
@@ -45,5 +43,16 @@
         </div>
     </div>
     <div id="progress-status" class="text-center mb-3" style="display: none;"></div>
+
+    <div class="answer-section">
+        <div id="answerStatus" class="answer-status"></div>
+        <button id="copyButton" class="copy-button" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Copy to clipboard
+        </button>
+    </div>
 </body>
 </html>

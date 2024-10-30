@@ -11,6 +11,11 @@ from tests.test_data.constants import (
     TEST_TEXTS,
     TEST_API_RESPONSES
 )
+import sys
+import asyncio
+
+# Добавляем корневую директорию проекта в PYTHONPATH
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 logger = get_main_logger()
 
@@ -93,3 +98,10 @@ def sample_chunks():
 @pytest.fixture
 def sample_embeddings():
     return [[0.1] * 1536, [0.2] * 1536, [0.3] * 1536]
+
+@pytest.fixture(scope="session")
+def event_loop():
+    """Create an instance of the default event loop for each test case."""
+    loop = asyncio.get_event_loop_policy().new_event_loop()
+    yield loop
+    loop.close()
