@@ -29,3 +29,7 @@ uploads/
 *.pkl
 *.log
 uploads/*
+
+!src/
+!requirements.txt
+!firebase-credentials.json
