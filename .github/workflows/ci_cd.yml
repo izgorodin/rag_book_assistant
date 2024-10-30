@@ -73,24 +73,19 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/rag-book-assistant:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/rag-book-assistant:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/rag-book-assistant:buildcache,mode=max
-
-  deploy:
+          tags: ${{ secrets.DOCKER_USERNAME }}/rag_book_assistant:latest
+          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/rag_book_assistant:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/rag_book_assistant:buildcache,mode=max
+            
+  check_deploy:
     runs-on: ubuntu-latest
-    needs: docker_build
+    needs: build
+
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Install Railway CLI
-        run: npm i -g @railway/cli
-        
-      - name: Deploy to Railway
+      # Check if the Railway app is responding
+      - name: Check deployment on Railway
         run: |
-          railway up --service rag-book-assistant
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
+          curl -f https://bookassistant.up.railway.app/ || exit 1
 
   healthcheck:
     runs-on: ubuntu-latest
