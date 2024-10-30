@@ -37,8 +37,9 @@ WORKDIR /app
 COPY src/ ./src/
 
 # Копирование файла учетных данных Firebase
-COPY rag-project-6fbb6-firebase-adminsdk-oiud2-87842f7d56.json /app/rag-project-6fbb6-firebase-adminsdk-oiud2-87842f7d56.json
-ENV FIREBASE_CREDENTIALS_PATH=/app/rag-project-6fbb6-firebase-adminsdk-oiud2-87842f7d56.json
+COPY firebase-credentials.json /app/firebase-credentials.json
+ENV FIREBASE_CREDENTIALS_PATH=firebase-credentials.json
+
 
 # Запуск
 CMD ["sh", "-c", "uvicorn src.web.app:app --host 0.0.0.0 --port ${PORT:-8080}"]
