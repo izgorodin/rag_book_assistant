@@ -1,5 +1,5 @@
 from typing import List, Dict, Any, Optional, Tuple
-from unittest.mock import Mock
+from unittest.mock import Mock, MagicMock
 import time
 import random
 from openai import RateLimitError, APIError, APITimeoutError, APIConnectionError
@@ -10,6 +10,8 @@ from tests.test_data.constants import (
     TEST_EMBEDDING_VALUES
 )
 from dataclasses import dataclass
+import os
+import firebase_admin
 
 logger = get_main_logger()
 
@@ -149,6 +151,51 @@ class OpenAIMock:
             
         self.embeddings.create.side_effect = create
 
+class MockFirebaseStorage:
+    """Мок для Firebase Storage."""
+    def __init__(self):
+        self._upload_error = None
+        self.bucket = MagicMock()
+        
+    async def upload_file(self, file_path: str, user: str) -> str:
+        """Мок метод загрузки файла"""
+        if self._upload_error:
+            raise self._upload_error
+            
+        file_name = os.path.basename(file_path)
+        return f"https://storage.firebase.com/uploads/{user}/{file_name}"
+        
+    def set_upload_error(self, error: Exception):
+        """Устанавливает ошибку для следующей загрузки"""
+        self._upload_error = error
+
+class MockWebSocketManager:
+    """Мок для WebSocket менеджера."""
+    def __init__(self):
+        self.messages = []
+        self.connections = []
+        logger.debug("Initialized MockWebSocketManager")
+
+    async def connect(self, websocket: Mock):
+        self.connections.append(websocket)
+        
+    async def disconnect(self, websocket: Mock):
+        if websocket in self.connections:
+            self.connections.remove(websocket)
+            
+    async def emit_progress(self, status: str = "", current: int = 0, total: int = 100):
+        message = {
+            "type": "progress",
+            "status": status,
+            "progress": (current / total) * 100 if total > 0 else 0,
+            "current": current,
+            "total": total
+        }
+        self.messages.append(message)
+        for connection in self.connections:
+            await connection.send_json(message)
+
+
 class MockFactory:
     """Фабрика для создания тестовых моков."""
     
@@ -221,7 +268,7 @@ class MockFactory:
         """
         Создает мок кэша.
         
-        Возвращает один эмбеддинг:
+        Возврщает один эмбеддинг:
         [0.1, 0.2]
         """
         cache = Mock()
@@ -258,3 +305,21 @@ class MockFactory:
         extractor.extract_entities.side_effect = extract_entities
         extractor.extract_dates.side_effect = extract_dates
         return extractor
+
+    @staticmethod
+    def create_firebase_storage():
+        return MockFirebaseStorage()
+
+    @staticmethod
+    def create_websocket_manager() -> MockWebSocketManager:
+        """Создает мок WebSocket менеджера."""
+        return MockWebSocketManager()
+
+    @staticmethod
+    def create_websocket() -> Mock:
+        """Создает мок WebSocket соединения."""
+        websocket = Mock()
+        websocket.send_json = Mock()
+        websocket.receive_text = Mock(return_value="test message")
+        return websocket
+
