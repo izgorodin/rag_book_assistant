@@ -17727,3 +17727,391 @@ Upserted vectors: 1
 
 Successfully stored all 1 vectors
 --------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Function: process_file
+Error: Unsupported file format (Details: {'file_path': '/private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-58/test_unsupported_file_format0/test.unsupported', 'error_type': 'unsupported_format', 'extension': '.unsupported', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+==================================================
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics Reset:
+Status: Completed
+--------------------------------------------------
+
+Query Processing:
+Query: Test query
+Context length: 12 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 13 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query Processing:
+Query: Test query
+Context length: 12 chars
+--------------------------------------------------
+
+OpenAI Error:
+Error in generate_answer: Test response
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 107.00 chars
+Sample chunk: This is a test book. It contains some text about various topics including science, history, and lite...
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 368 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provided includes the phrase "Test book content" and a score (0.6348182385365114), but it does not contain specific information relevant to the question "test question." 
+
+As such, I cannot provide a detailed answer based on the available text. If you have a more specific question or need information on a particular topic, please provide further details!
+==================================================
+
+Answer Generated:
+Length: 368 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Кто автор?
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Кто автор?
+Top 10 results:
+Score: 0.2745 | Chunk: This Is Your Brain on Music (Daniel J. Levitin), The Unbearable Lightness of Being (Milan Kundera) B...
+Score: 0.2733 | Chunk: and Darick Robertson), Genome; The Red Queen; The Origins of Virtue; The Evolution of Everything (Ma...
+Score: 0.2728 | Chunk: Graeber), Just Kids (Patti Smith), The Art of Possibility (Rosamund Stone Zander and Benjamin Zander...
+Score: 0.2720 | Chunk: success?” They’re always shocked when I thank them for the compliment but say, “I am not a self-made...
+Score: 0.2662 | Chunk: Bostrom) MacKenzie, Brian: Tao Te Ching (Lao Tzu), Way of the Peaceful Warrior (Dan Millman) McCarth...
+Score: 0.2594 | Chunk: eXistenZ, The Beach, Maidentrip (doc) Sivers, Derek: Scott Pilgrim vs. the World Skenes, Joshua: Che...
+Score: 0.2563 | Chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+Score: 0.2541 | Chunk: 10 years. They finally released her into this big pasture: With excitement and anticipation, they re...
+Score: 0.2514 | Chunk: empty spaces. Don’t over-explain.” ✸ How do you capture ideas that might help your writing? “I stron...
+Score: 0.2408 | Chunk: afraid, and whether you care enough to dance with that fear because it will never go away.” Just Kid...
+--------------------------------------------------
+
+Query Processing:
+Query: Кто автор?
+Context length: 60850 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 35 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Кто автор?
+Context chunks: 10
+Answer: **Автор:** Тим Феррис (Tim Ferriss)
+==================================================
+
+Answer Generated:
+Length: 35 chars
+--------------------------------------------------

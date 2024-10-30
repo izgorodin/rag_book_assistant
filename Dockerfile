@@ -36,5 +36,9 @@ COPY --from=builder $VENV_PATH $VENV_PATH
 WORKDIR /app
 COPY src/ ./src/
 
+# Копирование файла учетных данных Firebase
+COPY firebase-credentials.json /app/firebase-credentials.json
+ENV FIREBASE_CREDENTIALS_PATH=/app/firebase-credentials.json
+
 # Запуск
 CMD ["sh", "-c", "uvicorn src.web.app:app --host 0.0.0.0 --port ${PORT:-8000}"]
