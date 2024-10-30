@@ -25,3 +25,7 @@ gunicorn
 flask-wtf 
 flask-login 
 flask-socketio
+fastapi
+uvicorn
+python-multipart  # для работы с файлами
+pydantic

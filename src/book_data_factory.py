@@ -6,6 +6,7 @@ from src.text_processor import load_and_preprocess_text, extract_dates, extract_
 from src.vector_store_service import VectorStoreService
 from tqdm import tqdm
 import time
+import asyncio
 
 logger = get_main_logger()
 rag_logger = get_rag_logger()
@@ -19,6 +20,10 @@ class BookDataFactory:
         self.vector_store_service = vector_store_service
         self.progress_callback = progress_callback
 
+    async def report_progress(self, status, current, total):
+        if self.progress_callback:
+            await self.progress_callback(status, current, total)
+
     def create_from_text(self, input_data: Union[str, Dict[str, Any]]) -> BookDataInterface:
         """Create BookDataInterface from raw text or preprocessed data."""
         try:
@@ -29,8 +34,7 @@ class BookDataFactory:
                 f"{'-'*50}"
             )
             
-            if self.progress_callback:
-                self.progress_callback("Starting text processing", 0, 4)
+            asyncio.create_task(self.report_progress("Starting text processing", 0, 4))
             
             # Get preprocessed data
             logger.info("Calling load_and_preprocess_text...")
@@ -45,8 +49,7 @@ class BookDataFactory:
             if not chunks:
                 raise ValueError("No chunks found in preprocessed data")
             
-            if self.progress_callback:
-                self.progress_callback("Extracting features", 1, 4)
+            asyncio.create_task(self.report_progress("Extracting features", 1, 4))
 
             # Convert chunks to text
             logger.info("Converting chunks to text...")
@@ -73,24 +76,21 @@ class BookDataFactory:
                 f"{'-'*50}"
             )
             
-            if self.progress_callback:
-                self.progress_callback("Creating embeddings", 2, 4)
+            asyncio.create_task(self.report_progress("Creating embeddings", 2, 4))
             
             # Create embeddings
             logger.info("Creating embeddings...")
             embeddings = self._create_embeddings_with_retry(text_chunks)
             logger.info(f"Embeddings created: {len(embeddings)}")
             
-            if self.progress_callback:
-                self.progress_callback("Storing vectors", 3, 4)
+            asyncio.create_task(self.report_progress("Storing vectors", 3, 4))
             
             # Store vectors
             logger.info("Storing vectors...")
             self.vector_store_service.store_vectors(text_chunks, embeddings)
             logger.info("Vectors stored successfully")
             
-            if self.progress_callback:
-                self.progress_callback("Completed", 4, 4)
+            asyncio.create_task(self.report_progress("Completed", 4, 4))
             
             logger.info("Creating BookDataInterface instance...")
             return BookDataInterface(

@@ -1,296 +1,200 @@
 /* Общие стили */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.2;
-    color: #333;
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
 h1, h2 {
     color: #2c3e50;
-}
-
-.input-group {
-    display: flex;
-    margin-bottom: 15px;
-}
-
-.input-group input[type="file"],
-.input-group input[type="text"] {
-    flex-grow: 1;
-    margin-right: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-input[type="submit"] {
-    font-size: 14px;
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border-radius: 4px;
-}
-
-input[type="submit"]:hover {
-    background-color: #2980b9;
-}
-
-#uploadStatus, #answerStatus {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    white-space: pre-wrap;
-    font-family: monospace;
-}
-
-#questionForm {
-    margin-top: 30px;
-}
-
-/* Медиа-запросы */
-@media (max-width: 767px) {
-    .markdown-body {
-        padding: 5px;
-    }
-}
-
-/* Стили для контейнера ответа */
-.answer-container {
-    position: relative;
-    background: #fff;
-    border: 1px solid #e1e4e8;
-    border-radius: 6px;
-    padding: 20px;
-    margin: 15px 0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #ffffff;
-    border: 1px solid #d0d7de;
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 12px;
-    line-height: 1;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #57606a;
-    transition: all 0.2s ease;
-    height: 24px;
-    width: 70px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    white-space: nowrap;
-}
-
-.copy-btn:hover {
-    background: #f3f4f6;
-    border-color: #d0d7de;
-    color: #24292f;
-}
-
-.copy-btn i {
-    font-size: 12px;
-}
-
-.answer-text {
-    padding-right: 80px;
-    padding-top: 5px;
-    line-height: 1.6;
-}
-
-/* Состояния кнопки */
-.copy-btn.copied {
-    background: #dafbe1;
-    border-color: #2da44e;
-    color: #1a7f37;
-}
-
-.copy-btn.error {
-    background: #ffebe9;
-    border-color: #cf222e;
-    color: #cf222e;
-}
-
-/* Стили для markdown-контента */
-.markdown-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-    word-wrap: break-word;
-}
-
-.markdown-body p {
-    margin-bottom: 14px;
-    margin-top: 0;
-}
-
-.markdown-body p:last-child {
-    margin-bottom: 0;
-}
-
-.markdown-body h1, 
-.markdown-body h2, 
-.markdown-body h3 {
-    margin: 0.4em 0 0 0;  /* Только отступ сверху */
-    padding: 0;
-    color: #24292f;
-    font-weight: 600;
-}
-
-.markdown-body ul, 
-.markdown-body ol {
-    margin: 0;
-    padding-left: 1em;
-}
-
-.markdown-body li {
-    margin: 0;
-    padding: 0;
-    line-height: 1.2;
-}
-
-/* Переопределяем стили marked.js */
-.markdown-body > *:first-child {
-    margin-top: 0 !important;
-}
-
-.markdown-body > *:last-child {
-    margin-bottom: 0 !important;
-}
-
-/* Убираем лишние отступы между элементами */
-.markdown-body br {
-    display: none;
-}
-
-.markdown-body p + p,
-.markdown-body p + ul,
-.markdown-body ul + p {
-    margin-top: 0.3em;  /* Минимальный отступ между блоками */
-}
-
-/* Стили для выделенного текста */
-.markdown-body strong {
-    color: #1a73e8;
-}
-
-.login-container {
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e1e4e8;
-}
-
-.login-container h1 {
-    text-align: center;
     margin-bottom: 20px;
 }
 
-.error {
-    color: #dc3545;
-    margin-top: 10px;
-    text-align: center;
+/* Стили для форм */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
 }
 
-.login-container form {
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto;
-}
-
-.login-container .input-group {
-    margin-bottom: 15px;
-    width: 100%;
-}
-
-/* Базовые стили для всех полей ввода */
-.login-input {
-    width: 100%;
-    padding: 10px;
+/* Стили для полей ввода */
+input[type="file"],
+input[type="text"],
+input[type="password"] {
+    flex: 1;
+    height: 36px;
+    padding: 0 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
-    height: 40px;
+    line-height: 36px;
     box-sizing: border-box;
 }
 
-.login-container input[type="submit"] {
-    width: 100%;
-    height: 40px;
-    margin-top: 10px;
+/* Стили для кнопок */
+input[type="submit"],
+button[type="submit"] {
+    height: 36px;
+    background-color: #3498db;
+    color: white;
+    padding: 0 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 36px;
+    white-space: nowrap;
 }
 
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Секции */
+#uploadSection,
+#questionSection,
+#loginSection {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Прогресс-бар */
 .progress-container {
-    margin: 1rem 0;
-    padding: 1rem;
-    background: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px 0;
 }
 
 .progress-label {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 0.5rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
 }
 
 .progress-bar {
-    position: relative;
-    height: 6px;
-    background: #e0e0e0;
-    border-radius: 3px;
+    width: 100%;
+    height: 20px;
+    background-color: #eee;
+    border-radius: 10px;
     overflow: hidden;
+    position: relative;
 }
 
 .progress-fill {
-    position: absolute;
-    top: 0;
-    left: 0;
     height: 100%;
-    background: #2196f3;
+    width: 0;
+    background-color: #3498db;
     transition: width 0.3s ease;
 }
 
 .progress-text {
     position: absolute;
-    right: 0;
-    top: -20px;
-    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    mix-blend-mode: difference;
+}
+
+/* Статусы */
+#uploadStatus,
+#answerStatus {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+/* Форма логина */
+#loginForm {
+    max-width: 400px;
+    margin: 40px auto;
+}
+
+.login-field {
+    margin-bottom: 15px;
+}
+
+.login-field label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.copy-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.copy-button:hover {
+    background: #e1e4e8;
+}
+
+.copy-button svg {
+    width: 16px;
+    height: 16px;
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: #2ecc71;
+    color: white;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+.notification.error {
+    background: #e74c3c;
+}
+
+.answer-container {
+    position: relative;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.icon-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.icon-button:hover {
+    opacity: 1;
+}
+
+.copy-icon svg {
+    width: 16px;
+    height: 16px;
     color: #666;
-}
-
-/* Анимация для прогресс-бара */
-@keyframes progress-animation {
-    0% { background-position: 0 0; }
-    100% { background-position: 30px 0; }
-}
-
-.progress-fill.animated {
-    background-image: linear-gradient(
-        45deg,
-        rgba(255,255,255,0.15) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255,255,255,0.15) 50%,
-        rgba(255,255,255,0.15) 75%,
-        transparent 75%,
-        transparent
-    );
-    background-size: 30px 30px;
-    animation: progress-animation 1s linear infinite;
 }

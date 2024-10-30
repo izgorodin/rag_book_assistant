@@ -29,34 +29,20 @@ RUN pip install -e .
 RUN mkdir -p uploads logs data
 
 # Установка NLTK данных
-RUN python -c "import nltk; \
-    nltk.download('punkt'); \
-    nltk.download('punkt_tab'); \
-    nltk.download('stopwords'); \
-    nltk.download('wordnet'); \
-    nltk.download('words'); \
-    nltk.download('averaged_perceptron_tagger'); \
-    nltk.download('averaged_perceptron_tagger_eng'); \
-    nltk.download('omw-1.4'); \
-    nltk.download('tagsets'); \
-    nltk.download('maxent_ne_chunker_tab'); \
-    nltk.download('universal_tagset')"
+RUN python -m nltk.downloader -d /usr/local/share/nltk_data punkt stopwords wordnet words averaged_perceptron_tagger omw-1.4 tagsets maxent_ne_chunker universal_tagset
 
 # Установка переменных окружения
-ENV FLASK_APP=src.web.app \
-    PYTHONPATH=/app \
-    PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app \
+    PYTHONUNBUFFERED=1 \
+    NLTK_DATA=/usr/local/share/nltk_data
 
 # Открытие порта
 EXPOSE 8080
 
-# Запуск приложения через gunicorn
-CMD ["gunicorn", \
-     "--bind", "0.0.0.0:8080", \
-     "--worker-class", "eventlet", \
-     "--timeout", "120", \
+# Запуск приложения через uvicorn вместо gunicorn
+CMD ["uvicorn", \
+     "src.web.app:app", \
+     "--host", "0.0.0.0", \
+     "--port", "8080", \
      "--workers", "4", \
-     "--log-level", "info", \
-     "--access-logfile", "-", \
-     "--error-logfile", "-", \
-     "src.web.wsgi:app"]
+     "--log-level", "info"]

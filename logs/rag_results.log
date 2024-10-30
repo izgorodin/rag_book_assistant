@@ -7764,3 +7764,2704 @@ Answer: Судебное противостояние описывает про�
 Answer Generated:
 Length: 3007 chars
 --------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Application Start
+==================================================
+
+Critical Error:
+Application error: No module named 'fastapi.middleware.sessions'
+==================================================
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Application Start
+==================================================
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Application Start
+==================================================
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: О чем?
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: О чем?
+Top 10 results:
+Score: 0.1191 | Chunk: severity of the threatened harm, reprehensibility of the conduct, wealth of defendant, and profitabi...
+Score: 0.0820 | Chunk: limine, to asking questions suggesting Ford had been guilty of criminal conduct in an unrelated matt...
+Score: 0.0753 | Chunk: Pinto failed. Where rubber bladders had been installed in the tank, crash tests into fixed barriers ...
+Score: 0.0730 | Chunk: by January 1, 1973. The report states in part: "The 20 and 30 mph rear fixed barrier crashes will pr...
+Score: 0.0727 | Chunk: and other civil actions against defendant based on same conduct. (Id, at pp. 667-669.) In the presen...
+Score: 0.0681 | Chunk: 859-860 [139 Cal. Rptr. 888, 93 A.L.R.3d 537].) (2) Exhibits Nos. 95 and 122: Ford urges that a repo...
+Score: 0.0658 | Chunk: by the evidence, exaggerating, mischaracterizing experts' testimony, arguing evidence which had been...
+Score: 0.0591 | Chunk: double punishment for the same tortious conduct and could also lead to double recovery of punitive d...
+Score: 0.0575 | Chunk: 152 F.2d 941, 943,revd. on other grounds (1946)329 U.S. 187 [91 L. Ed. 181, 67 S. Ct. 261].) "An att...
+Score: 0.0572 | Chunk: (Italics supplied.) [119 Cal. App. 3d 828] In 1961, the Law Revision Commission recommended revision...
+--------------------------------------------------
+
+Query Processing:
+Query: О чем?
+Context length: 54722 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 307 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: О чем?
+Context chunks: 10
+Answer: Извините, информация в предоставленном контексте содержит юридические детали о деле против компании Ford Motor Co. и последствиях производства автомобиля Pinto. Однако, если не указаны конкретные вопросы или темы, неясно, о чем именно идет речь. Пожалуйста, уточните, какой аспект или детали вас интересуют.
+==================================================
+
+Answer Generated:
+Length: 307 chars
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Кто был за рулем?
+
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Кто был за рулем?
+
+Top 10 results:
+Score: 0.2802 | Chunk: confronted with the possibility of an award in another case for the same conduct, it may raise the i...
+Score: 0.2716 | Chunk: by January 1, 1973. The report states in part: "The 20 and 30 mph rear fixed barrier crashes will pr...
+Score: 0.2464 | Chunk: Pinto failed. Where rubber bladders had been installed in the tank, crash tests into fixed barriers ...
+Score: 0.2418 | Chunk: limine, to asking questions suggesting Ford had been guilty of criminal conduct in an unrelated matt...
+Score: 0.2390 | Chunk: double punishment for the same tortious conduct and could also lead to double recovery of punitive d...
+Score: 0.2380 | Chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+Score: 0.2379 | Chunk: by the evidence, exaggerating, mischaracterizing experts' testimony, arguing evidence which had been...
+Score: 0.2302 | Chunk: per hour but before the impact had been braked to a speed of from 28 to 37 miles per hour. At the mo...
+Score: 0.2269 | Chunk: the fact that Ford had doctored its records to show compliance with federal emission standards, a su...
+Score: 0.2243 | Chunk: [1a] The trial court found that plaintiffs' responses to Ford's demand for a list of the expert witn...
+--------------------------------------------------
+
+Query Processing:
+Query: Кто был за рулем?
+
+Context length: 61027 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 57 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Кто был за рулем?
+
+Context chunks: 10
+Answer: За рулем автомобиля Pinto находилась **г-жа Лилли Грэй**.
+==================================================
+
+Answer Generated:
+Length: 57 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Опиши случай
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Опиши случай
+Top 10 results:
+Score: 0.2301 | Chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+Score: 0.2248 | Chunk: by January 1, 1973. The report states in part: "The 20 and 30 mph rear fixed barrier crashes will pr...
+Score: 0.2245 | Chunk: limine, to asking questions suggesting Ford had been guilty of criminal conduct in an unrelated matt...
+Score: 0.2221 | Chunk: 859-860 [139 Cal. Rptr. 888, 93 A.L.R.3d 537].) (2) Exhibits Nos. 95 and 122: Ford urges that a repo...
+Score: 0.2031 | Chunk: the fact that Ford had doctored its records to show compliance with federal emission standards, a su...
+Score: 0.2011 | Chunk: double punishment for the same tortious conduct and could also lead to double recovery of punitive d...
+Score: 0.1996 | Chunk: Rptr. 476]; People v. Nahabedian (1959) 171 Cal. App. 2d 302, 310-311 [340 P.2d 1053].) The rule res...
+Score: 0.1976 | Chunk: by the evidence, exaggerating, mischaracterizing experts' testimony, arguing evidence which had been...
+Score: 0.1944 | Chunk: [1a] The trial court found that plaintiffs' responses to Ford's demand for a list of the expert witn...
+Score: 0.1907 | Chunk: the court outside the presence of defense counsel. The judge conducted an unreported in camera inqui...
+--------------------------------------------------
+
+Query Processing:
+Query: Опиши случай
+Context length: 60559 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 2377 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Опиши случай
+Context chunks: 10
+Answer: ## Описание случая "Grimshaw v. Ford Motor Co." (1981)
+
+### Общее описание
+Дело о **"Grimshaw v. Ford Motor Co."** было рассмотрено **31 мая 1981 года** в Апелляционном суде Калифорнии. Истцом выступал **Ричард Гримшоу**, несовершеннолетний, а также наследники **г-жи Лили Грей**, которые подали иск против компании **Ford Motor Company**.
+
+### События аварии
+- **Дата аварии:** 28 мая 1972 года.
+- **Транспортное средство:** Ford Pinto 1972 года, приобретенный **грейами** в ноябре 1971 года, имел множество проблем с производительностью включая частые остановки.
+- В день аварии **г-жа Грей** и **Гримшоу** ехали на автомобиле со скоростью **60-65 миль в час**, когда Pinto неожиданно заглох. 
+
+### Причина аварии
+- Установлено, что остановка двигателя была вызвана насыщением поплавка карбюратора бензином, что привело к его утоплению и затоплению камеры поплавка.
+- В результате **аварии** Ford Pinto был врезан в заднюю часть автомобилем **Ford Galaxie**, что вызвало пожар и серьезные травмы у пассажиров:
+  - **Лили Грей** получила фатальные ожоги и вскоре скончалась от сердечной недостаточности.
+  - **Ричард Гримшоу** выжила, но получил тяжелые и постоянные ожоги тела.
+
+### Судебный процесс
+После шестимесячного судебного разбирательства, присяжные вынесли решение в пользу истцов:
+- **Гримшоу** был награжден **$2,516,000** в виде компенсационных убытков и **$125 миллионов** в виде штрафных убытков.
+- **Греи** были награждены **$559,680** в виде компенсационных убытков.
+
+### Аппеляции
+- **Ford Motor Company** подала апелляцию на решение суда, утверждая, что штрафные убытки были незаконными и что доказательства не подтверждали наличие злого умысла.
+- **Гримшоу** и **Греи** также подали апелляции, оспаривая сокращение штрафных убытков и порядок оставления иска без удовлетворения на дополнительные штрафные убытки.
+
+### Основные проблемы дела
+- Один из ключевых вопросов заключался в **возможном дефекте дизайна** системы топливного бака Pinto, который мог быть причиной катастрофы.
+- В процессе судебного разбирательства было также обсуждено знание руководства Ford о дефектах и возможных мерах по улучшению безопасности.
+
+### Заключение
+Это дело стало знаковым примером вопросов о безопасности автомобиля и юридической ответственности производителей за недостатки продукции, что в дальнейшем повлияло на правила и нормы безопасности в автомобильной отрасли.
+==================================================
+
+Answer Generated:
+Length: 2377 chars
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Опиши случай
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Опиши случай
+Top 10 results:
+Score: 0.2301 | Chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+Score: 0.2248 | Chunk: by January 1, 1973. The report states in part: "The 20 and 30 mph rear fixed barrier crashes will pr...
+Score: 0.2245 | Chunk: limine, to asking questions suggesting Ford had been guilty of criminal conduct in an unrelated matt...
+Score: 0.2221 | Chunk: 859-860 [139 Cal. Rptr. 888, 93 A.L.R.3d 537].) (2) Exhibits Nos. 95 and 122: Ford urges that a repo...
+Score: 0.2031 | Chunk: the fact that Ford had doctored its records to show compliance with federal emission standards, a su...
+Score: 0.2011 | Chunk: double punishment for the same tortious conduct and could also lead to double recovery of punitive d...
+Score: 0.1996 | Chunk: Rptr. 476]; People v. Nahabedian (1959) 171 Cal. App. 2d 302, 310-311 [340 P.2d 1053].) The rule res...
+Score: 0.1976 | Chunk: by the evidence, exaggerating, mischaracterizing experts' testimony, arguing evidence which had been...
+Score: 0.1944 | Chunk: [1a] The trial court found that plaintiffs' responses to Ford's demand for a list of the expert witn...
+Score: 0.1907 | Chunk: the court outside the presence of defense counsel. The judge conducted an unreported in camera inqui...
+--------------------------------------------------
+
+Query Processing:
+Query: Опиши случай
+Context length: 60559 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 2428 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Опиши случай
+Context chunks: 10
+Answer: ## Описание дела: Grimshaw v. Ford Motor Co. (1981)
+
+### Общая информация
+- **Случай:** Grimshaw v. Ford Motor Co.
+- **Год:** 1981
+- **Суд:** Апелляционный суд Калифорнии, Четвёртый апелляционный округ, отделение два.
+- **Истцы:** 
+  - Ричард Гримшоу (жертва)
+  - Эрэры миссис Грей (наследники)
+- **Ответчик:** Ford Motor Company
+
+### Суть дела
+Дело касается аварии с *Ford Pinto*, которая произошла 28 мая 1972 года. При этом:
+- **Факты аварии:**
+  - Ford Pinto, управляемый миссис Грей, неожиданно заглох на автомагистрали и был столкнут автомобилем формата *1962 Ford Galaxie*.
+  - В результате столкновения, Pinto загорелся, что привело к серьезным травмам обоих пассажиров. Миссис Грей скончалась через несколько дней от полученных ожогов, а 13-летний Ричард Гримшоу, как пассажир, получил тяжелые и необратимые ожоги тела.
+
+### Результаты судебного разбирательства
+- **Вердикт:** 
+  - Гримшоу был присужден компенсационных убытков в размере $2,516,000 и $125 миллионов в качестве штрафных убытков.
+  - Наследники миссис Грей получили $559,680 компенсационных убытков.
+  
+### Основные поводы для апелляции
+Ford подал апелляцию по нескольким причинам:
+- Наказуемость штрафных убытков была оспорена.
+- Ford также утверждал, что решение о начале нового судебного разбирательства было ошибочным, и они не были должным образом уведомлены о возможной изменении иска со стороны истцов.
+
+### Основные проблемы и доказательства
+- **Проблемы с безопасностью:** Обсуждение конструктивных недостатков автомобиля *Pinto*, включая расположение топливного бака и его защищенность при столкновении, привело к сомнениям в добросовестности Ford.
+- **Свидетель:** В качестве главного свидетеля выступал Харли Копп, бывший инженер Ford, который подтвердил, что компания знала о проблемах с топливной системой *Pinto*, но не принимала меры из-за затрат.
+
+### Судебный процесс
+Судебный процесс длился шесть месяцев, по его окончании было вынесено решение в пользу истцов. Поскольку дело касалось серьезных последствий и общей ответственности компаний за безопасность автотранспортных средств, оно стало знаковым для дальнейшего судебного разбирательства в отношении автомобилестроительных гигантов.
+
+### Заключение
+Это дело иллюстрирует важность учета конструктивных недостатков в автомобилях и их последствий для безопасности пассажиров, а также то, как компании могут не обращаться внимание на признанные риски из-за экономических соображений.
+==================================================
+
+Answer Generated:
+Length: 2428 chars
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 2669 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 2654.00 chars
+Sample chunk: Contact +19546437820 (Mobile) izgorodin@me.com www.linkedin.com/in/izgorodin (LinkedIn) uinside.org ...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 10
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Кто был виновен в аварии
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Кто был виновен в аварии
+Top 10 results:
+Score: 0.3904 | Chunk: confronted with the possibility of an award in another case for the same conduct, it may raise the i...
+Score: 0.3575 | Chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+Score: 0.3468 | Chunk: or bystanders. (See Foglio v. Western Auto Supply, supra, 56 Cal. App. 3d 470, 477.)" (Barker v. Lul...
+Score: 0.3308 | Chunk: double punishment for the same tortious conduct and could also lead to double recovery of punitive d...
+Score: 0.3290 | Chunk: not occupy managerial positions because Mr. Copp testified that they admitted awareness of the defec...
+Score: 0.3266 | Chunk: by January 1, 1973. The report states in part: "The 20 and 30 mph rear fixed barrier crashes will pr...
+Score: 0.3227 | Chunk: interpreted as including a conscious disregard of the probability that the actor's conduct will resu...
+Score: 0.3157 | Chunk: 152 F.2d 941, 943,revd. on other grounds (1946)329 U.S. 187 [91 L. Ed. 181, 67 S. Ct. 261].) "An att...
+Score: 0.3042 | Chunk: 859-860 [139 Cal. Rptr. 888, 93 A.L.R.3d 537].) (2) Exhibits Nos. 95 and 122: Ford urges that a repo...
+Score: 0.3022 | Chunk: V Jury Misconduct Ford contends that the judgment should be reversed for jury misconduct. This was o...
+--------------------------------------------------
+
+Query Processing:
+Query: Кто был виновен в аварии
+Context length: 61151 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1133 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Кто был виновен в аварии
+Context chunks: 10
+Answer: В контексте дела **Grimshaw v. Ford Motor Co.** основным виновником аварии был **Ford Motor Company**. Авария произошла, когда **Pinto** (автомобиль, произведенный Ford) неожиданно заглох на автомагистрали и был врезан кузовом в другую машину. В результате удара, топливный бак Pinto был повреждён, что привело к его возгоранию и серьёзным травмам пассажиров.
+
+Некоторые ключевые моменты, подтверждающие вину Ford:
+
+- **Дефекты конструкции**: Установка топливного бака в уязвимом месте сделала автомобиль подверженным серьезным повреждениям в случае удара.
+- **Знание о проблемах**: Ford был осведомлён о проблемах безопасности, связанных с дизайном Pinto, и имел возможность внести изменения для улучшения безопасности, но решил не делать этого из-за соображений экономии.
+- **Принятие решений**: Свидетельства менеджеров Ford показали, что компания осознанно позволила продолжить производство Pinto, зная о дефектах, которые могли угрожать жизни пассажиров.
+
+Таким образом, Ford Motor Company несёт ответственность за невыполнение необходимых мер для обеспечения безопасности своей продукции, что привело к этой трагической аварии.
+==================================================
+
+Answer Generated:
+Length: 1133 chars
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 178970 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 36
+Average chunk size: 5816.00 chars
+Sample chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 36
+Dates: 126
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 36
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 36
+--------------------------------------------------
+
+Successfully stored all 36 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Кто был за рулем?
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Кто был за рулем?
+Top 10 results:
+Score: 0.2943 | Chunk: confronted with the possibility of an award in another case for the same conduct, it may raise the i...
+Score: 0.2854 | Chunk: by January 1, 1973. The report states in part: "The 20 and 30 mph rear fixed barrier crashes will pr...
+Score: 0.2691 | Chunk: Pinto failed. Where rubber bladders had been installed in the tank, crash tests into fixed barriers ...
+Score: 0.2577 | Chunk: limine, to asking questions suggesting Ford had been guilty of criminal conduct in an unrelated matt...
+Score: 0.2556 | Chunk: double punishment for the same tortious conduct and could also lead to double recovery of punitive d...
+Score: 0.2512 | Chunk: by the evidence, exaggerating, mischaracterizing experts' testimony, arguing evidence which had been...
+Score: 0.2482 | Chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+Score: 0.2459 | Chunk: per hour but before the impact had been braked to a speed of from 28 to 37 miles per hour. At the mo...
+Score: 0.2382 | Chunk: the fact that Ford had doctored its records to show compliance with federal emission standards, a su...
+Score: 0.2355 | Chunk: 859-860 [139 Cal. Rptr. 888, 93 A.L.R.3d 537].) (2) Exhibits Nos. 95 and 122: Ford urges that a repo...
+--------------------------------------------------
+
+Query Processing:
+Query: Кто был за рулем?
+Context length: 61003 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 60 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Кто был за рулем?
+Context chunks: 10
+Answer: **За рулем автомобиля Pinto** находилась **г-жа Лили Грэй**.
+==================================================
+
+Answer Generated:
+Length: 60 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Кто был за рулем? А сколько было участников аварии?
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Кто был за рулем? А сколько было участников аварии?
+Top 10 results:
+Score: 0.3162 | Chunk: Grimshaw v. Ford Motor Co. (1981) Annotate this Case [Civ. No. 20095. Court of Appeals of California...
+Score: 0.2886 | Chunk: confronted with the possibility of an award in another case for the same conduct, it may raise the i...
+Score: 0.2837 | Chunk: per hour but before the impact had been braked to a speed of from 28 to 37 miles per hour. At the mo...
+Score: 0.2795 | Chunk: or bystanders. (See Foglio v. Western Auto Supply, supra, 56 Cal. App. 3d 470, 477.)" (Barker v. Lul...
+Score: 0.2700 | Chunk: double punishment for the same tortious conduct and could also lead to double recovery of punitive d...
+Score: 0.2623 | Chunk: by January 1, 1973. The report states in part: "The 20 and 30 mph rear fixed barrier crashes will pr...
+Score: 0.2603 | Chunk: 859-860 [139 Cal. Rptr. 888, 93 A.L.R.3d 537].) (2) Exhibits Nos. 95 and 122: Ford urges that a repo...
+Score: 0.2592 | Chunk: Pinto failed. Where rubber bladders had been installed in the tank, crash tests into fixed barriers ...
+Score: 0.2444 | Chunk: the fact that Ford had doctored its records to show compliance with federal emission standards, a su...
+Score: 0.2436 | Chunk: 152 F.2d 941, 943,revd. on other grounds (1946)329 U.S. 187 [91 L. Ed. 181, 67 S. Ct. 261].) "An att...
+--------------------------------------------------
+
+Query Processing:
+Query: Кто был за рулем? А сколько было участников аварии?
+Context length: 61248 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 346 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Кто был за рулем? А сколько было участников аварии?
+Context chunks: 10
+Answer: ### Кто был за рулем?
+
+**За рулем автомобиля Ford Pinto находилась**:
+- **Mrs. Lilly Gray** 
+
+### Сколько было участников аварии?
+
+В аварии **участвовали**:
+- Mrs. Lilly Gray (водитель Pinto)
+- Richard Grimshaw (пассажир Pinto)
+- Водитель автомобиля **1962 Ford Galaxie** (не указано имя) 
+
+### Всего участников:
+* **3** (2 в Pinto и 1 в Galaxie)
+==================================================
+
+Answer Generated:
+Length: 346 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе и его мироввозрении
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Раскажи об авторе и его мироввозрении
+Top 10 results:
+Score: 0.3142 | Chunk: Bostrom) MacKenzie, Brian: Tao Te Ching (Lao Tzu), Way of the Peaceful Warrior (Dan Millman) McCarth...
+Score: 0.3068 | Chunk: and Darick Robertson), Genome; The Red Queen; The Origins of Virtue; The Evolution of Everything (Ma...
+Score: 0.3061 | Chunk: historian, gave a birthday toast, which is just the best toast I’ve ever heard in my life. [It was] ...
+Score: 0.2914 | Chunk: Graeber), Just Kids (Patti Smith), The Art of Possibility (Rosamund Stone Zander and Benjamin Zander...
+Score: 0.2888 | Chunk: This Is Your Brain on Music (Daniel J. Levitin), The Unbearable Lightness of Being (Milan Kundera) B...
+Score: 0.2690 | Chunk: to learn that consensus is a huge problem. There’s no ‘arithmetic consensus’ because it doesn’t requ...
+Score: 0.2629 | Chunk: (such as Peter Thiel, page 232, and Marc Andreessen, page 170). When you think of the word “successf...
+Score: 0.2603 | Chunk: world of if possible, like polio. It was the Puritans who perverted work into a virtue, evidently fo...
+Score: 0.2572 | Chunk: and an Emmy Award. He is the co-author of The Explorers Guild. Near-Death Clarity and Shifting the B...
+Score: 0.2490 | Chunk: 10 years. They finally released her into this big pasture: With excitement and anticipation, they re...
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе и его мироввозрении
+Context length: 61102 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1605 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Раскажи об авторе и его мироввозрении
+Context chunks: 10
+Answer: В приведённом контексте описывается несколько авторов и их мировоззрения, однако выделим наиболее упоминаемого автора – **Лao Tzu** (Лао Цзы), автора книги **"Tao Te Ching" (Дао Дэ Цзин)**. 
+
+### Лао Цзы и "Дао Дэ Цзин"
+
+**Лао Цзы** – древнекитайский философ и писатель, основатель даосизма. Его произведение **"Дао Дэ Цзин"** является основополагающим текстом даосской мысли и обсуждает концепции природы, гармонии, управления и философии жизни.
+
+### Основные идеи мировоззрения Лао Цзы:
+
+1. **Спонтанность и естественность**: Лао Цзы подчеркивает важность следования естественному порядку вещей, утверждая, что не стоит навязывать себе жесткие правила и ограничения.
+
+2. **Дао (путь)**: Понятие "Дао" представляет собой универсальный путь или закон, согласно которому следует жить, чтобы достичь гармонии с природой и самим собой.
+
+3. **Упрощение жизни**: Лао Цзы советует минимализм как способ достижения внутреннего мира и гармонии, подчеркивая, что истинное счастье не зависит от внешних обстоятельств.
+
+4. **Взаимосвязь всего сущего**: Мировоззрение Лао Цзы выделяет взаимосвязь всех вещей, что означает, что каждое действие человека может влиять на окружающий мир.
+
+### Влияние и наследие
+
+Книга "Дао Дэ Цзин" оказала значительное влияние на восточную философию и культуре, и ее идеи продолжают изучаться и обсуждаться в современном мире. Лао Цзы стал символом стремления к гармонии и пониманию своего места в мире.
+
+В контексте представленных в тексте рекомендаций книг, **"Дао Дэ Цзин"** регулярно упоминается как важный источник для понимания философии самосовершенствования и внутреннего покоя.
+==================================================
+
+Answer Generated:
+Length: 1605 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе книги и его мировозрении
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Раскажи об авторе книги и его мировозрении
+Top 10 results:
+Score: 0.3349 | Chunk: Bostrom) MacKenzie, Brian: Tao Te Ching (Lao Tzu), Way of the Peaceful Warrior (Dan Millman) McCarth...
+Score: 0.3319 | Chunk: and Darick Robertson), Genome; The Red Queen; The Origins of Virtue; The Evolution of Everything (Ma...
+Score: 0.3260 | Chunk: This Is Your Brain on Music (Daniel J. Levitin), The Unbearable Lightness of Being (Milan Kundera) B...
+Score: 0.3227 | Chunk: Graeber), Just Kids (Patti Smith), The Art of Possibility (Rosamund Stone Zander and Benjamin Zander...
+Score: 0.2977 | Chunk: historian, gave a birthday toast, which is just the best toast I’ve ever heard in my life. [It was] ...
+Score: 0.2954 | Chunk: (such as Peter Thiel, page 232, and Marc Andreessen, page 170). When you think of the word “successf...
+Score: 0.2881 | Chunk: 10 years. They finally released her into this big pasture: With excitement and anticipation, they re...
+Score: 0.2684 | Chunk: crisis, like 9/11 or the World War II Blitz bombings on London, often results in dramatic decreases ...
+Score: 0.2663 | Chunk: and an Emmy Award. He is the co-author of The Explorers Guild. Near-Death Clarity and Shifting the B...
+Score: 0.2658 | Chunk: to make strategic use (if only for a few weeks for months) of a time-honored personal freedom techni...
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе книги и его мировозрении
+Context length: 61161 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1630 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Раскажи об авторе книги и его мировозрении
+Context chunks: 10
+Answer: Из предоставленного контекста можно выделить несколько авторов книг и их мировоззрение. Вот информация о некоторых из них:
+
+### 1. **Стивен Д. Дубнер**
+- **Книги**: "Фрикономика", "Суперфрикономика", "Думай, как преступник", "Когда грабить банк".
+- **Мировоззрение**: Дубнер акцентирует внимание на важности правды в журналистике и критикует традиционные подходы к образованию и восприятию провалов. Он считает, что проблемы лучше всего решаются с открытым умом и критическим подходом.
+
+### 2. **Йоши Такэси**
+- **Книги**: "На пути с Буддой", "Думай медленно, решай быстро".
+- **Мировоззрение**: Такэси подчеркивает важность осознанности и исследования внутреннего мира как средства достижения счастья и спокойствия.
+
+### 3. **Ник Бостром**
+- **Книги**: "Суперинтеллект: пути, угрозы, стратегии".
+- **Мировоззрение**: Бостром исследует философские и этические аспекты искусственного интеллекта, подчеркивая важность использования технологий для решения мировых задач и предупреждения потенциальных угроз.
+
+### 4. **Тим Феррис**
+- **Книги**: "Четырехчасовая рабочая неделя", "Четырехчасовое тело".
+- **Мировоззрение**: Феррис пропагандирует идеи оптимизации жизни и карьеры, подчеркивая важность использования времени разумно и эффективное мышление о работе и отдыхе.
+
+### 5. **Питер Тиль**
+- **Книги**: "С нуля до единицы".
+- **Мировоззрение**: Тиль акцентирует внимание на инновациях и предпринимательстве, поощряя креативный подход к бизнесу и будущему.
+
+Эти авторы выражают различные взгляды на жизнь, успех, и важность мышления вне традиционных рамок. Если вам нужно больше информации о specific авторе или книге, дайте знать!
+==================================================
+
+Answer Generated:
+Length: 1630 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе книги и его мировозрении
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Раскажи об авторе книги и его мировозрении
+Top 10 results:
+Score: 0.3349 | Chunk: Bostrom) MacKenzie, Brian: Tao Te Ching (Lao Tzu), Way of the Peaceful Warrior (Dan Millman) McCarth...
+Score: 0.3319 | Chunk: and Darick Robertson), Genome; The Red Queen; The Origins of Virtue; The Evolution of Everything (Ma...
+Score: 0.3260 | Chunk: This Is Your Brain on Music (Daniel J. Levitin), The Unbearable Lightness of Being (Milan Kundera) B...
+Score: 0.3227 | Chunk: Graeber), Just Kids (Patti Smith), The Art of Possibility (Rosamund Stone Zander and Benjamin Zander...
+Score: 0.2977 | Chunk: historian, gave a birthday toast, which is just the best toast I’ve ever heard in my life. [It was] ...
+Score: 0.2954 | Chunk: (such as Peter Thiel, page 232, and Marc Andreessen, page 170). When you think of the word “successf...
+Score: 0.2881 | Chunk: 10 years. They finally released her into this big pasture: With excitement and anticipation, they re...
+Score: 0.2684 | Chunk: crisis, like 9/11 or the World War II Blitz bombings on London, often results in dramatic decreases ...
+Score: 0.2663 | Chunk: and an Emmy Award. He is the co-author of The Explorers Guild. Near-Death Clarity and Shifting the B...
+Score: 0.2658 | Chunk: to make strategic use (if only for a few weeks for months) of a time-honored personal freedom techni...
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе книги и его мировозрении
+Context length: 61161 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1677 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Раскажи об авторе книги и его мировозрении
+Context chunks: 10
+Answer: Из представленного контекста можно выделить информацию о **Джефе Дубнере** (Stephen J. Dubner), авторе таких книг, как *Freakonomics* и *SuperFreakonomics*. 
+
+### Мировоззрение Джефа Дубнера
+
+1. **Критика образовательной системы**:
+   - Дубнер считает, что американская система образования создает неоправданный страх у старшеклассников по поводу их выбора колледжа. Он предлагает переосмыслить подход к образованию, указывая на необходимость фундаментальных изменений.
+
+2. **Философия и идеи**:
+   - Он задается вопросами о природе успеха и принятии решений, указывая на важность смелости и готовности к неудачам. Дубнер утверждает, что неудачи являются неотъемлемой частью роста и расширения возможностей в жизни.
+
+3. **Коммуникации и сотрудничество**:
+   - Подчеркивает, что вера в свои идеи и сотрудничество с другими, имеющими различный опыт и взгляды, важны для достижения успеха. Он критикует подход, при котором люди полагаются только на свою моральную позицию при решении сложных вопросов.
+
+4. **Цитаты и мудрость**:
+   - Его кредо включает в себя идеи о том, что «достаточно — это хорошо» и что нужно подходить к проблемам с открытым умом, без предвзятости. Дубнер считает, что постоянное обучение и дальнейшее развитие собственных навыков важнее, чем слепое следование традиционным правилам и нормам.
+
+5. **Роль книг и обучения**:
+   - Он активно делится рекомендациями по книгам и другим источникам знаний, подчеркивая их значение для личного и профессионального роста.
+
+### Заключение
+Джеф Дубнер представляет собой автора, который стремится переосмыслить привычные нормы, акцентируя внимание на важности критического мышления, смелости и открытости к новым идеям.
+==================================================
+
+Answer Generated:
+Length: 1677 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе книги и его мировозрении
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Раскажи об авторе книги и его мировозрении
+Top 10 results:
+Score: 0.3349 | Chunk: Bostrom) MacKenzie, Brian: Tao Te Ching (Lao Tzu), Way of the Peaceful Warrior (Dan Millman) McCarth...
+Score: 0.3319 | Chunk: and Darick Robertson), Genome; The Red Queen; The Origins of Virtue; The Evolution of Everything (Ma...
+Score: 0.3260 | Chunk: This Is Your Brain on Music (Daniel J. Levitin), The Unbearable Lightness of Being (Milan Kundera) B...
+Score: 0.3227 | Chunk: Graeber), Just Kids (Patti Smith), The Art of Possibility (Rosamund Stone Zander and Benjamin Zander...
+Score: 0.2977 | Chunk: historian, gave a birthday toast, which is just the best toast I’ve ever heard in my life. [It was] ...
+Score: 0.2954 | Chunk: (such as Peter Thiel, page 232, and Marc Andreessen, page 170). When you think of the word “successf...
+Score: 0.2881 | Chunk: 10 years. They finally released her into this big pasture: With excitement and anticipation, they re...
+Score: 0.2684 | Chunk: crisis, like 9/11 or the World War II Blitz bombings on London, often results in dramatic decreases ...
+Score: 0.2663 | Chunk: and an Emmy Award. He is the co-author of The Explorers Guild. Near-Death Clarity and Shifting the B...
+Score: 0.2658 | Chunk: to make strategic use (if only for a few weeks for months) of a time-honored personal freedom techni...
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе книги и его мировозрении
+Context length: 61161 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 474 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Раскажи об авторе книги и его мировозрении
+Context chunks: 10
+Answer: В контексте представлено множество имен авторов и их произведений, но определенная информация о мировоззрении конкретного автора отсутствует. Например, несколько раз упоминается книга "Tao Te Ching" Лао Цзы, которая касается философии даосизма, подчеркивающей гармонию с природой и баланс в жизни.
+
+Если вам нужно конкретное описание какого-либо автора или его мировоззрения, пожалуйста, уточните имя автора, и я смогу предоставить информацию на основе имеющегося контекста.
+==================================================
+
+Answer Generated:
+Length: 474 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе этой книги и его мировозрении
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Раскажи об авторе этой книги и его мировозрении
+Top 10 results:
+Score: 0.3085 | Chunk: Bostrom) MacKenzie, Brian: Tao Te Ching (Lao Tzu), Way of the Peaceful Warrior (Dan Millman) McCarth...
+Score: 0.3013 | Chunk: and Darick Robertson), Genome; The Red Queen; The Origins of Virtue; The Evolution of Everything (Ma...
+Score: 0.2960 | Chunk: Graeber), Just Kids (Patti Smith), The Art of Possibility (Rosamund Stone Zander and Benjamin Zander...
+Score: 0.2918 | Chunk: This Is Your Brain on Music (Daniel J. Levitin), The Unbearable Lightness of Being (Milan Kundera) B...
+Score: 0.2627 | Chunk: historian, gave a birthday toast, which is just the best toast I’ve ever heard in my life. [It was] ...
+Score: 0.2607 | Chunk: (such as Peter Thiel, page 232, and Marc Andreessen, page 170). When you think of the word “successf...
+Score: 0.2454 | Chunk: 10 years. They finally released her into this big pasture: With excitement and anticipation, they re...
+Score: 0.2369 | Chunk: comedy. It doesn’t matter who your publicist is or how famous you are, man—if you don’t bring the mo...
+Score: 0.2365 | Chunk: world of if possible, like polio. It was the Puritans who perverted work into a virtue, evidently fo...
+Score: 0.2359 | Chunk: to make strategic use (if only for a few weeks for months) of a time-honored personal freedom techni...
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе этой книги и его мировозрении
+Context length: 61262 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 386 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Раскажи об авторе этой книги и его мировозрении
+Context chunks: 10
+Answer: К сожалению, в предоставленном контексте не содержится конкретной информации о том, о какой книге идет речь, а также о ее авторе и его мировоззрении. В тексте упоминается множество книг и авторов, но отсутствует необходимая информация для предоставления ответов на ваш вопрос.
+
+Если вы уточните, о какой именно книге или авторе идет речь, я постараюсь помочь с дополнительными деталями.
+==================================================
+
+Answer Generated:
+Length: 386 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе этой книги и его мировозрении
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Раскажи об авторе этой книги и его мировозрении
+Top 10 results:
+Score: 0.3085 | Chunk: Bostrom) MacKenzie, Brian: Tao Te Ching (Lao Tzu), Way of the Peaceful Warrior (Dan Millman) McCarth...
+Score: 0.3013 | Chunk: and Darick Robertson), Genome; The Red Queen; The Origins of Virtue; The Evolution of Everything (Ma...
+Score: 0.2960 | Chunk: Graeber), Just Kids (Patti Smith), The Art of Possibility (Rosamund Stone Zander and Benjamin Zander...
+Score: 0.2918 | Chunk: This Is Your Brain on Music (Daniel J. Levitin), The Unbearable Lightness of Being (Milan Kundera) B...
+Score: 0.2627 | Chunk: historian, gave a birthday toast, which is just the best toast I’ve ever heard in my life. [It was] ...
+Score: 0.2607 | Chunk: (such as Peter Thiel, page 232, and Marc Andreessen, page 170). When you think of the word “successf...
+Score: 0.2454 | Chunk: 10 years. They finally released her into this big pasture: With excitement and anticipation, they re...
+Score: 0.2369 | Chunk: comedy. It doesn’t matter who your publicist is or how famous you are, man—if you don’t bring the mo...
+Score: 0.2365 | Chunk: world of if possible, like polio. It was the Puritans who perverted work into a virtue, evidently fo...
+Score: 0.2359 | Chunk: to make strategic use (if only for a few weeks for months) of a time-honored personal freedom techni...
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи об авторе этой книги и его мировозрении
+Context length: 61262 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1371 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Раскажи об авторе этой книги и его мировозрении
+Context chunks: 10
+Answer: Похоже, что информация об авторе какой-либо конкретной книги не была представлена в предоставленном контексте. Однако в тексте есть много упоминаний различных авторов и их произведений. Я могу предоставить краткий обзор о некоторых из них, если вы укажете конкретную книгу или автора, про которых хотите узнать.
+
+Например, вот некоторые авторы и их мировоззрения, о которых упоминается в тексте:
+
+### Примеры авторов и их работ:
+1. **Лао Цзы** - известен как автор "Дао Дэ Цзин" (Tao Te Ching). Его учение основано на концепциях даосизма, которые акцентируют внимание на гармонии с природой и принципах ненасилия.
+
+2. **Айн Рэнд** - автор "Атлас Shrugged" и "Фонтана" (The Fountainhead). Она известна своей философией объективизма, которая утверждает важность индивидуальности и личной свободы как основополагающих ценностей.
+
+3. **Юваль Ное Харари** - автор "Sapiens". Его работы часто касаются исторического и социального анализа, поднимая вопросы о человеческой эволюции, культуре и будущем человечества.
+
+4. **Тим Феррис** - автор "Четырехчасовой рабочей недели" (The 4-Hour Workweek). Его подход заключается в оптимизации времени и ресурсов, а также в стремлении к улучшению качества жизни через эффективность и автоматизацию.
+
+Если вас интересует информация о конкретном авторе или книге, пожалуйста, укажите, и я постараюсь предоставить более детальную информацию!
+==================================================
+
+Answer Generated:
+Length: 1371 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Какие книги он рекомендует?
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Какие книги он рекомендует?
+Top 10 results:
+Score: 0.4855 | Chunk: This Is Your Brain on Music (Daniel J. Levitin), The Unbearable Lightness of Being (Milan Kundera) B...
+Score: 0.4813 | Chunk: Bostrom) MacKenzie, Brian: Tao Te Ching (Lao Tzu), Way of the Peaceful Warrior (Dan Millman) McCarth...
+Score: 0.4760 | Chunk: and Darick Robertson), Genome; The Red Queen; The Origins of Virtue; The Evolution of Everything (Ma...
+Score: 0.4652 | Chunk: (such as Peter Thiel, page 232, and Marc Andreessen, page 170). When you think of the word “successf...
+Score: 0.4543 | Chunk: Graeber), Just Kids (Patti Smith), The Art of Possibility (Rosamund Stone Zander and Benjamin Zander...
+Score: 0.4248 | Chunk: historian, gave a birthday toast, which is just the best toast I’ve ever heard in my life. [It was] ...
+Score: 0.4189 | Chunk: he ignores the rest, and he continues to thrive. There are no real rules, so make rules that work fo...
+Score: 0.4030 | Chunk: afraid, and whether you care enough to dance with that fear because it will never go away.” Just Kid...
+Score: 0.3874 | Chunk: work is, and oh, how tedious the creative process, and oh, what a tortured genius they are. Don’t bu...
+Score: 0.3845 | Chunk: comedy. It doesn’t matter who your publicist is or how famous you are, man—if you don’t bring the mo...
+--------------------------------------------------
+
+Query Processing:
+Query: Какие книги он рекомендует?
+Context length: 61063 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1315 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Какие книги он рекомендует?
+Context chunks: 10
+Answer: Вот книги, которые были рекомендованы в контексте:
+
+### **Наиболее упоминаемые книги:**
+1. **Tao Te Ching** — Лао Цзы
+   - Упомянуто **5 раз**
+  
+2. **Atlas Shrugged** — Ayn Rand
+   - Упомянуто **4 раза**
+
+3. **Sapiens** — Yuval Noah Harari
+   - Упомянуто **4 раза**
+
+4. **Siddhartha** — Hermann Hesse
+   - Упомянуто **4 раза**
+
+5. **The 4-Hour Workweek** — Tim Ferriss
+   - Упомянуто **4 раза**
+
+6. **The Checklist Manifesto** — Atul Gawande
+   - Упомянуто **4 раза**
+
+7. **Dune** — Frank Herbert
+   - Упомянуто **3 раза**
+
+8. **Influence** — Robert Cialdini
+   - Упомянуто **3 раза**
+
+9. **Stumbling on Happiness** — Daniel Gilbert
+   - Упомянуто **3 раза**
+
+10. **Superintelligence** — Nick Bostrom
+    - Упомянуто **3 раза**
+
+11. **Surely You're Joking, Mr. Feynman!** — Richard P. Feynman
+    - Упомянуто **3 раза**
+
+12. **The War of Art** — Steven Pressfield
+    - Упомянуто **3 раза**
+
+13. **Zero to One** — Peter Thiel с Blake Masters
+    - Упомянуто **3 раза**
+
+### **Другие упоминаемые книги:**
+- **The Alchemist** — Paulo Coelho
+- **Meditations** — Marcus Aurelius
+- **On the Shortness of Life** — Seneca
+- **The Art of Learning** — Josh Waitzkin
+- **Man’s Search for Meaning** — Viktor E. Frankl
+- **The Bible**
+- **Watchmen** — Alan Moore
+
+Эти книги были рекомендованы различными участниками контекста.
+==================================================
+
+Answer Generated:
+Length: 1315 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Соас\ставь полный список всех рекомендованых книг
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Соас\ставь полный список всех рекомендованых книг
+Top 10 results:
+Score: 0.3912 | Chunk: This Is Your Brain on Music (Daniel J. Levitin), The Unbearable Lightness of Being (Milan Kundera) B...
+Score: 0.3486 | Chunk: Bostrom) MacKenzie, Brian: Tao Te Ching (Lao Tzu), Way of the Peaceful Warrior (Dan Millman) McCarth...
+Score: 0.3343 | Chunk: (such as Peter Thiel, page 232, and Marc Andreessen, page 170). When you think of the word “successf...
+Score: 0.3336 | Chunk: and Darick Robertson), Genome; The Red Queen; The Origins of Virtue; The Evolution of Everything (Ma...
+Score: 0.3320 | Chunk: Graeber), Just Kids (Patti Smith), The Art of Possibility (Rosamund Stone Zander and Benjamin Zander...
+Score: 0.2509 | Chunk: Amelia: The Goonies Boreta, Justin: Meru (doc), Grizzly Man (doc), Daft Punk Unchained (doc) Brach, ...
+Score: 0.2503 | Chunk: he ignores the rest, and he continues to thrive. There are no real rules, so make rules that work fo...
+Score: 0.2480 | Chunk: coming back for 10 years. But I didn’t know it, either. I just bought a ticket to go over to Europe,...
+Score: 0.2429 | Chunk: your fellow man is not getting taken advantage of. We are all in it together.’” Rodriguez, Robert: “...
+Score: 0.2419 | Chunk: Ed Catmull (p. 309) Margaret Cho (p. 538) Paulo Coelho (p. 511) Ed Cooke (p. 517) Kevin Costner (p. ...
+--------------------------------------------------
+
+Query Processing:
+Query: Соас\ставь полный список всех рекомендованых книг
+Context length: 62358 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1859 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Соас\ставь полный список всех рекомендованых книг
+Context chunks: 10
+Answer: Here is a complete list of all the recommended books present in the provided context:
+
+### Recommended Books
+
+1. **Tao Te Ching** by Lao Tzu
+2. **Atlas Shrugged** by Ayn Rand
+3. **Sapiens** by Yuval Harari
+4. **Siddhartha** by Hermann Hesse
+5. **The 4-Hour Workweek** by Tim Ferriss
+6. **The Checklist Manifesto** by Atul Gawande
+7. **Dune** by Frank Herbert
+8. **Influence** by Robert Cialdini
+9. **Stumbling on Happiness** by Daniel Gilbert
+10. **Superintelligence** by Nick Bostrom
+11. **Surely You’re Joking, Mr. Feynman!** by Richard P. Feynman
+12. **The 4-Hour Body** by Tim Ferriss
+13. **The Bible**
+14. **The Hard Thing About Hard Things** by Ben Horowitz
+15. **The War of Art** by Steven Pressfield
+16. **Watchmen** by Alan Moore
+17. **Zero to One** by Peter Thiel with Blake Masters
+18. **When Things Fall Apart** by Pema Chödrön
+19. **The Essential Rumi** by Jalal al-Din Rumi
+20. **The Alchemist** by Paulo Coelho
+21. **The Power of Myth** by Joseph Campbell
+22. **One Hundred Years of Solitude** by Gabriel García Márquez
+23. **Finest Hours** by Michael J. Tougias and Casey Sherman
+24. **Autobiography of a Yogi** by Paramahansa Yogananda
+25. **How to Win Friends and Influence People** by Dale Carnegie
+26. **The Art of Learning** by Josh Waitzkin
+27. **Good to Great: Why Some Companies Make the Leap... and Others Don't** by Jim Collins
+28. **Start with Why** by Simon Sinek
+29. **Man’s Search for Meaning** by Viktor E. Frankl
+30. **Why We Sleep** by Matthew Walker
+31. **Deep Work** by Cal Newport
+32. **Designing Your Life** by Bill Burnett and Dave Evans
+
+### Audiobooks Mentioned
+
+- _Just Kids_ by Patti Smith
+- _Debt_ by David Graeber
+- _The Art of Possibility_ by Rosamund Stone Zander and Benjamin Zander
+
+This list includes the books that were either highlighted as "most-gifted" or recommended in various contexts and conversations.
+==================================================
+
+Answer Generated:
+Length: 1859 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Кто виноввен
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Кто виноввен
+Top 10 results:
+Score: 0.1265 | Chunk: to make strategic use (if only for a few weeks for months) of a time-honored personal freedom techni...
+Score: 0.1204 | Chunk: success?” They’re always shocked when I thank them for the compliment but say, “I am not a self-made...
+Score: 0.1174 | Chunk: a Reddit AMA (Ask Me Anything). What follows is the sequence of my downward spiral. In hindsight, it...
+Score: 0.1148 | Chunk: ginger, pu-erh tea, and green tea. Next, I crack open The Artist’s Way: Morning Pages Journal by Jul...
+Score: 0.1144 | Chunk: heard about young people in an acting class, and the difference between what happens to people typic...
+Score: 0.1130 | Chunk: failed], what does the self-talk look like? I mean, what is the ritual that you use?” PETER: “The se...
+Score: 0.1116 | Chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+Score: 0.1113 | Chunk: He has written all of his books and articles by hunting and pecking with one hand. Incredible. Spiri...
+Score: 0.1113 | Chunk: and videos that killed his excuses. I now do the same. Too old? Too bulky? Too busy? There is someon...
+Score: 0.1109 | Chunk: filling up propane tanks. Just being the junior guy on the totem pole, and quite literally getting m...
+--------------------------------------------------
+
+Query Processing:
+Query: Кто виноввен
+Context length: 57788 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 426 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Кто виноввен
+Context chunks: 10
+Answer: Из предоставленного контекста неясно, кто именно виновен, так как обсуждаются различные темы, включая идеи о "вырвании" и "поиске цели в жизни", однако конкретные указания на виноватых или неудачи не представлены. В некоторых случаях упоминаются трудности и эмоциональные состояния, но не выявляется конкретное лицо или группа, которые можно было бы считать "виновными". Таким образом, ответа на данный вопрос в контексте нет.
+==================================================
+
+Answer Generated:
+Length: 426 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Подробно опиши все события
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Подробно опиши все события
+Top 10 results:
+Score: 0.2078 | Chunk: John August. “Between them, [they] have 20 hit movie credits. Those two guys know what they’re talki...
+Score: 0.1749 | Chunk: lifetime achievement awards for when you’re old.” ROBERT: “Even if I didn’t sell Mariachi, I would h...
+Score: 0.1707 | Chunk: a Reddit AMA (Ask Me Anything). What follows is the sequence of my downward spiral. In hindsight, it...
+Score: 0.1589 | Chunk: 10 years. They finally released her into this big pasture: With excitement and anticipation, they re...
+Score: 0.1582 | Chunk: Amelia: The Goonies Boreta, Justin: Meru (doc), Grizzly Man (doc), Daft Punk Unchained (doc) Brach, ...
+Score: 0.1559 | Chunk: behind. I am sitting in a condo off campus, trapped in an impossible situation. My thesis work is go...
+Score: 0.1558 | Chunk: First— How to Use This Book “Out on the edge you see all kinds of things you can’t see from the cent...
+Score: 0.1515 | Chunk: helps with body recomposition. The benefits are summarized nicely in the title of one study: “Ursoli...
+Score: 0.1491 | Chunk: under palm trees or treating clients to the best times of their lives. Is this what he had been so a...
+Score: 0.1441 | Chunk: there, you’ll direct with me. I’ll do the effects, I’ll do the score, I’ll do the fake title sequenc...
+--------------------------------------------------
+
+Query Processing:
+Query: Подробно опиши все события
+Context length: 56388 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 2718 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Подробно опиши все события
+Context chunks: 10
+Answer: Based on the provided context, here are the detailed events as described:
+
+### **1. Reflections on Suicide**
+- The author introduces the topic of suicide and the importance of discussing it to provide hope and tools to those in need.
+- The author shares personal experiences and a shift in perspective that prompted him to open up about his struggles.
+
+### **2. A Fan's Request**
+- A fan named Silas requests an autograph for his brother, who had recently committed suicide at the age of 22.
+- Silas shares that his brother admired the author and listened to his podcasts. He expresses the hope that discussing suicide in a public forum might help others.
+
+### **3. The Author's Personal Struggles**
+- The author reflects on his own experiences with suicide, mentioning that several friends from high school and college had taken their own lives.
+- This revelation prompts the author to acknowledge his responsibility to speak about mental health openly.
+
+### **4. The Downward Spiral in College**
+- The narrative shifts to the author's senior year at Princeton University in 1999:
+  - He fails to secure interviews with top firms (e.g., McKinsey, Trilogy).
+  - He goes through a breakup with a long-term girlfriend due to his insecurities and disruptive behavior during her sports season.
+  - He meets with a thesis advisor who pressures him about his work, furthering his feelings of inadequacy.
+
+### **5. The “Miracle”**
+- During a low point, the author finds a book on suicide while at Barnes and Noble, prompting a moment of reflection.
+- Checking out suicide-related books leads him to consider his own life’s meaning and the potential impact of his death on loved ones.
+
+### **6. Realization and Change**
+- A postcard from Firestone Library notifying his parents about the reserved book creates an unexpected but pivotal moment, making him realize the consequences of his thoughts on his family.
+- This realization leads him to take time off from the pressure of his thesis and focus on his mental and physical health.
+
+### **7. Returning to Princeton and Graduation**
+- After taking the time to recover, the author returns to Princeton, finishes his thesis, and graduates in 2000.
+- He reflects on his journey, the weight of his challenges, and acknowledges those who supported him along the way.
+
+### **8. Broader Reflections on Mental Health**
+- The author concludes with a call to action for universities, urging administrators to actively reach out to students and provide support, especially considering the high levels of reported depression.
+
+These events encapsulate the author's journey through personal struggles, realizations about mental health, and a commitment to be more open about these issues.
+==================================================
+
+Answer Generated:
+Length: 2718 chars
+--------------------------------------------------
+
+Query Processing:
+Query: А что случилось с форд пунто
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: А что случилось с форд пунто
+Top 10 results:
+Score: 0.1543 | Chunk: the best audio of all the various mics I own. I use it for my intros (“Welcome to another episode of...
+Score: 0.1307 | Chunk: how should you be spending the rest of your life.” The Dickens Process—What Are Your Beliefs Costing...
+Score: 0.1265 | Chunk: 90/10. You really are massively at risk, and that’s why when the markets go down, you get eaten aliv...
+Score: 0.1260 | Chunk: script for his first feature film while he was a paid subject in a clinical experiment at a drug res...
+Score: 0.1256 | Chunk: have” list—I don’t have funding, I don’t have connections, etc.—is a popular write-off for inaction....
+Score: 0.1233 | Chunk: filling up propane tanks. Just being the junior guy on the totem pole, and quite literally getting m...
+Score: 0.1210 | Chunk: helps with body recomposition. The benefits are summarized nicely in the title of one study: “Ursoli...
+Score: 0.1199 | Chunk: Hurt Your Knee?” And Other Psychological Warfare “By the time I came to America and started competin...
+Score: 0.1198 | Chunk: amped up over some persistent, anonymous commenter in 2009, and Kevin asked me two simple questions ...
+Score: 0.1190 | Chunk: lifetime achievement awards for when you’re old.” ROBERT: “Even if I didn’t sell Mariachi, I would h...
+--------------------------------------------------
+
+Query Processing:
+Query: А что случилось с форд пунто
+Context length: 55664 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 267 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: А что случилось с форд пунто
+Context chunks: 10
+Answer: Из предоставленного контекста нет информации о Ford Punto. Я не могу предоставить детали о том, что случилось с этим автомобилем, так как нужные данные отсутствуют. Если у вас есть другой вопрос или другая тема, о которой вы хотели бы узнать, пожалуйста, дайте знать!
+==================================================
+
+Answer Generated:
+Length: 267 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Полный список книг посоветованых автором и почему он их советует
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Полный список книг посоветованых автором и почему он их советует
+Top 10 results:
+Score: 0.4725 | Chunk: This Is Your Brain on Music (Daniel J. Levitin), The Unbearable Lightness of Being (Milan Kundera) B...
+Score: 0.4548 | Chunk: (such as Peter Thiel, page 232, and Marc Andreessen, page 170). When you think of the word “successf...
+Score: 0.4476 | Chunk: Bostrom) MacKenzie, Brian: Tao Te Ching (Lao Tzu), Way of the Peaceful Warrior (Dan Millman) McCarth...
+Score: 0.4394 | Chunk: and Darick Robertson), Genome; The Red Queen; The Origins of Virtue; The Evolution of Everything (Ma...
+Score: 0.4158 | Chunk: Graeber), Just Kids (Patti Smith), The Art of Possibility (Rosamund Stone Zander and Benjamin Zander...
+Score: 0.3638 | Chunk: comedy. It doesn’t matter who your publicist is or how famous you are, man—if you don’t bring the mo...
+Score: 0.3634 | Chunk: he ignores the rest, and he continues to thrive. There are no real rules, so make rules that work fo...
+Score: 0.3538 | Chunk: is the author of 17 books, including The Power of No. I’ve never seen anyone build a large, committe...
+Score: 0.3536 | Chunk: work is, and oh, how tedious the creative process, and oh, what a tortured genius they are. Don’t bu...
+Score: 0.3530 | Chunk: coming back for 10 years. But I didn’t know it, either. I just bought a ticket to go over to Europe,...
+--------------------------------------------------
+
+Query Processing:
+Query: Полный список книг посоветованых автором и почему он их советует
+Context length: 60693 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 2074 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Полный список книг посоветованых автором и почему он их советует
+Context chunks: 10
+Answer: ### Список книг, посоветованных автором, и их обоснование
+
+1. **Atlas Shrugged** - **Ayn Rand**
+   - Автор находит в книге «размышления по поводу смелых, ярких персонажей», что вдохновляет молодёжь и задаёт вопросы о морали и свободе.
+
+2. **The Fountainhead** - **Ayn Rand**
+   - Упоминается художественная сила идеи индивидуализма.
+
+3. **The Power of Myth** - **Joseph Campbell**
+   - Рассматривается как работа, которая открывает глаза на «сострадательную сторону жизни». Автор начинает осознавать более глубокие жизненные истинны и связи.
+
+4. **On the Genealogy of Morals** - **Friedrich Nietzsche**
+   - Оценивается как «интеллектуальное красное мясо», предлагающее «четкие и жесткие истины».
+
+5. **Sapiens: A Brief History of Humankind** - **Yuval Noah Harari**
+   - Препоручается за способность связать прошедшую историю с современными вопросами и идеями.
+
+6. **The 4-Hour Workweek** - **Tim Ferriss**
+   - Рекомендуется, так как это книга, которая меняет подход к работе и личной эффективности. Позиционируется как книга, которая «изменяет взгляды на то, как мы работаем».
+
+7. **The Art of Learning** - **Josh Waitzkin**
+   - Заключает в себе принципы самосовершенствования и роста через целенаправленное обучение.
+
+8. **Meditations** - **Marcus Aurelius**
+   - Упоминается как важный источник философских размышлений о жизни и внутреннем спокойствии.
+
+9. **The Checklist Manifesto** - **Atul Gawande**
+   - Препоручается за практическое применение системы проверки, которая может уменьшить ошибки в сложных задачах.
+
+10. **Dune** - **Frank Herbert**
+    - Затрагивается как работа, обладающая глубокими культурными и философскими темами.
+
+11. **The Bible**
+    - Упоминание о значении и влиянии этой книги на человеческую культуру и мораль.
+
+12. **The Alchemist** - **Paulo Coelho**
+    - Рекомендуется за универсальные темы о поиске смысла жизни и следовании своей мечте.
+
+Авторы, упомянутые выше, выделяют разнообразие тем, от философии до личного роста и практических навыков, что делает рекомендации универсальными и применимыми для различных жизненных ситуаций.
+==================================================
+
+Answer Generated:
+Length: 2074 chars
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Function: process_file
+Error: Unsupported file format (Details: {'file_path': '/private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-48/test_unsupported_file_format0/test.unsupported', 'error_type': 'unsupported_format', 'extension': '.unsupported', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+==================================================
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics Reset:
+Status: Completed
+--------------------------------------------------
+
+Query Processing:
+Query: Test query
+Context length: 12 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 13 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query Processing:
+Query: Test query
+Context length: 12 chars
+--------------------------------------------------
+
+OpenAI Error:
+Error in generate_answer: Test response
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 107.00 chars
+Sample chunk: This is a test book. It contains some text about various topics including science, history, and lite...
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Function: process_file
+Error: Unsupported file format (Details: {'file_path': '/private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-49/test_unsupported_file_format0/test.unsupported', 'error_type': 'unsupported_format', 'extension': '.unsupported', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+==================================================
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics Reset:
+Status: Completed
+--------------------------------------------------
+
+Query Processing:
+Query: Test query
+Context length: 12 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 13 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query Processing:
+Query: Test query
+Context length: 12 chars
+--------------------------------------------------
+
+OpenAI Error:
+Error in generate_answer: Test response
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 107.00 chars
+Sample chunk: This is a test book. It contains some text about various topics including science, history, and lite...
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Book Processing Error:
+Error in create_from_text: no running event loop
+--------------------------------------------------
+
+Function: process_file
+Error: Unsupported file format (Details: {'file_path': '/private/var/folders/dd/70xsqyd921gd18src4pk119r0000gn/T/pytest-of-eduardizgorodin/pytest-50/test_unsupported_file_format0/test.unsupported', 'error_type': 'unsupported_format', 'extension': '.unsupported', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+==================================================
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics System:
+Status: Initialized
+--------------------------------------------------
+
+Metrics Reset:
+Status: Completed
+--------------------------------------------------
+
+Query Processing:
+Query: Test query
+Context length: 12 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 13 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query Processing:
+Query: Test query
+Context length: 12 chars
+--------------------------------------------------
+
+OpenAI Error:
+Error in generate_answer: Test response
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 107.00 chars
+Sample chunk: This is a test book. It contains some text about various topics including science, history, and lite...
+--------------------------------------------------
