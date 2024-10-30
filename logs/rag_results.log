@@ -14369,3 +14369,3361 @@ Upserted vectors: 1
 
 Successfully stored all 1 vectors
 --------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 359 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provides limited information, only stating "Test book content" along with a score. There are no specifics or details relating to a "test question." Therefore, I cannot provide a relevant answer based on the given context. 
+
+If you have a specific aspect of the test question you would like to discuss or inquire about, please provide more details!
+==================================================
+
+Answer Generated:
+Length: 359 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 296 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The provided context only contains a brief reference to "Test book content" and a score value. Unfortunately, there is no relevant information to answer the question "test question." 
+
+If you have a specific question or need more detail, please provide additional context or clarify your inquiry!
+==================================================
+
+Answer Generated:
+Length: 296 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 298 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The provided context contains a brief reference to "Test book content" along with a score of 0.6348182385365114. However, there is no specific or detailed information regarding the question you asked. 
+
+If you could clarify your question or provide more context, I'd be happy to assist you further!
+==================================================
+
+Answer Generated:
+Length: 298 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 300 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The provided context includes the following information:
+
+- A mention of "Test book content"
+- A score of approximately **0.635**
+
+However, there is no specific information or answer related to the question "test question." The context does not elaborate on this question or provide relevant details.
+==================================================
+
+Answer Generated:
+Length: 300 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 345 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provided is limited and contains the phrase "Test book content," along with a score. However, there is no specific information or detail that can be used to address the question. Therefore, I cannot provide a meaningful answer based on the current context. If you have a more detailed question or additional context, please share it!
+==================================================
+
+Answer Generated:
+Length: 345 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 478 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provides a brief snippet that states "Test book content" along with a score. However, it does not give any specific information relevant to the question "test question." 
+
+### Summary:
+- **Content:** Test book content
+- **Score:** 0.6348182385365114
+
+Unfortunately, there is no detailed information available regarding the question you asked. If you have a more specific question or need information on a particular topic, please provide that for further assistance!
+==================================================
+
+Answer Generated:
+Length: 478 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 306 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The provided context contains the phrase "Test book content" along with a score of 0.6348182385365114. However, there is no specific information or details related to "test question" to provide a meaningful answer. More context or details about the question would be needed to generate a relevant response.
+==================================================
+
+Answer Generated:
+Length: 306 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 328 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provides a brief snippet stating **"Test book content"** but does not contain specific information related to the question you asked. Therefore, based on the available context, I can't provide a relevant answer to your question. If you can provide more specific details or ask another question, I'd be happy to help!
+==================================================
+
+Answer Generated:
+Length: 328 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 328 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provided only contains the phrase "Test book content" along with a score, which does not provide any specific information to address the test question. Therefore, I cannot provide a relevant answer or details. If you have a specific aspect you'd like to explore, please provide more context or clarify your question.
+==================================================
+
+Answer Generated:
+Length: 328 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 429 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provided contains the following information:
+
+- **Content**: "Test book content"
+- **Score**: 0.6348182385365114
+
+Since the question asks for a "test question," it seems to be more of a placeholder rather than a specific inquiry. The context does not provide any additional details or answers related to your question. 
+
+If you have a specific question in mind, please provide it, and I will do my best to assist you!
+==================================================
+
+Answer Generated:
+Length: 429 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 354 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provided contains limited information, specifically stating "Test book content." However, it does not provide sufficient details to accurately answer the question "test question." 
+
+If you have a more specific question or need information on a particular topic related to the context, please provide that, and I will do my best to assist you!
+==================================================
+
+Answer Generated:
+Length: 354 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 360 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The provided context contains only the phrase **"Test book content"** along with a score. There is no specific information related to a "test question" given. Thus, I am unable to provide an answer relevant to that question based on the context provided. If you have a different question or need further clarification on the content itself, please let me know!
+==================================================
+
+Answer Generated:
+Length: 360 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 298 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provided only includes a brief mention of "Test book content" along with a score value. Unfortunately, there is not enough information to answer a specific question related to this context. If you can specify your question or provide more details, I would be glad to assist you further!
+==================================================
+
+Answer Generated:
+Length: 298 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 307 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provided mentions "Test book content," but it does not contain specific information or answers relevant to the question "test question." Therefore, I cannot provide an answer based on the available information. If you have a different question or need clarification, please provide more details.
+==================================================
+
+Answer Generated:
+Length: 307 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------

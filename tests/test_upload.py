@@ -5,6 +5,8 @@ import os
 import base64
 from src.config import UPLOAD_FOLDER
 from src.book_data_interface import BookDataInterface
+from unittest.mock import Mock, patch
+from src.services.firebase_storage import FirebaseStorageService
 
 @pytest.fixture
 def client():
@@ -28,12 +30,39 @@ def test_file():
     if os.path.exists(filename):
         os.remove(filename)
 
+@pytest.fixture
+def mock_firebase():
+    with patch('firebase_admin.credentials.Certificate') as mock_cert, \
+         patch('firebase_admin.initialize_app') as mock_init, \
+         patch('firebase_admin.storage.bucket') as mock_bucket:
+        
+        # Настраиваем мок для blob
+        mock_blob = Mock()
+        mock_blob.public_url = "https://storage.googleapis.com/test-bucket/test-file.txt"
+        
+        # Настраиваем мок для bucket
+        bucket_mock = Mock()
+        bucket_mock.blob.return_value = mock_blob
+        mock_bucket.return_value = bucket_mock
+        
+        yield {
+            'cert': mock_cert,
+            'init': mock_init,
+            'bucket': mock_bucket,
+            'blob': mock_blob
+        }
+
+@pytest.fixture
+def storage_service(mock_firebase):
+    return FirebaseStorageService()
+
 def test_auth_required(client):
     """Проверка что без авторизации доступ запрещен"""
     response = client.post("/upload")
     assert response.status_code == 401
 
-def test_file_upload_success(client, auth_headers, test_file):
+@pytest.mark.asyncio
+async def test_file_upload_success(client, auth_headers, test_file, mock_firebase):
     """Проверка успешной загрузки файла"""
     with open(test_file, "rb") as f:
         response = client.post(
@@ -41,12 +70,31 @@ def test_file_upload_success(client, auth_headers, test_file):
             files={"file": (test_file, f, "text/plain")},
             headers=auth_headers
         )
-    assert response.status_code == 200
-    assert response.json()["status"] == "success"
     
-    # Проверяем что файл сохранился
-    uploaded_path = os.path.join(UPLOAD_FOLDER, test_file)
-    assert os.path.exists(uploaded_path)
+    assert response.status_code == 200
+    result = response.json()
+    assert result["status"] == "success"
+    assert "storage_url" in result
+    assert result["storage_url"].startswith("https://storage.googleapis.com/")
+
+@pytest.mark.asyncio
+async def test_file_upload_firebase_error(client, auth_headers, test_file, storage_service):
+    # Устанавливаем ошибку для следующей загрузки
+    storage_service.set_upload_error(Exception("Firebase error"))
+    
+    with open(test_file, "rb") as f:
+        response = client.post(
+            "/upload",
+            files={"file": (os.path.basename(test_file), f, "text/plain")},
+            headers=auth_headers
+        )
+    
+    assert response.status_code == 500
+    assert "Firebase upload error" in response.json()["detail"]
+    
+    # Проверяем, что временный файл был удален
+    uploaded_file = os.path.join(UPLOAD_FOLDER, os.path.basename(test_file))
+    assert not os.path.exists(uploaded_file)
 
 def test_invalid_file_type(client, auth_headers):
     """Проверка отклонения неподдерживаемого типа файла"""
@@ -98,19 +146,31 @@ async def test_websocket_progress(client, auth_headers, test_file):
         assert "progress" in data
         assert "status" in data
 
-def test_cleanup(client, auth_headers, test_file):
-    """Проверка очистки временных файлов"""
-    # Загружаем файл
-    with open(test_file, "rb") as f:
-        client.post(
-            "/upload",
-            files={"file": (test_file, f, "text/plain")},
-            headers=auth_headers
-        )
-    
-    uploaded_path = os.path.join(UPLOAD_FOLDER, test_file)
-    assert os.path.exists(uploaded_path)
-    
-    # После теста проверяем очистку
-    os.remove(uploaded_path)
-    assert not os.path.exists(uploaded_path)
+@pytest.mark.asyncio
+async def test_cleanup(client, auth_headers, test_file):
+    temp_files = []
+    try:
+        # Создаем временные файлы
+        temp_file = os.path.join(UPLOAD_FOLDER, "temp_test.txt")
+        temp_files.append(temp_file)
+        with open(temp_file, "w") as f:
+            f.write("Test content")
+            
+        with open(test_file, "rb") as f:
+            response = client.post(
+                "/upload",
+                files={"file": (test_file, f, "text/plain")},
+                headers=auth_headers
+            )
+            
+        assert response.status_code == 200
+        
+        # Проверяем очистку всех временных файлов
+        for temp_file in temp_files:
+            assert not os.path.exists(temp_file)
+            
+    finally:
+        # Гарантированная очистка
+        for temp_file in temp_files:
+            if os.path.exists(temp_file):
+                os.remove(temp_file)
