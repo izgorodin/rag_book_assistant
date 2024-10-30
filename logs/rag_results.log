@@ -12024,3 +12024,2348 @@ Status: Initialized
 System Initialization:
 Status: Ready
 --------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 530378 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 104
+Average chunk size: 5945.64 chars
+Sample chunk: About This E-Book EPUB is an open, industry-standard format for e-books. However, support for EPUB a...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 104
+Dates: 55
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 104
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 104
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 4
+--------------------------------------------------
+
+Successfully stored all 104 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 530378 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 104
+Average chunk size: 5945.64 chars
+Sample chunk: About This E-Book EPUB is an open, industry-standard format for e-books. However, support for EPUB a...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 104
+Dates: 55
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 104
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 104
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 4
+--------------------------------------------------
+
+Successfully stored all 104 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 530378 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 104
+Average chunk size: 5945.64 chars
+Sample chunk: About This E-Book EPUB is an open, industry-standard format for e-books. However, support for EPUB a...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 104
+Dates: 55
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 104
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 104
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 4
+--------------------------------------------------
+
+Successfully stored all 104 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Какой основной принцип предлагает использовать автор
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Какой основной принцип предлагает использовать автор
+Top 10 results:
+Score: 0.3342 | Chunk: to give back. This is laudable. However, regardless of their high-minded motives, those authors do n...
+Score: 0.3141 | Chunk: business rules. Let me tell you the story of company Q. Company Q built a very popular personal fina...
+Score: 0.3096 | Chunk: that generating the report involves two separate responsibilities: the calculation of the reported d...
+Score: 0.3054 | Chunk: acyclic dependency graph, which is achieved by introducing some rules about how elements in a code b...
+Score: 0.3019 | Chunk: the Employee table of the database. Suppose also that the COO’s team of HR clerks decides that they ...
+Score: 0.3012 | Chunk: About This E-Book EPUB is an open, industry-standard format for e-books. However, support for EPUB a...
+Score: 0.3004 | Chunk: to put the views and presenters together into the same .jar file, and put the interactors, controlle...
+Score: 0.3001 | Chunk: separation of concerns is still maintained, so the business logic is separate from data persistence,...
+Score: 0.2898 | Chunk: can be plugged together at runtime, are the software components of our architectures. It has taken 5...
+Score: 0.2878 | Chunk: it right away. See if there aren’t ways to date it for a while before you take the plunge. Keep the ...
+--------------------------------------------------
+
+Query Processing:
+Query: Какой основной принцип предлагает использовать автор
+Context length: 61150 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1006 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Какой основной принцип предлагает использовать автор
+Context chunks: 10
+Answer: Основной принцип, который предлагает использовать автор, заключается в том, **чтобы не связываться с фреймворком напрямую**. Это выражается в концепции **"не жениться на фреймворке"**. Автор рекомендует:
+
+- **Держать фреймворк на расстоянии**: Используйте его, но не связывайтесь с ним тесно. Это позволяет сохранить независимость вашего кода и упростить его изменение в будущем.
+- **Разделение кода**: Не позволяйте фреймворку входить в основное ядро вашего приложения. Вместо этого интегрируйте его как отдельные компоненты или плагины, чтобы избежать жесткого связывания с его базовыми классами.
+- **Стратегия изменения**: Позаботьтесь о том, чтобы архитектура вашего приложения допускала изменения и развитие без необходимости переписывать много кода.
+
+Каждый раз, когда вы задействуете фреймворк, важно понимать, что он решает свои проблемы, а не ваши. Это создает **ассиметричные отношения**, где вы берете на себя все риски, в то время как автор фреймворка не делает никаких обязательств перед вами.
+==================================================
+
+Answer Generated:
+Length: 1006 chars
+--------------------------------------------------
+
+Query Processing:
+Query: А что автор говорит про запуск ракет!
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: А что автор говорит про запуск ракет!
+Top 10 results:
+Score: 0.1705 | Chunk: One hopes that revenues are outpacing costs and therefore justifying the expense. But no matter how ...
+Score: 0.1694 | Chunk: services, so we invented a shared memory mechanism that we called the 3DBB. 12 The 3DBB allowed data...
+Score: 0.1674 | Chunk: with one that was based on a Varian 620/f minicomputer ( Figure A.6 ). The computer was cheap. We we...
+Score: 0.1665 | Chunk: to use the same bit formats for controlling the new modem. We explained that the modem control code ...
+Score: 0.1661 | Chunk: complete. The tester would then tell the system that the operation was complete, and the system woul...
+Score: 0.1650 | Chunk: separate the part of the software that dialed and measured lines from the part that analyzed the res...
+Score: 0.1617 | Chunk: my desk) used a 1200-bps modem to call up our uucp host twice per day. This gave us email and Netnew...
+Score: 0.1599 | Chunk: system and the laser. The laser was positioned using X - Y mirrors that could rotate under program c...
+Score: 0.1591 | Chunk: push the decoupling to the point where a service could be formed. should it become necessary; but th...
+Score: 0.1569 | Chunk: It also allows the tests to be refactored and evolved in ways that don’t affect the production code....
+--------------------------------------------------
+
+Query Processing:
+Query: А что автор говорит про запуск ракет!
+Context length: 58929 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 384 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: А что автор говорит про запуск ракет!
+Context chunks: 10
+Answer: В предоставленном контексте нет информации о запуске ракет. Текст обсуждает темы, связанные с программированием, архитектурой программного обеспечения, продуктивностью разработчиков и проблемами, связанными с написанием запутанного или неэффективного кода. Если вас интересует конкретная информация о запуске ракет, пожалуйста, уточните, где можно ее найти, или задайте другой вопрос.
+==================================================
+
+Answer Generated:
+Length: 384 chars
+--------------------------------------------------
+
+Query Processing:
+Query: А есть ли примеры запутаного кода?
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: А есть ли примеры запутаного кода?
+Top 10 results:
+Score: 0.3428 | Chunk: and load the vector table at the start of each chip into the RAM vectors. Then it would jump into th...
+Score: 0.3371 | Chunk: you would need to create a separate assembly for every component. Just to be absolutely clear, what ...
+Score: 0.3369 | Chunk: special concerns that embedded developers have to deal with that non-embedded developers do not—for ...
+Score: 0.3362 | Chunk: new applications being written. There were subtle frictions that just didn’t work. This was deeply d...
+Score: 0.3358 | Chunk: the message processor/dispatcher resides in the same file as code that interacts with a UART 2 hardw...
+Score: 0.3326 | Chunk: for a change, and your estimated costs for that change are unaffordably high, the business managers ...
+Score: 0.3267 | Chunk: services, so we invented a shared memory mechanism that we called the 3DBB. 12 The 3DBB allowed data...
+Score: 0.3263 | Chunk: the physical form of paper tape or punched cards. The edit/compile/test loop was hours—if not days—l...
+Score: 0.3258 | Chunk: HAL provides that seam or set of substitution points that facilitate off- target testing. The Proces...
+Score: 0.3249 | Chunk: VRS (Voice Response System), archaeology projects, 357 – 359 , 362 – 363 W Web as delivery system fo...
+--------------------------------------------------
+
+Query Processing:
+Query: А есть ли примеры запутаного кода?
+Context length: 55045 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1900 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: А есть ли примеры запутаного кода?
+Context chunks: 10
+Answer: Да, в предоставленном контексте есть примеры запутанного кода, который иллюстрирует проблемы с архитектурой и структурой кода, особенно в embedded-разработке. Вот некоторые ключевые моменты:
+
+### Пример 1: Запутанный код в embedded-системе
+- **Функции расположены в одном файле без структурирования**: Код часто состоит из множества функций, которые не сгруппированы по их назначению. Например:
+  - `ISR(TIMER1_vect) { ... }`
+  - `void btn_Handler(void) { ... }`
+  - `float calc_RPM(void) { ... }`
+  - `static char Read_RawData(void) { ... }`
+  
+  Эти функции не организованы по логическим группам и могут затруднять понимание их предназначения и взаимосвязей.
+
+### Пример 2: Поля с разными уровнями абстракции
+- Код собирает детали аппаратного обеспечения вместе с бизнес-логикой, что приводит к запутанности. Например, существуют **функции для управления аппаратным обеспечением**, такие как управление GPIO, которые мешаются с бизнес-логикой:
+  - `void Dev_Control(char Activation) { ... }` — функция управления, которая может переплетаться с аппаратными вызовами.
+
+### Пример 3: Взаимосвязь кода и аппаратного обеспечения
+- Код, который манипулирует регистрами процессора и аппаратными компонентами, может выглядеть следующим образом:
+  ```c
+  void say_hi() {
+      IE = 0b11000000; // Включение интерраптов
+      SBUF0 = (0x68); // Отправка данных в буфер
+      while(TI_0 == 0); // Ожидание передачи
+      // и так далее...
+  }
+  ```
+  Этот код зависит от специфики архитектуры и делает его трудным для тестирования и переноса на другие платформы.
+
+### Заключение
+Код, который не структурирован и содержит много деталей, связанных с аппаратным обеспечением напрямую, становится запутанным и ограничивает его возможность поддержки и изменения. Проблемы с пониманием кода увеличиваются, когда он не организован должным образом, что приводит к трудностям в внесении изменений и исправлении ошибок.
+==================================================
+
+Answer Generated:
+Length: 1900 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Что такое SDK и как их использовать?
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Что такое SDK и как их использовать?
+Top 10 results:
+Score: 0.2661 | Chunk: This fragmentation of programs and libraries necessarily continued as computer memory grew. Clearly,...
+Score: 0.2655 | Chunk: new applications being written. There were subtle frictions that just didn’t work. This was deeply d...
+Score: 0.2626 | Chunk: business rules. Let me tell you the story of company Q. Company Q built a very popular personal fina...
+Score: 0.2568 | Chunk: deployment. Indeed, if the decoupling is done well, then it should be possible to hot-swap layers an...
+Score: 0.2531 | Chunk: HAL provides that seam or set of substitution points that facilitate off- target testing. The Proces...
+Score: 0.2529 | Chunk: – 354 Core code, avoid frameworks in, 293 COs (central offices), 4 -TEL archaeology project, 339 – 3...
+Score: 0.2524 | Chunk: In that case, they may implement a partial boundary. S KIP THE L AST S TEP One way to construct a pa...
+Score: 0.2481 | Chunk: in a global variable of type ServiceFactory . The Application would then access the factory through ...
+Score: 0.2462 | Chunk: to give back. This is laudable. However, regardless of their high-minded motives, those authors do n...
+Score: 0.2460 | Chunk: be tested off-target, making it a little less firm. The Operating System Is a Detail A HAL is necess...
+--------------------------------------------------
+
+Query Processing:
+Query: Что такое SDK и как их использовать?
+Context length: 59758 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1286 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Что такое SDK и как их использовать?
+Context chunks: 10
+Answer: В предоставленном контексте не упоминается конкретно о **SDK** (Software Development Kit), поэтому конкретная информация по этому запросу отсутствует. Однако, я могу объяснить, что SDK — это набор инструментов и библиотек, которые разработчики могут использовать для создания приложений на определенной платформе, а также для работы с API или фреймворками.
+
+### Использование SDK
+Вот несколько общих способов использования SDK:
+
+1. **Интеграция**: SDK обычно включает библиотеки, которые можно подключить к приложению. Это упрощает интеграцию функций SDK в ваше приложение.
+   
+2. **Документация**: Хорошее SDK будет снабжено документацией, которая описывает, как использовать предоставляемые функции и классы.
+
+3. **Примеры кода**: Многие SDK предоставляют примеры кода, которые могут помочь разработчикам быстрее понять, как использовать инструменты и библиотеки.
+
+4. **Инструменты разработки**: Некоторые SDK содержат инструменты для тестирования и отладки, что облегчает разработку приложений.
+
+### Заключение
+SDK упрощают процесс разработки, позволяя разработчикам сосредоточиться на бизнес-логике, а не на технических деталях интеграции с платформой или фреймворком. Если у вас есть более конкретные вопросы о SDK или их использовании, пожалуйста, уточните, и я постараюсь помочь!
+==================================================
+
+Answer Generated:
+Length: 1286 chars
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Function: process_file
+Error: Unsupported file format (Details: {'file_path': '/Users/eduardizgorodin/Projects/rag_book_assistant/src/web/../../uploads/test.exe', 'error_type': 'unsupported_format', 'extension': '.exe', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+==================================================
+
+Processing Error:
+Error processing book: Unsupported file format (Details: {'file_path': '/Users/eduardizgorodin/Projects/rag_book_assistant/src/web/../../uploads/test.exe', 'error_type': 'unsupported_format', 'extension': '.exe', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 427 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provided includes a brief excerpt stating, "Test book content," along with a numerical score. However, it does not contain any specific information related to a "test question" or any details that would enable me to formulate a meaningful answer.
+
+### Summary:
+- **Content**: "Test book content"
+- **Score**: 0.6348182385365114
+
+If you have a specific question in mind, please provide additional details or context!
+==================================================
+
+Answer Generated:
+Length: 427 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Function: process_file
+Error: Unsupported file format (Details: {'file_path': '/Users/eduardizgorodin/Projects/rag_book_assistant/src/web/../../uploads/test.exe', 'error_type': 'unsupported_format', 'extension': '.exe', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+==================================================
+
+Processing Error:
+Error processing book: Unsupported file format (Details: {'file_path': '/Users/eduardizgorodin/Projects/rag_book_assistant/src/web/../../uploads/test.exe', 'error_type': 'unsupported_format', 'extension': '.exe', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 416 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The provided context contains the text "Test book content" along with a score of 0.6348182385365114. However, it does not contain specific information related to the question "test question." Therefore, I cannot provide a detailed answer regarding the specific question since the necessary information is missing. 
+
+If you have a more specific inquiry or require information from another context, please let me know!
+==================================================
+
+Answer Generated:
+Length: 416 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Function: process_file
+Error: Unsupported file format (Details: {'file_path': '/Users/eduardizgorodin/Projects/rag_book_assistant/src/web/../../uploads/test.exe', 'error_type': 'unsupported_format', 'extension': '.exe', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+==================================================
+
+Processing Error:
+Error processing book: Unsupported file format (Details: {'file_path': '/Users/eduardizgorodin/Projects/rag_book_assistant/src/web/../../uploads/test.exe', 'error_type': 'unsupported_format', 'extension': '.exe', 'supported_formats': ['.txt', '.pdf', '.doc', '.docx', '.odt']})
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 359 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The provided context includes a brief mention of "Test book content" and a score of 0.6348182385365114. However, it does not contain any information relevant to the question "test question." Therefore, I cannot provide a specific answer based on the given text. 
+
+If you have a different question or need information on a particular topic, please let me know!
+==================================================
+
+Answer Generated:
+Length: 359 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 320 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provided contains only a brief mention of "Test book content" and a score value. There is no specific information to answer the question. Unfortunately, the details required to provide a meaningful answer about "test question" are missing. If you have more context or specific questions, please provide them!
+==================================================
+
+Answer Generated:
+Length: 320 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 451 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The context provided contains minimal information: "Test book content" and a numerical score. However, it does not include any relevant details to address the question "test question." 
+
+### Summary:
+- **Content**: Test book content
+- **Score**: 0.6348
+
+Unfortunately, without more specific information or context, I cannot provide a meaningful answer to your question. Please provide additional details or clarify the question for further assistance.
+==================================================
+
+Answer Generated:
+Length: 451 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: test question
+Top 10 results:
+Score: 0.6348 | Chunk: Test book content...
+--------------------------------------------------
+
+Query Processing:
+Query: test question
+Context length: 63 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 327 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: test question
+Context chunks: 1
+Answer: The provided context contains very limited information, only stating that there is a "Test book content" with a score of approximately 0.6348. It does not offer specific details or answers related to your question. 
+
+If you have a specific question regarding the context, please provide more details so I can assist you better!
+==================================================
+
+Answer Generated:
+Length: 327 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------
+
+Book Loading:
+Content length: 17 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 1
+Average chunk size: 17.00 chars
+Sample chunk: Test book content...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 1
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 1
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 1
+--------------------------------------------------
+
+Successfully stored all 1 vectors
+--------------------------------------------------

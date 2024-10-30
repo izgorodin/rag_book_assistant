@@ -87,78 +87,78 @@ async def upload_file(
     user: str = Depends(get_current_user)
 ):
     try:
-        # Логируем начало загрузки
-        logger.info(f"Starting upload of file: {file.filename}")
+        if not allowed_file(file.filename):
+            raise HTTPException(
+                status_code=400,
+                detail="Invalid file type. Allowed extensions: " + 
+                       ", ".join(ALLOWED_EXTENSIONS)
+            )
         
-        # Проверяем директорию uploads
-        upload_dir = os.path.join('uploads', user)
-        os.makedirs(upload_dir, exist_ok=True)
+        filename = file.filename
+        file_path = os.path.join(UPLOAD_FOLDER, filename)
         
-        file_path = os.path.join(upload_dir, file.filename)
+        logger.info(f"Starting upload of file: {filename}")
         
-        # Начало загрузки
-        await ws_manager.emit_progress("Starting upload", 0, 100)
-        
-        # Асинхронно сохраняем файл
         async with aiofiles.open(file_path, 'wb') as out_file:
             content = await file.read()
             await out_file.write(content)
             
         logger.info(f"File saved: {file_path}")
         
-        # Файл загружен
-        await ws_manager.emit_progress("File uploaded", 25, 100)
-        
         # Обработка книги
         logger.info("Processing book...")
-        await ws_manager.emit_progress("Processing book", 50, 100)
-        book_data = assistant.load_and_process_book(file_path)
-        
-        # Завершение
-        chunks_count = len(book_data.get_chunks())
-        logger.info(f"Book processed. Chunks: {chunks_count}")
-        
-        await ws_manager.emit_progress("Complete", 100, 100, {
-            "chunks_count": chunks_count
-        })
-        
-        return JSONResponse({
-            "status": "success",
-            "message": "File processed successfully",
-            "chunks_count": chunks_count
-        })
-        
+        try:
+            book_data = assistant.load_and_process_book(file_path)
+            # Важно: сохраняем в app.state до возврата ответа
+            app.state.book_data = book_data
+            
+            chunks_count = len(book_data.get_chunks())
+            logger.info("Book processed successfully")
+            
+            return JSONResponse({
+                "status": "success",
+                "message": "File processed successfully",
+                "chunks_count": chunks_count
+            })
+        except Exception as e:
+            logger.error(f"Error processing book: {str(e)}")
+            # Очищаем состояние в случае ошибки
+            app.state.book_data = None
+            raise
+            
+    except HTTPException as e:
+        raise e
     except Exception as e:
         logger.error(f"Error processing file: {str(e)}")
-        await ws_manager.emit_progress("Error", 0, 100, {"error": str(e)})
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/ask")
-async def ask_question(question: str = Query(...), user: str = Depends(get_current_user)):
+async def ask_question(
+    question: str,
+    user: str = Depends(get_current_user)
+):
+    # Получаем book_data из состояния приложения
+    book_data = getattr(app.state, 'book_data', None)
+    
+    if not book_data:
+        logger.error("No book data loaded")
+        raise HTTPException(
+            status_code=400,
+            detail="No book data loaded"
+        )
+    
     try:
-        if not book_data:
-            raise HTTPException(status_code=400, detail="No book data loaded")
-            
-        # Отправляем статус через WebSocket
-        await ws_manager.emit_progress("Processing question", 0, 100)
-        
-        # Получаем ответ (исправлено имя метода)
+        logger.info(f"Processing question: {question}")
         answer = assistant.answer_question(question, book_data)
-        
-        # Отправляем завершение через WebSocket
-        await ws_manager.emit_progress("Complete", 100, 100, {
-            "answer": answer
-        })
-        
         return {"answer": answer}
         
     except Exception as e:
         logger.error(f"Error processing question: {str(e)}")
-        await ws_manager.emit_progress("Error", 0, 100, {"error": str(e)})
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/check_book_loaded")
 async def check_book_loaded(user: str = Depends(get_current_user)):
+    book_data = getattr(app.state, 'book_data', None)
     return JSONResponse({'book_loaded': book_data is not None})
 
 # WebSocket endpoint
@@ -205,17 +205,18 @@ async def login(
 # Добавляем сессии (перед auth middleware!)
 app.add_middleware(
     SessionMiddleware,
-    secret_key="your-secret-key",  # Используйте безопасный ключ из конфига
-    session_cookie="session"
+    secret_key=os.environ.get('SESSION_SECRET_KEY', FLASK_SECRET_KEY),
+    session_cookie="session",
+    max_age=3600  # 1 hour
 )
 
 # Конфигурация CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[os.environ.get('ALLOWED_ORIGINS', 'http://localhost:8000').split(',')],
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 # Добавляем middleware аутентификации с публичными путями

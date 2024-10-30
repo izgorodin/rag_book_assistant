@@ -2,6 +2,7 @@ import logging
 import colorlog
 import os
 from datetime import datetime
+import json
 
 class LoggerManager:
     _instance = None
@@ -76,3 +77,16 @@ def get_main_logger():
 
 def get_rag_logger():
     return LoggerManager.get_logger('rag')
+
+def get_structured_logger(name: str):
+    logger = logging.getLogger(name)
+    
+    def structured_log(msg, **kwargs):
+        log_data = {
+            "timestamp": datetime.now().isoformat(),
+            "service": name,
+            **kwargs
+        }
+        return json.dumps(log_data)
+        
+    return logger
