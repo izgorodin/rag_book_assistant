@@ -10465,3 +10465,1417 @@ Total chunks: 1
 Average chunk size: 107.00 chars
 Sample chunk: This is a test book. It contains some text about various topics including science, history, and lite...
 --------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Rnj fdnjh&
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Rnj fdnjh&
+Top 10 results:
+Score: 0.1449 | Chunk: helps with body recomposition. The benefits are summarized nicely in the title of one study: “Ursoli...
+Score: 0.1415 | Chunk: the slower time passes, the longer you live. Law 17: The best way to predict the future is to create...
+Score: 0.1364 | Chunk: that there’s a ceiling on yoga, and the ceiling is: You have all this amazing knowledge and all this...
+Score: 0.1346 | Chunk: but attributed it to a bumper sticker. By the end of this profile, you’ll see how BJ loves this type...
+Score: 0.1299 | Chunk: to impact my neighbor?’ No, this is your time. You’re stealing the time. And the act of creation is ...
+Score: 0.1227 | Chunk: The 4-Hour Workweek, The 4-Hour Body, and The 4-Hour Chef. The Observer and other media have called ...
+Score: 0.1214 | Chunk: of the mouse itself. So a lion that spent its day hunting and eating field mice would slowly starve ...
+Score: 0.1170 | Chunk: heard that the wholesome Full House star was, in fact, a really filthy standup comic. But how could ...
+Score: 0.1097 | Chunk: making it hard for them to navigate.’ Sits down. “My grandmother raised those people at church. [She...
+Score: 0.1079 | Chunk: us to get ready for your deal.’ And he’s like, ‘Man, you don’t gotta take off. You can sit down. I’m...
+--------------------------------------------------
+
+Query Processing:
+Query: Rnj fdnjh&
+Context length: 51251 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 321 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Rnj fdnjh&
+Context chunks: 10
+Answer: It seems that the question "Rnj fdnjh&" does not appear to be related to the content provided in the context. As such, I am unable to provide a relevant answer based on the information given.
+
+If you have a specific question or need information related to the context provided, please clarify, and I'd be happy to assist!
+==================================================
+
+Answer Generated:
+Length: 321 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Rnj 'nj&
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Rnj 'nj&
+Top 10 results:
+Score: 0.1732 | Chunk: the slower time passes, the longer you live. Law 17: The best way to predict the future is to create...
+Score: 0.1527 | Chunk: but attributed it to a bumper sticker. By the end of this profile, you’ll see how BJ loves this type...
+Score: 0.1404 | Chunk: of the mouse itself. So a lion that spent its day hunting and eating field mice would slowly starve ...
+Score: 0.1376 | Chunk: helps with body recomposition. The benefits are summarized nicely in the title of one study: “Ursoli...
+Score: 0.1315 | Chunk: heard that the wholesome Full House star was, in fact, a really filthy standup comic. But how could ...
+Score: 0.1262 | Chunk: to impact my neighbor?’ No, this is your time. You’re stealing the time. And the act of creation is ...
+Score: 0.1234 | Chunk: it that are sort of opposite. The man will be trying to access his bravery, and the woman will be ac...
+Score: 0.1184 | Chunk: that both Naval Ravikant (page 546, who introduced us) and I do on a near-daily basis. Jerzy conside...
+Score: 0.1161 | Chunk: will experience a sharp increase in the max number of push-ups, even though their lungs are empty. C...
+Score: 0.1155 | Chunk: Dan: “‘Be curious.’” Fadiman, James: “‘Awareness Cures.’” Foxx, Jamie: “It would be the billboard sa...
+--------------------------------------------------
+
+Query Processing:
+Query: Rnj 'nj&
+Context length: 56989 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 198 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Rnj 'nj&
+Context chunks: 10
+Answer: It seems that your question is unclear or possibly contains a typographical error. If you could clarify or rephrase your question, I'd be more than happy to assist you based on the context provided!
+==================================================
+
+Answer Generated:
+Length: 198 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Cgbcjr rybu htrjcvvtyljdfys[ fdnjhjv j qjut
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Cgbcjr rybu htrjcvvtyljdfys[ fdnjhjv j qjut
+Top 10 results:
+Score: 0.1863 | Chunk: the slower time passes, the longer you live. Law 17: The best way to predict the future is to create...
+Score: 0.1836 | Chunk: it that are sort of opposite. The man will be trying to access his bravery, and the woman will be ac...
+Score: 0.1788 | Chunk: challenges not only high-mileage runs, but also high-carb diets, and he utilizes intense strength tr...
+Score: 0.1784 | Chunk: in your company breaks every time you roughly triple in size. “He was the first employee at Rakuten,...
+Score: 0.1766 | Chunk: 365-pound resistance]. Among effective midsection exercises are ‘power breathing,’ hollow rocks, Jan...
+Score: 0.1758 | Chunk: to impact my neighbor?’ No, this is your time. You’re stealing the time. And the act of creation is ...
+Score: 0.1726 | Chunk: heard that the wholesome Full House star was, in fact, a really filthy standup comic. But how could ...
+Score: 0.1686 | Chunk: 477, and James Altucher, page 246). What’s the Most Outrageous Thing You Can Do? Make It Count, at c...
+Score: 0.1659 | Chunk: . . . this is going to be awkward forever.” 4. Tips from friends, related to #2 above. For some of m...
+Score: 0.1629 | Chunk: the slightest. . . . I won a guitar at a snowboard contest and I thought, ‘Wow, what if I could just...
+--------------------------------------------------
+
+Query Processing:
+Query: Cgbcjr rybu htrjcvvtyljdfys[ fdnjhjv j qjut
+Context length: 56827 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 223 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Cgbcjr rybu htrjcvvtyljdfys[ fdnjhjv j qjut
+Context chunks: 10
+Answer: It seems that your question appears to be encoded or contains nonsensical text. If you meant to ask something specific or related to the context provided, please clarify or rephrase your question so I can assist you better!
+==================================================
+
+Answer Generated:
+Length: 223 chars
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Найди все физические упражненияи комплексы описаные в книге и добвавь описания как их выполнять
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Найди все физические упражненияи комплексы описаные в книге и добвавь описания как их выполнять
+Top 10 results:
+Score: 0.3638 | Chunk: for this and perform 5 slow reps in each direction. Start light. Cossack Squat When everything else ...
+Score: 0.3574 | Chunk: body fat percentage, NOT total pounds. The scale can deceive and derail you. For instance, it’s comm...
+Score: 0.3523 | Chunk: that you can demonstrate strength throughout the entire range of motion, including the end ranges. S...
+Score: 0.3412 | Chunk: * Coach Sommer borrowed this exercise from power lifter Donnie Thompson, who calls it the “butt walk...
+Score: 0.2777 | Chunk: teeth (which have a particularly high concentration of dental pulp stem cells), consider using a com...
+Score: 0.2598 | Chunk: the most fascinating human beings I know. He is one of my go-to doctors for anything performance- or...
+Score: 0.2551 | Chunk: this exercise for Tuesday: Once an hour, every hour, randomly identify two people walking past your ...
+Score: 0.2536 | Chunk: the bar into right in front of your throat. If you find the exercise comfortable, you’re not doing i...
+Score: 0.2523 | Chunk: shower or about to fall asleep. Many of the one-liners teach volumes. Some summarize excellence in a...
+Score: 0.2517 | Chunk: to 10 minutes) * * * Next up is journaling, which is not a “Dear Diary” situation. I use two types o...
+--------------------------------------------------
+
+Query Processing:
+Query: Найди все физические упражненияи комплексы описаные в книге и добвавь описания как их выполнять
+Context length: 58419 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 3820 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Найди все физические упражненияи комплексы описаные в книге и добвавь описания как их выполнять
+Context chunks: 10
+Answer: Based on the provided context, here is a list of physical exercises and complexes along with their descriptions:
+
+### 1. **Cossack Squat**
+- **Execution**: 
+  - Keep your heels on the ground throughout the movement.
+  - Ensure your knees stay in line with your toes.
+  - Maintain your hips as low as possible while switching sides.
+  - Perform **5 to 6 reps per side** for **2 to 3 sets**.
+
+### 2. **Kettlebell Halos**
+- **Execution**: 
+  - Grasp a weight (kettlebell or plate) with both hands.
+  - Rotate the weight around your head to loosen up the shoulder girdle.
+  - Perform **5 slow reps** in each direction, starting light.
+
+### 3. **Deadlifts (Sumo or Conventional Style)**
+- **Execution**: 
+  - Use a stance you are comfortable with (sumo or conventional).
+  - Lift the bar to your knees and then drop the bar.
+  - Perform **2 to 3 sets of 2 to 3 reps**.
+  - Follow each set with plyometric exercises (e.g., sprinting 10 to 20 meters, 6 to 8 box jumps).
+  - Rest for at least **5 minutes** between sets (preferably **10 minutes** for optimal gains).
+
+### 4. **Breathing Ladder (e.g., with Kettlebell Swings)**
+- **Execution**: 
+  - Decide beforehand how many breaths you will take between sets (e.g., 5, 10, 30 breaths).
+  - This helps in controlling breathing and not overtaxing the nervous system.
+  - Use this method as a warmup or in workouts like burpees, gradually increasing the reps and breaths.
+
+### 5. **Turkish Get-Up (TGU)**
+- **Execution**: 
+  - Lie down holding a kettlebell in one hand.
+  - Rise to a standing position while keeping the kettlebell overhead.
+  - Reverse the movement back to lying down.
+  - This is a complex movement that incorporates strength, stability, and mobility.
+
+### 6. **Goblet Squat**
+- **Execution**: 
+  - Hold a kettlebell or dumbbell close to your chest with both hands.
+  - Squat down as low as you can while keeping the weight stable.
+  - Ensure your elbows go inside your knees as you squat lower.
+
+### 7. **J-Curl**
+- **Execution**: 
+  - Stand straight, holding a barbell waist-high with shoulder-width grip.
+  - Tuck your chin against your chest and bend forward slowly, one vertebra at a time.
+  - Lower until you reach your maximum stretch without straining.
+  - Slowly return to standing, rolling your spine one vertebra at a time.
+
+### 8. **Pike Pulses**
+- **Execution**: 
+  - Sit in a pike position, toes pointed, and knees locked.
+  - Walk your hands forward while keeping your body straight and maintaining tension.
+
+### 9. **Hinge Rows**
+- **Execution**: 
+  - Set up a pair of rings above your head.
+  - Sit on the floor and grab the rings.
+  - Lift your hips off the ground, keeping your body straight from head to heels.
+  - Pull yourself up until your head is between the rings before lowering back down.
+
+### 10. **Ag Walks with Rear Support**
+- **Execution**: 
+  - Using furniture sliders, sit in a pike position with heels on the sliders.
+  - Lift your hips off the floor and walk forward with your hands, pushing your feet along the floor.
+  - Start with **1 minute**, aiming to progress to **5 minutes of constant movement**.
+
+### 11. **Dips with Ring Turn Out (RTO)**
+- **Execution**: 
+  - Perform slow dips on gymnastic rings.
+  - At the top position, turn out your rings so the knuckles point to 10 and 2 o’clock.
+  - Maintain a straight body without piking or leaning forward.
+
+### 12. **Hollow Position for Pull-Ups**
+- **Execution**: 
+  - To engage the hollow position, tuck in your tailbone and keep your abs tight.
+  - Ensure your body is in a straight line from shoulders to feet when hanging.
+
+These exercises cover a range of strength, mobility, and conditioning components that can be utilized in various training regimes. Each exercise emphasizes a different aspect of physical fitness, contributing to overall athletic performance.
+==================================================
+
+Answer Generated:
+Length: 3820 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Списог упражнений на грудь
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Списог упражнений на грудь
+Top 10 results:
+Score: 0.3834 | Chunk: that you can demonstrate strength throughout the entire range of motion, including the end ranges. S...
+Score: 0.3738 | Chunk: body fat percentage, NOT total pounds. The scale can deceive and derail you. For instance, it’s comm...
+Score: 0.3690 | Chunk: for this and perform 5 slow reps in each direction. Start light. Cossack Squat When everything else ...
+Score: 0.3591 | Chunk: * Coach Sommer borrowed this exercise from power lifter Donnie Thompson, who calls it the “butt walk...
+Score: 0.2917 | Chunk: that there’s a ceiling on yoga, and the ceiling is: You have all this amazing knowledge and all this...
+Score: 0.2855 | Chunk: teeth (which have a particularly high concentration of dental pulp stem cells), consider using a com...
+Score: 0.2724 | Chunk: the most fascinating human beings I know. He is one of my go-to doctors for anything performance- or...
+Score: 0.2653 | Chunk: centerfold pose doing what looked like a Jane Fonda workout. Once I finished laughing, he explained ...
+Score: 0.2551 | Chunk: world’s critic, and I’d rather not rule out any future allies.” Spirit animal: Silver fox * * * Adam...
+Score: 0.2544 | Chunk: Then [repeat that sequence] 5 times. What you’re going to see really quickly is, everyone can fake i...
+--------------------------------------------------
+
+Query Processing:
+Query: Списог упражнений на грудь
+Context length: 58086 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 938 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Списог упражнений на грудь
+Context chunks: 10
+Answer: В предоставленном контексте конкретно **упражнения на грудь** не упоминаются. Однако есть некоторые упражнения, связанные с общей силовой тренировкой и гимнастикой, которые могут задействовать мышцы груди. Вот некоторые из них:
+
+### Упражнения, которые могут задействовать грудные мышцы:
+1. **Регулярные отжимания** – базовое упражнение, активирующее грудные, плечевые и трицепсы.
+2. **Отжимания на кольцах с поворотом (Ring Turn Out)** – требуется хорошая сила в плечах и грудных мышцах.
+3. **Подтягивания (например, с носками на кольцах)** – во время выполнения подтягиваний активно включаются грудные и спинные мышцы.
+
+Хотя прямой информации о специализированных упражнениях на грудь в тексте нет, вы можете адаптировать общие упражнения с учетом работы над грудными мышцами. 
+
+Если вам нужна конкретная информация о других упражнениях на грудь или более специализированном подходе, такой информации в данном контексте не представлено.
+==================================================
+
+Answer Generated:
+Length: 938 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: ВСе что написано про пулапы
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: ВСе что написано про пулапы
+Top 10 results:
+Score: 0.1716 | Chunk: afraid, and whether you care enough to dance with that fear because it will never go away.” Just Kid...
+Score: 0.1664 | Chunk: easy to use Control-F when it’s time to batch-research or fact-check. Edit for You, Your Fans, Then ...
+Score: 0.1658 | Chunk: 365-pound resistance]. Among effective midsection exercises are ‘power breathing,’ hollow rocks, Jan...
+Score: 0.1645 | Chunk: already know what you’re going to say.” And I asked, “What am I going to say?” He said, “You’re goin...
+Score: 0.1636 | Chunk: world of if possible, like polio. It was the Puritans who perverted work into a virtue, evidently fo...
+Score: 0.1619 | Chunk: * Coach Sommer borrowed this exercise from power lifter Donnie Thompson, who calls it the “butt walk...
+Score: 0.1618 | Chunk: 10 years. They finally released her into this big pasture: With excitement and anticipation, they re...
+Score: 0.1607 | Chunk: Ed Catmull (p. 309) Margaret Cho (p. 538) Paulo Coelho (p. 511) Ed Cooke (p. 517) Kevin Costner (p. ...
+Score: 0.1565 | Chunk: context of this book, also means much more than money. It extends to abundance in time, relationship...
+Score: 0.1550 | Chunk: and joy of high-rep front squats (and topical DHEA) courtesy of Patrick Arnold (page 35). Transforme...
+--------------------------------------------------
+
+Query Processing:
+Query: ВСе что написано про пулапы
+Context length: 56668 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1132 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: ВСе что написано про пулапы
+Context chunks: 10
+Answer: Из текста можно выделить несколько упоминаний о pull-up (подтягиваниях) и методах их тренировки:
+
+### Метод "Grease the Groove"
+- Для увеличения количества повторений подтягиваний рекомендуется выполнять половину от максимального количества повторений, которые вы способны сделать. Например, если ваш максимум — 8 подтягиваний, выполняйте 4 повтора за подход.
+- Такие подходы выполняйте в течение дня, чтобы аккумулировать количество повторений с как минимум 15 минутами отдыха между подходами.
+
+### Преимущества
+- Этот метод помогает разрабатывать не только выносливость, но и сокращает производство молочной кислоты, что повышает количество и качество митохондрий в мышцах быстрого типа, делая их более аэробными.
+
+### Пример Прогрессии
+- Если ваша цель — выполнить идеальное повторение одного подтягивания на одной руке, в процессе вы можете делать подтягивания с ногами на полу и руками на краю стола или стойки.
+
+### Необходимые Рекомендации
+- Не превышайте 5 повторений в каждом подходе, если вы работаете над увеличением максимальной силы.
+
+Это основные моменты, упомянутые в контексте о подтягиваниях и методе их тренировки.
+==================================================
+
+Answer Generated:
+Length: 1132 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Пулапы сеессии
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Пулапы сеессии
+Top 10 results:
+Score: 0.2841 | Chunk: * Coach Sommer borrowed this exercise from power lifter Donnie Thompson, who calls it the “butt walk...
+Score: 0.2383 | Chunk: that you can demonstrate strength throughout the entire range of motion, including the end ranges. S...
+Score: 0.2279 | Chunk: body fat percentage, NOT total pounds. The scale can deceive and derail you. For instance, it’s comm...
+Score: 0.2183 | Chunk: to make meaningful changes. It’s easy to use the medicine as a crutch and avoid doing your own work,...
+Score: 0.2159 | Chunk: for this and perform 5 slow reps in each direction. Start light. Cossack Squat When everything else ...
+Score: 0.2083 | Chunk: will experience a sharp increase in the max number of push-ups, even though their lungs are empty. C...
+Score: 0.2045 | Chunk: over her shoulders and back from barbed-wire wounds. ✸ Most-gifted or recommended book House of Leav...
+Score: 0.1970 | Chunk: teeth (which have a particularly high concentration of dental pulp stem cells), consider using a com...
+Score: 0.1938 | Chunk: 365-pound resistance]. Among effective midsection exercises are ‘power breathing,’ hollow rocks, Jan...
+Score: 0.1835 | Chunk: good day’? That’s what most people report on microdosing. They’re a little bit nicer.” He elaborates...
+--------------------------------------------------
+
+Query Processing:
+Query: Пулапы сеессии
+Context length: 59154 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 423 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Пулапы сеессии
+Context chunks: 10
+Answer: The context provided does not mention "пулапы сеессии" or any related content specifically focusing on that topic. The term appears to be a transliteration from Russian, possibly related to "походы" (hikes or sessions). However, without additional context or detail, I cannot provide further information on this topic. 
+
+If you could clarify or specify your request, I would be happy to help with the information available.
+==================================================
+
+Answer Generated:
+Length: 423 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Пулапы подходы количество 
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Пулапы подходы количество 
+Top 10 results:
+Score: 0.2424 | Chunk: * Coach Sommer borrowed this exercise from power lifter Donnie Thompson, who calls it the “butt walk...
+Score: 0.2039 | Chunk: for this and perform 5 slow reps in each direction. Start light. Cossack Squat When everything else ...
+Score: 0.1931 | Chunk: centerfold pose doing what looked like a Jane Fonda workout. Once I finished laughing, he explained ...
+Score: 0.1624 | Chunk: body fat percentage, NOT total pounds. The scale can deceive and derail you. For instance, it’s comm...
+Score: 0.1604 | Chunk: that you can demonstrate strength throughout the entire range of motion, including the end ranges. S...
+Score: 0.1497 | Chunk: will experience a sharp increase in the max number of push-ups, even though their lungs are empty. C...
+Score: 0.1491 | Chunk: Back Story Samy was—perhaps surprisingly—one of my Obi-Wans for the “Dating Game” episode of The Tim...
+Score: 0.1468 | Chunk: hairdresser in New York. He works at a top salon, and on the weekend, he goes and he cuts the hair o...
+Score: 0.1407 | Chunk: that there’s a ceiling on yoga, and the ceiling is: You have all this amazing knowledge and all this...
+Score: 0.1395 | Chunk: that both Naval Ravikant (page 546, who introduced us) and I do on a near-daily basis. Jerzy conside...
+--------------------------------------------------
+
+Query Processing:
+Query: Пулапы подходы количество 
+Context length: 57247 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 462 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Пулапы подходы количество 
+Context chunks: 10
+Answer: В предоставленном контексте нет четкой информации о количестве повторений или подходов для выполнения пулов (pull-ups), однако упоминается принцип "посмотреть, когда в сомнении, тренируйте свою силу захвата и кора", который подразумевает соответствующие упражнения и подходы для развития силы и выносливости в подтягиваниях. 
+
+Если вас интересует количество подходов для подтягиваний в контексте тренировок, то, к сожалению, конкретные цифры не найдены в тексте.
+==================================================
+
+Answer Generated:
+Length: 462 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 1205962 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 246
+Average chunk size: 5648.66 chars
+Sample chunk: Copyright © 2017 by Timothy Ferriss Illustrations © 2017 by Remie Geoffroi All rights reserved For i...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 246
+Dates: 68
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 246
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 46
+--------------------------------------------------
+
+Successfully stored all 246 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Все упражгнения для улучшения внимания в этой книге
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Все упражгнения для улучшения внимания в этой книге
+Top 10 results:
+Score: 0.3598 | Chunk: to 10 minutes) * * * Next up is journaling, which is not a “Dear Diary” situation. I use two types o...
+Score: 0.3440 | Chunk: shower or about to fall asleep. Many of the one-liners teach volumes. Some summarize excellence in a...
+Score: 0.3328 | Chunk: First— How to Use This Book “Out on the edge you see all kinds of things you can’t see from the cent...
+Score: 0.3244 | Chunk: Schwarzenegger (page 176), it appears that one year of diligent practice can provide a lifetime of r...
+Score: 0.3215 | Chunk: this exercise for Tuesday: Once an hour, every hour, randomly identify two people walking past your ...
+Score: 0.3131 | Chunk: tuck in the sheets. I have a large blanket or duvet, and I’ll use that to cover the sheets, smoothin...
+Score: 0.3085 | Chunk: for this and perform 5 slow reps in each direction. Start light. Cossack Squat When everything else ...
+Score: 0.3023 | Chunk: our heads. Through 20 minutes of consistent meditation, I can become the commander, looking out at t...
+Score: 0.3003 | Chunk: Schwarzenegger, page 176) Of course, I will help you connect these dots, but that’s less than half o...
+Score: 0.2954 | Chunk: (he’s a world champion). These days, he spends his time coaching the world’s top athletes and invest...
+--------------------------------------------------
+
+Query Processing:
+Query: Все упражгнения для улучшения внимания в этой книге
+Context length: 57681 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1517 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Все упражгнения для улучшения внимания в этой книге
+Context chunks: 10
+Answer: В книге упоминаются несколько упражнений для улучшения внимания и умственной концентрации. Вот основные из них:
+
+### Упражнения для улучшения внимания:
+
+1. **Медитация**:
+   - **Продолжительность**: Рекомендуется выполнять 10-20 минут медитации ежедневно.
+   - **Цели**: Помогает развивать осознание настоящего времени и повышать устойчивость к стрессу.
+   - **Методы**:
+     - Повторение мантры или сосредоточение на дыхании.
+     - Использование приложений, таких как **Headspace** или **Calm**, для изготовления медитаций.
+     - Принцип "один вдох в день": на начальном этапе можно начинать с единственного осознанного вдоха каждый день, а остальные вдохи будут бонусом.
+
+2. **Дневник**:
+   - **5-Minute Journal**:
+     - Утром: записывать, за что вы благодарны, что сделает день хорошим и ваши утверждения.
+     - Вечером: записывать три потрясающих события, произошедших за день, и как можно было бы сделать день лучше.
+
+3. **Упражнение "Лoving-Kindness"**:
+   - Секретно желать счастья прохожим, прямо во время работы или учебы — всего 10 секунд на каждого, что помогает отвлечься от собственных забот и стресса.
+
+4. **Упражнения для тела**:
+   - **Движения**: несколько повторений простых упражнений (например, отжиманий) для "активации" тела и улучшения настроения.
+   - **Кратковременные тренировки**: выполнение 5-10 повторений чего-либо, чтобы "пробудиться" в утренние часы.
+
+Каждое из этих упражнений направленно на развитие внимания, улучшение концентрации и общее восстановление психического состояния.
+==================================================
+
+Answer Generated:
+Length: 1517 chars
+--------------------------------------------------
+
+Book Loading:
+Content length: 12716 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 2
+Average chunk size: 6620.00 chars
+Sample chunk: Pr oject Ar chit ectur e 1 Project Architecture Project Architecture (Updated) Table of Contents  ...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 2
+Dates: 0
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 2
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 2
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 2
+--------------------------------------------------
+
+Successfully stored all 2 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: О чем файл?
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: О чем файл?
+Top 10 results:
+Score: 0.2293 | Chunk: Pr oject Ar chit ectur e 1 Project Architecture Project Architecture (Updated) Table of Contents  ...
+Score: 0.1702 | Chunk: caching.py │ ├── models/ │ │ ├── __init__.py │ │ ├── models.py │ │ └── migrations/ │ │ └── versions/...
+--------------------------------------------------
+
+Query Processing:
+Query: О чем файл?
+Context length: 13763 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1527 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: О чем файл?
+Context chunks: 2
+Answer: Файл содержит архитектуру проекта под названием **Decision Making Machine (DMM)**, который нацелен на создание масштабируемого и надежного RESTful API для обработки клиентских запросов. Основные темы файла включают:
+
+### Основные Разделы
+1. **Введение**: 
+   - Цель проекта.
+   - Обзор системы и её функциональных возможностей.
+
+2. **Архитектура системы**: 
+   - Технологический стек (Python, FastAPI, PostgreSQL и др.).
+   - Компоненты системы (API Gateway, Request Processor, DMM Module и т.д.).
+   - Поток данных (процесс обработки запросов).
+
+3. **Структура файлов**: 
+   - Описание файлов и каталогов в проекте.
+
+4. **Сервисы и интеграции**: 
+   - Взаимодействие с внешними API.
+
+5. **Управление конфигурацией и переменными среды**.
+
+6. **Стратегия кэширования**.
+
+7. **Асинхронная обработка**.
+
+8. **Управление состоянием**.
+
+9. **Мониторинг и алертинг**.
+
+10. **Улучшения безопасности**.
+
+11. **Стратегия версионирования API**.
+
+12. **Улучшения обработки ошибок**.
+
+13. **Поддержка локализации**.
+
+14. **Тестирование производительности**.
+
+### Заключение
+Файл подводит итоги улучшениям, которые повышают безопасность, масштабируемость и готовность системы к производственным условиям. Он включает планы по внедрению новых изменений, обновлению документации и началу реализации проекта.
+
+В целом, документ представляет собой **обновлённую архитектуру проекта**, которая описывает ключевые компоненты, технологии и стратегии, направленные на успешное развитие и выполнение требований современного программного обеспечения.
+==================================================
+
+Answer Generated:
+Length: 1527 chars
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Book Loading:
+Content length: 3519402 chars
+--------------------------------------------------
+
+Book Processing Start:
+Input type: <class 'str'>
+--------------------------------------------------
+
+Text Processing:
+Total chunks: 663
+Average chunk size: 6134.40 chars
+Sample chunk: Лев Николаевич Толстой Война и мир Государственное издательство «Художественная литература» Москва, ...
+--------------------------------------------------
+
+Feature Extraction:
+Chunks: 663
+Dates: 224
+Entities: 0
+Key phrases: 0
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 663
+Batch size: 100
+--------------------------------------------------
+
+Vector Storage:
+Total vectors: 663
+Batch size: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 100
+--------------------------------------------------
+
+Vector Update:
+Upserted vectors: 63
+--------------------------------------------------
+
+Successfully stored all 663 vectors
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи кто главные герои книги и где они находились когда началась война
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Раскажи кто главные герои книги и где они находились когда началась война
+Top 10 results:
+Score: 0.4023 | Chunk: ему, большими шагами пошел в другую сторону. — Не стрелять... Выжидай! —кричал он. Солдат, которому,...
+Score: 0.3985 | Chunk: король Бонапарту, чтобы ваше величество были приняты в моем дворце самым приятнейшим для вас образом...
+Score: 0.3980 | Chunk: что вода сошлась над его головой. ————— Перед восходом солнца его разбудили громкие, частые выстрелы...
+Score: 0.3920 | Chunk: г.: что-то нужно Стр. 374, строка 23. Вместо: или в гости? — в изд. 73 г.: или гости?» В ТЕКСТ ВТОРО...
+Score: 0.3860 | Chunk: глядя на дым орудия, из которого вылетело ядро. — в Р. В.: глядя на французские войска. Стр. 218, ст...
+Score: 0.3752 | Chunk: Стр. 319, строка 34. Вместо: 20 ноября (берем по I изд. 68 г.) — во II изд. 68 г. и в изд. 73 г.: 30...
+Score: 0.3700 | Chunk: здоровья Зинаиды Дмитриевны и т. п. Стр. 93, строка 30. Вместо: заговорил — в I изд. 68 г.: сказал С...
+Score: 0.3672 | Chunk: бы вторя им, но в другом роде веселья, перебивались в вышине металлические звуки трезвона. И, еще в ...
+Score: 0.3666 | Chunk: — в Р. В.: проезжавших адъютантов. Стр. 213, строка 30. После слов: проезжавшего адъютанта. — в Р. В...
+Score: 0.3659 | Chunk: и II изд. 68 г.: это никто Стр. 139, строка 21. Вместо: и с скосившимся — в I изд. 68 г.: и с косивш...
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи кто главные герои книги и где они находились когда началась война
+Context length: 57814 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 921 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Раскажи кто главные герои книги и где они находились когда началась война
+Context chunks: 10
+Answer: В предоставленном контексте нет точной информации о главных героях книги и их местоположении, когда началась война. Однако, можно сделать некоторые выводы:
+
+### Главные герои
+Наиболее заметные персонажи, упомянутые в тексте:
+- **Пьер Безухов**: В одном из отрывков описывается его состояние во время сражения и его взаимодействия с другими солдатами и officers.
+- **Князь Андрей**: Упоминается о его переживаниях и взаимодействиях с другими персонажами, но конкретные действия не подробны.
+
+### Местоположение при начале войны
+- В ходе описания Баталии упоминается, что Пьер был втянут в хаос сражения, находясь рядом с батареей и позже в окопах.
+- Также была описана обстановка вокруг сражения, где солдаты бегают, стреляют и происходят столкновения.
+
+К сожалению, конкретные места или дополнительные детали о других главных героях, их действиях и местоположении в момент начала войны не представлены в данном контексте.
+==================================================
+
+Answer Generated:
+Length: 921 chars
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи кто главные герои книги и какие их взаимоотношения
+--------------------------------------------------
+
+Embedding Creation:
+Total texts: 1
+Batch size: 100
+--------------------------------------------------
+
+Search Results:
+Query: Раскажи кто главные герои книги и какие их взаимоотношения
+Top 10 results:
+Score: 0.3545 | Chunk: и II изд. 68 г.: это никто Стр. 139, строка 21. Вместо: и с скосившимся — в I изд. 68 г.: и с косивш...
+Score: 0.3541 | Chunk: белокуры. 4 парижанку сердцем 5 я спас вашу жизнь и спасаю вашу честь! 375 отгоняя от себя охватившу...
+Score: 0.3509 | Chunk: французов покорились Бурбонам. И потому, чтоб объяснить, каким образом из этих составных вытекло пок...
+Score: 0.3496 | Chunk: король Бонапарту, чтобы ваше величество были приняты в моем дворце самым приятнейшим для вас образом...
+Score: 0.3416 | Chunk: теперь никаких. Ему казалось так невероятно предстоящее счастье, что стоило этому совершиться, и уж ...
+Score: 0.3413 | Chunk: одно признание того, что движется не солнце, а земля, уничтожило всю космографию древних. Можно было...
+Score: 0.3390 | Chunk: Стр. 319, строка 34. Вместо: 20 ноября (берем по I изд. 68 г.) — во II изд. 68 г. и в изд. 73 г.: 30...
+Score: 0.3387 | Chunk: Растопчин замолчал, чувствуя, что он стоял на том рубеже, где уже нельзя осуждать. — Предложили друг...
+Score: 0.3360 | Chunk: здоровья Зинаиды Дмитриевны и т. п. Стр. 93, строка 30. Вместо: заговорил — в I изд. 68 г.: сказал С...
+Score: 0.3343 | Chunk: строка 24. Вместо: как и мы, — в I изд. 68 г.: как мы Стр. 112, строка 11. Вместо: и проходившего — ...
+--------------------------------------------------
+
+Query Processing:
+Query: Раскажи кто главные герои книги и какие их взаимоотношения
+Context length: 58868 chars
+--------------------------------------------------
+
+Generated Answer:
+Answer length: 1439 chars
+Model: gpt-4o-mini
+--------------------------------------------------
+
+Query: Раскажи кто главные герои книги и какие их взаимоотношения
+Context chunks: 10
+Answer: В предоставленном контексте нет прямой информации о главных героях книги и их взаимоотношениях. Однако, судя по другим общим знаниям о произведении "Война и мир" Льва Толстого, можно выделить несколько ключевых персонажей и их основные взаимодействия:
+
+### Главные герои:
+
+1. **Пьер Безухов**: незаконнорожденный сын графа, который становится богатым наследником, проходя через множество внутренних конфликтов.
+2. **Наташа Ростова**: молодая aristokratka, олицетворяющая живую, страстную любовь и эмоциональную культуру.
+3. **Андрей Болконский**: дворянин, который ищет смысл жизни и сталкивается с вопросами долга и любви.
+4. **Княжна Марья**: сестра Андрея, символизирующая добродетель и самопожертвование.
+
+### Взаимоотношения:
+
+- **Пьер и Наташа**: между ними зарождается глубокая любовь, полная страсти и противоречий. Пьер воспринимает Наташу как идеал любви, хотя их путь не всегда прост.
+- **Наташа и Андрей**: у них есть романтические отношения, наполненные пониманием и вызовами; однако, измена Наташи приводит к негативным последствиям для обоих.
+- **Андрей и Пьер**: друзья, которые разделяют философские взгляды и переживания, но и конкурируют в любви к Наташе.
+- **Княжна Марья и Андрей**: их отношения полны поддержки и заботы, но также подвержены неудачам и изменам.
+
+Если нужны конкретные детали о взаимодействиях конкретных персонажей, дайте знать, и я постараюсь предоставить более полную информацию на основе контекста.
+==================================================
+
+Answer Generated:
+Length: 1439 chars
+--------------------------------------------------
