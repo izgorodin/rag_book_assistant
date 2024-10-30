@@ -125,6 +125,8 @@ idna==3.10
     #   requests
 iniconfig==2.0.0
     # via pytest
+itsdangerous==2.2.0
+    # via -r requirements.in
 jinja2==3.1.4
     # via spacy
 jiter==0.6.1

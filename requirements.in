@@ -25,3 +25,4 @@ python-multipart  # для работы с файлами
 pydantic
 aiofiles
 firebase_admin
+itsdangerous
