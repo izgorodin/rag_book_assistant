@@ -16,6 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentAnswer = '';
     const copyButton = document.getElementById('copyAnswer');
 
+    // Настройка marked для использования Prism
+    marked.setOptions({
+        highlight: function(code, lang) {
+            if (Prism.languages[lang]) {
+                return Prism.highlight(code, Prism.languages[lang], lang);
+            }
+            return code;
+        },
+        breaks: true,
+        gfm: true
+    });
+
     function connectWebSocket() {
         if (reconnectAttempts >= maxReconnectAttempts) {
             console.log('Max reconnection attempts reached');
@@ -205,4 +217,51 @@ document.addEventListener('DOMContentLoaded', function() {
             copyButton.style.display = 'none';
         }
     });
+
+    // При отображении ответа
+    function displayAnswer(markdown) {
+        const answerStatus = document.getElementById('answerStatus');
+        answerStatus.innerHTML = marked(markdown);
+        
+        // Подсвечиваем синтаксис
+        Prism.highlightAll();
+        
+        // Добавляем кнопки копирования
+        addCodeCopyButtons();
+    }
+
+    function addCodeCopyButtons() {
+        // Находим все блоки кода
+        const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+        
+        codeBlocks.forEach(block => {
+            // Создаем кнопку
+            const copyButton = document.createElement('button');
+            copyButton.className = 'code-copy-button';
+            copyButton.textContent = 'Copy';
+            
+            // Добавляем обработчик клика
+            copyButton.addEventListener('click', async () => {
+                const code = block.querySelector('code').textContent;
+                
+                try {
+                    await navigator.clipboard.writeText(code);
+                    copyButton.textContent = 'Copied!';
+                    copyButton.classList.add('copied');
+                    
+                    // Возвращаем исходный текст через 2 секунды
+                    setTimeout(() => {
+                        copyButton.textContent = 'Copy';
+                        copyButton.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    copyButton.textContent = 'Failed to copy';
+                    console.error('Failed to copy:', err);
+                }
+            });
+            
+            // Добавляем кнопку в блок кода
+            block.appendChild(copyButton);
+        });
+    }
 });

@@ -198,3 +198,122 @@ button[type="submit"]:hover {
     height: 16px;
     color: #666;
 }
+
+/* Стили для блоков кода */
+pre[class*="language-"] {
+    margin: 1em 0;
+    padding: 1.5em;
+    overflow: auto;
+    border-radius: 8px;
+    background: #f6f8fa !important;
+    border: 1px solid #e1e4e8;
+    font-size: 15px;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+code[class*="language-"] {
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-shadow: none !important;
+    background: none !important;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    hyphens: none;
+}
+
+/* Стили для inline кода */
+:not(pre) > code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 95%;
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+    border: 1px solid #e1e4e8;
+}
+
+/* Стили для панели инструментов кода */
+div.code-toolbar > .toolbar {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+div.code-toolbar:hover > .toolbar {
+    opacity: 1;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > button {
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #24292e;
+    cursor: pointer;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > button:hover {
+    background: #f3f4f6;
+}
+
+/* Улучшенные стили для заголовков в markdown */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+    margin-top: 20px;
+    margin-bottom: 14px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+/* Стили для параграфов в markdown */
+.markdown-content p {
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+/* Стили для списков в markdown */
+.markdown-content ul,
+.markdown-content ol {
+    padding-left: 2em;
+    margin-bottom: 16px;
+}
+
+/* Стили для кнопки копирования кода */
+.code-copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #24292e;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Показываем кнопку при наведении на блок кода */
+pre[class*="language-"]:hover .code-copy-button {
+    opacity: 1;
+}
+
+.code-copy-button:hover {
+    background: #f3f4f6;
+}
+
+/* Стили для успешного копирования */
+.code-copy-button.copied {
+    background: #28a745;
+    color: white;
+    border-color: #28a745;
+}

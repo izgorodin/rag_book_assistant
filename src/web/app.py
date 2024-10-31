@@ -11,13 +11,13 @@ import uvicorn
 from src.cli import BookAssistant
 from src.utils.logger import get_main_logger, get_rag_logger
 from src.services.file_processor import FileProcessor
-from src.config import FLASK_SECRET_KEY
 from src.web.websocket import WebSocketManager
 from fastapi import WebSocket,WebSocketDisconnect, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from .auth.middleware import AuthMiddleware
 import aiofiles
 from src.services.firebase_storage import FirebaseStorageService
+import secrets
 
 # Initialize loggers
 logger = get_main_logger()
@@ -240,9 +240,8 @@ async def login(
 # Добавляем сессии (пере auth middleware!)
 app.add_middleware(
     SessionMiddleware,
-    secret_key=os.environ.get('SESSION_SECRET_KEY', FLASK_SECRET_KEY),
-    session_cookie="session",
-    max_age=3600  # 1 hour
+    secret_key=secrets.token_urlsafe(32),  # Генерируем случайный ключ
+    session_cookie="book_assistant_session"
 )
 
 # Конфигурация CORS

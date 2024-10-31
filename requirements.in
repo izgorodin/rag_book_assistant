@@ -29,3 +29,5 @@ itsdangerous
 ebooklib
 beautifulsoup4
 epub2txt
+itsdangerous  # для работы с сессиями
+python-multipart  # для загрузки файлов
