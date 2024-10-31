@@ -37,6 +37,11 @@ WORKDIR /app
 RUN mkdir -p /app/credentials /app/data /app/uploads /app/logs
 
 # Копирование файла учетных данных Firebase (используем абсолютный путь)
+# ... остальные инструкции ...
+
+# Копируем файл учетных данных Firebase
+COPY rag-project-6fbb6-firebase-adminsdk-oiud2-dfb97a2d08.json /app/rag-project-6fbb6-firebase-adminsdk-oiud2-dfb97a2d08.json
+# ... остальные инструкции ...
 # COPY firebase-credentials.json /app/credentials/firebase-credentials.json
 # ENV FIREBASE_CREDENTIALS_PATH=/app/credentials/firebase-credentials.json
 
