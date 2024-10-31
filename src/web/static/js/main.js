@@ -230,38 +230,84 @@ document.addEventListener('DOMContentLoaded', function() {
         addCodeCopyButtons();
     }
 
+    // Функция добавления кнопок копирования
     function addCodeCopyButtons() {
-        // Находим все блоки кода
+        console.log('Adding copy buttons...'); // Для отладки
         const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+        console.log('Found code blocks:', codeBlocks.length); // Для отладки
         
         codeBlocks.forEach(block => {
+            // Проверяем, нет ли уже кнопки
+            if (block.querySelector('.code-copy-button')) {
+                return;
+            }
+            
             // Создаем кнопку
             const copyButton = document.createElement('button');
             copyButton.className = 'code-copy-button';
-            copyButton.textContent = 'Copy';
+            copyButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            `;
             
-            // Добавляем обработчик клика
             copyButton.addEventListener('click', async () => {
                 const code = block.querySelector('code').textContent;
-                
                 try {
                     await navigator.clipboard.writeText(code);
-                    copyButton.textContent = 'Copied!';
                     copyButton.classList.add('copied');
                     
-                    // Возвращаем исходный текст через 2 секунды
+                    // Показываем уведомление
+                    showNotification('Код скопирован!');
+                    
                     setTimeout(() => {
-                        copyButton.textContent = 'Copy';
                         copyButton.classList.remove('copied');
                     }, 2000);
                 } catch (err) {
-                    copyButton.textContent = 'Failed to copy';
                     console.error('Failed to copy:', err);
+                    showNotification('Ошибка копирования', true);
                 }
             });
             
-            // Добавляем кнопку в блок кода
+            block.style.position = 'relative';
             block.appendChild(copyButton);
         });
     }
+
+    // Функция показа уведомления
+    function showNotification(message, isError = false) {
+        const notification = document.createElement('div');
+        notification.className = `notification ${isError ? 'error' : ''}`;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        // Показываем уведомление
+        setTimeout(() => notification.classList.add('show'), 100);
+        
+        // Удаляем через 2 секунды
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
+        }, 2000);
+    }
+
+    // Обновленная функция отображения ответа
+    function displayAnswer(markdown) {
+        const answerStatus = document.getElementById('answerStatus');
+        answerStatus.innerHTML = marked(markdown);
+        
+        // Важно: ждем следующего тика, чтобы Prism успел обработать код
+        setTimeout(() => {
+            Prism.highlightAll();
+            addCodeCopyButtons();
+        }, 0);
+    }
+
+    // Добавляем обработчик загрузки документа
+    document.addEventListener('DOMContentLoaded', () => {
+        // Инициализация при загрузке страницы
+        Prism.highlightAll();
+        addCodeCopyButtons();
+    });
 });

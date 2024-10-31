@@ -1,17 +1,23 @@
-/* Общие стили */
+/* ======================================
+   1. ОСНОВНЫЕ СТИЛИ СТРАНИЦЫ
+====================================== */
 body {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto;  /* Центрирование контента */
     padding: 20px;
     font-family: Arial, sans-serif;
 }
 
+/* Стили заголовков */
 h1, h2 {
     color: #2c3e50;
     margin-bottom: 20px;
 }
 
-/* Стили для форм */
+/* ======================================
+   2. ФОРМЫ И ЭЛЕМЕНТЫ ВВОДА
+====================================== */
+/* Контейнер для группировки элементов формы */
 .input-group {
     display: flex;
     gap: 10px;
@@ -19,7 +25,7 @@ h1, h2 {
     align-items: center;
 }
 
-/* Стили для полей ввода */
+/* Стили для текстовых полей и файловых инпутов */
 input[type="file"],
 input[type="text"],
 input[type="password"] {
@@ -33,7 +39,7 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
-/* Стили для кнопок */
+/* Стили для кнопок отправки */
 input[type="submit"],
 button[type="submit"] {
     height: 36px;
@@ -48,12 +54,16 @@ button[type="submit"] {
     white-space: nowrap;
 }
 
+/* Эффект наведения на кнопки */
 input[type="submit"]:hover,
 button[type="submit"]:hover {
     background-color: #2980b9;
 }
 
-/* Секции */
+/* ======================================
+   3. СЕКЦИИ СТРАНИЦЫ
+====================================== */
+/* Основные секции приложения */
 #uploadSection,
 #questionSection,
 #loginSection {
@@ -64,7 +74,9 @@ button[type="submit"]:hover {
     background-color: #f9f9f9;
 }
 
-/* Прогресс-бар */
+/* ======================================
+   4. ИНДИКАТОР ПРОГРЕССА
+====================================== */
 .progress-container {
     margin: 20px 0;
 }
@@ -97,10 +109,13 @@ button[type="submit"]:hover {
     text-align: center;
     line-height: 20px;
     color: white;
-    mix-blend-mode: difference;
+    mix-blend-mode: difference;  /* Обеспечивает читаемость текста на любом фоне */
 }
 
-/* Статусы */
+/* ======================================
+   5. СТАТУСЫ И УВЕДОМЛЕНИЯ
+====================================== */
+/* Контейнеры для отображения статусов */
 #uploadStatus,
 #answerStatus {
     margin-top: 15px;
@@ -110,7 +125,32 @@ button[type="submit"]:hover {
     border: 1px solid #ddd;
 }
 
-/* Форма логина */
+/* Всплывающие уведомления */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    background: #28a745;
+    color: white;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+.notification.error {
+    background: #dc3545;
+}
+
+/* ======================================
+   6. ФОРМА ЛОГИНА
+====================================== */
 #loginForm {
     max-width: 400px;
     margin: 40px auto;
@@ -126,6 +166,10 @@ button[type="submit"]:hover {
     color: #2c3e50;
 }
 
+/* ======================================
+   7. КНОПКИ КОПИРОВАНИЯ
+====================================== */
+/* Общая кнопка копирования */
 .copy-button {
     margin-top: 10px;
     padding: 8px 16px;
@@ -148,58 +192,11 @@ button[type="submit"]:hover {
     height: 16px;
 }
 
-.notification {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background: #2ecc71;
-    color: white;
-    border-radius: 4px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1000;
-}
 
-.notification.show {
-    opacity: 1;
-}
-
-.notification.error {
-    background: #e74c3c;
-}
-
-.answer-container {
-    position: relative;
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.icon-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-}
-
-.icon-button:hover {
-    opacity: 1;
-}
-
-.copy-icon svg {
-    width: 16px;
-    height: 16px;
-    color: #666;
-}
-
-/* Стили для блоков кода */
+/* ======================================
+   8. СТИЛИ ДЛЯ КОДА И MARKDOWN
+====================================== */
+/* Блоки кода */
 pre[class*="language-"] {
     margin: 1em 0;
     padding: 1.5em;
@@ -207,60 +204,28 @@ pre[class*="language-"] {
     border-radius: 8px;
     background: #f6f8fa !important;
     border: 1px solid #e1e4e8;
-    font-size: 15px;
+    font-size: 13px;
     position: relative;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-code[class*="language-"] {
-    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
-    text-shadow: none !important;
-    background: none !important;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    tab-size: 4;
-    hyphens: none;
-}
-
-/* Стили для inline кода */
+/* Встроенный код в тексте */
 :not(pre) > code {
     padding: 0.2em 0.4em;
     margin: 0;
-    font-size: 95%;
+    font-size: 50%;
     background-color: #f6f8fa;
     border-radius: 6px;
     font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
     border: 1px solid #e1e4e8;
-}
-
-/* Стили для панели инструментов кода */
-div.code-toolbar > .toolbar {
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-div.code-toolbar:hover > .toolbar {
-    opacity: 1;
-}
-
-div.code-toolbar > .toolbar > .toolbar-item > button {
-    padding: 6px 12px;
-    background: #fff;
-    border: 1px solid #e1e4e8;
-    border-radius: 4px;
-    font-size: 12px;
     color: #24292e;
-    cursor: pointer;
+    font-weight: 500;
 }
 
-div.code-toolbar > .toolbar > .toolbar-item > button:hover {
-    background: #f3f4f6;
-}
-
-/* Улучшенные стили для заголовков в markdown */
+/* ======================================
+   9. MARKDOWN КОНТЕНТ
+====================================== */
+/* Заголовки в markdown */
 .markdown-content h1,
 .markdown-content h2,
 .markdown-content h3,
@@ -273,47 +238,15 @@ div.code-toolbar > .toolbar > .toolbar-item > button:hover {
     line-height: 1.25;
 }
 
-/* Стили для параграфов в markdown */
+/* Параграфы в markdown */
 .markdown-content p {
     margin-bottom: 16px;
     line-height: 1.5;
 }
 
-/* Стили для списков в markdown */
+/* Списки в markdown */
 .markdown-content ul,
 .markdown-content ol {
     padding-left: 2em;
     margin-bottom: 16px;
-}
-
-/* Стили для кнопки копирования кода */
-.code-copy-button {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    padding: 6px 12px;
-    background: #fff;
-    border: 1px solid #e1e4e8;
-    border-radius: 4px;
-    font-size: 12px;
-    color: #24292e;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-/* Показываем кнопку при наведении на блок кода */
-pre[class*="language-"]:hover .code-copy-button {
-    opacity: 1;
-}
-
-.code-copy-button:hover {
-    background: #f3f4f6;
-}
-
-/* Стили для успешного копирования */
-.code-copy-button.copied {
-    background: #28a745;
-    color: white;
-    border-color: #28a745;
 }
