@@ -13,12 +13,11 @@ async def get_logs(
 ):
     """
     Получить последние строки логов.
-    log_type: 'main' или 'rag'
+    log_type: тип логов (main или rag)
     lines: количество последних строк
     """
     try:
-        log_file = 'app.log' if log_type == 'main' else 'rag_results.log'
-        log_path = os.path.join('logs', log_file)
+        log_path = os.path.join('logs', 'app.log')
         
         if not os.path.exists(log_path):
             return {"logs": []}

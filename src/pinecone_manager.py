@@ -110,19 +110,20 @@ class PineconeManager(VectorStore):
     def upsert_vectors(self, vectors: List[Dict[str, Any]]) -> None:
         """Store vectors in Pinecone."""
         if not self.initialized:
-            self._init()  # Попытка инициализации, если еще не инициализирован
+            self._init()
         
         if not self.is_available():
             raise ValueError("Pinecone index not initialized")
             
         try:
             self.index.upsert(vectors=vectors)
-            logger.info(f"Successfully upserted {len(vectors)} vectors")
-            rag_logger.info(f"\nVector Update:\nUpserted vectors: {len(vectors)}\n{'-'*50}")
+            logger.info("Vector update completed", extra={
+                "vectors_count": len(vectors)
+            })
         except Exception as e:
-            error_msg = f"Error upserting vectors: {str(e)}"
-            logger.error(error_msg)
-            rag_logger.error(f"\nUpsert Error:\n{error_msg}\n{'-'*50}")
+            logger.error("Upsert error", extra={
+                "error": str(e)
+            })
             raise
 
     def search_vectors(self, query_vector: List[float], top_k: int = 5) -> List[Dict[str, Any]]:

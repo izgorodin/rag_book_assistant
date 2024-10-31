@@ -1,9 +1,28 @@
 import logging
+from logging.handlers import RotatingFileHandler
 import traceback
 import colorlog
 import os
 from datetime import datetime
 import json
+
+class LineCountRotatingHandler(RotatingFileHandler):
+    """Custom handler that rotates logs based on line count"""
+    def __init__(self, filename, max_lines=10000, **kwargs):
+        super().__init__(filename, **kwargs)
+        self.max_lines = max_lines
+        
+    def shouldRollover(self, record):
+        if self.stream is None:
+            self.stream = self._open()
+            
+        try:
+            self.stream.seek(0)
+            line_count = sum(1 for _ in self.stream)
+            self.stream.seek(0, 2)  # Return to end of file
+            return line_count >= self.max_lines
+        except Exception:
+            return False
 
 class LoggerManager:
     _instance = None
@@ -13,56 +32,45 @@ class LoggerManager:
         self.log_dir = 'logs'
         os.makedirs(self.log_dir, exist_ok=True)
         
-        # Основной лог файл для приложения
-        self.setup_main_logger()
+        # JSON форматтер для файла
+        self.file_handler = LineCountRotatingHandler(
+            os.path.join(self.log_dir, 'app.log'),
+            max_lines=10000,
+            maxBytes=0,
+            backupCount=1
+        )
+        self.file_handler.setFormatter(JSONFormatter())
         
-        # Лог файл для результатов RAG
+        # Человекочитаемый форматтер для консоли
+        self.console_handler = colorlog.StreamHandler()
+        self.console_handler.setFormatter(colorlog.ColoredFormatter(
+            '%(log_color)s%(levelname)s: %(message)s%(reset)s',
+            log_colors={
+                'DEBUG': 'cyan',
+                'INFO': 'green',
+                'WARNING': 'yellow',
+                'ERROR': 'red',
+                'CRITICAL': 'red,bg_white',
+            }
+        ))
+        
+        self.setup_main_logger()
         self.setup_rag_logger()
     
     def setup_main_logger(self):
         logger = logging.getLogger('main')
         if not logger.handlers:
             logger.setLevel(logging.DEBUG)
-            
-            # Файловый хендлер с JSON форматированием
-            file_handler = logging.FileHandler(
-                os.path.join(self.log_dir, 'app.log')
-            )
-            file_handler.setLevel(logging.DEBUG)
-            file_handler.setFormatter(JSONFormatter())
-            
-            # Консольный хендлер остается читаемым для человека
-            console_handler = colorlog.StreamHandler()
-            console_handler.setLevel(logging.INFO)
-            console_handler.setFormatter(colorlog.ColoredFormatter(
-                '%(log_color)s%(levelname)s [%(name)s] %(message)s',
-                log_colors={
-                    'DEBUG': 'cyan',
-                    'INFO': 'green',
-                    'WARNING': 'yellow',
-                    'ERROR': 'red',
-                    'CRITICAL': 'red,bg_white',
-                }
-            ))
-            
-            logger.addHandler(file_handler)
-            logger.addHandler(console_handler)
-            
+            logger.addHandler(self.file_handler)
+            logger.addHandler(self.console_handler)
         self._loggers['main'] = logger
     
     def setup_rag_logger(self):
         logger = logging.getLogger('rag')
         if not logger.handlers:
             logger.setLevel(logging.INFO)
-            
-            file_handler = logging.FileHandler(
-                os.path.join(self.log_dir, 'rag_results.log')
-            )
-            file_handler.setLevel(logging.INFO)
-            file_handler.setFormatter(logging.Formatter('%(message)s'))
-            
-            logger.addHandler(file_handler)
-            
+            logger.addHandler(self.file_handler)
+            logger.addHandler(self.console_handler)
         self._loggers['rag'] = logger
     
     @classmethod

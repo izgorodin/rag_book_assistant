@@ -1,14 +1,12 @@
-from src.utils.logger import get_main_logger, get_rag_logger  # Import logging utilities for main and RAG logging
+from src.utils.logger import get_main_logger  # Import logging utilities for main logging
 import argparse  # Import argparse for command-line argument parsing
 import uvicorn  # Import uvicorn for running FastAPI applications
 from src.cli import BookAssistant  # Import the BookAssistant class for CLI mode
 
 logger = get_main_logger()  # Initialize the main logger
-rag_logger = get_rag_logger()  # Initialize the RAG logger
 
 def main():
     logger.info("Starting the RAG Book Assistant")  # Log the start of the application
-    rag_logger.info("\nApplication Start\n" + "="*50)  # Log the application start in RAG logger
     
     parser = argparse.ArgumentParser(description="RAG Book Assistant")  # Create an argument parser
     parser.add_argument("mode", choices=["cli", "web", "api"],  # Define the mode argument with choices
@@ -29,9 +27,9 @@ def main():
                 workers=1
             )
     except Exception as e:  # Catch any exceptions
-        error_msg = f"Application error: {str(e)}"  # Create an error message
-        logger.error(error_msg, exc_info=True)  # Log the error with traceback
-        rag_logger.error(f"\nCritical Error:\n{error_msg}\n{'='*50}")  # Log critical error in RAG logger
+        logger.error("Application error", extra={
+            "error": str(e)
+        }, exc_info=True)  # Log the error with traceback
 
 if __name__ == "__main__":  # Check if the script is being run directly
     main()  # Call the main function

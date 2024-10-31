@@ -57,12 +57,11 @@ def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAISe
         answer = openai_service.generate_answer(query, context)
         
         # Log the result of the RAG query
-        rag_logger.info(
-            f"\nQuery: {query}\n"
-            f"Context chunks: {len(relevant_chunks)}\n"
-            f"Answer: {answer}\n"
-            f"{'='*50}"
-        )
+        rag_logger.info("RAG query processed", extra={
+            "query": query,
+            "chunks_count": len(relevant_chunks),
+            "answer": answer
+        })
         
         return answer
     except Exception as e:
