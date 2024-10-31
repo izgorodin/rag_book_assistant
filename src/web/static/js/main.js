@@ -23,46 +23,56 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-        ws = new WebSocket(`${protocol}//${window.location.host}/ws`);
-        
-        ws.onopen = () => {
-            console.log('WebSocket connected');
-            reconnectAttempts = 0;
-        };
-        
-        ws.onmessage = (event) => {
-            try {
-                const data = JSON.parse(event.data);
-                if (data.type === 'progress') {
-                    updateProgress(data);
-                    
-                    if (data.answer) {
-                        currentAnswer = data.answer;
-                        answerStatus.innerHTML = marked.parse(data.answer);
-                        copyButton.style.display = 'block';
-                        progressContainer.style.display = 'none';
+        const wsUrl = `${protocol}//${window.location.host}/ws`;
+        console.log(`Attempting to connect to WebSocket at: ${wsUrl}`);
+
+        try {
+            ws = new WebSocket(wsUrl);
+            
+            ws.onopen = () => {
+                console.log('WebSocket connected successfully');
+                reconnectAttempts = 0;
+            };
+            
+            ws.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    if (data.type === 'progress') {
+                        updateProgress(data);
+                        
+                        if (data.answer) {
+                            currentAnswer = data.answer;
+                            answerStatus.innerHTML = marked.parse(data.answer);
+                            copyButton.style.display = 'block';
+                            progressContainer.style.display = 'none';
+                        }
+                        
+                        if (data.error) {
+                            answerStatus.textContent = `Error: ${data.error}`;
+                            copyButton.style.display = 'none';
+                            progressContainer.style.display = 'none';
+                        }
                     }
-                    
-                    if (data.error) {
-                        answerStatus.textContent = `Error: ${data.error}`;
-                        copyButton.style.display = 'none';
-                        progressContainer.style.display = 'none';
-                    }
+                } catch (error) {
+                    console.error('Error processing WebSocket message:', error);
                 }
-            } catch (error) {
-                console.error('Error processing WebSocket message:', error);
-            }
-        };
-        
-        ws.onclose = () => {
-            console.log('WebSocket closed');
+            };
+            
+            ws.onclose = () => {
+                console.log('WebSocket disconnected');
+                ws = null;
+                reconnectAttempts++;
+                setTimeout(connectWebSocket, 2000);
+            };
+            
+            ws.onerror = (error) => {
+                console.error('WebSocket error:', error);
+            };
+        } catch (error) {
+            console.error('Error creating WebSocket connection:', error);
             reconnectAttempts++;
-            setTimeout(connectWebSocket, 1000);
-        };
-        
-        ws.onerror = (error) => {
-            console.error('WebSocket error:', error);
-        };
+            setTimeout(connectWebSocket, 2000);
+        }
     }
 
     function updateProgress(data) {
