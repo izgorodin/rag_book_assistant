@@ -18426,3 +18426,37 @@ Status: Initialized
 System Initialization:
 Status: Ready
 --------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
+
+Cache Initialization:
+Directory: data/cache
+Status: Ready
+--------------------------------------------------
+
+Pinecone Initialization:
+Status: Success
+--------------------------------------------------
+
+Embedding Service:
+Status: Initialized
+--------------------------------------------------
+
+System Initialization:
+Status: Ready
+--------------------------------------------------
