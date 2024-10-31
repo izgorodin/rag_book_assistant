@@ -4,6 +4,8 @@
 #
 #    pip-compile --output-file=requirements.txt requirements.in
 #
+absl-py==0.11.0
+    # via epub2txt
 aiofiles==24.1.0
     # via -r requirements.in
 annotated-types==0.7.0
@@ -13,6 +15,8 @@ anyio==4.6.2.post1
     #   httpx
     #   openai
     #   starlette
+beautifulsoup4==4.12.3
+    # via -r requirements.in
 blis==1.0.1
     # via thinc
 cachecontrol==0.14.0
@@ -59,6 +63,12 @@ defusedxml==0.7.1
     # via odfpy
 distro==1.9.0
     # via openai
+ebooklib==0.17.1
+    # via
+    #   -r requirements.in
+    #   epub2txt
+epub2txt==0.1.6
+    # via -r requirements.in
 fastapi==0.115.4
     # via -r requirements.in
 firebase-admin==6.5.0
@@ -117,7 +127,9 @@ httplib2==0.22.0
     #   google-api-python-client
     #   google-auth-httplib2
 httpx==0.27.2
-    # via openai
+    # via
+    #   epub2txt
+    #   openai
 idna==3.10
     # via
     #   anyio
@@ -139,8 +151,12 @@ langcodes==3.4.1
     # via spacy
 language-data==1.2.0
     # via langcodes
+logzero==1.7.0
+    # via epub2txt
 lxml==5.3.0
-    # via python-docx
+    # via
+    #   ebooklib
+    #   python-docx
 marisa-trie==1.2.1
     # via language-data
 markdown-it-py==3.0.0
@@ -277,7 +293,10 @@ scipy==1.14.1
 shellingham==1.5.4
     # via typer
 six==1.16.0
-    # via python-dateutil
+    # via
+    #   absl-py
+    #   ebooklib
+    #   python-dateutil
 smart-open==7.0.5
     # via weasel
 sniffio==1.3.1
@@ -285,6 +304,8 @@ sniffio==1.3.1
     #   anyio
     #   httpx
     #   openai
+soupsieve==2.6
+    # via beautifulsoup4
 spacy==3.8.2
     # via -r requirements.in
 spacy-legacy==3.0.12
@@ -310,6 +331,7 @@ tiktoken==0.8.0
 tqdm==4.66.5
     # via
     #   -r requirements.in
+    #   epub2txt
     #   nltk
     #   openai
     #   pinecone
