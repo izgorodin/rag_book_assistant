@@ -262,10 +262,10 @@ app.add_middleware(
 # Конфигурация CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.environ.get('ALLOWED_ORIGINS', 'http://localhost:8080').split(',')],
+    allow_origins=["*"],  # В продакшене замените на конкретные домены
     allow_credentials=True,
-    allow_methods=["GET", "POST"],
-    allow_headers=["Authorization", "Content-Type"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Добавляем middleware аутентификации с публичными путями
