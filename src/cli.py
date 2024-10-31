@@ -30,12 +30,23 @@ def create_progress_bar(desc: str, total: int) -> tqdm:
         ncols=80  # Width of the progress bar
     )
 
-def progress_callback(status: str, current: int, total: int):
-    """Callback for displaying progress in the console."""
-    progress = (current / total) * 100 if total > 0 else 0  # Calculate progress percentage
-    print(f"\r{status}: [{current}/{total}] {progress:.1f}%", end="", flush=True)  # Print progress status
-    if current == total:
-        print()  # New line after completion
+def progress_callback(progress_info):
+    """Callback функция для отображения прогресса"""
+    # Используем существующий create_progress_bar
+    if not hasattr(progress_callback, 'pbar'):
+        progress_callback.pbar = create_progress_bar(
+            progress_info['message'], 
+            progress_info['total']
+        )
+    
+    # Обновляем прогресс
+    current = progress_info['current'] - progress_callback.pbar.n
+    progress_callback.pbar.update(current)
+    
+    # Закрываем если завершено
+    if progress_info['progress'] >= 100:
+        progress_callback.pbar.close()
+        delattr(progress_callback, 'pbar')
 
 class BookAssistant:
     """Main class for handling book processing and question answering."""
@@ -191,4 +202,4 @@ def analyze_file(file_path, chunk_size, overlap):
         click.echo(f"Error analyzing file: {str(e)}", err=True)
 
 if __name__ == '__main__':
-    cli()  # Вместо analyze_file() используем cli()
+    cli()  # Теперь не нужно оборачивать в asyncio.run()

@@ -5,6 +5,10 @@ import nltk
 from nltk import ne_chunk, pos_tag, word_tokenize
 from nltk.tree import Tree
 from src.utils.logger import get_main_logger, get_rag_logger
+from concurrent.futures import ThreadPoolExecutor
+from tqdm import tqdm
+from functools import partial
+import asyncio
 
 # Initialize loggers for main and RAG-specific logging
 logger = get_main_logger()
@@ -25,8 +29,6 @@ def initialize_nltk():
         nltk.download('averaged_perceptron_tagger', quiet=True)
         nltk.download('maxent_ne_chunker', quiet=True)
         nltk.download('words', quiet=True)
-        nltk.download('stopwords', quiet=True)
-        nltk.download('wordnet', quiet=True)
 
 # Инициализируем NLTK при импорте модуля
 initialize_nltk()
@@ -222,44 +224,72 @@ def read_file_content(file_path: str) -> str:
     logger.info(f"Read {len(content)} characters from file")  # Log number of characters read
     return content  # Return full text
 
-def analyze_chunks(text_or_dict, chunk_size=500, overlap=50) -> list:
+def analyze_chunks(text_or_dict, chunk_size=500, overlap=50, progress_callback=None) -> list:
     """
     Анализирует чанки и возвращает подробную информацию о каждом
     """
     chunks = split_into_chunks(text_or_dict, chunk_size, overlap)
+    total_chunks = len(chunks)
     
-    chunks_info = []
-    for i, chunk in enumerate(chunks):
+    def analyze_single_chunk(chunk_data):
+        i, chunk = chunk_data
+        progress = (i + 1) / total_chunks * 100
+        
         # Базовая информация
         info = {
             'chunk_id': i,
             'length': len(chunk),
             'word_count': len(chunk.split()),
             'sentences': len(nltk.sent_tokenize(chunk)),
-            'start': chunk[:50] + '...',  # Начало чанка
-            'end': '...' + chunk[-50:],   # Конец чанка
+            'start': chunk[:50] + '...',
+            'end': '...' + chunk[-50:],
         }
         
-        # Извлечение именованных сущностей
-        entities = extract_named_entities(chunk)
-        info['entities'] = entities
+        # Извлечение метаданных
+        with ThreadPoolExecutor(max_workers=3) as executor:
+            futures = {
+                'entities': executor.submit(extract_named_entities, chunk),
+                'key_phrases': executor.submit(extract_key_phrases, chunk),
+                'dates': executor.submit(extract_dates, chunk)
+            }
+            
+            # Собираем результаты
+            for key, future in futures.items():
+                info[key] = future.result()
         
-        # Ключевые фразы
-        info['key_phrases'] = extract_key_phrases(chunk)
+        if progress_callback:
+            progress_callback({
+                'stage': 'analyzing_chunks',
+                'progress': progress,
+                'current': i + 1,
+                'total': total_chunks,
+                'message': f'Analyzing chunk {i + 1}/{total_chunks}'
+            })
         
-        # Даты
-        info['dates'] = extract_dates(chunk)
-        
-        chunks_info.append(info)
+        return info
+
+    # Создаем список кортежей (индекс, чанк)
+    chunk_data = list(enumerate(chunks))
+    
+    # Используем ThreadPoolExecutor для параллельной обработки чанков
+    with ThreadPoolExecutor(max_workers=min(8, total_chunks)) as executor:
+        chunks_info = list(tqdm(
+            executor.map(analyze_single_chunk, chunk_data),
+            total=total_chunks,
+            desc="Analyzing chunks",
+            unit="chunk"
+        ))
     
     return chunks_info
 
-def print_chunks_analysis(text_or_dict, chunk_size=500, overlap=50):
+def print_chunks_analysis(text_or_dict, chunk_size=500, overlap=50, progress_callback=None):
     """
-    Выводит подробный анализ чанков в читаемом формате
+    Асинхронно выводит подробный анализ чанков
     """
-    chunks_info = analyze_chunks(text_or_dict, chunk_size, overlap)
+    logger.info("Starting chunks analysis...")
+    chunks_info = analyze_chunks(text_or_dict, chunk_size, overlap, progress_callback)
     
+    # Выводим результаты
     for info in chunks_info:
         print(f"\n{'='*80}")
         print(f"Chunk #{info['chunk_id']}")
@@ -274,3 +304,5 @@ def print_chunks_analysis(text_or_dict, chunk_size=500, overlap=50):
         print("\nEntities:", ', '.join(info['entities']) if info['entities'] else 'None')
         print("\nKey phrases:", ', '.join(info['key_phrases']) if info['key_phrases'] else 'None')
         print("\nDates:", ', '.join(info['dates']) if info['dates'] else 'None')
+    
+    logger.info("Chunks analysis completed")
