@@ -38,7 +38,7 @@ class FirebaseStorageService:
             return url
             
         except Exception as e:
-            logger.error("Firebase upload error", extra={
+            logger.error(f"Firebase upload error: {str(e)}", extra={
                 "user": user,
                 "error": str(e)
             })
