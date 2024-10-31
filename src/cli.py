@@ -1,7 +1,7 @@
 import os  # Importing os module for file path operations
 from openai import OpenAI  # Importing OpenAI client for API interactions
 from src.book_data_factory import BookDataFactory  # Importing factory for creating book data
-from src.file_processor import FileProcessor  # Importing file processor for handling book files
+from src.services.file_processor import FileProcessor  # Importing file processor for handling book files
 from src.utils.logger import get_main_logger, get_rag_logger  # Importing logging utilities
 from src.embedding import EmbeddingService  # Importing embedding service for generating embeddings
 from src.rag import rag_query  # Importing function for querying the RAG system

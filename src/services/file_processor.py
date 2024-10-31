@@ -7,6 +7,7 @@ from odf import text, teletype
 from odf.opendocument import load
 from src.utils.logger import get_main_logger, get_rag_logger
 from src.utils.error_handler import FileProcessingError, handle_rag_error
+from src.services.epub_processor import EPUBProcessor
 
 # Initialize loggers for main application and RAG processing
 logger = get_main_logger()
@@ -14,12 +15,14 @@ rag_logger = get_rag_logger()
 
 class FileProcessor:
     def __init__(self):
+        self.epub_processor = EPUBProcessor()
         self.supported_formats = {
             '.txt': self._process_txt,
             '.pdf': self._process_pdf,
             '.doc': self._process_doc,
             '.docx': self._process_docx,
-            '.odt': self._process_odt
+            '.odt': self._process_odt,
+            '.epub': self._process_epub
         }
 
     @handle_rag_error
@@ -27,6 +30,9 @@ class FileProcessor:
         """Process different file types and return text content."""
         _, ext = os.path.splitext(file_path)
         ext = ext.lower()
+
+        if ext == 'epub':
+            return self.epub_processor.process_epub(file_path)
 
         processor = self.supported_formats.get(ext)
         if not processor:
@@ -77,3 +83,7 @@ class FileProcessor:
         """Process a .doc file (currently not supported)."""
         # Raise an error indicating that .doc format is not supported
         raise NotImplementedError("DOC format not supported yet")
+
+    def _process_epub(self, file_path: str) -> str:
+        """Process a .epub file and return its text content."""
+        return self.epub_processor.process_epub(file_path)

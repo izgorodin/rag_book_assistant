@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, Form, Query
+from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, Form
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -7,23 +7,16 @@ from starlette.middleware.sessions import SessionMiddleware
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
 import os
-from typing import Optional
-
 import uvicorn
 from src.cli import BookAssistant
 from src.utils.logger import get_main_logger, get_rag_logger
-from src.file_processor import FileProcessor
+from src.services.file_processor import FileProcessor
 from src.config import FLASK_SECRET_KEY
 from src.web.websocket import WebSocketManager
-from fastapi import WebSocket
-from fastapi import WebSocketDisconnect
-from fastapi import Depends, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import WebSocket,WebSocketDisconnect, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from .auth.middleware import AuthMiddleware
 import aiofiles
-import traceback
-import uuid
 from src.services.firebase_storage import FirebaseStorageService
 
 # Initialize loggers
@@ -56,7 +49,7 @@ ws_manager = WebSocketManager()
 # Configure upload settings
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '..', '..', 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'doc', 'docx', 'odt'}
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'doc', 'docx', 'odt', 'epub'}
 
 # Configure authentication
 security = HTTPBasic()

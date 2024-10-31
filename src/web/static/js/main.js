@@ -141,8 +141,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         const file = fileInput.files[0];
-        if (file.size > 10 * 1024 * 1024) { // 10MB limit
-            uploadStatus.textContent = 'File size too large (max 10MB)';
+        if (file.size > 100 * 1024 * 1024) { 
+            uploadStatus.textContent = 'File size too large (max 100MB)';
             return;
         }
         
