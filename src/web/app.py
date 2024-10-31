@@ -259,7 +259,6 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-    allow_websockets=True  # Добавьте это
 )
 
 # Добавляем middleware аутентификации с публичными путями
