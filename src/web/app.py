@@ -224,22 +224,15 @@ async def check_book_loaded(user: str = Depends(get_current_user)):
 # WebSocket endpoint
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
     try:
-        await ws_manager.connect(websocket)
-        
         while True:
-            try:
-                data = await websocket.receive_text()
-                # Можно добавить обработку входящих сообщений если нужно
-            except WebSocketDisconnect:
-                await ws_manager.disconnect(websocket)
-                break
-            except Exception as e:
-                logger.error(f"WebSocket error: {str(e)}")
-                await ws_manager.disconnect(websocket)
-                break
+            data = await websocket.receive_text()
+            # Можно добавить обработку входящих сообщений если нужно
     except Exception as e:
-        logger.error(f"WebSocket connection error: {str(e)}")
+        logger.error(f"WebSocket error: {str(e)}")
+    finally:
+        await websocket.close()
 
 @app.get("/login")
 async def login_page(request: Request):
@@ -273,10 +266,10 @@ app.add_middleware(
 # Конфигурация CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.environ.get('ALLOWED_ORIGINS', 'http://localhost:8080').split(',')],
+    allow_origins=["*"],  # В продакшене лучше указать конкретные домены
     allow_credentials=True,
-    allow_methods=["GET", "POST"],
-    allow_headers=["Authorization", "Content-Type"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Добавляем middleware аутентификации с публичными путями
@@ -302,7 +295,7 @@ async def health_check():
     return {"status": "healthy"}
 
 if __name__ == "__main__":
-    # Получаем порт из переменной окружения или используем значение по у��олчанию
+    # Получаем порт из переменной окружения или используем значение по уолчанию
     PORT = int(os.getenv("PORT", 8080))
     logger.info(f"Starting server on port {PORT}")
     uvicorn.run("app:app", host="0.0.0.0", port=PORT, reload=True)
