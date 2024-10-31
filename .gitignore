@@ -41,7 +41,3 @@ rag_venv/
 # Data  
 data/
 uploads/
-
-# Firebase
-firebase-credentials.json
-set_env.sh
