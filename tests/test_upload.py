@@ -174,3 +174,16 @@ async def test_cleanup(client, auth_headers, test_file):
         for temp_file in temp_files:
             if os.path.exists(temp_file):
                 os.remove(temp_file)
+
+@pytest.fixture(autouse=True)
+async def cleanup_files():
+    yield
+    # Очистка после каждого теста
+    if os.path.exists(UPLOAD_FOLDER):
+        for file in os.listdir(UPLOAD_FOLDER):
+            file_path = os.path.join(UPLOAD_FOLDER, file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+            except Exception as e:
+                print(f"Error deleting {file_path}: {e}")
