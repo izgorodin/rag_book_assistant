@@ -26,3 +26,6 @@ pydantic
 aiofiles
 firebase_admin
 itsdangerous
+ebooklib
+beautifulsoup4
+epub2txt

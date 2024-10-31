@@ -50,7 +50,7 @@ OPENAI_HTTP_CONFIG = {
 
 # Configuration for file uploads
 UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'uploads')
-MAX_CONTENT_LENGTH = 10 * 1024 * 1024  # 10MB
+MAX_CONTENT_LENGTH = 100 * 1024 * 1024  # 10MB
 
 # Create necessary directories
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)

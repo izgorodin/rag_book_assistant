@@ -1,6 +1,8 @@
 import pytest
 import os
-from src.text_processor import load_and_preprocess_text, split_into_chunks
+from ebooklib import epub
+from src.services.text_processor import load_and_preprocess_text, split_into_chunks
+from src.services.epub_processor import EPUBProcessor
 
 def test_load_and_preprocess_text():
     test_file_path = os.path.join(os.path.dirname(__file__), 'test_data', 'test_book.txt')
@@ -62,3 +64,137 @@ def _verify_book_data(book_data):
     assert isinstance(book_data.get_dates(), list)
     assert isinstance(book_data.get_entities(), list)
     assert isinstance(book_data.get_key_phrases(), list)
+
+def test_epub_processing(tmp_path):
+    """Тест обработки EPUB файлов"""
+    # Создаем тестовый EPUB
+    epub_path = _create_test_epub(tmp_path)
+    
+    # Обрабатываем EPUB
+    processor = EPUBProcessor()
+    epub_text = processor.process_epub(epub_path)
+    
+    # Проверяем, что текст извлечен
+    assert isinstance(epub_text, str)
+    assert len(epub_text) > 0
+    
+    # Проверяем предобработку текста
+    processed_text = load_and_preprocess_text(epub_text)
+    _verify_processed_text(processed_text)
+    
+    # Проверяем разбиение на чанки
+    chunks = split_into_chunks(processed_text, chunk_size=100, overlap=20)
+    assert isinstance(chunks, list)
+    assert all(isinstance(chunk, str) for chunk in chunks)
+
+def _create_test_epub(tmp_path):
+    """Создает тестовый EPUB файл"""
+    book = epub.EpubBook()
+    
+    # Метаданные
+    book.set_identifier('test123')
+    book.set_title('Test Book')
+    book.set_language('en')
+    
+    # Создаем контент
+    content = '''
+        <h1>Test Book</h1>
+        <p>This is a test paragraph with some important information.</p>
+        <p>It contains multiple paragraphs to test text extraction.</p>
+        <h2>Chapter 1</h2>
+        <p>The first chapter contains technical details about the system.</p>
+        <p>It includes various terms and concepts that need to be processed.</p>
+        <h2>Chapter 2</h2>
+        <p>The second chapter discusses implementation details.</p>
+        <p>It provides examples and use cases for better understanding.</p>
+    '''
+    
+    # Создаем главу
+    chapter = epub.EpubHtml(
+        title='Test Chapter',
+        file_name='chapter.xhtml',
+        lang='en',
+        content=content
+    )
+    book.add_item(chapter)
+    
+    # Добавляем в spine
+    book.spine = [chapter]
+    
+    # Создаем путь для файла
+    epub_path = os.path.join(tmp_path, 'test.epub')
+    
+    # Записываем EPUB
+    epub.write_epub(epub_path, book, {})
+    
+    return epub_path
+
+def test_epub_processing_with_multiple_chapters(tmp_path):
+    """Тест обработки EPUB с несколькими главами"""
+    book = epub.EpubBook()
+    book.set_identifier('test123')
+    book.set_title('Test Book')
+    book.set_language('en')
+    
+    chapters = []
+    for i in range(3):
+        content = f'''
+            <h1>Chapter {i+1}</h1>
+            <p>This is the content of chapter {i+1}.</p>
+            <p>It contains multiple paragraphs for testing.</p>
+            <p>Each chapter has unique content for verification.</p>
+        '''
+        chapter = epub.EpubHtml(
+            title=f'Chapter {i+1}',
+            file_name=f'chapter_{i+1}.xhtml',
+            lang='en',
+            content=content
+        )
+        book.add_item(chapter)
+        chapters.append(chapter)
+    
+    book.spine = chapters
+    epub_path = os.path.join(tmp_path, 'multi_chapter.epub')
+    epub.write_epub(epub_path, book, {})
+    
+    processor = EPUBProcessor()
+    text = processor.process_epub(epub_path)
+    
+    # Проверяем наличие контента из всех глав
+    for i in range(3):
+        assert f'Chapter {i+1}' in text
+        assert f'content of chapter {i+1}' in text
+    
+    # Проверяем предобработку
+    processed_text = load_and_preprocess_text(text)
+    _verify_processed_text(processed_text)
+
+def test_epub_processing_with_empty_content(tmp_path):
+    """Тест обработки EPUB с пустым содержимым"""
+    book = epub.EpubBook()
+    book.set_identifier('test123')
+    book.set_title('Empty Book')
+    book.set_language('en')
+    
+    chapter = epub.EpubHtml(
+        title='Empty Chapter',
+        file_name='chapter.xhtml',
+        lang='en',
+        content='<html><body></body></html>'
+    )
+    book.add_item(chapter)
+    book.spine = [chapter]
+    
+    epub_path = os.path.join(tmp_path, 'empty.epub')
+    epub.write_epub(epub_path, book, {})
+    
+    processor = EPUBProcessor()
+    text = processor.process_epub(epub_path)
+    
+    # Проверяем, что получаем пустой текст
+    assert text.strip() == ""
+    
+    # Проверяем предобработку пустого текста
+    processed_text = load_and_preprocess_text(text)
+    assert processed_text['text'].strip() == ""
+    assert len(processed_text['chunks']) == 0
