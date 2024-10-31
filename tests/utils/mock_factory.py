@@ -154,20 +154,29 @@ class OpenAIMock:
 class MockFirebaseStorage:
     """Мок для Firebase Storage."""
     def __init__(self):
-        self._upload_error = None
-        self.bucket = MagicMock()
-        
-    async def upload_file(self, file_path: str, user: str) -> str:
-        """Мок метод загрузки файла"""
-        if self._upload_error:
-            raise self._upload_error
+        self._files = {}
+
+    async def upload_file(self, file_path: str, user_id: str) -> str:
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"File not found: {file_path}")
             
-        file_name = os.path.basename(file_path)
-        return f"https://storage.firebase.com/uploads/{user}/{file_name}"
+        storage_path = f"uploads/{user_id}/{os.path.basename(file_path)}"
+        self._files[storage_path] = file_path
+        return f"https://storage.googleapis.com/mock-bucket/{storage_path}"
+
+class MockBlob:
+    def __init__(self, blob_path: str, files: Dict[str, str]):
+        self.blob_path = blob_path
+        self._files = files
+        self.public_url = f"https://storage.googleapis.com/mock-bucket/{blob_path}"
         
-    def set_upload_error(self, error: Exception):
-        """Устанавливает ошибку для следующей загрузки"""
-        self._upload_error = error
+    def upload_from_filename(self, file_path: str):
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"File not found: {file_path}")
+        self._files[self.blob_path] = file_path
+        
+    def make_public(self):
+        pass
 
 class MockWebSocketManager:
     """Мок для WebSocket менеджера."""
