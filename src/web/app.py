@@ -30,11 +30,17 @@ from src.services.firebase_storage import FirebaseStorageService
 logger = get_main_logger()
 rag_logger = get_rag_logger()
 
-# Check for credentials file
+# Initialize Firebase storage service if credentials are available
+storage_service = None
 credentials_path = os.getenv('FIREBASE_CREDENTIALS_PATH')
-if not credentials_path or not os.path.exists(credentials_path):
-    logger.error(f"Firebase credentials file not found at {credentials_path}")
-    raise FileNotFoundError(f"Firebase credentials file not found at {credentials_path}")
+if credentials_path and os.path.exists(credentials_path):
+    try:
+        storage_service = FirebaseStorageService()
+        logger.info("Firebase storage service initialized successfully")
+    except Exception as e:
+        logger.warning(f"Failed to initialize Firebase storage: {e}")
+else:
+    logger.warning("Firebase credentials not found, running without Firebase storage")
 
 # Initialize FastAPI app
 app = FastAPI(title="Book Assistant API")
@@ -63,15 +69,6 @@ USERS = {
 assistant = BookAssistant(progress_callback=ws_manager.emit_progress)
 file_processor = FileProcessor()
 book_data = None
-
-# Инициализируем сервис
-storage_service = FirebaseStorageService()
-
-# Проверка наличия файла credentials
-credentials_path = os.getenv('FIREBASE_CREDENTIALS_PATH')
-if not credentials_path or not os.path.exists(credentials_path):
-    logger.error(f"Firebase credentials file not found at {credentials_path}")
-    raise FileNotFoundError(f"Firebase credentials file not found at {credentials_path}")
 
 async def get_current_user(credentials: HTTPBasicCredentials = Depends(security)):
     if credentials.username in USERS and USERS[credentials.username] == credentials.password:
@@ -143,37 +140,29 @@ async def upload_file(
             "file_size": len(content)
         })
         
-        # Загружаем файл в Firebase Storage
-        try:
-            storage_url = await storage_service.upload_file(file_path, user)
-        except Exception as e:
-            logger.error("Firebase upload error", extra={
-                "user": user,
-                "error": str(e)
-            })
-            raise HTTPException(
-                status_code=500,
-                detail=f"Firebase upload error: {str(e)}"
-            )
+        # Upload to Firebase only if storage service is available
+        storage_url = None
+        if storage_service:
+            try:
+                storage_url = await storage_service.upload_file(file_path, user)
+            except Exception as e:
+                logger.warning(f"Firebase upload failed: {e}")
+                # Continue without Firebase storage
         
         # Обработка книги
         try:
             book_data = assistant.load_and_process_book(file_path)
             app.state.book_data = book_data
             
-            chunks_count = len(book_data.get_chunks())
-            logger.info("Book processed", extra={
-                "user": user,
-                "chunks_count": chunks_count,
-                "storage_url": storage_url
-            })
-            
-            return JSONResponse({
+            response_data = {
                 "status": "success",
                 "message": "File processed successfully",
-                "chunks_count": chunks_count,
-                "storage_url": storage_url
-            })
+                "chunks_count": len(book_data.get_chunks())
+            }
+            if storage_url:
+                response_data["storage_url"] = storage_url
+                
+            return JSONResponse(response_data)
             
         except Exception as e:
             logger.error("Book processing error", extra={
@@ -302,7 +291,7 @@ async def health_check():
     return {"status": "healthy"}
 
 if __name__ == "__main__":
-    # Получаем порт из переменной окружения или используем значение по у��олчанию
+    # Получаем порт из переменной окружения или используем значение по уолчанию
     PORT = int(os.getenv("PORT", 8080))
     logger.info(f"Starting server on port {PORT}")
     uvicorn.run("app:app", host="0.0.0.0", port=PORT, reload=True)
