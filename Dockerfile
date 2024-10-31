@@ -37,8 +37,8 @@ WORKDIR /app
 RUN mkdir -p /app/credentials /app/data /app/uploads /app/logs
 
 # Копирование файла учетных данных Firebase (используем абсолютный путь)
-COPY firebase-credentials.json /app/credentials/firebase-credentials.json
-ENV FIREBASE_CREDENTIALS_PATH=/app/credentials/firebase-credentials.json
+# COPY firebase-credentials.json /app/credentials/firebase-credentials.json
+# ENV FIREBASE_CREDENTIALS_PATH=/app/credentials/firebase-credentials.json
 
 # Копирование кода
 COPY src/ ./src/
