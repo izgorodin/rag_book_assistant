@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   web:
     image: ${DOCKER_HUB_USERNAME}/rag-book-assistant:latest
@@ -14,6 +12,7 @@ services:
       - PINECONE_API_KEY=${PINECONE_API_KEY}
       - FIREBASE_CREDENTIALS_PATH=${FIREBASE_CREDENTIALS_PATH}
       - FIREBASE_STORAGE_BUCKET=${FIREBASE_STORAGE_BUCKET}
+
     volumes:
       - ./data:/app/data
       - ./uploads:/app/uploads
@@ -22,7 +21,7 @@ services:
       - 8.8.8.8
       - 8.8.4.4
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:${PORT:-8000}/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:${PORT:-8080}/health"]
       interval: 30s
       timeout: 10s
       retries: 3
