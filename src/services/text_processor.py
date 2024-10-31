@@ -14,11 +14,17 @@ def initialize_nltk():
     """Initialize NLTK resources."""
     try:
         nltk.data.find('tokenizers/punkt')
+        nltk.data.find('averaged_perceptron_tagger')
+        nltk.data.find('maxent_ne_chunker')
+        nltk.data.find('words')
         nltk.data.find('corpora/stopwords')
         nltk.data.find('corpora/wordnet')
     except LookupError:
         logger.info("Downloading necessary NLTK data...")
         nltk.download('punkt', quiet=True)
+        nltk.download('averaged_perceptron_tagger', quiet=True)
+        nltk.download('maxent_ne_chunker', quiet=True)
+        nltk.download('words', quiet=True)
         nltk.download('stopwords', quiet=True)
         nltk.download('wordnet', quiet=True)
 
@@ -84,22 +90,59 @@ def extract_key_phrases(text: Union[str, List[str]]) -> List[str]:
 def _extract_entities_from_text(text: str) -> List[str]:
     """Helper function to extract entities from a single text string."""
     try:
-        # Your entity extraction logic here
-        # For now, return empty list as placeholder
-        return []  # Placeholder return
+        # Токенизация и POS-тегирование
+        tokens = word_tokenize(text)
+        tagged = pos_tag(tokens)
+        
+        # Извлечение именованных сущностей
+        chunks = ne_chunk(tagged)
+        
+        entities = []
+        for chunk in chunks:
+            if isinstance(chunk, Tree):
+                # Извлекаем текст сущности и её тип
+                entity_text = ' '.join([token for token, pos in chunk.leaves()])
+                entity_type = chunk.label()
+                entities.append(f"{entity_text} ({entity_type})")
+        
+        return list(set(entities))  # Убираем дубликаты
+        
     except Exception as e:
-        logger.error(f"Error extracting entities: {str(e)}")  # Log error
-        return []  # Return empty list on error
+        logger.error(f"Error extracting entities: {str(e)}")
+        return []
 
 def _extract_phrases_from_text(text: str) -> List[str]:
     """Helper function to extract phrases from a single text string."""
     try:
-        # Your phrase extraction logic here
-        # For now, return empty list as placeholder
-        return []  # Placeholder return
+        # Токенизация и POS-тегирование
+        tokens = word_tokenize(text)
+        tagged = pos_tag(tokens)
+        
+        # Определяем грамматику для извлечения фраз
+        grammar = r"""
+            PHRASE: {<JJ.*>*<NN.*>+}          # Прилагательные + существительные
+                   {<NN.*><IN><NN.*>}         # Существительное + предлог + существительное
+                   {<VB.*><NN.*>+}            # Глагол + существительные
+        """
+        
+        # Создаем парсер и извлекаем фразы
+        chunk_parser = nltk.RegexpParser(grammar)
+        tree = chunk_parser.parse(tagged)
+        
+        phrases = []
+        for subtree in tree.subtrees(filter=lambda t: t.label() == 'PHRASE'):
+            phrase = ' '.join([word for word, tag in subtree.leaves()])
+            if len(phrase.split()) > 1:  # Только фразы из нескольких слов
+                phrases.append(phrase.lower())
+        
+        # Подсчитываем частоту фраз и берем топ-10
+        from collections import Counter
+        phrase_counts = Counter(phrases)
+        return [phrase for phrase, count in phrase_counts.most_common(10)]
+        
     except Exception as e:
-        logger.error(f"Error extracting phrases: {str(e)}")  # Log error
-        return []  # Return empty list on error
+        logger.error(f"Error extracting phrases: {str(e)}")
+        return []
 
 def load_and_preprocess_text(input_data: Union[str, Dict[str, Any]]) -> Dict[str, Any]:
     """Load and preprocess text data."""
@@ -178,3 +221,56 @@ def read_file_content(file_path: str) -> str:
     content = ''.join(full_text)  # Join all chunks into a single string
     logger.info(f"Read {len(content)} characters from file")  # Log number of characters read
     return content  # Return full text
+
+def analyze_chunks(text_or_dict, chunk_size=500, overlap=50) -> list:
+    """
+    Анализирует чанки и возвращает подробную информацию о каждом
+    """
+    chunks = split_into_chunks(text_or_dict, chunk_size, overlap)
+    
+    chunks_info = []
+    for i, chunk in enumerate(chunks):
+        # Базовая информация
+        info = {
+            'chunk_id': i,
+            'length': len(chunk),
+            'word_count': len(chunk.split()),
+            'sentences': len(nltk.sent_tokenize(chunk)),
+            'start': chunk[:50] + '...',  # Начало чанка
+            'end': '...' + chunk[-50:],   # Конец чанка
+        }
+        
+        # Извлечение именованных сущностей
+        entities = extract_named_entities(chunk)
+        info['entities'] = entities
+        
+        # Ключевые фразы
+        info['key_phrases'] = extract_key_phrases(chunk)
+        
+        # Даты
+        info['dates'] = extract_dates(chunk)
+        
+        chunks_info.append(info)
+    
+    return chunks_info
+
+def print_chunks_analysis(text_or_dict, chunk_size=500, overlap=50):
+    """
+    Выводит подробный анализ чанков в читаемом формате
+    """
+    chunks_info = analyze_chunks(text_or_dict, chunk_size, overlap)
+    
+    for info in chunks_info:
+        print(f"\n{'='*80}")
+        print(f"Chunk #{info['chunk_id']}")
+        print(f"{'='*80}")
+        print(f"Length: {info['length']} characters")
+        print(f"Words: {info['word_count']}")
+        print(f"Sentences: {info['sentences']}")
+        print("\nStart:")
+        print(info['start'])
+        print("\nEnd:")
+        print(info['end'])
+        print("\nEntities:", ', '.join(info['entities']) if info['entities'] else 'None')
+        print("\nKey phrases:", ', '.join(info['key_phrases']) if info['key_phrases'] else 'None')
+        print("\nDates:", ', '.join(info['dates']) if info['dates'] else 'None')

@@ -14,6 +14,8 @@ from typing import Union, TextIO  # Importing types for type hinting
 from src.vector_store_service import VectorStoreService  # Importing vector store service for managing embeddings
 from tqdm import tqdm  # Importing tqdm for progress bar functionality
 import sys  # Importing sys for system-specific parameters and functions
+import click  # Importing click for CLI command-line parsing
+from src.services.text_processor import print_chunks_analysis  # Importing text processor for analyzing chunks
 
 logger = get_main_logger()  # Initializing the main logger
 rag_logger = get_rag_logger()  # Initializing the RAG logger
@@ -169,3 +171,24 @@ class BookAssistant:
         if current >= total:  # Check if progress is complete
             self._pbar.close()  # Close the progress bar
             self._pbar = None  # Reset progress bar attribute
+
+@click.group()
+def cli():
+    """CLI для работы с RAG Book Assistant"""
+    pass
+
+@cli.command()
+@click.argument('file_path', type=click.Path(exists=True))
+@click.option('--chunk-size', default=1000, help='Size of each chunk')
+@click.option('--overlap', default=150, help='Overlap between chunks')
+def analyze_file(file_path, chunk_size, overlap):
+    """Анализирует файл и показывает информацию о чанках"""
+    try:
+        processor = FileProcessor()
+        text = processor.process_file(file_path)
+        print_chunks_analysis(text, chunk_size, overlap)
+    except Exception as e:
+        click.echo(f"Error analyzing file: {str(e)}", err=True)
+
+if __name__ == '__main__':
+    cli()  # Вместо analyze_file() используем cli()

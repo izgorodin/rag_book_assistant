@@ -3,6 +3,7 @@ from unittest.mock import Mock, patch
 from openai import OpenAI
 import os
 import time
+from src.openai_service import OpenAIService
 from src.utils.logger import get_main_logger
 from tests.utils.mock_factory import MockFactory, MockFirebaseStorage
 from tests.test_data.constants import (
@@ -118,3 +119,24 @@ def storage_service():
 @pytest.fixture
 def client():
     return TestClient(app)
+
+@pytest.fixture(autouse=True)
+def mock_openai(monkeypatch):
+    """Мок для OpenAI в тестах"""
+    if os.getenv('TESTING') == 'true':
+        mock_client = Mock()
+        mock_client.chat.completions.create.return_value = Mock(
+            choices=[Mock(message=Mock(content="Mocked response"))]
+        )
+        monkeypatch.setattr('openai.OpenAI', lambda **kwargs: mock_client)
+        monkeypatch.setattr(OpenAIService, '_get_client', lambda self: mock_client)
+
+@pytest.fixture(autouse=True)
+def mock_firebase(monkeypatch):
+    """Мок для Firebase в тестах"""
+    if os.getenv('TESTING') == 'true':
+        mock_storage = Mock()
+        mock_storage.child.return_value = mock_storage
+        mock_storage.put.return_value = None
+        mock_storage.get_url.return_value = "http://mock-url"
+        monkeypatch.setattr('pyrebase.initialize_app', lambda config: Mock(storage=lambda: mock_storage))

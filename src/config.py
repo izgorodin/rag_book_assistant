@@ -33,8 +33,6 @@ EMBEDDINGS_DIR = 'data/embeddings'
 # Batch Size Configuration
 PINECONE_BATCH_SIZE = 100
 
-# Flask Secret Key Configuration
-FLASK_SECRET_KEY = os.environ.get('FLASK_SECRET_KEY') 
 ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD')
 TESTER_PASSWORD = os.environ.get('TESTER_PASSWORD')
 
@@ -47,6 +45,10 @@ OPENAI_HTTP_CONFIG = {
     'backoff_factor': 0.5,  # Exponential backoff factor for retries
     'retry_statuses': [408, 429, 500, 502, 503, 504]  # HTTP status codes to retry on
 }
+
+# Firebase Credentials
+
+
 
 # Configuration for file uploads
 UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'uploads')
