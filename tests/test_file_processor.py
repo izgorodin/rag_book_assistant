@@ -29,16 +29,20 @@ def sample_files(tmp_path):
 def _create_test_epub(epub_path):
     """Создает тестовый EPUB файл"""
     book = epub.EpubBook()
+    
+    # Метаданные
     book.set_identifier('test123')
     book.set_title('Test Book')
     book.set_language('en')
     
+    # Создаем контент
     content = '''
         <h1>Test Book</h1>
         <p>This is a test paragraph with some content.</p>
         <p>It contains multiple paragraphs for testing.</p>
     '''
     
+    # Создаем главу
     chapter = epub.EpubHtml(
         title='Test Chapter',
         file_name='chapter.xhtml',
@@ -46,8 +50,26 @@ def _create_test_epub(epub_path):
         content=content
     )
     book.add_item(chapter)
-    book.spine = [chapter]
-    epub.write_epub(epub_path, book, {})
+    
+    # Добавляем навигацию
+    book.toc = [(epub.Section('Test Chapter'), [chapter])]
+    book.add_item(epub.EpubNcx())
+    book.add_item(epub.EpubNav())
+    
+    # Добавляем стиль по умолчанию
+    style = epub.EpubItem(
+        uid="style_default",
+        file_name="style/default.css",
+        media_type="text/css",
+        content=""
+    )
+    book.add_item(style)
+    
+    # Важно: правильный порядок в spine
+    book.spine = ['nav', chapter]
+    
+    # Записываем EPUB с опцией игнорирования NCX
+    epub.write_epub(epub_path, book, {'ignore_ncx': True})
 
 def test_process_pdf(file_processor, sample_files):
     content = file_processor.process_file(sample_files["pdf"])
