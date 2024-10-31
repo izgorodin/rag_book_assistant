@@ -55,3 +55,17 @@ MAX_CONTENT_LENGTH = 10 * 1024 * 1024  # 10MB
 # Create necessary directories
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs('logs', exist_ok=True)
+
+# Firebase Configuration
+FIREBASE_CREDENTIALS_PATH = os.getenv('FIREBASE_CREDENTIALS_PATH')
+FIREBASE_STORAGE_BUCKET = os.getenv('FIREBASE_STORAGE_BUCKET')
+
+# Validate Firebase configuration
+if not FIREBASE_CREDENTIALS_PATH:
+    raise ValueError("FIREBASE_CREDENTIALS_PATH environment variable is not set")
+if not FIREBASE_STORAGE_BUCKET:
+    raise ValueError("FIREBASE_STORAGE_BUCKET environment variable is not set")
+
+# Create necessary directories
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs('logs', exist_ok=True)
