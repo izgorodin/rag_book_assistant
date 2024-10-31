@@ -213,22 +213,15 @@ async def check_book_loaded(user: str = Depends(get_current_user)):
 # WebSocket endpoint
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
+    await ws_manager.connect(websocket)  # Используем WebSocketManager
     try:
-        await ws_manager.connect(websocket)
-        
         while True:
-            try:
-                data = await websocket.receive_text()
-                # Можно добавить обработку входящих сообщений если нужно
-            except WebSocketDisconnect:
-                await ws_manager.disconnect(websocket)
-                break
-            except Exception as e:
-                logger.error(f"WebSocket error: {str(e)}")
-                await ws_manager.disconnect(websocket)
-                break
+            data = await websocket.receive_text()
+    except WebSocketDisconnect:
+        await ws_manager.disconnect(websocket)
     except Exception as e:
-        logger.error(f"WebSocket connection error: {str(e)}")
+        logger.error(f"WebSocket error: {str(e)}")
+        await ws_manager.disconnect(websocket)
 
 @app.get("/login")
 async def login_page(request: Request):
@@ -262,10 +255,11 @@ app.add_middleware(
 # Конфигурация CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # В продакшене замените на конкретные домены
+    allow_origins=["*"],  # В продакшене укажите конкретные домены
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    allow_websockets=True  # Добавьте это
 )
 
 # Добавляем middleware аутентификации с публичными путями
