@@ -19,14 +19,23 @@ def main():
         if args.mode == "cli":  # Check if the mode is CLI
             assistant = BookAssistant()  # Initialize the BookAssistant
             assistant.run()  # Run the assistant
-        elif args.mode == "web" or args.mode == "api":  # Check if the mode is web or API
-            # Run FastAPI application
+        elif args.mode == "web":  # Development mode
             uvicorn.run(
                 "src.web.app:app",
                 host="0.0.0.0",
                 port=8080,
-                reload=True,
-                workers=1
+                reload=True,    # Enable hot reload for development
+                workers=1,      # Single worker for development
+                log_level="debug"
+            )
+        elif args.mode == "api":  # Production mode
+            uvicorn.run(
+                "src.web.api:app",
+                host="0.0.0.0",
+                port=8000,
+                reload=False,   # Disable reload in production
+                workers=4,      # Multiple workers for production
+                log_level="info"
             )
     except Exception as e:  # Catch any exceptions
         error_msg = f"Application error: {str(e)}"  # Create an error message

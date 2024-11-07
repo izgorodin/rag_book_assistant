@@ -104,7 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function showNotification(message) {
+    // Единая функция для показа уведомлений
+    function showNotification(message, isError = false) {
         let notification = document.querySelector('.notification');
         if (!notification) {
             notification = document.createElement('div');
@@ -113,10 +114,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         notification.textContent = message;
+        notification.className = `notification ${isError ? 'error' : ''}`;
         notification.classList.add('show');
         
         setTimeout(() => {
             notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
         }, 2000);
     }
 
@@ -218,86 +221,61 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // При отображении ответа
-    function displayAnswer(markdown) {
-        const answerStatus = document.getElementById('answerStatus');
-        answerStatus.innerHTML = marked(markdown);
-        
-        // Подсвечиваем синтаксис
-        Prism.highlightAll();
-        
-        // Добавляем кнопки копирования
-        addCodeCopyButtons();
-    }
-
-    // Функция добавления кнопок копирования
+    // Обновленная функция добавления кнопок копирования
     function addCodeCopyButtons() {
-        console.log('Adding copy buttons...'); // Для отладки
-        const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
-        console.log('Found code blocks:', codeBlocks.length); // Для отладки
-        
-        codeBlocks.forEach(block => {
+        const codeBlocks = document.querySelectorAll('pre code');
+        codeBlocks.forEach(codeBlock => {
             // Проверяем, нет ли уже кнопки
-            if (block.querySelector('.code-copy-button')) {
-                return;
-            }
+            if (codeBlock.parentElement.querySelector('.copy-button')) return;
             
-            // Создаем кнопку
+            const container = codeBlock.parentElement;
+            container.style.position = 'relative';
+            
             const copyButton = document.createElement('button');
-            copyButton.className = 'code-copy-button';
+            copyButton.className = 'copy-button';
             copyButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <svg viewBox="0 0 24 24">
+                    <path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
                 </svg>
             `;
             
-            copyButton.addEventListener('click', async () => {
-                const code = block.querySelector('code').textContent;
+            copyButton.addEventListener('click', async (e) => {
+                e.stopPropagation(); // Предотвращаем всплытие события
+                const code = codeBlock.textContent;
+                
                 try {
                     await navigator.clipboard.writeText(code);
-                    copyButton.classList.add('copied');
+                    showNotification('Code copied to clipboard!');
                     
-                    // Показываем уведомление
-                    showNotification('Код скопирован!');
+                    // Меняем иконку на галочку
+                    copyButton.innerHTML = `
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                        </svg>
+                    `;
                     
                     setTimeout(() => {
-                        copyButton.classList.remove('copied');
+                        copyButton.innerHTML = `
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                            </svg>
+                        `;
                     }, 2000);
                 } catch (err) {
-                    console.error('Failed to copy:', err);
-                    showNotification('Ошибка копирования', true);
+                    showNotification('Failed to copy code', true);
                 }
             });
             
-            block.style.position = 'relative';
-            block.appendChild(copyButton);
+            container.appendChild(copyButton);
         });
     }
 
-    // Функция показа уведомления
-    function showNotification(message, isError = false) {
-        const notification = document.createElement('div');
-        notification.className = `notification ${isError ? 'error' : ''}`;
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        
-        // Показываем уведомление
-        setTimeout(() => notification.classList.add('show'), 100);
-        
-        // Удаляем через 2 секунды
-        setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => notification.remove(), 300);
-        }, 2000);
-    }
-
-    // Обновленная функция отображения ответа
+    // Единая функция отображения ответа
     function displayAnswer(markdown) {
         const answerStatus = document.getElementById('answerStatus');
         answerStatus.innerHTML = marked(markdown);
         
-        // Важно: ждем следующего тика, чтобы Prism успел обработать код
+        // Ждем следующего тика для обработки кода
         setTimeout(() => {
             Prism.highlightAll();
             addCodeCopyButtons();

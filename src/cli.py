@@ -90,20 +90,14 @@ class BookAssistant:
                 text = input_data.read()  # Read text from TextIO object
             
             if not text:  # Check if text is empty
-                raise ValueError("Empty text content")  # Raise error for empty content
+                raise ValueError("Empty text content")
                 
-            logger.info(f"Text content loaded, length: {len(text)}")  # Log length of loaded text
-            rag_logger.info(
-                f"\nBook Loading:\n"
-                f"Content length: {len(text)} chars\n"
-                f"{'-'*50}"
-            )
-            return self.book_data_factory.create_from_text(text)  # Create and return BookDataInterface from text
+            logger.info(f"Text content loaded, length: {len(text)}")
+            return self.book_data_factory.create_from_text(text)
         except Exception as e:
-            error_msg = f"Error processing book: {str(e)}"  # Prepare error message
-            logger.error(error_msg)  # Log error
-            rag_logger.error(f"\nProcessing Error:\n{error_msg}\n{'-'*50}")  # Log processing error
-            raise  # Raise the exception
+            error_msg = f"Error processing book: {str(e)}"
+            logger.error(error_msg)
+            raise
 
     def answer_question(self, query: str, book_data: BookDataInterface) -> str:
         """Generate answer for a question about the book."""
