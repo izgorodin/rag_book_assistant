@@ -306,3 +306,31 @@ def print_chunks_analysis(text_or_dict, chunk_size=500, overlap=50, progress_cal
         print("\nDates:", ', '.join(info['dates']) if info['dates'] else 'None')
     
     logger.info("Chunks analysis completed")
+
+class TextProcessor:
+    def preprocess_text(self, text: str) -> str:
+        """Preprocess the text"""
+        # Базовая предобработка текста
+        text = text.strip()
+        # Можно добавить дополнительную обработку
+        return text
+
+    def split_into_chunks(self, text: str, chunk_size: int = 1000, overlap: int = 200) -> list:
+        """Split text into overlapping chunks"""
+        chunks = []
+        start = 0
+        text_length = len(text)
+
+        while start < text_length:
+            end = start + chunk_size
+            # Если это не последний чанк, найдем ближайший пробел
+            if end < text_length:
+                # Ищем ближайший пробел справа
+                while end < text_length and text[end] != ' ':
+                    end += 1
+            chunk = text[start:end].strip()
+            if chunk:  # Добавляем только непустые чанки
+                chunks.append(chunk)
+            start = end - overlap
+
+        return chunks

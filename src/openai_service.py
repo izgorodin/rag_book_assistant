@@ -17,14 +17,11 @@ class BaseOpenAIService(ABC):
     Defines the interface for generating answers and creating embeddings.
     """
 
-    def __init__(self, api_key: str = OPENAI_API_KEY):
+    def __init__(self, client):
         """
-        Initializes the OpenAI client with the provided API key.
-
-        Args:
-            api_key (str): The API key for OpenAI.
+        Initializes with provided OpenAI client.
         """
-        self.client = OpenAI(api_key=api_key)
+        self.client = client
 
     @abstractmethod
     def generate_answer(self, query: str, context: str) -> str:
@@ -85,14 +82,11 @@ class OpenAIService(BaseOpenAIService):
     Implementation of the OpenAI service that generates answers and creates embeddings.
     """
 
-    def __init__(self, api_key: str = OPENAI_API_KEY):
+    def __init__(self, client):
         """
-        Initializes the OpenAI service with the provided API key.
-
-        Args:
-            api_key (str): The API key for OpenAI.
+        Initializes with provided OpenAI client.
         """
-        super().__init__(api_key)
+        self.client = client
         self.embedding_service = None  # Will be injected
 
     def set_embedding_service(self, embedding_service: EmbeddingService):

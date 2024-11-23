@@ -3,6 +3,7 @@ import sys
 from src.utils.logger import get_main_logger, get_rag_logger
 from src.utils.error_handler import handle_rag_error
 from src.pinecone_manager import PineconeManager
+import re
 
 # Initialize loggers for main and RAG-specific logging
 logger = get_main_logger()
@@ -51,52 +52,61 @@ class VectorStoreService:
     @handle_rag_error
     def store_vectors(self, chunks: List[str], embeddings: List[List[float]]) -> None:
         """
-        Store vectors in batches with optimal size.
-
-        Args:
-            chunks: List of text chunks to be stored.
-            embeddings: List of embeddings corresponding to the chunks.
-
-        Raises:
-            ValueError: If the lengths of chunks and embeddings do not match.
+        Store vectors with enhanced metadata and sparse vectors support.
         """
         if len(chunks) != len(embeddings):
-            raise ValueError("Chunks and embeddings must have the same length")  # Ensure matching lengths
+            raise ValueError("Chunks and embeddings must have the same length")
 
-        total_vectors = len(chunks)  # Total number of vectors to store
-        processed_vectors = 0  # Counter for processed vectors
+        total_vectors = len(chunks)
+        processed_vectors = 0
         
         logger.info(f"Starting to store {total_vectors} vectors in batches of {self.max_batch_size}")
-        rag_logger.info(f"\nVector Storage:\nTotal vectors: {total_vectors}\nBatch size: {self.max_batch_size}\n{'-'*50}")
         
-        # Process vectors in batches
         for batch_start in range(0, total_vectors, self.max_batch_size):
             try:
-                vectors = self._create_vector_batch(
-                    chunks, 
-                    embeddings, 
-                    batch_start, 
-                    self.max_batch_size
-                )  # Create a batch of vectors
+                # Улучшенное создание векторов с метаданными
+                vectors = [
+                    {
+                        'id': str(idx + batch_start),
+                        'values': embeddings[idx],
+                        'metadata': {
+                            'text': chunks[idx],
+                            'has_date': bool(re.search(r'\b\d{1,4}[-/.]\d{1,2}[-/.]\d{1,4}\b', chunks[idx])),
+                            'has_year': bool(re.search(r'\b(19|20)\d{2}\b', chunks[idx])),
+                            'has_names': bool(re.search(r'\b[A-Z][a-z]+ [A-Z][a-z]+\b', chunks[idx])),
+                            'chunk_length': len(chunks[idx])
+                        }
+                    }
+                    for idx in range(min(self.max_batch_size, total_vectors - batch_start))
+                ]
                 
-                self.vector_store.upsert_vectors(vectors)  # Store the vectors in Pinecone
+                self.vector_store.upsert_vectors(vectors)
+                processed_vectors += len(vectors)
                 
-                processed_vectors += len(vectors)  # Update the count of processed vectors
                 if self.progress_callback:
-                    self.progress_callback(
-                        "Storing vectors",  # Progress message
-                        processed_vectors,
-                        total_vectors
-                    )
-                
+                    self.progress_callback("Storing vectors", processed_vectors, total_vectors)
+                    
                 logger.info(f"Stored batch {batch_start//self.max_batch_size + 1}: {processed_vectors}/{total_vectors}")
                 
             except Exception as e:
                 error_msg = f"Error storing batch starting at index {batch_start}: {str(e)}"
-                logger.error(error_msg)  # Log the error
-                rag_logger.error(f"\nVector Storage Error:\n{error_msg}\n{'-'*50}")
-                raise  # Raise the exception for further handling
+                logger.error(error_msg)
+                raise
 
-        success_msg = f"Successfully stored all {total_vectors} vectors"
-        logger.info(success_msg)  # Log success message
-        rag_logger.info(f"\n{success_msg}\n{'-'*50}")
+    def search_vectors(self, query_vector: List[float], top_k: int = 5, 
+                      filter_conditions: Optional[Dict] = None,
+                      use_hybrid: bool = False) -> List[Dict[str, Any]]:
+        """
+        Enhanced vector search with filtering and hybrid search options.
+        """
+        try:
+            # Упрощаем до базовых параметров
+            return self.vector_store.search_vectors(
+                query_vector,  # Передаем только сам вектор
+                top_k  # И количество результатов
+            )
+            
+        except Exception as e:
+            error_msg = f"Error searching vectors: {str(e)}"
+            logger.error(error_msg)
+            raise

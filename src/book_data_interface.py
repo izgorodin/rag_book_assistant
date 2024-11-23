@@ -3,6 +3,8 @@ import pickle  # Import pickle for object serialization
 import os  # Import os for file and directory operations
 from src.data_source import DataSource
 from src.embedding import EmbeddingService  # Import the EmbeddingService for embedding functionalities
+from src.vector_store_service import VectorStoreService  # Import the VectorStoreService for vector store functionalities
+from src.search import get_search_strategy
 
 
 class BookDataInterface(DataSource):
@@ -11,6 +13,7 @@ class BookDataInterface(DataSource):
                  embeddings: List[List[float]],  # List of embeddings for the chunks
                  processed_text: Dict[str, Any],  # Dictionary containing processed text data
                  embedding_service: EmbeddingService,  # Instance of EmbeddingService for embedding operations
+                 vector_store_service: VectorStoreService,  # Instance of VectorStoreService for vector store operations
                  dates: Optional[List[str]] = None,  # Optional list of dates associated with the chunks
                  entities: Optional[List[Dict[str, Any]]] = None,  # Optional list of entities found in the text
                  key_phrases: Optional[List[str]] = None):  # Optional list of key phrases extracted from the text
@@ -18,6 +21,7 @@ class BookDataInterface(DataSource):
         self._embeddings = embeddings  # Initialize the embeddings
         self._processed_text = processed_text  # Initialize the processed text
         self._embedding_service = embedding_service  # Initialize the embedding service
+        self._vector_store_service = vector_store_service  # Initialize the vector store service
         self._dates = dates or []  # Initialize dates, default to empty list if None
         self._entities = entities or []  # Initialize entities, default to empty list if None
         self._key_phrases = key_phrases or []  # Initialize key phrases, default to empty list if None
@@ -28,7 +32,7 @@ class BookDataInterface(DataSource):
         with open(file_path, 'rb') as f:  # Open the file in binary read mode
             data = pickle.load(f)  # Load the data from the file
         return cls(data['chunks'], data['embeddings'], data.get('processed_text', {}), 
-                   data.get('embedding_service', {}), data.get('dates', []), 
+                   data.get('embedding_service', {}), data.get('vector_store_service', {}), data.get('dates', []), 
                    data.get('entities', []), data.get('key_phrases', []))  # Return an instance with loaded data
 
     def save(self, file_path: str):
@@ -72,3 +76,32 @@ class BookDataInterface(DataSource):
     def get_key_phrases(self) -> List[str]:
         """Return the list of key phrases extracted from the text."""
         return self._key_phrases  # Return the stored key phrases
+
+    def get_relevant_chunks(self, query: str, top_k: int = 5) -> List[str]:
+        """Get the most relevant chunks for a given query."""
+        # Определяем тип запроса
+        is_factual_query = any(word in query.lower() for word in 
+            ['когда', 'где', 'кто', 'дата', 'год', 'место'])
+        
+        # Для фактических запросов используем фильтры и гибридный поиск
+        if is_factual_query:
+            filter_conditions = {
+                "$or": [
+                    {"has_date": True},
+                    {"has_year": True},
+                    {"has_names": True}
+                ]
+            }
+            results = self._vector_store_service.search_vectors(
+                query_vector=self._embedding_service.create_embeddings([query])[0],
+                top_k=top_k,
+                filter_conditions=filter_conditions,
+                use_hybrid=True
+            )
+        else:
+            results = self._vector_store_service.search_vectors(
+                query_vector=self._embedding_service.create_embeddings([query])[0],
+                top_k=top_k
+            )
+        
+        return [result["metadata"]["text"] for result in results]

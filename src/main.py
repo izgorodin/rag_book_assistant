@@ -1,50 +1,42 @@
-from src.utils.logger import get_main_logger, get_rag_logger  # Import logging utilities for main and RAG logging
-import argparse  # Import argparse for command-line argument parsing
-import uvicorn  # Import uvicorn for running FastAPI applications
-from src.cli import BookAssistant  # Import the BookAssistant class for CLI mode
+from openai import OpenAI
+from src.cli import BookAssistant
+from src.cache_manager import CacheManager
+from src.utils.logger import get_main_logger
+from src.config import CACHE_DIR
+import sys
+import os
 
-logger = get_main_logger()  # Initialize the main logger
-rag_logger = get_rag_logger()  # Initialize the RAG logger
+logger = get_main_logger()
 
 def main():
-    logger.info("Starting the RAG Book Assistant")  # Log the start of the application
-    rag_logger.info("\nApplication Start\n" + "="*50)  # Log the application start in RAG logger
-    
-    parser = argparse.ArgumentParser(description="RAG Book Assistant")  # Create an argument parser
-    parser.add_argument("mode", choices=["cli", "web", "api"],  # Define the mode argument with choices
-                       help="Mode to run the assistant (cli, web, or api)")  # Help description for the mode argument
-    args = parser.parse_args()  # Parse the command-line arguments
-
+    """Main entry point for the application."""
     try:
-        if args.mode == "cli":  # Check if the mode is CLI
-            assistant = BookAssistant()  # Initialize the BookAssistant
-            assistant.run()  # Run the assistant
-        elif args.mode == "web" or args.mode == "api":  # Check if the mode is web or API
-            # Run FastAPI application
-            uvicorn.run(
-                "src.web.app:app",
-                host="0.0.0.0",
-                port=8080,
-                reload=True,
-                workers=1
-            )
-    except Exception as e:  # Catch any exceptions
-        error_msg = f"Application error: {str(e)}"  # Create an error message
-        logger.error(error_msg, exc_info=True)  # Log the error with traceback
-        rag_logger.error(f"\nCritical Error:\n{error_msg}\n{'='*50}")  # Log critical error in RAG logger
+        # Создаем директорию для кэша, если её нет
+        os.makedirs(CACHE_DIR, exist_ok=True)
+        
+        # Инициализируем CacheManager с указанием директории
+        cache_manager = CacheManager(cache_dir=CACHE_DIR)
+        logger.info(f"CacheManager initialized at {CACHE_DIR}")
 
-if __name__ == "__main__":  # Check if the script is being run directly
-    main()  # Call the main function
+        # Инициализируем OpenAI клиент
+        openai_client = OpenAI()
 
-"""
-How to run:
+        # Создаем экземпляр BookAssistant с необходимыми зависимостями
+        assistant = BookAssistant(
+            openai_client=openai_client,
+            cache_manager=cache_manager
+        )
 
-# Run CLI mode
-python -m src.main cli
+        # Запускаем CLI режим
+        if len(sys.argv) > 1 and sys.argv[1] == "cli":
+            assistant.run()
+        else:
+            logger.error("Please specify the mode: python -m src.main cli")
+            sys.exit(1)
 
-# Run web/api mode
-python -m src.main web
+    except Exception as e:
+        logger.error(f"Application error: {str(e)}")
+        sys.exit(1)
 
-# Run with uvicorn directly (production)
-uvicorn src.web.app:app --host 0.0.0.0 --port 8080 --workers 4
-"""
+if __name__ == "__main__":
+    main()

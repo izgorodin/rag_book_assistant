@@ -237,7 +237,7 @@ class CosineSearch(BaseSearch):
             raise RAGError(error_msg)
 
 @handle_rag_error
-def get_search_strategy(strategy: str, data_source: DataSource) -> BaseSearch:
+def get_search_strategy(strategy: str, data_source: DataSource, embedding_service: EmbeddingService) -> BaseSearch:
     """
     Get search strategy based on name.
     
@@ -271,4 +271,4 @@ def get_search_strategy(strategy: str, data_source: DataSource) -> BaseSearch:
         logger.warning(f"Unknown search strategy: {strategy}, using cosine similarity search")
         strategy = "cosine"
         
-    return strategies[strategy](data_source)  # Return the initialized search strategy
+    return strategies[strategy](data_source, embedding_service)  # Передаем embedding_service

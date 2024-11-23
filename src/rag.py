@@ -40,35 +40,15 @@ logger = get_main_logger()
 rag_logger = get_rag_logger()
 
 @handle_rag_error
-def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAIService, 
-             embedding_service: EmbeddingService) -> str:
+def rag_query(query: str, book_data: BookDataInterface, openai_service: OpenAIService) -> str:
     """Process query using RAG approach."""
     try:
-        # Create a search strategy using cosine similarity
-        search_strategy = CosineSearch(book_data, embedding_service)
-        
-        # Retrieve relevant chunks based on the query
-        relevant_chunks = search_strategy.search(query, top_k=TOP_K_CHUNKS)
-        
-        # Format the context from the relevant chunks
-        context = format_context(relevant_chunks)
-        
-        # Generate an answer using the OpenAI service
-        answer = openai_service.generate_answer(query, context)
-        
-        # Log the result of the RAG query
-        rag_logger.info(
-            f"\nQuery: {query}\n"
-            f"Context chunks: {len(relevant_chunks)}\n"
-            f"Answer: {answer}\n"
-            f"{'='*50}"
-        )
-        
-        return answer
+        relevant_chunks = book_data.get_relevant_chunks(query)
+        context = "\n\n".join(relevant_chunks)
+        return openai_service.generate_answer(query, context)
     except Exception as e:
-        # Log any errors that occur during the query processing
         logger.error(f"Error in rag_query: {str(e)}")
-        return f"Sorry, I encountered an error while processing your request: {str(e)}"
+        return f"Error processing query: {str(e)}"
 
 @handle_rag_error
 def evaluate_answer_quality(generated_answer: str, reference_answer: str) -> float:
