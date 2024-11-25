@@ -1,46 +1,71 @@
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from pinecone import Pinecone, ServerlessSpec
 from src.config import (
     PINECONE_API_KEY, PINECONE_CLOUD, EMBEDDING_DIMENSION,
-    PINECONE_INDEX_NAME, PINECONE_METRIC, PINECONE_REGION
+    PINECONE_INDEX_NAME, PINECONE_METRIC, PINECONE_REGION, TOP_K_CHUNKS
 )
 from src.utils.error_handler import RAGError
 from src.utils.logger import get_main_logger, get_rag_logger
+from src.interfaces.vector_store import VectorStore
+import asyncio
+import pinecone
 
 logger = get_main_logger()
 rag_logger = get_rag_logger()
 
-class VectorStore(ABC):
-    """Abstract base class for vector storage implementations."""
-    @abstractmethod
-    def is_available(self) -> bool:
-        """Check if the vector store is available."""
-        pass
-
-    @abstractmethod
-    def upsert_vectors(self, vectors: List[Dict[str, Any]]) -> None:
-        """Store vectors with their metadata."""
-        pass
-
-    @abstractmethod
-    def search_vectors(self, query_vector: List[float], top_k: int = 5) -> List[Dict[str, Any]]:
-        """Search for similar vectors."""
-        pass
-
-    @abstractmethod
-    def clear(self) -> None:
-        """Clear all stored vectors."""
-        pass
-
 class PineconeManager(VectorStore):
     """Manages interactions with Pinecone vector database."""
     
-    def __init__(self, lazy_init=True):
-        """Initialize Pinecone client and index."""
-        self.initialized = False
-        if not lazy_init:
-            self._init()
+    def __init__(self, api_key: str, environment: str, index_name: str):
+        self.api_key = api_key
+        self.environment = environment
+        self.index_name = index_name
+        self._index = None
+        self._initialized = False
+
+    async def is_available(self) -> bool:
+        """Асинхронная проверка доступности индекса."""
+        try:
+            if not self._initialized:
+                return False
+            # Асинхронная проверка подключения
+            await asyncio.get_event_loop().run_in_executor(
+                None, 
+                lambda: self._index.describe_index_stats()
+            )
+            return True
+        except Exception as e:
+            logger.error(f"Error checking Pinecone availability: {e}")
+            return False
+
+    async def initialize(self) -> None:
+        """Асинхронная инициализация Pinecone."""
+        if not self._initialized:
+            try:
+                # Используем новый API Pinecone
+                pc = Pinecone(api_key=self.api_key)
+                
+                # Проверяем существование индекса
+                if self.index_name not in pc.list_indexes().names():
+                    logger.info(f"Creating new index: {self.index_name}")
+                    pc.create_index(
+                        name=self.index_name,
+                        dimension=EMBEDDING_DIMENSION,
+                        metric=PINECONE_METRIC,
+                        spec=ServerlessSpec(
+                            cloud=PINECONE_CLOUD,
+                            region=PINECONE_REGION
+                        )
+                    )
+                
+                self._index = pc.Index(self.index_name)
+                self._initialized = True
+                logger.info("Pinecone initialized successfully")
+                
+            except Exception as e:
+                logger.error(f"Failed to initialize Pinecone: {e}")
+                raise
 
     def _init(self):
         if self.initialized:
@@ -100,47 +125,33 @@ class PineconeManager(VectorStore):
             logger.error(f"Error creating Pinecone index: {str(e)}")
             raise
 
-    def is_available(self) -> bool:
-        """Check if Pinecone index is available."""
-        try:
-            return hasattr(self, 'index') and self.index is not None
-        except Exception:
-            return False
-
-    def upsert_vectors(self, vectors: List[Dict[str, Any]]) -> None:
-        """Store vectors in Pinecone."""
-        if not self.initialized:
-            self._init()  # Попытка инициализации, если еще не инициализирован
-        
-        if not self.is_available():
+    async def store_vectors(self, vectors: List[Dict[str, Any]]) -> None:
+        """Store vectors with metadata."""
+        if not await self.is_available():
             raise ValueError("Pinecone index not initialized")
             
         try:
-            self.index.upsert(vectors=vectors)
-            logger.info(f"Successfully upserted {len(vectors)} vectors")
-            rag_logger.info(f"\nVector Update:\nUpserted vectors: {len(vectors)}\n{'-'*50}")
+            self._index.upsert(vectors=[(
+                f"vec_{i}",  # Добавляем уникальные ID
+                vector['values'],
+                vector['metadata']
+            ) for i, vector in enumerate(vectors)])
+            logger.info(f"Successfully stored {len(vectors)} vectors")
         except Exception as e:
-            error_msg = f"Error upserting vectors: {str(e)}"
-            logger.error(error_msg)
-            rag_logger.error(f"\nUpsert Error:\n{error_msg}\n{'-'*50}")
+            logger.error(f"Error storing vectors: {str(e)}")
             raise
 
-    def search_vectors(self, query_vector: List[float], top_k: int = 5) -> List[Dict[str, Any]]:
-        """
-        Search for similar vectors in Pinecone.
-        
-        Args:
-            query_vector: Vector to search for
-            top_k: Number of results to return
-            
-        Returns:
-            List of similar vectors with their metadata
-        """
-        if not self.is_available():
+    async def search_vectors(
+        self,
+        query_vector: List[float],
+        top_k: int = TOP_K_CHUNKS,
+        filter_conditions: Optional[Dict] = None
+    ) -> List[Dict[str, Any]]:
+        if not await self.is_available():
             raise ValueError("Pinecone index not initialized")
         
         try:
-            results = self.index.query(
+            results = self._index.query(
                 vector=query_vector,
                 top_k=top_k,
                 include_metadata=True

@@ -5,6 +5,11 @@ from src.data_source import DataSource
 from src.embedding import EmbeddingService  # Import the EmbeddingService for embedding functionalities
 from src.vector_store_service import VectorStoreService  # Import the VectorStoreService for vector store functionalities
 from src.search import get_search_strategy
+import re  # Import re for regular expressions
+from src.utils.logger import get_main_logger, get_rag_logger
+import nltk
+from nltk.tokenize import word_tokenize
+import asyncio
 
 
 class BookDataInterface(DataSource):
@@ -25,6 +30,8 @@ class BookDataInterface(DataSource):
         self._dates = dates or []  # Initialize dates, default to empty list if None
         self._entities = entities or []  # Initialize entities, default to empty list if None
         self._key_phrases = key_phrases or []  # Initialize key phrases, default to empty list if None
+        self.logger = get_main_logger()
+        self.rag_logger = get_rag_logger()
         
     @classmethod
     def from_file(cls, file_path: str):
@@ -77,31 +84,96 @@ class BookDataInterface(DataSource):
         """Return the list of key phrases extracted from the text."""
         return self._key_phrases  # Return the stored key phrases
 
-    def get_relevant_chunks(self, query: str, top_k: int = 5) -> List[str]:
+    async def get_relevant_chunks(self, query: str, top_k: int = 5) -> List[str]:
         """Get the most relevant chunks for a given query."""
-        # Определяем тип запроса
-        is_factual_query = any(word in query.lower() for word in 
-            ['когда', 'где', 'кто', 'дата', 'год', 'место'])
+        try:
+            # Создаем эмбеддинги для запроса
+            embeddings = await self._embedding_service.create_embeddings([query])
+            query_embedding = embeddings[0]
+            
+            # Определяем тип запроса через NLP анализ
+            query_analysis = await self._analyze_query(query)
+            
+            # Применяем соответствующую стратегию поиска
+            if query_analysis['is_factual']:
+                filter_conditions = await self._build_filter_conditions(query_analysis)
+                results = await self._vector_store_service.search_vectors(
+                    query_vector=query_embedding,
+                    top_k=top_k,
+                    filter_conditions=filter_conditions
+                )
+            else:
+                results = await self._vector_store_service.search_vectors(
+                    query_vector=query_embedding,
+                    top_k=top_k
+                )
+            
+            if results and isinstance(results, list):
+                return [result.get("metadata", {}).get("text", "") for result in results]
+            return []
+            
+        except Exception as e:
+            self.logger.error(f"Error getting relevant chunks: {str(e)}")
+            return []
+
+    async def _analyze_query(self, query: str) -> Dict[str, Any]:
+        """Analyze query type and extract key information asynchronously."""
+        # Определяем язык запроса через NLTK асинхронно
+        tokens = await asyncio.to_thread(word_tokenize, query.lower())
         
-        # Для фактических запросов используем фильтры и гибридный поиск
-        if is_factual_query:
-            filter_conditions = {
-                "$or": [
-                    {"has_date": True},
-                    {"has_year": True},
-                    {"has_names": True}
+        # Определяем язык по наличию кириллицы
+        has_cyrillic = bool(re.search('[а-яА-Я]', query))
+        lang = 'ru' if has_cyrillic else 'en'
+        
+        # Паттерны для разных языков
+        patterns = {
+            'en': {
+                'factual': [
+                    r'\b(who|what|where|when|why|how)\b',
+                    r'\b(date|year|time|place|location)\b',
+                    r'\b(person|people|name)\b'
+                ]
+            },
+            'ru': {
+                'factual': [
+                    r'\b(кто|что|где|когда|почему|как)\b',
+                    r'\b(дата|год|время|место|локация)\b',
+                    r'\b(человек|люди|имя)\b'
                 ]
             }
-            results = self._vector_store_service.search_vectors(
-                query_vector=self._embedding_service.create_embeddings([query])[0],
-                top_k=top_k,
-                filter_conditions=filter_conditions,
-                use_hybrid=True
-            )
-        else:
-            results = self._vector_store_service.search_vectors(
-                query_vector=self._embedding_service.create_embeddings([query])[0],
-                top_k=top_k
-            )
+        }
         
-        return [result["metadata"]["text"] for result in results]
+        # Выбираем паттерны в зависимости от языка
+        lang_patterns = patterns.get(lang, patterns['en'])
+        
+        # Проверяем на фактические паттерны асинхронно
+        is_factual = any(
+            bool(re.search(pattern, query.lower()))
+            for pattern in lang_patterns['factual']
+        )
+        
+        return {
+            'is_factual': is_factual,
+            'language': lang,
+            'contains_date': bool(re.search(r'\b\d{4}\b', query)),
+            'contains_name': bool(re.search(r'\b[A-Z][a-z]+\b', query))
+        }
+
+    async def _build_filter_conditions(self, query_analysis: Dict[str, Any]) -> Dict[str, Any]:
+        """Build filter conditions based on query analysis asynchronously."""
+        conditions = {"$or": []}
+        
+        if query_analysis['contains_date']:
+            conditions["$or"].append({"has_date": True})
+        
+        if query_analysis['contains_name']:
+            conditions["$or"].append({"has_names": True})
+        
+        if not conditions["$or"]:
+            conditions["$or"] = [
+                {"has_date": True},
+                {"has_year": True},
+                {"has_names": True}
+            ]
+        
+        return conditions

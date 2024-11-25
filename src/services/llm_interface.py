@@ -1,17 +1,16 @@
 from abc import ABC, abstractmethod
-from typing import Optional
 
 class LLMInterface(ABC):
     """Abstract base class for Language Model services."""
     
     @abstractmethod
-    async def generate_response(self, prompt: str, temperature: float = 0.7) -> str:
+    async def generate_response(self, query: str, context: str) -> str:
         """
         Generate a response from the language model.
         
         Args:
-            prompt: The input prompt for the model
-            temperature: Controls randomness in the response (0.0 to 1.0)
+            query: The question to answer
+            context: The context to use for answering
             
         Returns:
             Generated response as string

@@ -31,5 +31,6 @@ beautifulsoup4
 epub2txt
 itsdangerous  # для работы с сессиями
 python-multipart  # для загрузки файлов
+langdetect
 
-#    pip-compile --output-file=requirements.txt requirements.in pip install -r requirements.txt
+#    pip-compile --output-file=requirements.txt requirements.in & pip install -r requirements.txt

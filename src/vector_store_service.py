@@ -1,112 +1,89 @@
 from typing import List, Dict, Any, Optional, Callable
-import sys
+from src.config import TOP_K_CHUNKS
 from src.utils.logger import get_main_logger, get_rag_logger
 from src.utils.error_handler import handle_rag_error
-from src.pinecone_manager import PineconeManager
 import re
+from typing import List, Dict, Any, Optional
+from src.interfaces.vector_store import VectorStore
+from src.embedding import EmbeddingService
 
 # Initialize loggers for main and RAG-specific logging
 logger = get_main_logger()
 rag_logger = get_rag_logger()
 
 class VectorStoreService:
-    def __init__(self, vector_store: PineconeManager, progress_callback: Optional[Callable] = None):
-        """
-        Initialize the VectorStoreService.
+    """Service for managing vector operations."""
+    
+    def __init__(self, vector_store_service: VectorStore, embedding_service: Optional[EmbeddingService] = None):
+        self.vector_store_service = vector_store_service
+        self.embedding_service = embedding_service
+        self._initialized = False
+        self.logger = get_main_logger()
 
-        Args:
-            vector_store: An instance of PineconeManager for managing vector storage.
-            progress_callback: Optional callback function to report progress.
-        """
-        self.vector_store = vector_store
-        self.progress_callback = progress_callback
-        self.max_batch_size = 100  # Optimal batch size for Pinecone
-        
-    def _create_vector_batch(self, 
-                           chunks: List[str], 
-                           embeddings: List[List[float]], 
-                           start_idx: int, 
-                           batch_size: int) -> List[Dict[str, Any]]:
-        """
-        Create a batch of vectors for Pinecone.
+    async def initialize(self) -> None:
+        """Initialize the vector store service."""
+        if not self._initialized:
+            if not await self.vector_store_service.is_available():
+                await self.vector_store_service.initialize()
+                if not await self.vector_store_service.is_available():
+                    raise ValueError("Vector store initialization failed")
+            self._initialized = True
+            self.logger.info("VectorStoreService initialized")
 
-        Args:
-            chunks: List of text chunks to be converted into vectors.
-            embeddings: List of embeddings corresponding to the chunks.
-            start_idx: Starting index for the current batch.
-            batch_size: Number of vectors to include in the batch.
+    async def store_vectors(self, vectors: List[Dict[str, Any]]) -> None:
+        """Store vectors in the vector store."""
+        await self.initialize()
+        self.logger.info(f"Storing {len(vectors)} vectors")
+        try:
+            await self.vector_store_service.store_vectors(vectors)
+            self.logger.info(f"Successfully stored {len(vectors)} vectors")
+        except Exception as e:
+            self.logger.error(f"Error storing vectors: {e}")
+            raise
 
-        Returns:
-            A list of dictionaries representing the vector batch.
+    @staticmethod
+    def prepare_vectors(chunks: List[str], embeddings: List[List[float]]) -> List[Dict[str, Any]]:
         """
-        end_idx = min(start_idx + batch_size, len(chunks))  # Calculate the end index for the batch
+        Prepare vectors for storage from chunks and embeddings.
+        """
         return [
             {
-                'id': str(idx + start_idx),  # Unique ID for the vector
-                'values': embeddings[idx],  # Embedding values
-                'metadata': {'text': chunks[idx]}  # Metadata containing the original text chunk
+                'values': embedding,
+                'metadata': {'text': chunk}
             }
-            for idx in range(end_idx - start_idx)  # Create the vector batch
+            for chunk, embedding in zip(chunks, embeddings)
         ]
 
-    @handle_rag_error
-    def store_vectors(self, chunks: List[str], embeddings: List[List[float]]) -> None:
-        """
-        Store vectors with enhanced metadata and sparse vectors support.
-        """
-        if len(chunks) != len(embeddings):
-            raise ValueError("Chunks and embeddings must have the same length")
-
-        total_vectors = len(chunks)
-        processed_vectors = 0
+    async def create_query_embedding(self, query: str) -> List[float]:
+        """Create embedding for query text."""
+        if not self.embedding_service:
+            raise ValueError("Embedding service not initialized")
         
-        logger.info(f"Starting to store {total_vectors} vectors in batches of {self.max_batch_size}")
-        
-        for batch_start in range(0, total_vectors, self.max_batch_size):
-            try:
-                # Улучшенное создание векторов с метаданными
-                vectors = [
-                    {
-                        'id': str(idx + batch_start),
-                        'values': embeddings[idx],
-                        'metadata': {
-                            'text': chunks[idx],
-                            'has_date': bool(re.search(r'\b\d{1,4}[-/.]\d{1,2}[-/.]\d{1,4}\b', chunks[idx])),
-                            'has_year': bool(re.search(r'\b(19|20)\d{2}\b', chunks[idx])),
-                            'has_names': bool(re.search(r'\b[A-Z][a-z]+ [A-Z][a-z]+\b', chunks[idx])),
-                            'chunk_length': len(chunks[idx])
-                        }
-                    }
-                    for idx in range(min(self.max_batch_size, total_vectors - batch_start))
-                ]
-                
-                self.vector_store.upsert_vectors(vectors)
-                processed_vectors += len(vectors)
-                
-                if self.progress_callback:
-                    self.progress_callback("Storing vectors", processed_vectors, total_vectors)
-                    
-                logger.info(f"Stored batch {batch_start//self.max_batch_size + 1}: {processed_vectors}/{total_vectors}")
-                
-            except Exception as e:
-                error_msg = f"Error storing batch starting at index {batch_start}: {str(e)}"
-                logger.error(error_msg)
-                raise
+        self.logger.info(f"Creating embedding for query: {query}")
+        embeddings = await self.embedding_service.create_embeddings([query])
+        self.logger.info("Query embedding created successfully")
+        return embeddings[0]
 
-    def search_vectors(self, query_vector: List[float], top_k: int = 5, 
-                      filter_conditions: Optional[Dict] = None,
-                      use_hybrid: bool = False) -> List[Dict[str, Any]]:
-        """
-        Enhanced vector search with filtering and hybrid search options.
-        """
-        try:
-            # Упрощаем до базовых параметров
-            return self.vector_store.search_vectors(
-                query_vector,  # Передаем только сам вектор
-                top_k  # И количество результатов
-            )
-            
-        except Exception as e:
-            error_msg = f"Error searching vectors: {str(e)}"
-            logger.error(error_msg)
-            raise
+    async def search_vectors(
+        self,
+        query_vector: List[float],
+        top_k: int = TOP_K_CHUNKS,
+        filter_conditions: Optional[Dict] = None
+    ) -> List[Dict[str, Any]]:
+        """Search for similar vectors."""
+        await self.initialize()
+        return await self.vector_store_service.search_vectors(
+            query_vector, 
+            top_k=top_k,
+            filter_conditions=filter_conditions
+        )
+
+    def _create_metadata(self, text: str) -> Dict[str, Any]:
+        """Create enhanced metadata for text chunk."""
+        return {
+            'text': text,
+            'has_date': bool(re.search(r'\b\d{1,4}[-/.]\d{1,2}[-/.]\d{1,4}\b', text)),
+            'has_year': bool(re.search(r'\b(19|20)\d{2}\b', text)),
+            'has_names': bool(re.search(r'\b[A-Z][a-z]+ [A-Z][a-z]+\b', text)),
+            'chunk_length': len(text)
+        }

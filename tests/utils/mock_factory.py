@@ -1,9 +1,11 @@
 from typing import List, Dict, Any, Optional, Tuple
-from unittest.mock import Mock, MagicMock
+from unittest.mock import Mock, MagicMock, AsyncMock
 import time
 import random
-from openai import RateLimitError, APIError, APITimeoutError, APIConnectionError
+from openai import RateLimitError, APIError, APITimeoutError, APIConnectionError, AsyncOpenAI
+from src.book_data_factory import BookDataFactory
 from src.utils.logger import get_main_logger
+from src.vector_store_service import VectorStoreService
 from tests.utils.error_factory import OpenAIErrorFactory
 from tests.test_data.constants import (
     TEST_EMBEDDING_DIM,
@@ -12,86 +14,106 @@ from tests.test_data.constants import (
 from dataclasses import dataclass
 import os
 import firebase_admin
+from src.interfaces.vector_store import VectorStore
+import uuid
 
 logger = get_main_logger()
 
-class MockPineconeIndex:
-    """Мок-класс для Pinecone индекса."""
-    def __init__(self):
-        self.vectors = {}
-        logger.debug("Initialized MockPineconeIndex")
-
-    def upsert(self, vectors: List[tuple]):
-        for id, embedding, metadata in vectors:
-            self.vectors[id] = (embedding, metadata)
-        logger.debug(f"Upserted {len(vectors)} vectors")
-
-    def query(self, vector: List[float], top_k: int = 1, include_metadata: bool = True) -> Dict[str, Any]:
-        matches = [{"id": id, "score": 0.9, "metadata": metadata} 
-                   for id, (_, metadata) in list(self.vectors.items())[:top_k]]
-        logger.debug(f"Query returned {len(matches)} matches")
-        return {"matches": matches}
-
-    def delete(self, delete_all: bool = False):
-        if delete_all:
-            self.vectors.clear()
-            logger.debug("Cleared all vectors")
-
-class MockPinecone:
-    """Мок для Pinecone хранилища векторов."""
+class MockPinecone(VectorStore):
+    """Mock implementation of VectorStore for testing."""
     
     def __init__(self):
-        self._vectors: Dict[str, Tuple[List[float], Dict]] = {}
-        self._error_probability: float = 0.0
-        logger.debug("Initialized MockPinecone")
+        self._vectors = {}
+        self._noise_vectors = {}
+        self._is_initialized = False
+        self._generate_noise_vectors()
 
-    def upsert_vectors(self, vectors: List[Dict[str, Any]]) -> None:
-        """
-        Сохраняет векторы в моке.
-        
-        Args:
-            vectors: Список словарей с полями id, values, metadata
-        """
+    async def is_available(self) -> bool:
+        """Асинхронная проверка доступности мока."""
+        return self._is_initialized
+
+    async def initialize(self) -> None:
+        """Асинхронная инициализация мока."""
+        self._is_initialized = True
+
+    async def store_vectors(self, vectors: List[Dict[str, Any]]) -> None:
+        """Store vectors with metadata."""
+        if not self._is_initialized:
+            raise ValueError("Mock Pinecone index not initialized")
         for vector in vectors:
-            vector_id = vector['id']
-            values = vector['values']
-            metadata = vector['metadata']
-            self._vectors[vector_id] = (values, metadata)
-        logger.debug(f"Stored {len(vectors)} vectors")
-
-    def query(
-        self,
-        vector: List[float],
-        top_k: int = 5,
-        include_metadata: bool = True
-    ) -> Dict[str, List[Dict]]:
-        """
-        Ищет похожие векторы.
-        
-        Args:
-            vector: Вектор для поиска
-            top_k: Количество результатов
-            include_metadata: Включать ли метаданные
-        
-        Returns:
-            Dict с полем matches, содержащим список найденных векторов
-        """
-        matches = []
-        for vector_id, (values, metadata) in self._vectors.items():
-            match = {
-                'id': vector_id,
-                'score': 0.9  # Фиксированный скор для тестов
+            vector_id = str(uuid.uuid4())
+            self._vectors[vector_id] = {
+                'values': vector['values'],
+                'metadata': vector['metadata']
             }
-            if include_metadata:
-                match['metadata'] = metadata
-            matches.append(match)
-            
-        return {'matches': matches[:top_k]}
 
-    def delete(self, delete_all: bool = False):
-        if delete_all:
-            self._vectors.clear()
-            logger.debug("Cleared all vectors")
+    async def search_vectors(
+        self,
+        query_vector: List[float],
+        top_k: int = 5,
+        filter_conditions: Optional[Dict] = None
+    ) -> List[Dict[str, Any]]:
+        """Search for similar vectors."""
+        if not self._is_initialized:
+            raise ValueError("Mock Pinecone index not initialized")
+            
+        # Возвращаем список результатов в правильном формате
+        results = []
+        for vector_id, (values, metadata) in list(self._vectors.items())[:top_k]:
+            results.append({
+                'id': vector_id,
+                'metadata': metadata,
+                'score': 0.9  # Моковый score
+            })
+        
+        # Есл нет результатов, добавляем тестовые данные
+        if not results:
+            results = [{
+                'id': 'test_id',
+                'metadata': {'text': 'test text'},
+                'score': 0.9
+            }]
+            
+        return results
+
+    async def clear(self) -> None:
+        """Clear all vectors."""
+        self._vectors.clear()
+        self._noise_vectors.clear()
+        logger.debug("Cleared all vectors")
+
+    def _matches_filters(self, metadata: Dict[str, Any], filters: Dict) -> bool:
+        """Check if metadata matches filter conditions."""
+        for key, value in filters.items():
+            if key.startswith("$"):
+                # Специальные операторы ($or, $and и т.д.)
+                continue
+            if metadata.get(key) != value:
+                return False
+        return True
+
+    def _generate_noise_vectors(self, count: int = 100):
+        """Генерирует шумовые векторы для более реалистичного тестирования"""
+        base_texts = [
+            "Случайный текст для тестирования",
+            f"Событие произошло {random.randint(1, 28)} числа",
+            f"В городе {random.choice(['Москва', 'Париж', 'Лондон'])} случилось что-то",
+            f"Компания объявила о {random.choice(['слиянии', 'расширении', 'запуске'])}"
+        ]
+        
+        for i in range(count):
+            vector_id = f"noise_{i}"
+            values = [random.uniform(-1, 1) for _ in range(1536)]
+            text = f"{random.choice(base_texts)} #{i}"
+            metadata = {"text": text}
+            self._noise_vectors[vector_id] = (values, metadata)
+
+    def _cosine_similarity(self, v1: List[float], v2: List[float]) -> float:
+        """Вычисляет косинусное сходство между векторам"""
+        dot_product = sum(a * b for a, b in zip(v1, v2))
+        norm1 = sum(a * a for a in v1) ** 0.5
+        norm2 = sum(b * b for b in v2) ** 0.5
+        return dot_product / (norm1 * norm2) if norm1 * norm2 != 0 else 0
 
 class OpenAIConfig:
     """Конфигурация для OpenAI мока."""
@@ -211,62 +233,48 @@ class MockFactory:
     ERROR_TYPES = [RateLimitError, APIError, APITimeoutError, APIConnectionError]
     
     @staticmethod
-    def create_embedding_service(
-        error_probability: float = 0.0,
-        embedding_dimensions: int = TEST_EMBEDDING_DIM,
-        embedding_values: List[float] = TEST_EMBEDDING_VALUES
-    ) -> Mock:
-        """Создает мок сервиса эмбеддингов."""
-        service = Mock()
+    def create_embedding_service(dim=1536, error_probability=0.0):
+        """Creates a mock embedding service with async support."""
+        mock_service = Mock()
         
-        def create_embeddings(texts: List[str]) -> List[List[float]]:
+        async def async_create_embeddings(texts: List[str]) -> List[List[float]]:
+            """Async mock for creating embeddings."""
             if random.random() < error_probability:
                 error_type = random.choice(MockFactory.ERROR_TYPES)
                 raise OpenAIErrorFactory.create_error(error_type)
             
-            # Создаем эмбеддинг для каждого текста
-            base_embedding = embedding_values * (embedding_dimensions // len(embedding_values))
-            return [base_embedding.copy() for _ in texts]  # Важно: copy() для каждого эмбеддинга
-            
-        service.create_embeddings.side_effect = create_embeddings
-        logger.debug(f"Created EmbeddingService mock (dim={embedding_dimensions})")
-        return service
+            # Create mock embeddings for each text
+            return [[random.random() for _ in range(dim)] for _ in texts]
+        
+        # Set up the async method
+        mock_service.create_embeddings = async_create_embeddings
+        logger.debug(f"Created EmbeddingService mock (dim={dim})")
+        return mock_service
 
     @staticmethod
-    def create_openai_client(
-        completion_response: str = "Test response",
-        error_probability: float = 0.0
-    ) -> Mock:
-        """
-        Создает мок OpenAI клиента.
+    def create_openai_client() -> Mock:
+        """Creates a mock AsyncOpenAI client."""
+        mock_client = Mock(spec=AsyncOpenAI)  # Используем правильную спецификацию
         
-        Args:
-            completion_response: Ответ для chat completion
-            error_probability: Вероятность ошибки
-            
-        Returns:
-            Mock OpenAI клиента
-        """
-        client = Mock()
+        # Создаем структуру как у AsyncOpenAI
+        mock_client.chat = Mock()
+        mock_client.chat.completions = Mock()
         
-        # Настройка chat completion
-        completion = Mock()
-        message = Mock()
-        message.content = completion_response
-        completion.choices = [Mock(message=message)]
+        async def mock_create(**kwargs):
+            return Mock(
+                choices=[
+                    Mock(
+                        message=Mock(
+                            content="Test response"
+                        )
+                    )
+                ]
+            )
         
-        def create_chat_completion(*args, **kwargs):
-            if random.random() < error_probability:
-                error_type = random.choice(MockFactory.ERROR_TYPES)
-                raise OpenAIErrorFactory.create_error(
-                    error_type,
-                    message=completion_response
-                )
-            return completion
+        # Используем AsyncMock для create
+        mock_client.chat.completions.create = AsyncMock(side_effect=mock_create)
         
-        client.chat.completions.create.side_effect = create_chat_completion
-        
-        return client
+        return mock_client
 
     @staticmethod
     def create_cache_mock(
@@ -331,4 +339,11 @@ class MockFactory:
         websocket.send_json = Mock()
         websocket.receive_text = Mock(return_value="test message")
         return websocket
+
+    @staticmethod
+    def create_book_factory() -> BookDataFactory:
+        vector_store = MockFactory.create_pinecone_client()
+        embedding_service = MockFactory.create_embedding_service()
+        vector_store_service = VectorStoreService(vector_store, embedding_service)
+        return BookDataFactory(vector_store_service, embedding_service)
 

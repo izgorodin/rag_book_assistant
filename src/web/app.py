@@ -59,7 +59,8 @@ USERS = {
 }
 
 # Initialize services
-assistant = BookAssistant(progress_callback=ws_manager.emit_progress)
+assistant = BookAssistant()
+ws_manager.set_progress_callback(assistant.set_progress_callback)
 file_processor = FileProcessor()
 book_data = None
 

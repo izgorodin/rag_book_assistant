@@ -2,7 +2,7 @@ import asyncio
 import sys
 from tqdm import tqdm
 
-from openai import OpenAI
+from openai import AsyncOpenAI, OpenAI
 from src.cache_manager import CacheManager
 from src.config import CACHE_DIR, OPENAI_API_KEY
 from src.embedding import EmbeddingService
@@ -42,22 +42,26 @@ class BookAssistant:
             self._pbar.close()
             self._pbar = None
 
-    def __init__(self, openai_client, cache_manager):
+    def __init__(
+        self,
+        openai_client: OpenAI,
+        cache_manager: CacheManager,
+        vector_store_service: VectorStoreService,
+        book_data_factory: BookDataFactory
+    ):
         """Initialize the Book Assistant with necessary services."""
         self.logger = get_main_logger()
         
-        # Инициализация сервисов
-        vector_store = PineconeManager()
-        self.vector_store_service = VectorStoreService(vector_store)
+        # Сохраняем переданные сервисы
+        self.vector_store_service = vector_store_service
         self.embedding_service = EmbeddingService(openai_client, cache_manager)
         self.llm_service = LLMService(openai_client)
         self.file_processor = FileProcessor()
+        self.book_data_factory = book_data_factory
         
-        # Создаем фабрику для обработки книг
-        self.book_data_factory = BookDataFactory(
-            embedding_service=self.embedding_service,
-            vector_store_service=self.vector_store_service
-        )
+        # Добавляем openai_service
+        self.openai_service = OpenAIService(client=openai_client)
+        self.openai_service.set_embedding_service(self.embedding_service)
         
         self.logger.info("Book Assistant initialized")
 
@@ -74,39 +78,43 @@ class BookAssistant:
     async def process_question(self, question: str, book_data: BookDataInterface) -> str:
         """Process a question using the loaded book data."""
         try:
-            # Получаем релевантные чанки
-            relevant_chunks = book_data.get_relevant_chunks(question)
-            context = "\n".join(relevant_chunks)
+            relevant_chunks = await book_data.get_relevant_chunks(question)
             
-            # Передаем и query и context в generate_response
-            response = await self.llm_service.generate_response(
-                query=question,  # Передаем вопрос как query
-                context=context  # Передаем контекст
+            if not isinstance(relevant_chunks, list):
+                relevant_chunks = [relevant_chunks]
+            
+            context = "\n".join(chunk for chunk in relevant_chunks if chunk)
+            
+            response = await self.openai_service.generate_answer(
+                query=question,
+                context=context
             )
-            
             return response
-            
         except Exception as e:
-            self.logger.error(f"Error processing question: {str(e)}", exc_info=True)
-            return f"Error: {str(e)}"
+            self.logger.error(f"Error processing question: {str(e)}")
+            raise
 
-    def run(self):
-        """Run the CLI session"""
+    async def initialize(self):
+        """Initialize all required services."""
+        await self.book_data_factory.initialize()
+        self.logger.info("Book Assistant initialized")
+
+    async def run(self):
+        """Run the CLI interface."""
         try:
             while True:
-                book_path = input("Enter the path to the book file: ")
+                book_path = input("\nEnter the path to the book file: ")
                 if book_path.lower() == 'exit':
                     break
                 
-                loop = asyncio.get_event_loop()
-                book_data = loop.run_until_complete(self.load_and_process_book(book_path))
+                book_data = await self.load_and_process_book(book_path)
                 
                 while True:
                     question = input("\nEnter your question (or 'exit' to change book): ")
                     if question.lower() == 'exit':
                         break
                     
-                    answer = loop.run_until_complete(self.process_question(question, book_data))
+                    answer = await self.process_question(question, book_data)
                     print(f"\nAnswer: {answer}")
                     
         except Exception as e:
@@ -118,8 +126,28 @@ class BookAssistant:
 def main():
     """Entry point for the CLI application"""
     try:
-        assistant = BookAssistant()
-        assistant.run()
+        # Инициализируем базовые сервисы
+        openai_client = AsyncOpenAI(api_key=OPENAI_API_KEY)
+        cache_manager = CacheManager(CACHE_DIR)
+        pinecone_manager = PineconeManager()
+        vector_store = pinecone_manager.initialize()
+        
+        # Создаем сервисы
+        embedding_service = EmbeddingService(openai_client, cache_manager)
+        vector_store_service = VectorStoreService(vector_store, embedding_service)
+        book_data_factory = BookDataFactory(
+            vector_store_service=vector_store_service,
+            embedding_service=embedding_service
+        )
+        
+        # Создаем и запускаем ассистента
+        assistant = BookAssistant(
+            openai_client=openai_client,
+            cache_manager=cache_manager,
+            vector_store_service=vector_store_service,
+            book_data_factory=book_data_factory
+        )
+        asyncio.run(assistant.run())
     except Exception as e:
         print(f"Application error: {str(e)}")
 

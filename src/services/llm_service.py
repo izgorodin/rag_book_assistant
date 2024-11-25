@@ -14,4 +14,4 @@ class LLMService(LLMInterface):
     
     async def generate_response(self, query: str, context: str) -> str:
         """Generate a response using OpenAI service."""
-        return self.openai_service.generate_answer(query, context)
+        return await self.openai_service.generate_answer(query, context)

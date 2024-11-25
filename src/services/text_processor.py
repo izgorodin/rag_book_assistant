@@ -1,18 +1,21 @@
 import re
 from typing import List, Dict, Any, Union, Generator
-from src.config import CHUNK_SIZE, OVERLAP
+from src.config import CHUNK_SIZE, OVERLAP, BATCH_SIZES, BATCH_SETTINGS
 import nltk
 from nltk import ne_chunk, pos_tag, word_tokenize
 from nltk.tree import Tree
 from src.utils.logger import get_main_logger, get_rag_logger
 from concurrent.futures import ThreadPoolExecutor
 from tqdm import tqdm
-from functools import partial
 import asyncio
+from inspect import isawaitable
+from src.services.batch_processor import BatchProcessor
 
 # Initialize loggers for main and RAG-specific logging
 logger = get_main_logger()
 rag_logger = get_rag_logger()
+
+
 
 def initialize_nltk():
     """Initialize NLTK resources."""
@@ -32,6 +35,141 @@ def initialize_nltk():
 
 # Инициализируем NLTK при импорте модуля
 initialize_nltk()
+
+class TextProcessor:
+    def __init__(self):
+        initialize_nltk()
+        self.logger = get_main_logger()
+        self.rag_logger = get_rag_logger()
+        self.batch_processor = BatchProcessor(
+            batch_size=BATCH_SIZES['text_chunks'],
+            max_workers=BATCH_SETTINGS['max_workers']
+        )
+
+    async def preprocess_text(self, text: str, progress_callback=None) -> str:
+        """Предварительная обработка текста"""
+        self.logger.info("Starting text preprocessing")
+        if progress_callback:
+            progress_callback({'stage': 'preprocessing', 'progress': 0})
+        
+        text = text.strip()
+        # Удаляем множественные пробелы
+        text = ' '.join(text.split())
+        # Удаляем множественные переносы строк
+        text = '\n'.join(line.strip() for line in text.split('\n') if line.strip())
+        
+        if progress_callback:
+            progress_callback({'stage': 'preprocessing', 'progress': 100})
+        self.logger.info("Text preprocessing completed")
+        return text
+
+    async def extract_dates(self, text: Union[str, List[str]], progress_callback=None) -> List[str]:
+        """Асинхронная обертка для extract_dates"""
+        self.logger.info("Extracting dates")
+        if progress_callback:
+            progress_callback({'stage': 'extracting_dates', 'progress': 0})
+        
+        result = await asyncio.to_thread(extract_dates, text)
+        
+        if progress_callback:
+            progress_callback({'stage': 'extracting_dates', 'progress': 100})
+        self.logger.info(f"Extracted {len(result)} dates")
+        return result
+
+    async def extract_entities(self, text: Union[str, List[str]], progress_callback=None) -> List[str]:
+        """Асинхронная обертка для extract_named_entities"""
+        self.logger.info("Extracting entities")
+        if progress_callback:
+            progress_callback({'stage': 'extracting_entities', 'progress': 0})
+        
+        result = await asyncio.to_thread(extract_named_entities, text)
+        
+        if progress_callback:
+            progress_callback({'stage': 'extracting_entities', 'progress': 100})
+        self.logger.info(f"Extracted {len(result)} entities")
+        return result
+
+    async def extract_key_phrases(self, text: Union[str, List[str]], progress_callback=None) -> List[str]:
+        """Асинхронная обертка для extract_key_phrases"""
+        self.logger.info("Extracting key phrases")
+        if progress_callback:
+            progress_callback({'stage': 'extracting_key_phrases', 'progress': 0})
+        
+        result = await asyncio.to_thread(extract_key_phrases, text)
+        
+        if progress_callback:
+            progress_callback({'stage': 'extracting_key_phrases', 'progress': 100})
+        self.logger.info(f"Extracted {len(result)} key phrases")
+        return result
+
+    async def split_into_chunks(self, text: Union[str, Dict[str, Any]], 
+                              chunk_size: int = CHUNK_SIZE, 
+                              overlap: int = OVERLAP,
+                              progress_callback=None) -> List[str]:
+        """Асинхронная обработка текста с использованием BatchProcessor."""
+        if isawaitable(text):
+            text = await text
+            
+        return self.batch_processor.chunk_text(
+            text=text,
+            chunk_size=chunk_size,
+            overlap=overlap
+        )
+
+    async def analyze_chunks(self, chunks: List[str], progress_callback=None) -> List[Dict[str, Any]]:
+        """Анализ чанков с использованием BatchProcessor."""
+        async def process_chunk(chunks: List[str]) -> List[Dict[str, Any]]:
+            results = []
+            for chunk in chunks:
+                result = {
+                    'entities': await asyncio.to_thread(extract_named_entities, chunk),
+                    'key_phrases': await asyncio.to_thread(extract_key_phrases, chunk),
+                    'dates': await asyncio.to_thread(extract_dates, chunk)
+                }
+                results.append(result)
+            return results
+
+        return await self.batch_processor.process_async(
+            items=chunks,
+            processor=process_chunk,
+            description="Analyzing chunks",
+            progress_callback=progress_callback
+        )
+
+    def process_large_file(self, file_path: str) -> str:
+        """Обертка для существующей функции process_large_file"""
+        return ''.join(process_large_file(file_path))
+
+    async def process_text(self, text: str, progress_callback=None) -> Dict[str, Any]:
+        """Обрабатывает текст и возвращает результаты анализа"""
+        self.logger.info("Starting text processing")
+        
+        # Предобработка текста
+        preprocessed_text = await self.preprocess_text(text, progress_callback)
+        
+        # Разбиваем на чанки
+        chunks = await self.split_into_chunks(preprocessed_text, progress_callback=progress_callback)
+        
+        # Создаем и запускаем задачи для извлечения метаданных
+        dates_task = self.extract_dates(preprocessed_text, progress_callback)
+        entities_task = self.extract_entities(preprocessed_text, progress_callback)
+        phrases_task = self.extract_key_phrases(preprocessed_text, progress_callback)
+        
+        dates, entities, key_phrases = await asyncio.gather(
+            dates_task,
+            entities_task,
+            phrases_task
+        )
+        
+        self.logger.info("Text processing completed")
+        return {
+            'chunks': chunks,
+            'metadata': {
+                'dates': dates,
+                'entities': entities,
+                'key_phrases': key_phrases
+            }
+        }
 
 def process_large_file(file_path: str, chunk_size: int = 1000000) -> Generator[str, None, None]:
     """Process a large file in chunks of specified size."""
@@ -307,30 +445,3 @@ def print_chunks_analysis(text_or_dict, chunk_size=500, overlap=50, progress_cal
     
     logger.info("Chunks analysis completed")
 
-class TextProcessor:
-    def preprocess_text(self, text: str) -> str:
-        """Preprocess the text"""
-        # Базовая предобработка текста
-        text = text.strip()
-        # Можно добавить дополнительную обработку
-        return text
-
-    def split_into_chunks(self, text: str, chunk_size: int = 1000, overlap: int = 200) -> list:
-        """Split text into overlapping chunks"""
-        chunks = []
-        start = 0
-        text_length = len(text)
-
-        while start < text_length:
-            end = start + chunk_size
-            # Если это не последний чанк, найдем ближайший пробел
-            if end < text_length:
-                # Ищем ближайший пробел справа
-                while end < text_length and text[end] != ' ':
-                    end += 1
-            chunk = text[start:end].strip()
-            if chunk:  # Добавляем только непустые чанки
-                chunks.append(chunk)
-            start = end - overlap
-
-        return chunks
