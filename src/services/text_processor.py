@@ -10,6 +10,8 @@ from tqdm import tqdm
 import asyncio
 from inspect import isawaitable
 from src.services.batch_processor import BatchProcessor
+import uuid
+from datetime import datetime
 
 # Initialize loggers for main and RAG-specific logging
 logger = get_main_logger()
@@ -37,10 +39,11 @@ def initialize_nltk():
 initialize_nltk()
 
 class TextProcessor:
-    def __init__(self):
+    def __init__(self, namespace: str = None):
         initialize_nltk()
         self.logger = get_main_logger()
         self.rag_logger = get_rag_logger()
+        self.namespace = namespace
         self.batch_processor = BatchProcessor(
             batch_size=BATCH_SIZES['text_chunks'],
             max_workers=BATCH_SETTINGS['max_workers']
@@ -48,9 +51,11 @@ class TextProcessor:
 
     async def preprocess_text(self, text: str, progress_callback=None) -> str:
         """Предварительная обработка текста"""
-        self.logger.info("Starting text preprocessing")
+        self.logger.info(f"Starting text preprocessing for namespace: {self.namespace}")
         if progress_callback:
             progress_callback({'stage': 'preprocessing', 'progress': 0})
+        
+        self.logger.info(f"Initial text size: {len(text)} characters")
         
         text = text.strip()
         # Удаляем множественные пробелы
@@ -58,9 +63,11 @@ class TextProcessor:
         # Удаляем множественные переносы строк
         text = '\n'.join(line.strip() for line in text.split('\n') if line.strip())
         
+        self.logger.info(f"Processed text size: {len(text)} characters")
+        
         if progress_callback:
             progress_callback({'stage': 'preprocessing', 'progress': 100})
-        self.logger.info("Text preprocessing completed")
+        self.logger.info(f"Text preprocessing completed for namespace: {self.namespace}")
         return text
 
     async def extract_dates(self, text: Union[str, List[str]], progress_callback=None) -> List[str]:
@@ -106,15 +113,23 @@ class TextProcessor:
                               chunk_size: int = CHUNK_SIZE, 
                               overlap: int = OVERLAP,
                               progress_callback=None) -> List[str]:
-        """Асинхронная обработка текста с использованием BatchProcessor."""
+        """Разбивает текст на чанки с перекрытием"""
+        self.logger.info(f"Splitting text into chunks for namespace: {self.namespace}")
+        self.logger.info(f"Configuration: chunk_size={chunk_size}, overlap={overlap}")
+        
         if isawaitable(text):
             text = await text
-            
-        return self.batch_processor.chunk_text(
+        
+        chunks = self.batch_processor.chunk_text(
             text=text,
             chunk_size=chunk_size,
             overlap=overlap
         )
+        
+        self.logger.info(f"Created {len(chunks)} chunks for namespace: {self.namespace}")
+        self.logger.info(f"Average chunk size: {sum(len(c) for c in chunks) / len(chunks):.2f} characters")
+        
+        return chunks
 
     async def analyze_chunks(self, chunks: List[str], progress_callback=None) -> List[Dict[str, Any]]:
         """Анализ чанков с использованием BatchProcessor."""
@@ -142,7 +157,7 @@ class TextProcessor:
 
     async def process_text(self, text: str, progress_callback=None) -> Dict[str, Any]:
         """Обрабатывает текст и возвращает результаты анализа"""
-        self.logger.info("Starting text processing")
+        self.logger.info(f"Starting text processing for namespace: {self.namespace}")
         
         # Предобработка текста
         preprocessed_text = await self.preprocess_text(text, progress_callback)
@@ -150,25 +165,28 @@ class TextProcessor:
         # Разбиваем на чанки
         chunks = await self.split_into_chunks(preprocessed_text, progress_callback=progress_callback)
         
-        # Создаем и запускаем задачи для извлечения метаданных
-        dates_task = self.extract_dates(preprocessed_text, progress_callback)
-        entities_task = self.extract_entities(preprocessed_text, progress_callback)
-        phrases_task = self.extract_key_phrases(preprocessed_text, progress_callback)
+        # Анализируем чанки
+        chunks_info = await self.analyze_chunks(chunks, progress_callback)
         
-        dates, entities, key_phrases = await asyncio.gather(
-            dates_task,
-            entities_task,
-            phrases_task
-        )
+        # Извлекаем метаданные из текста
+        dates = await self.extract_dates(preprocessed_text, progress_callback)
+        entities = await self.extract_entities(preprocessed_text, progress_callback)
+        key_phrases = await self.extract_key_phrases(preprocessed_text, progress_callback)
         
-        self.logger.info("Text processing completed")
+        # Добавляем информацию о неймспейсе и метаданные
+        metadata = {
+            'namespace': self.namespace or '',
+            'document_id': str(uuid.uuid4()),
+            'processed_at': datetime.now().isoformat(),
+            'dates': dates or [],
+            'entities': entities or [],
+            'key_phrases': key_phrases or []
+        }
+        
         return {
             'chunks': chunks,
-            'metadata': {
-                'dates': dates,
-                'entities': entities,
-                'key_phrases': key_phrases
-            }
+            'chunks_info': chunks_info,
+            'metadata': metadata
         }
 
 def process_large_file(file_path: str, chunk_size: int = 1000000) -> Generator[str, None, None]:

@@ -30,15 +30,19 @@ class VectorStoreService:
             self._initialized = True
             self.logger.info("VectorStoreService initialized")
 
-    async def store_vectors(self, vectors: List[Dict[str, Any]]) -> None:
-        """Store vectors in the vector store."""
-        await self.initialize()
-        self.logger.info(f"Storing {len(vectors)} vectors")
+    async def store_vectors(self, vectors: List[Dict[str, Any]], namespace: str = None) -> None:
+        """Store vectors in the vector store with namespace support"""
         try:
+            # Добавляем namespace в метаданные каждого вектора
+            for vector in vectors:
+                if 'metadata' not in vector:
+                    vector['metadata'] = {}
+                vector['metadata']['namespace'] = namespace
+            
+            # Вызываем метод store_vectors у PineconeManager только с vectors
             await self.vector_store_service.store_vectors(vectors)
-            self.logger.info(f"Successfully stored {len(vectors)} vectors")
         except Exception as e:
-            self.logger.error(f"Error storing vectors: {e}")
+            self.logger.error(f"Error storing vectors: {str(e)}")
             raise
 
     @staticmethod

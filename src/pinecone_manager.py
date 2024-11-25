@@ -10,6 +10,7 @@ from src.utils.logger import get_main_logger, get_rag_logger
 from src.interfaces.vector_store import VectorStore
 import asyncio
 import pinecone
+import uuid
 
 logger = get_main_logger()
 rag_logger = get_rag_logger()
@@ -21,6 +22,8 @@ class PineconeManager(VectorStore):
         self.api_key = api_key
         self.environment = environment
         self.index_name = index_name
+        self.logger = get_main_logger()
+        self.rag_logger = get_rag_logger()
         self._index = None
         self._initialized = False
 
@@ -126,19 +129,45 @@ class PineconeManager(VectorStore):
             raise
 
     async def store_vectors(self, vectors: List[Dict[str, Any]]) -> None:
-        """Store vectors with metadata."""
-        if not await self.is_available():
-            raise ValueError("Pinecone index not initialized")
+        """Store vectors in Pinecone"""
+        if not self._initialized:
+            await self.initialize()
             
         try:
-            self._index.upsert(vectors=[(
-                f"vec_{i}",  # Добавляем уникальные ID
-                vector['values'],
-                vector['metadata']
-            ) for i, vector in enumerate(vectors)])
-            logger.info(f"Successfully stored {len(vectors)} vectors")
+            # Получаем namespace из метаданных первого вектора
+            namespace = vectors[0]['metadata'].get('namespace', '') or ''
+            
+            # Подготавливаем векторы для Pinecone с преобразованием метаданных
+            pinecone_vectors = []
+            for vector in vectors:
+                # Преобразуем сложные метаданные в плоский формат
+                flattened_metadata = {
+                    'text': vector['metadata'].get('text', ''),
+                    'namespace': vector['metadata'].get('namespace', '') or '',
+                    'dates': ','.join(str(d) for d in vector['metadata'].get('dates', [])),
+                    'entities': ','.join(str(e) for e in vector['metadata'].get('entities', [])),
+                    'key_phrases': ','.join(str(k) for k in vector['metadata'].get('key_phrases', []))
+                }
+                
+                pinecone_vectors.append({
+                    'id': str(uuid.uuid4()),
+                    'values': vector['values'],
+                    'metadata': flattened_metadata
+                })
+            
+            # Используем namespace при вставке в Pinecone
+            await asyncio.get_event_loop().run_in_executor(
+                None,
+                lambda: self._index.upsert(
+                    vectors=pinecone_vectors,
+                    namespace=namespace
+                )
+            )
+            
+            self.logger.info(f"Stored {len(vectors)} vectors in namespace: {namespace}")
+            
         except Exception as e:
-            logger.error(f"Error storing vectors: {str(e)}")
+            self.logger.error(f"Error storing vectors in Pinecone: {str(e)}")
             raise
 
     async def search_vectors(
