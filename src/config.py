@@ -59,6 +59,14 @@ BATCH_SETTINGS = {
     'timeout': 30
 }
 
+# Search Configuration
+SEARCH_SETTINGS = {
+    'top_k_chunks': TOP_K_CHUNKS,  # Using existing TOP_K_CHUNKS constant
+    'similarity_threshold': 0.7,    # Default similarity threshold
+    'max_context_messages': 3,      # Maximum number of conversation history messages to consider
+    'min_relevance_score': 0.5     # Minimum relevance score for results
+}
+
 # Create necessary directories
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs('logs', exist_ok=True)
