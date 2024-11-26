@@ -1,3 +1,4 @@
+from logging import config
 import re
 from typing import List, Dict, Any, Union, Generator
 from src.config import CHUNK_SIZE, OVERLAP, BATCH_SIZES, BATCH_SETTINGS
@@ -120,16 +121,33 @@ class TextProcessor:
         if isawaitable(text):
             text = await text
         
-        chunks = self.batch_processor.chunk_text(
-            text=text,
-            chunk_size=chunk_size,
-            overlap=overlap
-        )
+        # Сначала разбиваем на большие секции для параллельной обработки
+        section_size = 100000  # ~100KB на секцию
+        sections = [text[i:i + section_size] for i in range(0, len(text), section_size)]
         
-        self.logger.info(f"Created {len(chunks)} chunks for namespace: {self.namespace}")
-        self.logger.info(f"Average chunk size: {sum(len(c) for c in chunks) / len(chunks):.2f} characters")
+        all_chunks = []
+        total_sections = len(sections)
         
-        return chunks
+        for i, section in enumerate(sections):
+            section_chunks = self.batch_processor.chunk_text(
+                text=section,
+                chunk_size=chunk_size,
+                overlap=overlap
+            )
+            all_chunks.extend(section_chunks)
+            
+            if progress_callback:
+                progress_callback({
+                    'stage': 'chunking',
+                    'progress': (i + 1) / total_sections * 100,
+                    'current': i + 1,
+                    'total': total_sections
+                })
+        
+        self.logger.info(f"Created {len(all_chunks)} chunks for namespace: {self.namespace}")
+        self.logger.info(f"Average chunk size: {sum(len(c) for c in all_chunks) / len(all_chunks):.2f} characters")
+        
+        return all_chunks
 
     async def analyze_chunks(self, chunks: List[str], progress_callback=None) -> List[Dict[str, Any]]:
         """Анализ чанков с использованием BatchProcessor."""
@@ -163,24 +181,70 @@ class TextProcessor:
         preprocessed_text = await self.preprocess_text(text, progress_callback)
         
         # Разбиваем на чанки
-        chunks = await self.split_into_chunks(preprocessed_text, progress_callback=progress_callback)
+        chunks = await self.split_into_chunks(
+            preprocessed_text, 
+            chunk_size=BATCH_SIZES['text_chunks'],
+            overlap=BATCH_SETTINGS['chunk_overlap'],
+            progress_callback=progress_callback
+        )
         
-        # Анализируем чанки
-        chunks_info = await self.analyze_chunks(chunks, progress_callback)
+        # Анализируем чанки батчами
+        batch_size = BATCH_SIZES['analysis']  # Используем размер батча для анализа
+        chunks_info = []
+        total_batches = (len(chunks) + batch_size - 1) // batch_size
         
-        # Извлекаем метаданные из текста
-        dates = await self.extract_dates(preprocessed_text, progress_callback)
-        entities = await self.extract_entities(preprocessed_text, progress_callback)
-        key_phrases = await self.extract_key_phrases(preprocessed_text, progress_callback)
+        self.logger.info(f"Processing {len(chunks)} chunks in {total_batches} batches")
         
-        # Добавляем информацию о неймспейсе и метаданные
+        # Обрабатываем чанки батчами
+        async def process_chunk_batch(batch_chunks: List[str]) -> List[Dict[str, Any]]:
+            results = []
+            for i, chunk in enumerate(batch_chunks):
+                with ThreadPoolExecutor(max_workers=3) as executor:
+                    # Параллельно извлекаем метаданные для чанка
+                    futures = {
+                        'dates': executor.submit(extract_dates, chunk),
+                        'entities': executor.submit(extract_named_entities, chunk),
+                        'key_phrases': executor.submit(extract_key_phrases, chunk)
+                    }
+                    
+                    chunk_metadata = {
+                        'namespace': self.namespace or '',
+                        'chunk_id': f"{self.namespace}_{i}" if self.namespace else str(uuid.uuid4()),
+                        'processed_at': datetime.now().isoformat(),
+                        'text': chunk
+                    }
+                    
+                    # Собираем результаты
+                    for key, future in futures.items():
+                        chunk_metadata[key] = future.result()
+                    
+                    results.append(chunk_metadata)
+            return results
+
+        # Обрабатываем чанки батчами
+        batch_size = BATCH_SIZES['text_chunks']  # Размер батча
+        chunks_info = []
+        total_batches = (len(chunks) + batch_size - 1) // batch_size
+        
+        for i in range(0, len(chunks), batch_size):
+            batch = chunks[i:i + batch_size]
+            batch_results = await process_chunk_batch(batch)
+            chunks_info.extend(batch_results)
+            
+            if progress_callback:
+                progress_callback({
+                    'stage': 'analyzing',
+                    'progress': (i + batch_size) / len(chunks) * 100,
+                    'current_batch': i // batch_size + 1,
+                    'total_batches': total_batches
+                })
+        
+        # Общие метаданные документа
         metadata = {
             'namespace': self.namespace or '',
             'document_id': str(uuid.uuid4()),
             'processed_at': datetime.now().isoformat(),
-            'dates': dates or [],
-            'entities': entities or [],
-            'key_phrases': key_phrases or []
+            'total_chunks': len(chunks)
         }
         
         return {

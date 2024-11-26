@@ -22,7 +22,7 @@ PINECONE_INDEX_NAME = "book-embeddings"
 PINECONE_CLOUD = "aws"
 PINECONE_REGION = "us-east-1"
 PINECONE_METRIC = "cosine"
-PINECONE_BATCH_SIZE = 250
+PINECONE_BATCH_SIZE = 200
 
 # Storage Configuration
 CACHE_DIR = 'data/cache'
@@ -47,7 +47,7 @@ OPENAI_HTTP_CONFIG = {
 # Batch Processing Configuration
 BATCH_SIZES = {
     'embeddings': 200,      # OpenAI embeddings batch size
-    'pinecone': 100,       # Pinecone upsert batch size
+    'pinecone': 200,       # Pinecone upsert batch size
     'text_chunks': 1000,   # Text chunking size
     'analysis': 500        # Text analysis batch size
 }

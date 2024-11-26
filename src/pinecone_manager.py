@@ -129,43 +129,50 @@ class PineconeManager(VectorStore):
             raise
 
     async def store_vectors(self, vectors: List[Dict[str, Any]]) -> None:
-        """Store vectors in Pinecone"""
+        """Store vectors in Pinecone with batching"""
         if not self._initialized:
             await self.initialize()
-            
+        
         try:
-            # Получаем namespace из метаданных первого вектора
-            namespace = vectors[0]['metadata'].get('namespace', '') or ''
+            # Разбиваем векторы на батчи по 100 (чтобы уложиться в лимит 4MB)
+            batch_size = 100
+            total_batches = (len(vectors) + batch_size - 1) // batch_size
             
-            # Подготавливаем векторы для Pinecone с преобразованием метаданных
-            pinecone_vectors = []
-            for vector in vectors:
-                # Преобразуем сложные метаданные в плоский формат
-                flattened_metadata = {
-                    'text': vector['metadata'].get('text', ''),
-                    'namespace': vector['metadata'].get('namespace', '') or '',
-                    'dates': ','.join(str(d) for d in vector['metadata'].get('dates', [])),
-                    'entities': ','.join(str(e) for e in vector['metadata'].get('entities', [])),
-                    'key_phrases': ','.join(str(k) for k in vector['metadata'].get('key_phrases', []))
-                }
+            for i in range(0, len(vectors), batch_size):
+                batch = vectors[i:i + batch_size]
                 
-                pinecone_vectors.append({
-                    'id': str(uuid.uuid4()),
-                    'values': vector['values'],
-                    'metadata': flattened_metadata
-                })
-            
-            # Используем namespace при вставке в Pinecone
-            await asyncio.get_event_loop().run_in_executor(
-                None,
-                lambda: self._index.upsert(
-                    vectors=pinecone_vectors,
-                    namespace=namespace
+                # Подготавливаем векторы для батча
+                pinecone_vectors = []
+                for vector in batch:
+                    vector_metadata = {
+                        'text': vector['metadata']['text'][:1000],  # Ограничиваем размер текста
+                        'namespace': vector['metadata'].get('namespace', '') or ''
+                    }
+                    # Добавляем остальные метаданные как плоские значения
+                    for k, v in vector['metadata'].items():
+                        if k not in ['text', 'namespace']:
+                            vector_metadata[k] = str(v)[:1000] if isinstance(v, str) else str(v)
+                    
+                    pinecone_vectors.append({
+                        'id': str(uuid.uuid4()),
+                        'values': vector['values'],
+                        'metadata': vector_metadata
+                    })
+                
+                # Сохраняем батч
+                await asyncio.get_event_loop().run_in_executor(
+                    None,
+                    lambda: self._index.upsert(
+                        vectors=pinecone_vectors,
+                        namespace=vector_metadata['namespace']
+                    )
                 )
-            )
-            
-            self.logger.info(f"Stored {len(vectors)} vectors in namespace: {namespace}")
-            
+                
+                self.logger.info(f"Stored batch {i//batch_size + 1}/{total_batches} ({len(pinecone_vectors)} vectors)")
+                
+                # Добавляем небольшую задержку между батчами
+                await asyncio.sleep(0.1)
+                
         except Exception as e:
             self.logger.error(f"Error storing vectors in Pinecone: {str(e)}")
             raise
